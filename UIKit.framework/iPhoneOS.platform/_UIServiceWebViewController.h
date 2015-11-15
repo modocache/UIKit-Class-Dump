@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)goForward;
 - (void)goBack;
 - (void)loadUserTypedAddress:(id)arg1;
+- (void)loadHTMLString:(id)arg1 baseURL:(id)arg2;
 - (void)loadEncodedRequest:(id)arg1;
 - (void)browserLoadingControllerDidUpdateURLString:(id)arg1;
 - (void)browserLoadingControllerDidUpdateTitle:(id)arg1;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)loadView;
 - (id)_makeAlertView;
+- (void)_webContentSizeWithReplyHandler:(CDUnknownBlockType)arg1;
 - (void)configureWithEncodedSettings:(id)arg1;
 - (void)_remotelyDispatchDidDismissViewController;
 - (void)_remotelyDispatchWillPresentViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;

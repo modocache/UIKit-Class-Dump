@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface UIActivityItemURLRep : NSObject
 {
+    int _attachmentURLType;
     NSURL *_URL;
     UIImage *_thumbnail;
-    int _attachmentURLType;
 }
 
-@property(nonatomic) int attachmentURLType; // @synthesize attachmentURLType=_attachmentURLType;
 @property(retain, nonatomic) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property(nonatomic) int attachmentURLType; // @synthesize attachmentURLType=_attachmentURLType;
 - (id)scheme;
 - (BOOL)isFileURL;
 - (void)dealloc;

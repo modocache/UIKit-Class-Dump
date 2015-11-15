@@ -10,38 +10,38 @@
 
 @interface UIActivityViewController : UIViewController
 {
-    Class _originalPopoverBackgroundViewClass;
-    UIActivity *_activity;
-    UIActivityListViewController *_activityListViewController;
-    unsigned int _backgroundTaskIdentifier;
-    NSString *_subject;
-    CDUnknownBlockType _completionHandler;
-    int _originalPopoverBackgroundStyle;
-    int _totalProviderCount;
-    NSArray *_excludedActivityTypes;
     int _completedProviderCount;
-    NSArray *_applicationActivities;
-    NSOperationQueue *_activityItemProviderOperationQueue;
     BOOL _useBlackPopoverStyle;
+    UIActivity *_activity;
     NSArray *_activityItems;
+    int _totalProviderCount;
+    NSArray *_applicationActivities;
+    NSString *_subject;
+    NSArray *_excludedActivityTypes;
+    NSOperationQueue *_activityItemProviderOperationQueue;
+    UIActivityListViewController *_activityListViewController;
+    Class _originalPopoverBackgroundViewClass;
+    int _originalPopoverBackgroundStyle;
+    CDUnknownBlockType _completionHandler;
+    unsigned int _backgroundTaskIdentifier;
 }
 
 + (BOOL)_hasSystemActivityForActivityItems:(id)arg1;
 + (id)_builtinActivities;
-@property(copy, nonatomic) NSArray *activityItems; // @synthesize activityItems=_activityItems;
-@property(nonatomic) BOOL useBlackPopoverStyle; // @synthesize useBlackPopoverStyle=_useBlackPopoverStyle;
-@property(retain, nonatomic) NSOperationQueue *activityItemProviderOperationQueue; // @synthesize activityItemProviderOperationQueue=_activityItemProviderOperationQueue;
-@property(copy, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
-@property(nonatomic) int completedProviderCount; // @synthesize completedProviderCount=_completedProviderCount;
-@property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
-@property(nonatomic) int totalProviderCount; // @synthesize totalProviderCount=_totalProviderCount;
-@property(nonatomic) int originalPopoverBackgroundStyle; // @synthesize originalPopoverBackgroundStyle=_originalPopoverBackgroundStyle;
-@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property(nonatomic) unsigned int backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
-@property(retain, nonatomic) UIActivityListViewController *activityListViewController; // @synthesize activityListViewController=_activityListViewController;
-@property(retain, nonatomic) UIActivity *activity; // @synthesize activity=_activity;
+@property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property(nonatomic) int originalPopoverBackgroundStyle; // @synthesize originalPopoverBackgroundStyle=_originalPopoverBackgroundStyle;
 @property(nonatomic) Class originalPopoverBackgroundViewClass; // @synthesize originalPopoverBackgroundViewClass=_originalPopoverBackgroundViewClass;
+@property(retain, nonatomic) UIActivityListViewController *activityListViewController; // @synthesize activityListViewController=_activityListViewController;
+@property(retain, nonatomic) NSOperationQueue *activityItemProviderOperationQueue; // @synthesize activityItemProviderOperationQueue=_activityItemProviderOperationQueue;
+@property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
+@property(copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
+@property(copy, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
+@property(nonatomic) int totalProviderCount; // @synthesize totalProviderCount=_totalProviderCount;
+@property(copy, nonatomic) NSArray *activityItems; // @synthesize activityItems=_activityItems;
+@property(retain, nonatomic) UIActivity *activity; // @synthesize activity=_activity;
+@property(nonatomic) BOOL useBlackPopoverStyle; // @synthesize useBlackPopoverStyle=_useBlackPopoverStyle;
+@property(nonatomic) int completedProviderCount; // @synthesize completedProviderCount=_completedProviderCount;
 - (void)_cancel;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_setPopoverController:(id)arg1;

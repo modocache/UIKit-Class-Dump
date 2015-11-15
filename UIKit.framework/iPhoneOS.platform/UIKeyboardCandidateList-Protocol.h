@@ -12,7 +12,7 @@
 - (void)configureKeyboard:(UIKeyboardLayout *)arg1;
 - (unsigned int)count;
 - (void)candidateAcceptedAtIndex:(unsigned int)arg1;
-- (NSString *)candidateAtIndex:(unsigned int)arg1;
+- (UIKeyboardCandidate *)candidateAtIndex:(unsigned int)arg1;
 - (unsigned int)currentIndex;
 - (UIKeyboardCandidate *)currentCandidate;
 - (void)showPreviousPage;

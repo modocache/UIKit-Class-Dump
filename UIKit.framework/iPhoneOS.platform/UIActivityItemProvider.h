@@ -14,14 +14,14 @@
 {
     float _progress;
     id _providedItem;
-    id _placeholderItem;
-    NSString *_status;
     NSString *_activityType;
+    NSString *_status;
+    id _placeholderItem;
 }
 
-@property(readonly, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
-@property(copy, nonatomic) NSString *status; // @synthesize status=_status;
 @property(retain, nonatomic) id placeholderItem; // @synthesize placeholderItem=_placeholderItem;
+@property(copy, nonatomic) NSString *status; // @synthesize status=_status;
+@property(readonly, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
 @property(retain, nonatomic) id providedItem; // @synthesize providedItem=_providedItem;
 @property(nonatomic) float progress; // @synthesize progress=_progress;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;

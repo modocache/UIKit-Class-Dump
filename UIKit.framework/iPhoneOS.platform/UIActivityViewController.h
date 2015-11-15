@@ -10,38 +10,38 @@
 
 @interface UIActivityViewController : UIViewController
 {
-    unsigned int _backgroundTaskIdentifier;
-    int _completedProviderCount;
-    BOOL _useBlackPopoverStyle;
-    UIActivity *_activity;
-    Class _originalPopoverBackgroundViewClass;
-    int _originalPopoverBackgroundStyle;
-    CDUnknownBlockType _completionHandler;
-    NSArray *_activityItems;
-    NSArray *_applicationActivities;
-    NSString *_subject;
     NSArray *_excludedActivityTypes;
-    UIActivityListViewController *_activityListViewController;
-    int _totalProviderCount;
     NSOperationQueue *_activityItemProviderOperationQueue;
+    UIActivityListViewController *_activityListViewController;
+    UIActivity *_activity;
+    NSArray *_activityItems;
+    Class _originalPopoverBackgroundViewClass;
+    NSArray *_applicationActivities;
+    int _originalPopoverBackgroundStyle;
+    NSString *_subject;
+    unsigned int _backgroundTaskIdentifier;
+    BOOL _useBlackPopoverStyle;
+    int _completedProviderCount;
+    CDUnknownBlockType _completionHandler;
+    int _totalProviderCount;
 }
 
 + (BOOL)_hasSystemActivityForActivityItems:(id)arg1;
 + (id)_builtinActivities;
-@property(retain, nonatomic) NSOperationQueue *activityItemProviderOperationQueue; // @synthesize activityItemProviderOperationQueue=_activityItemProviderOperationQueue;
 @property(nonatomic) int totalProviderCount; // @synthesize totalProviderCount=_totalProviderCount;
-@property(retain, nonatomic) UIActivityListViewController *activityListViewController; // @synthesize activityListViewController=_activityListViewController;
-@property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
-@property(copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
-@property(copy, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
-@property(copy, nonatomic) NSArray *activityItems; // @synthesize activityItems=_activityItems;
 @property(copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(nonatomic) int originalPopoverBackgroundStyle; // @synthesize originalPopoverBackgroundStyle=_originalPopoverBackgroundStyle;
-@property(nonatomic) Class originalPopoverBackgroundViewClass; // @synthesize originalPopoverBackgroundViewClass=_originalPopoverBackgroundViewClass;
-@property(retain, nonatomic) UIActivity *activity; // @synthesize activity=_activity;
-@property(nonatomic) BOOL useBlackPopoverStyle; // @synthesize useBlackPopoverStyle=_useBlackPopoverStyle;
 @property(nonatomic) int completedProviderCount; // @synthesize completedProviderCount=_completedProviderCount;
+@property(nonatomic) BOOL useBlackPopoverStyle; // @synthesize useBlackPopoverStyle=_useBlackPopoverStyle;
 @property(nonatomic) unsigned int backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
+@property(copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
+@property(nonatomic) int originalPopoverBackgroundStyle; // @synthesize originalPopoverBackgroundStyle=_originalPopoverBackgroundStyle;
+@property(copy, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
+@property(nonatomic) Class originalPopoverBackgroundViewClass; // @synthesize originalPopoverBackgroundViewClass=_originalPopoverBackgroundViewClass;
+@property(copy, nonatomic) NSArray *activityItems; // @synthesize activityItems=_activityItems;
+@property(retain, nonatomic) UIActivity *activity; // @synthesize activity=_activity;
+@property(retain, nonatomic) UIActivityListViewController *activityListViewController; // @synthesize activityListViewController=_activityListViewController;
+@property(retain, nonatomic) NSOperationQueue *activityItemProviderOperationQueue; // @synthesize activityItemProviderOperationQueue=_activityItemProviderOperationQueue;
+@property(copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 - (void)_cancel;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_setPopoverController:(id)arg1;

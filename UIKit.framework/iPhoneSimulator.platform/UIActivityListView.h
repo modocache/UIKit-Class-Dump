@@ -13,34 +13,34 @@
 __attribute__((visibility("hidden")))
 @interface UIActivityListView : UIView <UIScrollViewDelegate>
 {
-    UIView *_dimmingView;
-    int _numberOfPages;
-    int _numberOfColumns;
-    int _numberOfRows;
     UIImageView *_shadowView;
-    BOOL _presentingModally;
+    int _numberOfPages;
     UIScrollView *_scrollView;
-    struct CGSize _containerSize;
-    UIView *_headerView;
-    UIPageControl *_pageControl;
     UIButton *_cancelButton;
+    UIView *_headerView;
     UIImageView *_backgroundView;
+    int _numberOfRows;
+    BOOL _presentingModally;
+    UIView *_dimmingView;
+    struct CGSize _containerSize;
     float _blankSpace;
+    int _numberOfColumns;
+    UIPageControl *_pageControl;
 }
 
-@property(nonatomic) float blankSpace; // @synthesize blankSpace=_blankSpace;
-@property(retain, nonatomic) UIImageView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property(retain, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(retain, nonatomic) UIPageControl *pageControl; // @synthesize pageControl=_pageControl;
-@property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
-@property(nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
-@property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property(nonatomic) BOOL presentingModally; // @synthesize presentingModally=_presentingModally;
-@property(retain, nonatomic) UIImageView *shadowView; // @synthesize shadowView=_shadowView;
-@property(nonatomic) int numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property(nonatomic) int numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
-@property(nonatomic) int numberOfPages; // @synthesize numberOfPages=_numberOfPages;
+@property(nonatomic) float blankSpace; // @synthesize blankSpace=_blankSpace;
+@property(nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
 @property(retain, nonatomic) UIView *dimmingView; // @synthesize dimmingView=_dimmingView;
+@property(nonatomic) BOOL presentingModally; // @synthesize presentingModally=_presentingModally;
+@property(nonatomic) int numberOfRows; // @synthesize numberOfRows=_numberOfRows;
+@property(retain, nonatomic) UIImageView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
+@property(retain, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
+@property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(nonatomic) int numberOfPages; // @synthesize numberOfPages=_numberOfPages;
+@property(retain, nonatomic) UIImageView *shadowView; // @synthesize shadowView=_shadowView;
 - (void)layoutSubviews;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)_changePage;

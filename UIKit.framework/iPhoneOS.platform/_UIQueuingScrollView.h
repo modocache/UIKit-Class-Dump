@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_didEndScroll:(BOOL)arg1;
 - (void)_didEndDraggingManualScroll;
 - (void)_didScrollWithAnimation:(BOOL)arg1 force:(BOOL)arg2;
+- (BOOL)_isScrollInProgress:(BOOL)arg1;
 - (BOOL)_isDeceleratingInOppositionToNavigationDirection:(int)arg1;
 - (void)_commitGestureDrivenScrollRevealingView:(id)arg1 concealingView:(id)arg2 inDirection:(int)arg3 canComplete:(BOOL)arg4;
 - (void)_boundsDidChangeToSize:(struct CGSize)arg1;

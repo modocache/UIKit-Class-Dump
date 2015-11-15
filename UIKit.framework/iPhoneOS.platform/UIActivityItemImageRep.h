@@ -9,15 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface UIActivityItemImageRep : NSObject
 {
-    CDUnknownBlockType _dataProvider;
     id _asset;
+    CDUnknownBlockType _dataProvider;
     CDUnknownBlockType _thumbnailProvider;
 }
 
 + (id)activityItemImageRepWithAsset:(id)arg1 thumbnailProvider:(CDUnknownBlockType)arg2 dataProvider:(CDUnknownBlockType)arg3;
 @property(copy, nonatomic) CDUnknownBlockType thumbnailProvider; // @synthesize thumbnailProvider=_thumbnailProvider;
-@property(retain, nonatomic) id asset; // @synthesize asset=_asset;
 @property(copy, nonatomic) CDUnknownBlockType dataProvider; // @synthesize dataProvider=_dataProvider;
+@property(retain, nonatomic) id asset; // @synthesize asset=_asset;
 - (id)data;
 - (id)thumbnail;
 - (void)dealloc;

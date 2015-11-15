@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarOrientationStackInfo : NSObject
 {
-    int _hostPID;
     int _statusBarOrientationWithoutHost;
+    int _hostPID;
 }
 
-@property int statusBarOrientationWithoutHost; // @synthesize statusBarOrientationWithoutHost=_statusBarOrientationWithoutHost;
 @property int hostPID; // @synthesize hostPID=_hostPID;
+@property int statusBarOrientationWithoutHost; // @synthesize statusBarOrientationWithoutHost=_statusBarOrientationWithoutHost;
 
 @end
 

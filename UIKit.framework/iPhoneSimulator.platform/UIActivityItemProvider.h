@@ -13,16 +13,16 @@
 @interface UIActivityItemProvider : NSOperation <UIActivityItemSource>
 {
     NSString *_status;
+    float _progress;
+    id _providedItem;
     id _placeholderItem;
     NSString *_activityType;
-    id _providedItem;
-    float _progress;
 }
 
-@property(nonatomic) float progress; // @synthesize progress=_progress;
-@property(retain, nonatomic) id providedItem; // @synthesize providedItem=_providedItem;
 @property(readonly, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
 @property(retain, nonatomic) id placeholderItem; // @synthesize placeholderItem=_placeholderItem;
+@property(retain, nonatomic) id providedItem; // @synthesize providedItem=_providedItem;
+@property(nonatomic) float progress; // @synthesize progress=_progress;
 @property(copy, nonatomic) NSString *status; // @synthesize status=_status;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;

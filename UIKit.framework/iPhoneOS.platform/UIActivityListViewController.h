@@ -13,12 +13,12 @@
 __attribute__((visibility("hidden")))
 @interface UIActivityListViewController : UIViewController <UIPopoverControllerDelegate>
 {
-    NSArray *_activities;
     UIActivityViewController *_activityViewController;
+    NSArray *_activities;
 }
 
-@property(nonatomic) UIActivityViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
 @property(retain, nonatomic) NSArray *activities; // @synthesize activities=_activities;
+@property(nonatomic) UIActivityViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
 - (void)dimStatusBar:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHeaderVisible:(BOOL)arg1;
 - (void)reloadActivity:(id)arg1;
