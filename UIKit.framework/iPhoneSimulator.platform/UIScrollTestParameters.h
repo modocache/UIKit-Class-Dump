@@ -6,17 +6,19 @@
 
 #import "NSObject.h"
 
-@class NSString;
+@class CADisplayLink, NSString;
 
 __attribute__((visibility("hidden")))
-@interface UITableViewScrollTestParameters : NSObject
+@interface UIScrollTestParameters : NSObject
 {
     int _iterations;
     int _yDelta;
     int _scrollLength;
     NSString *_currentTest;
+    CADisplayLink *_displayLink;
 }
 
+@property(retain, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property(nonatomic) int scrollLength; // @synthesize scrollLength=_scrollLength;
 @property(nonatomic) int yDelta; // @synthesize yDelta=_yDelta;
 @property(retain, nonatomic) NSString *currentTest; // @synthesize currentTest=_currentTest;

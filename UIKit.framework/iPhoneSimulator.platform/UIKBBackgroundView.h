@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import "UIKBCacheableView.h"
+
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKBBackgroundView : UIView
+@interface UIKBBackgroundView : UIView <UIKBCacheableView>
 {
     int _visualStyle;
     NSString *_layoutName;
@@ -18,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _splitRight;
 }
 
+@property(readonly, nonatomic) BOOL cacheDeferable;
 - (void)displayLayer:(id)arg1;
 - (id)cacheKey;
 - (void)drawRect:(struct CGRect)arg1;

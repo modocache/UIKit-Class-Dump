@@ -6,17 +6,22 @@
 
 #import <UIKit/UIView.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface UIInputSwitcherShadowView : UIView
 {
     int m_mode;
     float m_pointerOffset;
+    NSArray *m_gradientColors;
 }
 
+@property(retain, nonatomic) NSArray *gradientColors; // @synthesize gradientColors=m_gradientColors;
 @property(nonatomic) float pointerOffset; // @synthesize pointerOffset=m_pointerOffset;
 @property(nonatomic) int mode; // @synthesize mode=m_mode;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

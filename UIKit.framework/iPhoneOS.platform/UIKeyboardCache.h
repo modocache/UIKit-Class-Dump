@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)renderBlock:(CDUnknownBlockType)arg1 forView:(id)arg2 withKey:(id)arg3 fromLayout:(id)arg4;
 - (void)displayView:(id)arg1 imageWidth:(float)arg2 withKey:(id)arg3 fromLayout:(id)arg4;
 - (void)displayView:(id)arg1 withKey:(id)arg2 fromLayout:(id)arg3;
+- (void)cacheView:(id)arg1 forKey:(id)arg2 fromLayout:(id)arg3;
 - (struct CGImage *)cachedImageForKey:(id)arg1;
 - (void)commitTransaction;
 - (void)dealloc;

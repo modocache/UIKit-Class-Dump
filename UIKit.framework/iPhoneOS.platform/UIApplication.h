@@ -78,8 +78,6 @@
         unsigned int isHeadsetButtonDown:1;
         unsigned int isFastForwardActive:1;
         unsigned int isRewindActive:1;
-        unsigned int disableViewGroupOpacity:1;
-        unsigned int disableViewEdgeAntialiasing:1;
         unsigned int shakeToEdit:1;
         unsigned int isClassic:1;
         unsigned int zoomInClassicMode:1;
@@ -95,6 +93,7 @@
         unsigned int delegateWantsNextResponder:1;
         unsigned int isRunningInApplicationSwitcher:1;
         unsigned int isSendingEventForProgrammaticTouchCancellation:1;
+        unsigned int calledInitializationDelegates:1;
     } _applicationFlags;
 }
 
@@ -137,8 +136,6 @@
 - (void)_setShouldZoom:(BOOL)arg1;
 - (BOOL)_shouldZoom;
 - (BOOL)_isClassic;
-- (BOOL)_isViewEdgeAntialiasingDisabled;
-- (BOOL)_isViewGroupOpacityDisabled;
 - (id)scheduledLocalNotifications;
 - (void)setScheduledLocalNotifications:(id)arg1;
 - (void)cancelAllLocalNotifications;
@@ -226,6 +223,7 @@
 - (unsigned int)blockInteractionEventsCount;
 - (BOOL)ignoresInteractionEvents;
 - (void)setIgnoresInteractionEvents:(BOOL)arg1;
+- (void)updateTouchDiagnostics;
 - (BOOL)_usesEmoji;
 - (void)setStatusBarShowsProgress:(BOOL)arg1;
 - (void)_setStatusBarShowsProgress:(BOOL)arg1;
@@ -444,6 +442,10 @@
 - (int)_currentExpectedInterfaceOrientation;
 - (void)_runWithURL:(id)arg1 payload:(id)arg2 launchOrientation:(int)arg3 statusBarStyle:(int)arg4 statusBarHidden:(BOOL)arg5;
 - (void)_reportAppLaunchFinished;
+- (void)_startHangTracer;
+- (void)_stopHangTracer;
+- (void)_createHangTracerTimerWithDuration:(double)arg1;
+- (struct _xpc_connection_s *)_getHangTracerConnection;
 - (void)_run;
 - (void)_addAfterCACommitBlockForViewController:(id)arg1;
 - (void)_installAutoreleasePoolsIfNecessaryForMode:(struct __CFString *)arg1;

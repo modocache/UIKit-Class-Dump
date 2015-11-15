@@ -6,16 +6,17 @@
 
 #import <UIKit/UIView.h>
 
+#import "UIDimmingViewDelegate.h"
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 
-@class NSTimer, UITableView;
+@class NSTimer, UIDimmingView, UIInputSwitcherShadowView, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardMenuView : UIView <UITableViewDataSource, UITableViewDelegate>
+@interface UIKeyboardMenuView : UIView <UITableViewDataSource, UITableViewDelegate, UIDimmingViewDelegate>
 {
     UITableView *m_table;
-    UIView *m_shadowView;
+    UIInputSwitcherShadowView *m_shadowView;
     UIView *m_selExtraView;
     struct CGRect m_referenceRect;
     float m_pointerOffset;
@@ -30,11 +31,12 @@ __attribute__((visibility("hidden")))
     int m_firstVisibleRow;
     int m_mode;
     double dismissDelay;
+    UIDimmingView *m_dimmingView;
     double _dismissDelay;
 }
 
 @property double dismissDelay; // @synthesize dismissDelay=_dismissDelay;
-@property(readonly, nonatomic) int mode; // @synthesize mode=m_mode;
+@property(nonatomic) int mode; // @synthesize mode=m_mode;
 - (void)didSelectItemAtIndex:(int)arg1;
 - (id)titleForItemAtIndex:(int)arg1;
 - (struct CGSize)preferredSize;
@@ -66,10 +68,15 @@ __attribute__((visibility("hidden")))
 - (void)showAsPopupFromRect:(struct CGRect)arg1 inView:(id)arg2;
 - (void)showAsHUD;
 - (void)show;
+- (void)dimmingViewWasTapped:(id)arg1;
+- (id)dimmingView;
+- (void)performShowAnimation;
 - (BOOL)isVisible;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)font;
 - (void)applicationWillSuspend:(id)arg1;
+- (BOOL)centerPopUpOverKey;
+@property(readonly) BOOL usesTable;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

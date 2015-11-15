@@ -37,12 +37,14 @@ __attribute__((visibility("hidden")))
 - (void)_setIgnoreTapsInDimmingView:(BOOL)arg1;
 - (BOOL)_isIgnoringTapsInDimmingView;
 - (id)_viewForModalPresentationOfViewController:(id)arg1;
+- (void)_setCornerRadius:(float)arg1;
 - (void)_setFrame:(struct CGRect)arg1 arrowOffset:(float)arg2;
 - (void)setUseToolbarShine:(BOOL)arg1;
 @property(nonatomic) int backgroundStyle;
 @property(nonatomic) unsigned int arrowDirection;
 @property(nonatomic) float arrowOffset;
 - (BOOL)_allowsCustomizationOfContent;
+- (struct CGRect)_snapshotBounds;
 - (id)toolbarShine;
 - (id)standardChromeView;
 - (id)backgroundView;

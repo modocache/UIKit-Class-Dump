@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import "UIKBCacheableView.h"
+
 @class UIKBTree;
 
 __attribute__((visibility("hidden")))
-@interface UIKBKeyView : UIView
+@interface UIKBKeyView : UIView <UIKBCacheableView>
 {
     UIKBTree *m_keyboard;
     UIKBTree *m_key;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIKBTree *key; // @synthesize key=m_key;
 @property(readonly, nonatomic) UIKBTree *keyboard; // @synthesize keyboard=m_keyboard;
 - (void)drawRect:(struct CGRect)arg1;
+@property(readonly, nonatomic) BOOL cacheDeferable;
 - (void)displayLayer:(id)arg1;
 - (BOOL)shouldCache;
 - (id)cacheKey;

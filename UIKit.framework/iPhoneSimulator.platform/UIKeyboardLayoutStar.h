@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
     CADisplayLink *_displayLink;
     BOOL _ghostKeysEnabled;
     UIDelayedAction *_delayedCentroidUpdate;
+    BOOL _isRebuilding;
     BOOL _preRotateShift;
     NSString *_preRotateKeyplaneName;
     struct CGPoint _keyPeripheralInset;
@@ -192,11 +193,11 @@ __attribute__((visibility("hidden")))
 - (id)keyHitTestContainingPoint:(struct CGPoint)arg1;
 - (BOOL)shouldHitTestKey:(id)arg1;
 - (void)deactivateActiveKeys;
+- (void)deactivateActiveKeysClearingTouchInfo:(BOOL)arg1 clearingDimming:(BOOL)arg2;
 - (void)showKeyboardType:(int)arg1 appearance:(int)arg2 orientation:(id)arg3 withShift:(BOOL)arg4;
 - (id)cachedKeyplaneNameForKeyplane:(id)arg1;
 - (id)cacheIdentifierForKeyplaneNamed:(id)arg1 withVisualStyle:(int)arg2;
 - (void)setState:(int)arg1 forKey:(id)arg2;
-- (void)deactivateAllInActivatedSet;
 - (int)stateForKey:(id)arg1;
 - (void)refreshForDictationAvailablityDidChange;
 - (void)updateMoreAndInternationalKeys;
@@ -218,7 +219,7 @@ __attribute__((visibility("hidden")))
 - (void)updateBackgroundIfNeeded;
 - (BOOL)backgroundNeedsRedraw;
 - (BOOL)handwritingPlane;
-- (struct CGImage *)renderedKeyplaneWithName:(id)arg1 split:(BOOL)arg2;
+- (struct CGImage *)renderedKeyplaneWithToken:(id)arg1 split:(BOOL)arg2;
 - (struct CGImage *)renderedImageWithToken:(id)arg1;
 - (struct CGImage *)renderedImageWithStateFallbacksForToken:(id)arg1;
 - (void)rebuildSplitTransitionView;

@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import "UIKBCacheableView.h"
+
 @class NSMutableDictionary, NSTimer, UIKBTree, UIKeyboardLayoutStar;
 
 __attribute__((visibility("hidden")))
-@interface UIKBKeyplaneView : UIView
+@interface UIKBKeyplaneView : UIView <UIKBCacheableView>
 {
     UIKBTree *_keyboard;
     UIKBTree *_keyplane;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelDelayedDeactivation;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1;
+@property(readonly, nonatomic) BOOL cacheDeferable;
 - (void)displayLayer:(id)arg1;
 - (id)cacheKey;
 - (BOOL)validForKeyplane:(id)arg1 withVisualStyle:(int)arg2;
