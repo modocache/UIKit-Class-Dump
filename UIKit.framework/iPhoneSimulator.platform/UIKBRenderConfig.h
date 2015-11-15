@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     double _blurRadius;
     double _blurSaturation;
     double _keycapOpacity;
-    double _lightLatinKeycapOpacity;
+    double _lightKeycapOpacity;
 }
 
 + (long long)backdropStyleForStyle:(long long)arg1;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)darkConfig;
 + (id)defaultConfig;
 @property(nonatomic) _Bool lightKeyboard; // @synthesize lightKeyboard=_lightKeyboard;
-@property(nonatomic) double lightLatinKeycapOpacity; // @synthesize lightLatinKeycapOpacity=_lightLatinKeycapOpacity;
+@property(nonatomic) double lightKeycapOpacity; // @synthesize lightKeycapOpacity=_lightKeycapOpacity;
 @property(nonatomic) double keycapOpacity; // @synthesize keycapOpacity=_keycapOpacity;
 @property(nonatomic) double blurSaturation; // @synthesize blurSaturation=_blurSaturation;
 @property(nonatomic) double blurRadius; // @synthesize blurRadius=_blurRadius;

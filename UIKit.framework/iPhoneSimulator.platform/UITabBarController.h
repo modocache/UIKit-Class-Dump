@@ -67,7 +67,7 @@
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
-- (void)_getRotationContentSettings:(CDStruct_010f855d *)arg1;
+- (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (_Bool)_shouldUseOnePartRotation;
 - (id)rotatingFooterView;
 - (id)rotatingHeaderView;

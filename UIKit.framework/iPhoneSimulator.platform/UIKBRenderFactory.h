@@ -40,8 +40,11 @@
 - (id)controlKeyShadowColorName;
 - (id)defaultKeyShadowColorName;
 - (id)controlKeyForegroundColorName;
+- (id)_controlKeyBackgroundColorName;
 - (id)controlKeyBackgroundColorName;
 - (id)defaultKeyBackgroundColorName;
+- (long long)lightHighQualityEnabledBlendForm;
+- (long long)enabledBlendForm;
 - (void)removeAllLayoutSegments;
 - (void)addLayoutSegment:(id)arg1;
 - (_Bool)useBlueThemingForKey:(id)arg1;

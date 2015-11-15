@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
     UISnapshotView *_contentSnapshotViewStart;
     double _contentTopAdjustmentStart;
     id _rotatingClient;
-    CDStruct_010f855d _rotationSettings;
+    CDStruct_8bdd0ba6 _rotationSettings;
     double contentBottomInset;
     UIWindow *_window;
     _Bool _skipClientRotationCallbacks;

@@ -108,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isUndocked;
 - (_Bool)isOnScreen;
 - (struct CGRect)visibleFrame;
+- (id)inputViewSnapshotOfView:(id)arg1 afterScreenUpdates:(_Bool)arg2;
 - (void)setInputView:(id)arg1 accessoryView:(id)arg2;
 - (void)setRotationAwarePlacement:(id)arg1;
 - (void)setPlacement:(id)arg1 starting:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
@@ -125,7 +126,7 @@ __attribute__((visibility("hidden")))
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
-- (void)_getRotationContentSettings:(CDStruct_010f855d *)arg1;
+- (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (_Bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)_viewControllerForAutorotation;

@@ -195,9 +195,10 @@ typedef struct {
     _Bool preserveHeight;
     _Bool avoidFadingBottomOfContent;
     _Bool skipSnapshotOfEndState;
+    _Bool preventAdditveAnimations;
     double contentStretchRightEdgeInset;
     int edgeClip;
-} CDStruct_010f855d;
+} CDStruct_8bdd0ba6;
 
 typedef struct {
     unsigned long long _field1;

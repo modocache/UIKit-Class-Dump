@@ -71,8 +71,8 @@ __attribute__((visibility("hidden")))
     UIDelayedAction *_delayedCentroidUpdate;
     _Bool _isRebuilding;
     long long _initialBias;
+    long long _transitionTargetBias;
     _Bool _edgeSwipeDetected;
-    _Bool _edgeSwipeInhibited;
     double _initialEdgeTranslation;
     double _edgeSwipeProgress;
     double _edgeSwipeVelocity;
@@ -117,6 +117,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=_keyplane;
 @property(readonly, nonatomic) UIKBTree *keyboard; // @synthesize keyboard=_keyboard;
 - (void)triggerSpaceKeyplaneSwitchIfNecessary;
+- (_Bool)keyplaneContainsEmojiKey;
 - (id)currentKeyplaneView;
 - (id)currentKeyplane;
 - (void)fadeWithInvocation:(id)arg1;
@@ -206,7 +207,9 @@ __attribute__((visibility("hidden")))
 - (double)interpretPinchSeparationValues;
 - (void)rebuildKeyplaneTransitionWithTargetBias:(long long)arg1;
 - (void)finishHandBiasTransition;
-- (void)interpretTouchesForEdgeSwipe;
+- (void)didFinishScreenGestureRecognition;
+- (void)didRecognizeGestureOnEdge:(unsigned long long)arg1 withDistance:(double)arg2;
+- (unsigned long long)targetEdgesForScreenGestureRecognition;
 - (long long)biasForKeyboard:(id)arg1;
 - (long long)currentKeyboardBias;
 - (_Bool)edgeSwipeGestureEnabled;

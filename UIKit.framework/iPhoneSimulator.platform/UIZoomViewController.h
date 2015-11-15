@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) UIWindow *window; // @synthesize window=_window;
 - (id)screen;
-- (void)_getRotationContentSettings:(CDStruct_010f855d *)arg1 forWindow:(id)arg2;
+- (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1 forWindow:(id)arg2;
 - (void)_suspendAnimationStarted:(id)arg1;
 - (void)_applicationDidFinishLaunching:(id)arg1;
 - (void)_zoomOrientationAnimationFinished:(id)arg1 finished:(_Bool)arg2 context:(void *)arg3;

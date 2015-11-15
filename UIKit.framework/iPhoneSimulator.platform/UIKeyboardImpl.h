@@ -440,9 +440,9 @@
 - (void)updateShiftState;
 - (void)notifyShiftState;
 - (void)updateInputManagerAutocapitalizationType;
-- (void)recomputeActiveInputModesFromList:(id)arg1;
+- (void)recomputeActiveInputModesWithExtensions:(_Bool)arg1;
+- (id)desirableInputModesFromList:(id)arg1 forTraits:(id)arg2;
 - (_Bool)shouldSwitchInputMode:(id)arg1;
-- (void)recomputeActiveInputModes;
 - (_Bool)shouldForceASCIICapable;
 - (void)releaseInputManagerIfInactive;
 - (void)releaseInputManager;

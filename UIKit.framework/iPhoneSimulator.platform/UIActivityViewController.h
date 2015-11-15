@@ -120,6 +120,7 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidLayoutSubviews;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

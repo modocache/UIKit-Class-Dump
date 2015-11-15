@@ -110,7 +110,7 @@
 - (void)_popoverController:(id)arg1 willAnimateToFrame:(struct CGRect)arg2;
 - (struct CGRect)_detailViewFrameWithPopoverControllerFrame:(struct CGRect)arg1;
 @property(nonatomic, setter=_setResizesDetailOnSlide:) _Bool _resizesDetailOnSlide;
-- (void)_getRotationContentSettings:(CDStruct_010f855d *)arg1;
+- (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (void)__viewWillLayoutSubviews;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (void)_updateMasterViewControllerFrame;

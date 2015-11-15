@@ -35,7 +35,8 @@ __attribute__((visibility("hidden")))
 - (void)finalizeTransition;
 - (void)removeAllAnimations;
 - (void)updateWithProgress:(double)arg1;
-- (void)rebuildFromStartKeyplane:(id)arg1 startView:(id)arg2 toEndKeyplane:(id)arg3 endView:(id)arg4;
+- (void)commitTransitionRebuild;
+- (void)rebuildWithStartKeyplane:(id)arg1 startView:(id)arg2 endKeyplane:(id)arg3 endView:(id)arg4;
 @property(readonly, nonatomic) double endHeight;
 @property(readonly, nonatomic) double startHeight;
 - (void)dealloc;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType finishSplitTransitionBlock; // @synthesize finishSplitTransitionBlock=_finishSplitTransitionBlock;
 - (void)didFinishSplitTransition;
 - (void)didSelectItemAtIndex:(int)arg1;
+- (void)setSplitAndUndocked:(_Bool)arg1;
 - (id)titleForItemAtIndex:(int)arg1;
 - (long long)defaultSelectedIndex;
 - (struct CGSize)preferredSize;

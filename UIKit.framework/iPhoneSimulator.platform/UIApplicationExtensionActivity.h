@@ -24,6 +24,7 @@
 }
 
 + (long long)activityCategory;
++ (id)_applicationExtensionActivitiesForItems:(id)arg1 sourceIsManaged:(_Bool)arg2;
 + (id)_applicationExtensionActivitiesForItems:(id)arg1;
 @property(copy, nonatomic) CDUnknownBlockType extensionRequestCleanupCompletion; // @synthesize extensionRequestCleanupCompletion=_extensionRequestCleanupCompletion;
 @property(retain, nonatomic) UIImage *renderedActivitySettingsImage; // @synthesize renderedActivitySettingsImage=_renderedActivitySettingsImage;
