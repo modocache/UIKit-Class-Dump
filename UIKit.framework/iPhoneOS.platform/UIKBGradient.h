@@ -19,7 +19,10 @@ __attribute__((visibility("hidden")))
     NSString *_endColorName;
     NSArray *_colors;
     double _middleLocation;
+    double _opacity;
     _Bool _horizontal;
+    _Bool _usesRGBColors;
+    _Bool _didQueryRGBColors;
 }
 
 + (id)gradientWith3Colors:(id)arg1 middleLocation:(double)arg2;
@@ -27,7 +30,9 @@ __attribute__((visibility("hidden")))
 + (id)gradientWithFlatColor:(id)arg1;
 + (id)gradientWithName:(id)arg1;
 @property(nonatomic) _Bool horizontal; // @synthesize horizontal=_horizontal;
+@property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)initWith3Colors:(id)arg1 middleLocation:(double)arg2;
@@ -35,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFlatColor:(id)arg1;
 - (id)initWithName:(id)arg1;
 - (struct CGGradient *)CGGradient;
+@property(readonly, nonatomic) _Bool usesRGBColors;
 
 @end
 

@@ -68,6 +68,7 @@
     _Bool _wantsLetterpressContent;
     long long _barPosition;
     NSString *_backdropViewLayerGroupName;
+    double _requestedMaxBackButtonWidth;
     NSMutableArray *__animationIds;
 }
 
@@ -85,6 +86,7 @@
 + (id)_bottomColorForBackgroundImage:(id)arg1 viewSize:(struct CGSize)arg2;
 @property(retain, nonatomic, setter=_setAnimationIds:) NSMutableArray *_animationIds; // @synthesize _animationIds=__animationIds;
 @property(nonatomic, setter=_setWantsLetterpressContent:) _Bool _wantsLetterpressContent; // @synthesize _wantsLetterpressContent;
+@property(nonatomic, setter=_setRequestedMaxBackButtonWidth:) double _requestedMaxBackButtonWidth; // @synthesize _requestedMaxBackButtonWidth;
 @property(retain, nonatomic, setter=_setBackdropViewLayerGroupName:) NSString *_backdropViewLayerGroupName; // @synthesize _backdropViewLayerGroupName;
 @property(nonatomic, setter=_setNeedsUpdateBackIndicatorImage:) _Bool _needsUpdateBackIndicatorImage; // @synthesize _needsUpdateBackIndicatorImage;
 @property(readonly, nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
@@ -137,6 +139,10 @@
 - (void)_updateBackIndicatorImage;
 - (id)_effectiveBackIndicatorTransitionMaskImage;
 - (id)_effectiveBackIndicatorImage;
+- (_Bool)_suppressBackIndicator;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (void)_accessibilityButtonShapesDidChangeNotification:(id)arg1;
+- (void)_accessibilityButtonShapesParametersDidChange;
 - (void)_updateBackgroundImage;
 - (void)showHideBackButtomAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)showBackButton:(_Bool)arg1 animated:(_Bool)arg2;
@@ -189,6 +195,7 @@
 - (_Bool)forceFullHeightInLandscape;
 @property(nonatomic, getter=isTranslucent) _Bool translucent;
 - (_Bool)_modernIsTranslucent;
+- (_Bool)_hasInvisibleCustomBackgroundImage;
 - (_Bool)_legacyIsTranslucent;
 - (long long)_statusBarStyle;
 @property(nonatomic) long long barStyle;
@@ -204,6 +211,7 @@
 - (void)addConstraint:(id)arg1;
 - (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (void)_willMoveToWindow:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
@@ -246,6 +254,13 @@
 - (long long)_currentBarStyle;
 - (void)_resetBackgroundImageAsNecessary;
 - (_Bool)_wantsAdaptiveBackdrop;
+- (_Bool)_wantsAdaptiveBackdropWhenNotHidden;
+- (_Bool)_wantsAdaptiveBackdropForPalette;
+- (_Bool)_barTranslucenceSuppressesAdaptiveBackdrop;
+- (_Bool)_backgroundViewSuppressesAdaptiveBackdrop;
+- (_Bool)_barStyleSuppressesAdaptiveBackdrop;
+- (_Bool)_customBackgroundImageSuppressesAdaptiveBackdrop;
+- (_Bool)_customBackgroundImageSuppressesAdaptiveBackdropForPalette;
 - (void)_prepareForPushAnimationWithItems:(id)arg1;
 - (void)_cancelInteractiveTransition:(double)arg1 completionSpeed:(double)arg2 completionCurve:(long long)arg3;
 - (void)_finishInteractiveTransition:(double)arg1 completionSpeed:(double)arg2 completionCurve:(long long)arg3;
@@ -271,7 +286,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_commonNavBarInit;
-- (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (_Bool)_subclassImplementsDrawBackgroundInRect;
 - (_Bool)_subclassImplementsDrawRect;
 - (void)_updateOpacity;

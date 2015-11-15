@@ -7,6 +7,16 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (UIColorSystemColors_PendingAPI)
++ (id)externalSystemGreenColor;
++ (id)externalSystemRedColor;
++ (id)externalSystemTealColor;
++ (id)systemDarkPinkColor;
++ (id)systemDarkTealColor;
++ (id)systemDarkYellowColor;
++ (id)systemDarkOrangeColor;
++ (id)systemDarkBlueColor;
++ (id)systemDarkGreenColor;
++ (id)systemDarkRedColor;
 + (id)systemMidGrayColor;
 + (id)systemGrayColor;
 + (id)systemPinkColor;

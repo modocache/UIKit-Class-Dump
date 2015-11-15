@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) _Bool presentedPrintInteractionController; // @synthesize presentedPrintInteractionController=_presentedPrintInteractionController;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithCompletion:(CDUnknownBlockType)arg1;
 

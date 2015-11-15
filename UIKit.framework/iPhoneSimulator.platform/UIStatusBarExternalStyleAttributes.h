@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (long long)tapButtonType;
 - (_Bool)shouldShowInternalItemType:(int)arg1 withScreenCapabilities:(id)arg2;
 - (Class)foregroundStyleClass;
 - (id)backgroundImageName;

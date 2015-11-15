@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     long long _duplexRow;
     long long _paperRow;
     _Bool _contactingPrinter;
-    _Bool _canPrint;
 }
 
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

@@ -94,6 +94,7 @@
         unsigned int separatorBackdropOverlayBlendMode:3;
         unsigned int separatorDrawsInVibrantLightMode:1;
         unsigned int separatorHidden:1;
+        unsigned int hidingSeparatorsForSelection:1;
     } _tableCellFlags;
     UIControl *_accessoryView;
     UIControl *_editingAccessoryView;
@@ -116,6 +117,7 @@
     UILongPressGestureRecognizer *_menuGesture;
     NSIndexPath *_representedIndexPath;
     _Bool _isPigglyWigglyCell;
+    _Bool _focusable;
     UITableViewCellDeleteConfirmationView *_swipeToDeleteConfirmationView;
     UITapGestureRecognizer *_swipeToDeleteCancelationGesture;
     UIScrollView *_wrapperView;
@@ -126,6 +128,7 @@
 }
 
 + (id)_defaultTopShadowColor;
++ (void)_initializeForIdiom:(long long)arg1;
 + (void)initialize;
 - (_Bool)_usesRoundedGroups;
 - (_Bool)_separatorHidden;
@@ -165,12 +168,16 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_tableViewDidUpdateMarginWidth;
 - (void)_updateSeparatorContent:(_Bool)arg1;
+- (void)_focusStateDidChange;
+- (_Bool)_isFocusableElement;
 - (void)_setIsPigglyWigglyCell:(_Bool)arg1;
 - (_Bool)_isPigglyWigglyCell;
 - (void)_setRightMarginWidth:(double)arg1;
 - (double)_rightMarginWidth;
 - (void)_setMarginWidth:(double)arg1;
 - (double)_marginWidth;
+- (void)_setFocusable:(_Bool)arg1;
+- (_Bool)_isFocusable;
 - (void)_setIndexPath:(id)arg1;
 - (id)_indexPath;
 - (_Bool)_isUsingOldStyleMultiselection;
@@ -406,11 +413,11 @@
 - (_Bool)_drawsSeparatorAtTopOfSection;
 - (void)_setDrawsSeparatorAtTopOfSection:(_Bool)arg1;
 - (void)_updateSeparatorContent;
-- (_Bool)_canDoSeparatorLayout;
 - (struct CGRect)_topSeparatorFrame;
 - (_Bool)_showFullLengthTopSeparatorForTopOfSection;
 - (_Bool)_showSeparatorAtTopOfSection;
 - (struct CGRect)_separatorFrame;
+- (double)_separatorHeight;
 - (_Bool)_shouldHaveFullLengthTopSeparator;
 - (void)_setShouldHaveFullLengthTopSeparator:(_Bool)arg1;
 - (_Bool)_shouldHaveFullLengthBottomSeparator;

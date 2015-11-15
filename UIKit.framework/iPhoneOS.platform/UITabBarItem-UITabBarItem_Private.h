@@ -9,7 +9,6 @@
 @class UIImage, UIView;
 
 @interface UITabBarItem (UITabBarItem_Private)
-- (id)_internalTemplateImages;
 - (id)_internalTemplateImage;
 - (void)_setInternalTemplateImage:(id)arg1;
 - (id)_internalTitle;

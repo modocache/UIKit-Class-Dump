@@ -20,6 +20,7 @@
 
 + (struct CGRect)statusBarWindowFrame;
 + (_Bool)isIncludedInClassicJail;
+- (_Bool)_canActAsKeyWindowForScreen:(id)arg1;
 - (_Bool)_shouldZoom;
 - (void)_updateTransformLayerForClassicPresentation;
 - (_Bool)_isStatusBarWindow;

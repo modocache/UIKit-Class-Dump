@@ -17,11 +17,13 @@ __attribute__((visibility("hidden")))
     int _edgeCount;
     unsigned long long _edges[3];
     NSString *_cachedKeyNames[3];
+    _Bool _requireAllMatches;
     int _states;
     UIKBRenderTraits *_traits;
 }
 
 + (id)segmentWithTraits:(id)arg1;
+@property(nonatomic) _Bool requireAllMatches; // @synthesize requireAllMatches=_requireAllMatches;
 @property(nonatomic) int keyStates; // @synthesize keyStates=_states;
 @property(readonly, nonatomic) UIKBRenderTraits *traits; // @synthesize traits=_traits;
 - (_Bool)containsPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2 withKeyplane:(id)arg3;

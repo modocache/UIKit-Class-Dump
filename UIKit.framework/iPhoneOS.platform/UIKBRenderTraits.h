@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface UIKBRenderTraits : NSObject <NSCopying>
 {
     NSMutableArray *_renderEffects;
+    NSMutableArray *_foregroundRenderEffects;
     _Bool _honorControlOpacity;
     _Bool _controlOpacities;
     UIKBRenderGeometry *_geometry;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     UIKBRenderTraits *_variantTraits;
     UIKBRenderTraits *_highlightedVariantTraits;
     double _forceOpacity;
+    long long _blendForm;
     NSString *_hashString;
 }
 
@@ -34,11 +36,13 @@ __attribute__((visibility("hidden")))
 + (id)traitsWithGeometry:(id)arg1;
 + (id)emptyTraits;
 @property(retain, nonatomic) NSString *hashString; // @synthesize hashString=_hashString;
+@property(nonatomic) long long blendForm; // @synthesize blendForm=_blendForm;
 @property(nonatomic) double forceOpacity; // @synthesize forceOpacity=_forceOpacity;
 @property(nonatomic) _Bool controlOpacities; // @synthesize controlOpacities=_controlOpacities;
 @property(retain, nonatomic) UIKBRenderTraits *highlightedVariantTraits; // @synthesize highlightedVariantTraits=_highlightedVariantTraits;
 @property(retain, nonatomic) UIKBRenderTraits *variantTraits; // @synthesize variantTraits=_variantTraits;
 @property(retain, nonatomic) NSArray *variantGeometries; // @synthesize variantGeometries=_variantGeometries;
+@property(readonly, nonatomic) NSArray *foregroundRenderEffects; // @synthesize foregroundRenderEffects=_foregroundRenderEffects;
 @property(readonly, nonatomic) NSArray *renderEffects; // @synthesize renderEffects=_renderEffects;
 @property(retain, nonatomic) UIKBTextStyle *fallbackSymbolStyle; // @synthesize fallbackSymbolStyle=_fallbackSymbolStyle;
 @property(retain, nonatomic) UIKBTextStyle *secondarySymbolStyle; // @synthesize secondarySymbolStyle=_secondarySymbolStyle;
@@ -50,9 +54,11 @@ __attribute__((visibility("hidden")))
 - (void)modifyForMasking;
 - (void)overlayWithTraits:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)dealloc;
 - (void)removeAllRenderEffects;
+- (void)addForegroundRenderEffect:(id)arg1;
 - (void)addRenderEffect:(id)arg1;
 
 @end

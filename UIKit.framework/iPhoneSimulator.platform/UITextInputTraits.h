@@ -34,6 +34,7 @@
     _Bool isSingleLineDocument;
     _Bool contentsIsSingleValue;
     _Bool acceptsEmoji;
+    _Bool forceEnableDictation;
     _Bool returnKeyGoesToNextResponder;
     _Bool acceptsFloatingKeyboard;
     _Bool acceptsSplitKeyboard;
@@ -42,7 +43,6 @@
     int emptyContentReturnKeyType;
     int shortcutConversionType;
     _Bool suppressReturnKeyStyling;
-    _Bool forceEnableDictation;
     _Bool useInterfaceLanguageForLocalization;
     _Bool deferBecomingResponder;
     _Bool enablesReturnKeyOnNonWhiteSpaceContent;
@@ -51,10 +51,10 @@
 + (_Bool)keyboardTypeRequiresASCIICapable:(long long)arg1;
 + (id)traitsByAdoptingTraits:(id)arg1;
 + (id)defaultTextInputTraits;
++ (long long)accessibleAppearanceForAppearance:(long long)arg1;
 @property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent; // @synthesize enablesReturnKeyOnNonWhiteSpaceContent;
 @property(nonatomic) _Bool deferBecomingResponder; // @synthesize deferBecomingResponder;
 @property(nonatomic) _Bool useInterfaceLanguageForLocalization; // @synthesize useInterfaceLanguageForLocalization;
-@property(nonatomic) _Bool forceEnableDictation; // @synthesize forceEnableDictation;
 @property(nonatomic) _Bool suppressReturnKeyStyling; // @synthesize suppressReturnKeyStyling;
 @property(nonatomic) int shortcutConversionType; // @synthesize shortcutConversionType;
 @property(nonatomic) _Bool learnsCorrections; // @synthesize learnsCorrections;
@@ -63,6 +63,7 @@
 @property(nonatomic) _Bool acceptsFloatingKeyboard; // @synthesize acceptsFloatingKeyboard;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder; // @synthesize returnKeyGoesToNextResponder;
 @property(nonatomic) int emptyContentReturnKeyType; // @synthesize emptyContentReturnKeyType;
+@property(nonatomic) _Bool forceEnableDictation; // @synthesize forceEnableDictation;
 @property(nonatomic) _Bool acceptsEmoji; // @synthesize acceptsEmoji;
 @property(nonatomic) _Bool contentsIsSingleValue; // @synthesize contentsIsSingleValue;
 @property(nonatomic) _Bool isSingleLineDocument; // @synthesize isSingleLineDocument;

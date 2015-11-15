@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
     struct CGColor *cachedColor;
 }
 
-- (_Bool)_getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
-- (_Bool)_getWhite:(double *)arg1 alpha:(double *)arg2;
+- (_Bool)getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
+- (_Bool)getWhite:(double *)arg1 alpha:(double *)arg2;
 - (_Bool)isPatternColor;
 - (double)alphaComponent;
 - (struct CGColor *)CGColor;

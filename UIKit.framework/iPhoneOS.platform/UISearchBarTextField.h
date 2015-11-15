@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic, setter=_setPreventSelectionViewActivation:) _Bool _preventSelectionViewActivation; // @synthesize _preventSelectionViewActivation=__preventSelectionViewActivation;
+- (id)textInputTraits;
 - (void)_setBottomEffectBackgroundVisible:(_Bool)arg1;
 - (void)_setEnabled:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)resignFirstResponder;

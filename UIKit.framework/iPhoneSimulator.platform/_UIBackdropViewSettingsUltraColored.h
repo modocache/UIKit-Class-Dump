@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)setColorTint:(id)arg1;
 - (void)setDefaultValues;
 
 @end

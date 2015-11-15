@@ -7,16 +7,18 @@
 #import <UIKit/UIControl.h>
 
 #import "NSCoding.h"
+#import "UIPickerViewScrollTesting.h"
 
 @class NSCalendar, NSDate, NSLocale, NSTimeZone, UIColor, _UIDatePickerView;
 
-@interface UIDatePicker : UIControl <NSCoding>
+@interface UIDatePicker : UIControl <UIPickerViewScrollTesting, NSCoding>
 {
     _UIDatePickerView *_pickerView;
     _Bool _useCurrentDateDuringDecoding;
 }
 
 + (Class)_pickerViewClass;
+- (void)_performScrollTest:(id)arg1 withIterations:(long long)arg2 rowsToScroll:(long long)arg3 inComponent:(long long)arg4;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)invalidateIntrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

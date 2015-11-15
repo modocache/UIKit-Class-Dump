@@ -109,6 +109,8 @@
 + (void)_prepareWindowsForAppSuspend;
 + (void)setAllWindowsKeepContextInBackground:(_Bool)arg1;
 + (Class)layerClass;
++ (void)adjustForAccessibilityIfNeeded:(id)arg1;
++ (void)initialize;
 + (id)_externalKeyWindow;
 + (id)keyWindow;
 + (struct CGRect)constrainFrameToScreen:(struct CGRect)arg1;
@@ -118,10 +120,17 @@
 @property(copy, nonatomic, setter=_setRootViewConstraints:) NSArray *_rootViewConstraints; // @synthesize _rootViewConstraints;
 @property(copy, nonatomic, setter=_setWindowInternalConstraints:) NSArray *_windowInternalConstraints; // @synthesize _windowInternalConstraints;
 @property(retain, nonatomic) UIViewController *rootViewController; // @synthesize rootViewController=_rootViewController;
+- (id)_normalInheritedTintColor;
 - (double)_touchSloppinessFactor;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;
 - (id)_rootLayer;
 - (_Bool)_shouldZoom;
+- (void)loadFirstResponderScrollViewContentInDirection:(struct CGSize)arg1;
+- (void)_scrollResponderToVisible:(id)arg1;
+- (void)_moveResponderSelectionInDirection:(long long)arg1 fromRect:(struct CGRect)arg2;
+- (_Bool)_isPoint:(struct CGPoint)arg1 relativeToPoint:(struct CGPoint)arg2 inDirection:(long long)arg3;
+- (void)moveToNextResponderInDirection:(long long)arg1;
+- (void)_moveWithEvent:(id)arg1;
 - (id)_directionalGestureRecognizers;
 - (void)_geometryDidChangeForView:(id)arg1;
 - (id)_responderSelectionContainerViewForResponder:(id)arg1;
@@ -180,6 +189,9 @@
 - (void)makeKeyAndVisible;
 - (void)resignKeyWindow;
 - (void)becomeKeyWindow;
+- (void)_endKeyWindowDeferral;
+- (void)_beginKeyWindowDeferral;
+- (id)_deferralPropertiesWithContextID:(unsigned int)arg1;
 - (void)_makeKeyWindowIgnoringOldKeyWindow:(_Bool)arg1;
 - (void)_makeExternalKeyWindow;
 - (void)makeKeyWindow;
@@ -287,6 +299,7 @@
 - (void)setHidden:(_Bool)arg1;
 - (void)_setHidden:(_Bool)arg1 forced:(_Bool)arg2;
 - (void)addRootViewControllerViewIfPossible;
+- (struct CGRect)_screenBounds;
 - (id)_rootViewConstraintsUpdateIfNecessaryForView:(id)arg1;
 - (void)_updateRootViewConstraintsForInterfaceOrientationAndStatusBarHeight;
 - (unsigned int)_contextId;
@@ -317,6 +330,8 @@
 - (id)_responderWindow;
 - (id)_window;
 - (double)_classicOffset;
+- (void)matchDeviceOrientation:(id)arg1;
+- (void)keyboardDidHide;
 - (void)matchDeviceOrientation;
 - (void)setupForOrientation:(long long)arg1;
 - (_Bool)_isTextEffectsWindow;

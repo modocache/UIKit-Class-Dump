@@ -23,13 +23,13 @@
 + (void)_endDisablingPromoteDescendantToFirstResponder;
 + (void)_beginDisablingPromoteDescendantToFirstResponder;
 + (void)_initializeForIdiom:(long long)arg1;
-+ (void)_initializeForIdiomIfNecessary:(long long)arg1;
-+ (_Bool)_requiresInitializationForIdiom:(long long)arg1;
++ (void)_registerClassForIdiomInitializationIfNeccessary;
++ (void)_performInitializationForIdiomIfNeccessary:(long long)arg1;
 + (void)_transitionFromView:(id)arg1 toView:(id)arg2 duration:(double)arg3 options:(unsigned long long)arg4 animations:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 + (_Bool)_invalidatesViewUponCreation;
 + (void)_setInvalidatesViewUponCreation:(_Bool)arg1;
+- (_Bool)_isInteractiveElement;
 - (id)_disabledColor;
-- (void)_recursivelyUpdateBackdropMaskFrames;
 - (struct CGRect)_visualAltitudeSensitiveBoundsWithInfiniteEdges:(unsigned long long)arg1;
 - (id)_viewControllerToNotifyOnLayoutSubviews;
 - (void)_unregisterAsReferenceView;
@@ -37,7 +37,6 @@
 - (void)_unregisterFromAnimators;
 - (void)_notifyReferenceViewSizeChange;
 - (id)_encodableSubviews;
-- (void)_recursiveNotifyInteractionTintColorDidChangeForReasons:(unsigned long long)arg1;
 @property(readonly, nonatomic, getter=_currentScreenScale) double currentScreenScale;
 - (void)_recursivelyNameLayerTree;
 - (void)_setBackgroundCGColor:(struct CGColor *)arg1;
@@ -61,6 +60,7 @@
 - (void)_encodeBackgroundColorWithCoder:(id)arg1;
 - (void)_encodeFrameWithCoder:(id)arg1;
 - (id)_subviewAtIndex:(long long)arg1;
+- (long long)_viewOrderRelativeToView:(id)arg1;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (_Bool)_isAlphaHittableAndHasAlphaHittableAncestors;
 @property(nonatomic, getter=_viewDelegate, setter=_setViewDelegate:) UIViewController *viewDelegate;
@@ -96,8 +96,12 @@
 - (void)_webCustomViewWasRemovedFromSuperview:(id)arg1;
 - (void)_webCustomViewWillBeRemovedFromSuperview;
 - (void)_webCustomViewWasAddedAsSubviewOfView:(id)arg1;
+- (void)_performUpdatesForPossibleChangesOfIdiom:(long long)arg1 orScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (void)_didChangeFromIdiomOnScreen:(id)arg1 traverseHierarchy:(_Bool)arg2;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (void)_willChangeToIdiomOnScreen:(id)arg1 traverseHierarchy:(_Bool)arg2;
+@property(nonatomic, getter=_userInterfaceIdiom, setter=_setUserInterfaceIdiom:) long long _userInterfaceIdiom;
 - (void)_applyScreenScaleToContentScaleFactorIfNotSpecifiedByDeveloper;
 - (_Bool)_shouldInheritScreenScaleAsContentScaleFactor;
 - (void)_applyAppearanceInvocations;

@@ -39,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)beginImageContextWithMinimumWidth:(double)arg1;
 - (void)setPersistentAnimationsEnabled:(_Bool)arg1;
 - (void)performPendedActions;
-- (_Bool)cachesImage;
 - (id)contentsImage;
 - (_Bool)animatesDataChange;
 - (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
@@ -53,9 +52,9 @@ __attribute__((visibility("hidden")))
 - (long long)textAlignment;
 - (id)textFont;
 - (long long)textStyle;
-- (void)drawText:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3 letterSpacing:(double)arg4 textSize:(struct CGSize)arg5;
 - (void)setContentMode:(long long)arg1;
 - (double)updateContentsAndWidth;
+- (double)adjustFrameToNewSize:(double)arg1;
 - (void)setLayerContentsImage:(id)arg1;
 - (double)legibilityStrength;
 - (long long)legibilityStyle;

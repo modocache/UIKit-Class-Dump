@@ -18,16 +18,22 @@ __attribute__((visibility("hidden")))
     _Bool _isTransitioning;
     double _transitionGap;
     double _transitionLeftOffset;
+    _Bool _hasStartRect;
+    _Bool _hasEndRect;
+    struct CGRect _savedStartRect;
+    struct CGRect _savedEndRect;
 }
 
 @property(retain, nonatomic) UIKBBackdropView *inputBackdropRightView; // @synthesize inputBackdropRightView=_inputBackdropRightView;
 @property(retain, nonatomic) UIKBBackdropView *inputBackdropLeftView; // @synthesize inputBackdropLeftView=_inputBackdropLeftView;
 @property(retain, nonatomic) UIKBBackdropView *inputBackdropFullView; // @synthesize inputBackdropFullView=_inputBackdropFullView;
+- (_Bool)_isTransitioning;
 - (void)_endSplitTransitionIfNeeded:(_Bool)arg1;
 - (void)_beginSplitTransitionIfNeeded:(double)arg1 gapWidth:(double)arg2;
-- (void)_setProgress:(double)arg1 boundedBy:(double)arg2;
-- (void)_setLeftOffset:(double)arg1 gapWidth:(double)arg2 progress:(double)arg3 innerCorners:(unsigned long long)arg4;
-- (void)_setLeftOffset:(double)arg1 gapWidth:(double)arg2 progress:(double)arg3;
+- (void)_setInitialProgressWithFrame:(struct CGRect)arg1;
+- (void)_setProgress:(double)arg1 withFrame:(struct CGRect)arg2;
+- (void)_setFrame:(struct CGRect)arg1 leftOffset:(double)arg2 gapWidth:(double)arg3 progress:(double)arg4 innerCorners:(unsigned long long)arg5;
+- (void)_setFrame:(struct CGRect)arg1 leftOffset:(double)arg2 gapWidth:(double)arg3 progress:(double)arg4;
 - (void)layoutInputBackdropToFullWithRect:(struct CGRect)arg1;
 - (void)layoutInputBackdropToSplitWithLeftViewRect:(struct CGRect)arg1 andRightViewRect:(struct CGRect)arg2 innerCorners:(int)arg3;
 - (void)transitionToStyle:(long long)arg1 isSplit:(_Bool)arg2;

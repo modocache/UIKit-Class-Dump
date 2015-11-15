@@ -8,7 +8,7 @@
 
 #import "NSCoding.h"
 
-@class CAGradientLayer, UIColor, UIImage, UIImageView;
+@class NSArray, UIColor, UIImage, UIImageView;
 
 @interface UIProgressView : UIView <NSCoding>
 {
@@ -20,15 +20,14 @@
     UIImageView *_trackView;
     UIImageView *_progressView;
     _Bool _isAnimating;
-    _Bool _useArtwork;
-    CAGradientLayer *_trackGradientLayer;
-    CAGradientLayer *_progressGradientLayer;
-    struct CGRect _previousBounds;
-    struct CGRect _previousProgressBounds;
+    NSArray *_trackColors;
+    NSArray *_progressColors;
     UIImage *_trackImage;
     UIImage *_progressImage;
 }
 
++ (id)_tintedImageForHeight:(double)arg1 andColors:(id)arg2;
++ (id)_tintedImageForHeight:(double)arg1 andColors:(id)arg2 roundingRectCorners:(unsigned long long)arg3;
 + (CDStruct_d58a15aa)_standardImagesForStyle:(long long)arg1 barStyle:(long long)arg2;
 + (int)_indexForStyle:(long long)arg1 barStyle:(long long)arg2;
 @property(retain, nonatomic) UIColor *trackTintColor; // @synthesize trackTintColor=_trackTintColor;
@@ -42,8 +41,12 @@
 - (void)_setProgressAnimated:(float)arg1 duration:(double)arg2 delay:(double)arg3 options:(unsigned long long)arg4;
 - (void)setProgress:(float)arg1 animated:(_Bool)arg2;
 - (void)_setProgress:(float)arg1;
+- (void)tintColorDidChange;
 - (void)layoutSubviews;
 - (void)_updateImages;
+- (unsigned long long)_roundedCornersForProgressForCurrentStyle;
+- (unsigned long long)_roundedCornersForTrackForCurrentStyle;
+- (id)_defaultTrackColorForCurrentStyle;
 - (id)_appropriateProgressImage;
 - (id)_appropriateTrackImage;
 - (_Bool)_shouldTintTrack;

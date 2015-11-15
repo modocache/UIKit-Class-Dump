@@ -8,7 +8,7 @@
 
 #import "NSCoding.h"
 
-@class CAGradientLayer, CAShapeLayer, UIColor, UIImage, UIImageView, UIView;
+@class CAShapeLayer, NSArray, UIColor, UIImage, UIImageView, UIView;
 
 @interface UISlider : UIControl <NSCoding>
 {
@@ -37,17 +37,14 @@
     UIColor *_minTintColor;
     UIColor *_maxTintColor;
     UIColor *_thumbTintColor;
-    CAShapeLayer *_trackMaskLayer;
-    UIView *_trackContainerView;
     UIView *_thumbViewNeue;
     CAShapeLayer *_thumbViewNeueShape;
     _Bool _useLookNeue;
+    NSArray *_trackColors;
     _Bool _trackIsArtworkBased;
     _Bool _thumbIsArtworkBased;
-    UIView *_minTrackViewNeue;
-    UIView *_maxTrackViewNeue;
-    CAGradientLayer *_maxTrackGradientLayer;
     _Bool _maxColorIsValid;
+    _Bool _animatingWithDynamics;
     UIImageView *_innerThumbView;
 }
 
@@ -77,7 +74,6 @@
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)_updateAppearanceForEnabled:(_Bool)arg1;
-- (void)didMoveToWindow;
 - (void)_layoutSubviewsForBoundsChange:(_Bool)arg1;
 - (void)_updateMaxTrackColor;
 - (void)layoutSubviews;
@@ -92,11 +88,6 @@
 - (struct CGRect)maximumValueImageRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)minimumValueImageRectForBounds:(struct CGRect)arg1;
 - (void)tintColorDidChange;
-- (void)_emptyTrackMaskAnimated:(_Bool)arg1;
-- (void)_fillTrackMaskAnimated:(_Bool)arg1;
-- (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
-- (struct CGPath *)_maskPathForBounds:(struct CGRect)arg1 edgeInset:(struct UIEdgeInsets)arg2 andProgress:(double)arg3;
-- (id)_roundedCornersBezierPathInRect:(struct CGRect)arg1;
 @property(retain, nonatomic) UIImage *maximumValueImage;
 @property(retain, nonatomic) UIImage *minimumValueImage;
 @property(readonly, nonatomic) UIImage *currentMaximumTrackImage;
@@ -113,7 +104,7 @@
 - (void)dealloc;
 - (void)_rebuildControlThumb:(_Bool)arg1 track:(_Bool)arg2;
 - (void)_buildTrackArtwork;
-- (void)_buildTrackNeue;
+- (double)_cornerRadiusForRect:(struct CGRect)arg1;
 - (void)_initSubviews;
 - (void)_initImages;
 - (id)createThumbViewNeue;

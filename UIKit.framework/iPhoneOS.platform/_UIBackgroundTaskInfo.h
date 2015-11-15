@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     int _count;
 }
 
++ (id)backgroundTaskAssertionQueue;
 - (void)invalidate;
 - (void)fireExpirationHandler;
 - (void)dealloc;

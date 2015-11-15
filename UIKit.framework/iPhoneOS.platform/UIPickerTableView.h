@@ -8,7 +8,7 @@
 
 #import "UITableViewDelegate.h"
 
-@class NSMutableIndexSet, UIColor;
+@class NSMutableArray, NSMutableIndexSet, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface UIPickerTableView : UITableView <UITableViewDelegate>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     _Bool _usesModernStyle;
     UIColor *_textColor;
     struct CGRect _visibleRect;
+    NSMutableArray *_referencingCells;
     struct {
         unsigned int allowsMultipleSelection:1;
         unsigned int scrollingDirection:2;

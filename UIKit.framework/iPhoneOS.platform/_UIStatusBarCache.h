@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)sharedInstance;
+- (void)removeImagesInGroup:(id)arg1;
 - (void)cacheImage:(id)arg1 named:(id)arg2 forGroup:(id)arg3;
 - (_Bool)_canCacheImages;
 - (id)imageNamed:(id)arg1 forGroup:(id)arg2 withScale:(double)arg3;

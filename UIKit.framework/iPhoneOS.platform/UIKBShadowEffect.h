@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGSize offset; // @synthesize offset=_offset;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct CGColor *)CGColor;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)initWithColor:(id)arg1 offset:(struct CGSize)arg2 insets:(struct UIEdgeInsets)arg3 weight:(double)arg4;

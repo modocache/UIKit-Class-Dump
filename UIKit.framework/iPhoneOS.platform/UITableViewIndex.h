@@ -30,7 +30,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool pastBottom; // @synthesize pastBottom=_pastBottom;
 @property(readonly, nonatomic) _Bool pastTop; // @synthesize pastTop=_pastTop;
 @property(readonly, nonatomic) long long selectedSection; // @synthesize selectedSection=_selectedSection;
-- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)_externalDotImage;
+- (id)_dotImage;
 - (void)tintColorDidChange;
 @property(retain, nonatomic) UIColor *indexBackgroundColor;
 @property(retain, nonatomic) UIColor *indexTrackingBackgroundColor;

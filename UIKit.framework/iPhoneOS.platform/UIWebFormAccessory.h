@@ -45,6 +45,7 @@
 - (void)layoutSubviews;
 - (void)_updateFrame;
 - (void)_orientationDidChange:(id)arg1;
+- (void)_setRenderConfig:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

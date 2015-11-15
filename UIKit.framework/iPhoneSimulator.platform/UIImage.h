@@ -23,6 +23,7 @@
         unsigned int isCIImage:1;
         unsigned int imageSetIdentifer:16;
         unsigned int renderingMode:2;
+        unsigned int suppressesAccessibilityHairlineThickening:1;
     } _imageFlags;
     _UIDecompressionInfo *_decompressionInfo;
     struct UIEdgeInsets _alignmentRectInsets;
@@ -32,7 +33,7 @@
 + (id)animatedResizableImageNamed:(id)arg1 capInsets:(struct UIEdgeInsets)arg2 resizingMode:(long long)arg3 duration:(double)arg4;
 + (id)animatedResizableImageNamed:(id)arg1 capInsets:(struct UIEdgeInsets)arg2 duration:(double)arg3;
 + (id)animatedImageNamed:(id)arg1 duration:(double)arg2;
-+ (struct UIEdgeInsets)_edgeInsetsForStylePresetName:(id)arg1 scale:(double)arg2;
++ (struct UIEdgeInsets)_edgeInsetsForStylePresetNames:(id)arg1 scale:(double)arg2;
 + (_Bool)supportsSecureCoding;
 + (id)imageWithCIImage:(id)arg1 scale:(double)arg2 orientation:(long long)arg3;
 + (id)imageWithCIImage:(id)arg1;
@@ -77,7 +78,9 @@
 @property(readonly, nonatomic) NSArray *images;
 - (id)imageWithAlignmentRectInsets:(struct UIEdgeInsets)arg1;
 - (void)_setAlignmentRectInsets:(struct UIEdgeInsets)arg1;
-- (id)_imageWithLetterpressEffectWithForegroundColor:(id)arg1;
+- (void)_setSuppressesAccessibilityHairlineThickening:(_Bool)arg1;
+- (id)_imageWithStylePresets:(id)arg1 withTintColor:(id)arg2;
+- (id)_cachedImageStyledWithPresets:(id)arg1 forTintColor:(id)arg2;
 @property(readonly, nonatomic) long long renderingMode;
 - (id)imageWithRenderingMode:(long long)arg1;
 @property(readonly, nonatomic) long long resizingMode;
@@ -104,6 +107,7 @@
 - (void)_encodeDataWithCoder:(id)arg1 imageName:(id)arg2;
 - (_Bool)_canEncodeWithName:(id)arg1;
 - (id)_initWithOtherImage:(id)arg1;
+- (void)_configureFromImage:(id)arg1;
 - (id)initWithCIImage:(id)arg1 scale:(double)arg2 orientation:(long long)arg3;
 - (id)initWithCIImage:(id)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
@@ -117,6 +121,8 @@
 - (void)_saveDecompressedImage:(struct CGImage *)arg1;
 - (void)_decompressionFallbackImageCreation;
 - (void)_decompressionComplete;
+- (_Bool)_suppressesAccessibilityHairlineThickening;
+- (id)_imageThatSuppressesAccessibilityHairlineThickening;
 - (id)_flatImageWithColor:(id)arg1;
 - (CDStruct_afa449f9)_calculateStatistics;
 - (id)_resizableImageWithSubimageInsets:(struct UIEdgeInsets)arg1 resizeInsets:(struct UIEdgeInsets)arg2;

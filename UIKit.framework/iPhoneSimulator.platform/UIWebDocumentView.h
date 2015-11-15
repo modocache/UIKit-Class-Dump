@@ -125,6 +125,7 @@
     unsigned int _previousScrollWasScrollToTop:1;
     unsigned int _pageIsLoadedFromPageCache:1;
     unsigned int _shouldSendWillShowInteractionHighlight:1;
+    unsigned int _willPanInsteadOfZoom:1;
     WebThreadSafeUndoManager *_undoManager;
     UIWebSelectionAssistant *_webSelectionAssistant;
     UITextInteractionAssistant *_textSelectionAssistant;
@@ -140,6 +141,7 @@
     _UITextServiceSession *_learnSession;
     WebHistoryItem *_latestCommittedPageLoadHistoryItem;
     _Bool _suppressesIncrementalRendering;
+    _Bool _wantsMinimalUI;
     unsigned long long _renderTreeSize;
     unsigned long long _renderTreeSizeThresholdForReset;
     struct CGRect _exposedScrollViewRect;
@@ -154,6 +156,7 @@
 + (id)_createDefaultHighlightView;
 @property(nonatomic) unsigned long long renderTreeSizeThresholdForReset; // @synthesize renderTreeSizeThresholdForReset=_renderTreeSizeThresholdForReset;
 @property(readonly, nonatomic) unsigned long long renderTreeSize; // @synthesize renderTreeSize=_renderTreeSize;
+@property(readonly, nonatomic) _Bool wantsMinimalUI; // @synthesize wantsMinimalUI=_wantsMinimalUI;
 @property(nonatomic) struct CGRect exposedScrollViewRect; // @synthesize exposedScrollViewRect=_exposedScrollViewRect;
 @property(nonatomic) _Bool suppressesIncrementalRendering; // @synthesize suppressesIncrementalRendering=_suppressesIncrementalRendering;
 @property(retain, nonatomic) DOMRange *rangeToRestoreAfterDictation; // @synthesize rangeToRestoreAfterDictation=_rangeToRestoreAfterDictation;

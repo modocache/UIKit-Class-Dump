@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)itemWithType:(int)arg1 idiom:(long long)arg2;
 @property(readonly, nonatomic) int type; // @synthesize type=_type;
 - (id)description;
+- (long long)compareCenterOrder:(id)arg1;
 - (long long)compareRightOrder:(id)arg1;
 - (long long)compareLeftOrder:(id)arg1;
 - (long long)comparePriority:(id)arg1;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)appearsOnRight;
 - (_Bool)appearsOnLeft;
 @property(readonly, nonatomic) NSString *indicatorName;
+- (int)centerOrder;
 @property(readonly, nonatomic) int rightOrder;
 @property(readonly, nonatomic) int leftOrder;
 @property(readonly, nonatomic) int priority;

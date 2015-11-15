@@ -15,10 +15,13 @@ __attribute__((visibility("hidden")))
     _Bool _pressed;
     _UIBarButtonItemAppearanceStorage *_appearanceStorage;
     _Bool _customBackgroundImageChangedToOrFromNil;
+    UIImageView *_backgroundImageView;
     UIImageView *_imageView;
+    _Bool _wantsBlendModeForAccessibilityBackgrounds;
     unsigned long long _abbreviatedTitleIndex;
 }
 
+@property(nonatomic, setter=_setWantsBlendModeForAccessibilityBackgrounds:) _Bool _wantsBlendModeForAccessibilityBackgrounds; // @synthesize _wantsBlendModeForAccessibilityBackgrounds;
 @property(nonatomic, setter=_setAbbreviatedTitleIndex:) unsigned long long _abbreviatedTitleIndex; // @synthesize _abbreviatedTitleIndex;
 - (Class)_appearanceGuideClass;
 - (void)_applyBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
@@ -63,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (_Bool)_canDrawContent;
 - (void)layoutSubviews;
-- (struct CGRect)_labelFrame;
+- (id)backgroundImageView;
 - (double)_titleYAdjustmentCustomization;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)_drawBackground;
@@ -75,7 +78,13 @@ __attribute__((visibility("hidden")))
 - (_Bool)_useSilverLookForBarStyle:(long long)arg1;
 - (id)_appearanceStorage;
 - (void)tintColorDidChange;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (void)_accessibilityButtonShapesDidChangeNotification:(id)arg1;
+- (void)_accessibilityButtonShapesParametersDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)_suppressesBackIndicatorView;
+- (_Bool)_wantsAccessibilityButtonShapes;
+- (_Bool)_showsAccessibilityBackgroundWhenEnabled;
 
 @end
 

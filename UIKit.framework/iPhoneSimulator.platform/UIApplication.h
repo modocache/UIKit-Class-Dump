@@ -13,7 +13,6 @@
 @interface UIApplication : UIResponder <UIActionSheetDelegate>
 {
     id <UIApplicationDelegate> _delegate;
-    struct __CFDictionary *_touchMap;
     NSMutableSet *_exclusiveTouchWindows;
     UIEvent *_event;
     UIEvent *_touchesEvent;
@@ -250,6 +249,7 @@
 - (void)handleKeyUIEvent:(id)arg1;
 - (void)handleKeyHIDEvent:(struct __IOHIDEvent *)arg1;
 - (struct __GSKeyboard *)GSKeyboardForHWLayout:(id)arg1 forceRebuild:(_Bool)arg2;
+- (void)_handleUnicodeEvent:(struct __IOHIDEvent *)arg1;
 - (void)sendEvent:(id)arg1;
 - (id)_motionKeyWindow;
 - (_Bool)_needsShakesWhenInactive;
@@ -373,8 +373,6 @@
 - (id)_motionEvent;
 - (id)_touchesEvent;
 - (id)_event;
-- (struct __CFDictionary *)_touchMap;
-- (void)_setTouchMap:(struct __CFDictionary *)arg1;
 - (long long)_frontMostAppOrientation;
 - (void)_setStatusBarMode:(int)arg1;
 - (int)statusBarMode;
@@ -451,6 +449,7 @@
 - (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
+- (void)_postHeadsetOriginatedMediaRemoteCommand:(unsigned int)arg1;
 - (void)_postSimpleRemoteNotificationForAction:(long long)arg1 andContext:(long long)arg2 trackID:(id)arg3;
 - (void)_postSimpleRemoteNotificationForAction:(long long)arg1 andContext:(long long)arg2;
 - (void)resetIdleTimerAndUndim;
@@ -662,6 +661,8 @@
 - (_Bool)handleTestURL:(id)arg1;
 - (void)failedTest:(id)arg1 withResults:(id)arg2;
 - (void)failedTest:(id)arg1;
+- (void)finishedTest:(id)arg1 waitForCommit:(_Bool)arg2 extraResults:(id)arg3 withTeardownBlock:(CDUnknownBlockType)arg4;
+- (void)finishedTest:(id)arg1 waitForCommit:(_Bool)arg2 extraResults:(id)arg3;
 - (void)finishedTest:(id)arg1 extraResults:(id)arg2 waitForNotification:(id)arg3;
 - (void)finishedTest:(id)arg1 extraResults:(id)arg2 withTeardownBlock:(CDUnknownBlockType)arg3;
 - (void)finishedTest:(id)arg1 extraResults:(id)arg2;
@@ -675,9 +676,12 @@
 - (_Bool)isPPTAvailable;
 - (void)_sendDictionaryToPPT:(id)arg1;
 - (void)finishedSubTest:(id)arg1 forTest:(id)arg2;
+- (void)startedSubTest:(id)arg1 forTest:(id)arg2 withMetrics:(id)arg3;
 - (void)startedSubTest:(id)arg1 forTest:(id)arg2;
+- (id)subTest:(id)arg1 ForTest:(id)arg2 withMetrics:(id)arg3;
 - (id)resultsForTest:(id)arg1;
 - (void)startedTest:(id)arg1;
+- (id)_currentFrameCountForTestDisplay;
 - (_Bool)isRunningSuspendTest;
 - (_Bool)isRunningQuitTest;
 - (_Bool)isRunningTest:(id)arg1;
@@ -690,6 +694,7 @@
 - (void)runTest:(id)arg1 forAnimation:(id)arg2;
 - (void)_noteAnimationFinished:(id)arg1;
 - (void)_noteAnimationStarted:(id)arg1;
+- (void)installCACommitCompletionBlock:(CDUnknownBlockType)arg1;
 - (_Bool)runTest:(id)arg1 options:(id)arg2;
 - (id)_currentTests;
 - (_Bool)launchedToTest;
@@ -713,6 +718,15 @@
 - (void)beginRemoteSheet:(id)arg1 delegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4 requireTopApplication:(_Bool)arg5;
 - (void)beginRemoteSheet:(id)arg1 delegate:(id)arg2 didEndSelector:(SEL)arg3 contextInfo:(void *)arg4;
 - (void)_alertSheetStackChanged;
+- (void)runTestForKeyboardSplitAndMergeWithName:(id)arg1 withShowKeyboardBlock:(CDUnknownBlockType)arg2 withExtraResultsBlock:(CDUnknownBlockType)arg3 withCleanupBlock:(CDUnknownBlockType)arg4;
+- (void)runTestForKeyboardRotationWithName:(id)arg1 fromOrientation:(long long)arg2 withShowKeyboardBlock:(CDUnknownBlockType)arg3 withExtraResultsBlock:(CDUnknownBlockType)arg4 withCleanupBlock:(CDUnknownBlockType)arg5;
+- (void)runTestForKeyboardBringupAndDismissalWithName:(id)arg1 withShowKeyboardBlock:(CDUnknownBlockType)arg2 withHideKeyboardBlock:(CDUnknownBlockType)arg3 withExtraResultsBlock:(CDUnknownBlockType)arg4 withCleanupBlock:(CDUnknownBlockType)arg5;
+- (void)_runSubTestForKeyboardMergeWithName:(id)arg1 withExtraResultsBlock:(CDUnknownBlockType)arg2 withCleanupBlock:(CDUnknownBlockType)arg3;
+- (void)_runSubTestForKeyboardSplitWithName:(id)arg1 withShowKeyboardBlock:(CDUnknownBlockType)arg2 withExtraResultsBlock:(CDUnknownBlockType)arg3 withCleanupBlock:(CDUnknownBlockType)arg4;
+- (void)_runSubTestForKeyboardDismissalWithName:(id)arg1 withHideKeyboardBlock:(CDUnknownBlockType)arg2 withExtraResultsBlock:(CDUnknownBlockType)arg3 withCleanupBlock:(CDUnknownBlockType)arg4;
+- (void)_runSubTestForKeyboardBringupWithName:(id)arg1 withShowKeyboardBlock:(CDUnknownBlockType)arg2 withHideKeyboardBlock:(CDUnknownBlockType)arg3 withExtraResultsBlock:(CDUnknownBlockType)arg4 withCleanupBlock:(CDUnknownBlockType)arg5;
+- (void)showKeyboardUsingBlock:(CDUnknownBlockType)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)installNotificationObserverForNotificationName:(id)arg1 forOneNotification:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
 
 @end
 

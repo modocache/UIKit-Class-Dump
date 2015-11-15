@@ -8,12 +8,13 @@
 
 #import "UIKBCacheableView.h"
 
-@class NSObject, NSString, UIKBRenderConfig, UIKBTree;
+@class NSObject, NSString, UIKBRenderConfig, UIKBTree, UITextInputTraits;
 
 __attribute__((visibility("hidden")))
 @interface UIKBBackgroundView : UIKBSplitImageView <UIKBCacheableView>
 {
     UIKBTree *_keyplane;
+    UITextInputTraits *_inputTraits;
     int _visualStyle;
     NSObject *_geometryCacheKey;
     struct CGRect _splitLeftRect;
@@ -38,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *cacheKey;
 - (void)drawContentsOfRenderers:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)refreshStyleForKeyplane:(id)arg1;
+- (void)refreshStyleForKeyplane:(id)arg1 inputTraits:(id)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

@@ -10,7 +10,7 @@
 #import "_UIRemoteViewController_TextEffectsOperatorInterface.h"
 #import "_UIRemoteViewController_ViewControllerOperatorInterface.h"
 
-@class NSArray, NSError, NSObject<OS_dispatch_semaphore>, NSString, UIActionSheet, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
+@class NSArray, NSError, NSMutableArray, NSString, UIActionSheet, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
 
 @interface _UIRemoteViewController : UIViewController <_UIRemoteViewController_ViewControllerOperatorInterface, _UIRemoteViewController_TextEffectsOperatorInterface, UIActionSheetDelegate>
 {
@@ -26,7 +26,8 @@
     id _textEffectsOperatorProxy;
     _UIAsyncInvocation *_textEffectsOperatorHalfDisconnectionInvocation;
     _Bool _fencingCurrentTransaction;
-    NSObject<OS_dispatch_semaphore> *_fenceBarrier;
+    int _preFencedCommitActionsLock;
+    NSMutableArray *_preFencedCommitActions;
     _UISizeTrackingView *_sizeTrackingView;
     _UIRemoteView *_serviceViewControllerRemoteView;
     _UITextEffectsRemoteView *_fullScreenTextEffectsRemoteView;
@@ -45,6 +46,9 @@
     UIView *_touchGrabbingView;
     long long _preferredStatusBarStyle;
     _Bool _prefersStatusBarHidden;
+    _Bool _isFocusDeferred;
+    NSString *_deferredDisplayUUID;
+    unsigned int _deferredContextID;
 }
 
 + (id)requestViewController:(id)arg1 fromServiceWithBundleIdentifier:(id)arg2 connectionHandler:(CDUnknownBlockType)arg3;
@@ -80,8 +84,12 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)_setDeferred:(_Bool)arg1 forDisplayUUID:(id)arg2;
+- (id)_clientDeferralProperties;
+- (id)_hostDeferralProperties;
 - (void)__willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)_addPreFencedCommitAction:(CDUnknownBlockType)arg1;
 - (void)actionSheet:(id)arg1 clickedButtonAtIndex:(long long)arg2;
 - (void)__dismissActionSheetWithClickedButtonIndex:(long long)arg1 animated:(_Bool)arg2;
 - (void)__presentActionSheetFromYCoordinate:(double)arg1 withTitle:(id)arg2 buttonTitles:(id)arg3 cancelButtonIndex:(long long)arg4 destructiveButtonIndex:(long long)arg5 style:(long long)arg6;

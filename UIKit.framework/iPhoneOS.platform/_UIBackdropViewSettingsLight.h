@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)applyDarkeningTintWithSettings:(id)arg1;
 - (void)computeOutputSettingsUsingModel:(id)arg1;
 - (void)setDefaultValues;
 

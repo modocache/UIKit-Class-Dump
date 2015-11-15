@@ -24,5 +24,6 @@
 - (_Bool)_supportsAdaptiveBackground;
 - (void)_setBackgroundView:(id)arg1;
 - (id)_backgroundView;
+- (id)_adaptiveBackdrop;
 @end
 

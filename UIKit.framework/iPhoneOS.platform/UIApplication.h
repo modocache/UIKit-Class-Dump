@@ -13,7 +13,6 @@
 @interface UIApplication : UIResponder <UIActionSheetDelegate>
 {
     id <UIApplicationDelegate> _delegate;
-    struct __CFDictionary *_touchMap;
     NSMutableSet *_exclusiveTouchWindows;
     UIEvent *_event;
     UIEvent *_touchesEvent;
@@ -249,6 +248,7 @@
 - (void)handleKeyUIEvent:(id)arg1;
 - (void)handleKeyHIDEvent:(struct __IOHIDEvent *)arg1;
 - (struct __GSKeyboard *)GSKeyboardForHWLayout:(id)arg1 forceRebuild:(_Bool)arg2;
+- (void)_handleUnicodeEvent:(struct __IOHIDEvent *)arg1;
 - (void)sendEvent:(id)arg1;
 - (id)_motionKeyWindow;
 - (_Bool)_needsShakesWhenInactive;
@@ -372,8 +372,6 @@
 - (id)_motionEvent;
 - (id)_touchesEvent;
 - (id)_event;
-- (struct __CFDictionary *)_touchMap;
-- (void)_setTouchMap:(struct __CFDictionary *)arg1;
 - (long long)_frontMostAppOrientation;
 - (void)_setStatusBarMode:(int)arg1;
 - (int)statusBarMode;
@@ -450,6 +448,7 @@
 - (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
+- (void)_postHeadsetOriginatedMediaRemoteCommand:(unsigned int)arg1;
 - (void)_postSimpleRemoteNotificationForAction:(long long)arg1 andContext:(long long)arg2 trackID:(id)arg3;
 - (void)_postSimpleRemoteNotificationForAction:(long long)arg1 andContext:(long long)arg2;
 - (void)resetIdleTimerAndUndim;

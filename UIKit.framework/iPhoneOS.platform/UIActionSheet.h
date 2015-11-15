@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSAttributedString, NSMutableArray, NSString, UIGestureRecognizer, UIImage, UIImageView, UILabel, UIPopoverController, UIToolbar, UIWindow, _UIBackdropView;
+@class NSAttributedString, NSMutableArray, NSMutableIndexSet, NSString, UIGestureRecognizer, UIImage, UIImageView, UILabel, UIPopoverController, UITableView, UIToolbar, UIWindow;
 
 @interface UIActionSheet : UIView
 {
@@ -41,6 +41,11 @@
     double _labelWidth;
     double _titleWidth;
     _Bool _oldIgnoreTapsValue;
+    UITableView *_buttonTable;
+    UIView *_contentView;
+    UIView *_contentViewContainer;
+    UIView *_contentViewTopSeparator;
+    UIView *_contentViewBottomSeparator;
     struct {
         unsigned int numberOfRows:7;
         unsigned int delegateAlertSheetButtonClicked:1;
@@ -87,21 +92,21 @@
         unsigned int cancelWhenDoneAnimating:1;
         unsigned int useThreePartButtons:1;
         unsigned int useTwoPartButtons:1;
-        unsigned int displaySelectedButtonGlyph:1;
-        unsigned int indexOfSelectedButton:7;
         unsigned int useCustomSelectedButtonGlyph:1;
         unsigned int usesNewStyle:1;
         unsigned int isDesaturated:1;
         unsigned int creatingPopoverForDisplay:1;
+        unsigned int delegateShouldDismissForbuttonAtIndex:1;
     } _modalViewFlags;
     long long _actionSheetStyle;
     UIImage *_selectedButtonGlyphImage;
     UIImage *_selectedButtonGlyphHighlightedImage;
     UIImageView *_shadowImageView;
-    _UIBackdropView *_backdropView;
+    UIView *_backgroundView;
     UIGestureRecognizer *_dimViewGestureRecognizer;
     UIImage *_dimViewImage;
     UIImageView *_dimViewImageView;
+    NSMutableIndexSet *_selectedButtonsIndexes;
 }
 
 + (id)_newCancelButtonFont;
@@ -110,15 +115,23 @@
 + (Class)_popoverControllerClass;
 + (id)_popupAlertBackground;
 + (struct CGSize)minimumSize;
+@property(retain, nonatomic, getter=_contentView, setter=_setContentView:) UIView *_contentView; // @synthesize _contentView;
 - (id)_normalInheritedTintColor;
 - (id)tintColor;
 - (void)setTintColor:(id)arg1;
+- (id)_externalBackgroundColor;
+- (void)_flashScrollIndicatorsIfAppropriate;
 - (void)_transitionUIInView:(id)arg1 toSaturated:(_Bool)arg2;
+- (double)_cancelButtonMargin;
 - (double)_separatorInset;
+- (double)_cornerRadiusForContent;
+- (double)_buttonInset;
 - (void)_removeBackdropViewIfNecessary;
 - (void)_applyParallaxToContentIfNecessary;
 - (_Bool)_shouldHaveBackdropView;
 - (_Bool)_shouldParallax;
+- (void)_setBackgroundViewMask:(id)arg1;
+- (void)_transitionToIdiomAppropriateAppearanceIfNecessary;
 - (void)_transitionToLegacyAppearanceIfNecessary;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
@@ -154,11 +167,18 @@
 @property(copy, nonatomic) NSString *title;
 @property(nonatomic) id <UIActionSheetDelegate> delegate;
 - (void)dealloc;
+- (void)setFrame:(struct CGRect)arg1;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 delegate:(id)arg3 defaultButton:(id)arg4 cancelButton:(id)arg5 otherButtons:(id)arg6;
 - (_Bool)_isSBAlert;
+- (void)_setCheckmarkVisible:(_Bool)arg1 onButton:(id)arg2;
 - (void)setSelectedButtonGlyphHighlightedImage:(id)arg1;
 - (void)setSelectedButtonGlyphImage:(id)arg1;
+- (void)_updateCheckmarks;
 - (void)setIndexOfSelectedButton:(long long)arg1;
+- (void)_toggleButtonSelectionAtIndex:(unsigned long long)arg1;
+- (id)_indexesOfSelectedButtons;
+- (void)_setIndexesOfSelectedButtons:(id)arg1;
+- (void)didMoveToWindow;
 - (void)removeFromSuperview;
 - (_Bool)resignFirstResponder;
 - (_Bool)becomeFirstResponder;
@@ -204,9 +224,12 @@
 - (void)dismiss;
 - (void)_slideSheetOut:(_Bool)arg1;
 - (void)_presentSheetStartingFromYCoordinate:(double)arg1 inView:(id)arg2;
-- (void)_presentSheetStartingFromYCoordinate:(double)arg1;
+- (void)_presentSheetStartingFromYCoordinate:(double)arg1 rootWindow:(id)arg2;
 - (void)_resizeDimViewAnimatingUp:(_Bool)arg1;
+- (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
+- (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_handleTap:(id)arg1;
+- (void)_dismissIfCapable;
 - (void)_installGestureRecognizerInDimView;
 - (id)_dimViewWithFrame:(struct CGRect)arg1;
 - (id)_dimView;
@@ -296,6 +319,7 @@
 - (id)_attributedTitleString;
 - (void)_setAttributedTitleString:(id)arg1;
 - (void)_setupTitleStyle;
+- (void)_prepareContentViewContainer;
 - (void)_createTaglineTextLabelIfNeeded;
 - (void)_createBodyTextLabelIfNeeded;
 - (void)_createSubtitleLabelIfNeeded;

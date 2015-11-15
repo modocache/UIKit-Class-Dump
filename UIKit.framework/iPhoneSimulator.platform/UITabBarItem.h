@@ -67,10 +67,10 @@
 - (id)initWithTitle:(id)arg1 image:(id)arg2 selectedImage:(id)arg3;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 tag:(long long)arg3;
 - (id)init;
+- (id)_internalTemplateImages;
 - (void)_updateToMatchCurrentState;
 - (_Bool)_isSelected;
 - (void)_setSelected:(_Bool)arg1;
-- (id)_internalTemplateImages;
 - (id)_internalTemplateImage;
 - (void)_setInternalTemplateImage:(id)arg1;
 - (id)_internalTitle;
@@ -84,10 +84,9 @@
 - (long long)systemItem;
 - (_Bool)isSystemItem;
 - (void)_updateView;
-- (void)_updateViewForIdiom:(long long)arg1;
-- (void)_updateViewForIdiom:(long long)arg1 positionItems:(_Bool)arg2;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2 withTint:(_Bool)arg3 idiom:(long long)arg4;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2 idiom:(long long)arg3;
+- (void)_updateViewAndPositionItems:(_Bool)arg1;
+- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2 withTint:(_Bool)arg3;
+- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2;
 - (void)_setTitleTextAttributeValue:(id)arg1 forAttributeKey:(id)arg2 state:(unsigned long long)arg3;
 - (id)nextResponder;
 - (id)_updateImageWithTintColor:(id)arg1 isSelected:(_Bool)arg2 getImageOffset:(struct UIOffset *)arg3;

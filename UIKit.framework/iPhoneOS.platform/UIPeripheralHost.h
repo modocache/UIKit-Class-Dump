@@ -81,6 +81,7 @@
     NSMutableDictionary *_preservedAccessoryViewNextResponderSets;
     UIResponder *_responderWithoutAutomaticAppearanceEnabled;
     UITextEffectsWindow *_containerWindow;
+    _Bool _springBoardLockStateIsLocked;
     UIInputViewSet *_transientInputViewSet;
     id <_UIPeripheralHostCustomTransition> _customTransitionInfo;
     double _ambiguousControlCenterActivationMargin;
@@ -102,11 +103,8 @@
 @property(retain, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 @property(retain, nonatomic) UIKeyboardRotationState *rotationState; // @synthesize rotationState=_rotationState;
 @property(nonatomic) _Bool automaticAppearanceEnabled; // @synthesize automaticAppearanceEnabled=_automaticAppearanceEnabled;
-- (void)transitionDidFinish;
 - (void)transitionDidFinish:(_Bool)arg1;
-- (void)updateFrame:(struct CGRect)arg1 withProgress:(double)arg2 withDuration:(double)arg3 splitHeightDelta:(double)arg4;
-- (void)updateFrame:(struct CGRect)arg1 withDuration:(double)arg2 splitHeightDelta:(double)arg3;
-- (void)updateFrame:(struct CGRect)arg1 withProgress:(double)arg2 withDuration:(double)arg3;
+- (void)updateProgress:(double)arg1 mergedHeight:(double)arg2 splitHeight:(double)arg3;
 - (void)setAccessoryViewVisible:(_Bool)arg1 delay:(double)arg2;
 - (id)nextAnimationStyle:(_Bool)arg1;
 - (id)nextAnimationStyle;
@@ -182,6 +180,7 @@
 - (struct CGSize)sizeOfInputViewForInputViewSet:(id)arg1 withInterfaceOrientation:(long long)arg2;
 - (void)textEffectsWindowDidRotate:(id)arg1;
 - (void)peripheralHostDidEnterBackground:(id)arg1;
+- (void)springBoardLockStateChanged:(id)arg1;
 - (void)peripheralHostWillResume:(id)arg1;
 - (void)completeCurrentTransitionIfNeeded;
 - (_Bool)hasDictationKeyboard;

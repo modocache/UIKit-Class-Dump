@@ -73,6 +73,7 @@
 - (id)customTitleView;
 - (void)setCustomTitleView:(id)arg1;
 - (id)_titleView;
+- (id)_defaultTitleView;
 - (void)_updateViewsForBarSizeChangeAndApply:(_Bool)arg1;
 - (_Bool)_accumulateViewsFromItems:(id)arg1 isLeft:(_Bool)arg2 refreshViews:(_Bool)arg3;
 - (void)_setCustomRightViews:(id)arg1;
@@ -135,10 +136,6 @@
 - (void)setContext:(id)arg1;
 - (long long)tag;
 - (void)setTag:(long long)arg1;
-- (id)font;
-- (void)setFont:(id)arg1;
-- (void)setWidth:(double)arg1;
-- (double)width;
 @property(retain, nonatomic) UIBarButtonItem *backBarButtonItem;
 - (id)currentBackButtonTitle;
 - (id)backButtonTitle;
@@ -147,6 +144,7 @@
 - (void)setBackButtonTitle:(id)arg1;
 - (void)_setTitle:(id)arg1 animated:(_Bool)arg2;
 - (void)_setTitle:(id)arg1 animated:(_Bool)arg2 matchBarButtonItemAnimationDuration:(_Bool)arg3;
+- (void)_addDefaultTitleViewToNavigationBarIfNecessary;
 - (void)_setTitleAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_cleanupFrozenTitleView;
 - (void)_freezeCurrentTitleView;

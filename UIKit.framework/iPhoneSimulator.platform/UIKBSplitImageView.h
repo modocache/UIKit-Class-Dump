@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView;
+@class NSString, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface UIKBSplitImageView : UIView
@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     UIImageView *_fullView;
     UIImageView *_splitLeft;
     UIImageView *_splitRight;
+    NSString *_currentFilterType;
 }
 
+@property(nonatomic) NSString *filterType; // @synthesize filterType=_currentFilterType;
 - (void)setImage:(id)arg1 cachedWidth:(double)arg2 keyplane:(id)arg3;
 - (void)setImage:(id)arg1 splitLeft:(id)arg2 splitRight:(id)arg3 keyplane:(id)arg4;
 - (void)insertSubviewAtBottom:(id)arg1;

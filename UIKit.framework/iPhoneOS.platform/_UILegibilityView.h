@@ -41,7 +41,7 @@
 - (void)setSettings:(id)arg1 image:(id)arg2 shadowImage:(id)arg3;
 - (void)setStyle:(long long)arg1 image:(id)arg2 shadowImage:(id)arg3;
 - (void)setImage:(id)arg1 shadowImage:(id)arg2;
-- (struct CGSize)sizeThatFits;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly, nonatomic) long long style; // @dynamic style;
 - (void)dealloc;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 image:(id)arg3 shadowImage:(id)arg4 options:(long long)arg5;

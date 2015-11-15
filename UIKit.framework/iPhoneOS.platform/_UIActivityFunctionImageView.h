@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) _Bool overlay; // @synthesize overlay=_overlay;
+- (void)superSetHighlighted:(_Bool)arg1;
+- (void)setHighlighted:(_Bool)arg1;
 
 @end
 

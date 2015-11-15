@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)_replaceLayer:(id)arg1;
 - (void)prepareForRemoval;
-- (void)fixUpViewAfterInsertion;
+- (_Bool)fixUpViewAfterInsertion;
 - (id)superview;
 - (void)dealloc;
 - (id)initWithLayer:(id)arg1 node:(id)arg2 webBrowserView:(id)arg3;

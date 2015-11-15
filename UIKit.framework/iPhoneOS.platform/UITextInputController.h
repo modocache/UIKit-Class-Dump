@@ -94,6 +94,7 @@
 - (id)_selectedText;
 - (_Bool)_shouldHandleResponderAction:(SEL)arg1;
 - (_Bool)_canHandleResponderAction:(SEL)arg1;
+- (void)delegateWillChangeAttributedText:(id)arg1;
 - (id)metadataDictionariesForDictationResults;
 - (id)rangeWithTextAlternatives:(id *)arg1 atPosition:(id)arg2;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(_Bool)arg2;
@@ -129,7 +130,8 @@
 - (void)_addToTypingAttributes:(id)arg1 value:(id)arg2;
 - (id)_attributesForReplacementInRange:(struct _NSRange)arg1;
 - (id)_newAttributedStringForInsertionOfText:(id)arg1 inRange:(struct _NSRange)arg2;
-- (id)_fixupOriginalFontAttributeForAttributes:(id)arg1;
+- (id)_fixupTypingAttributeForAttributes:(id)arg1;
+- (id)_whitelistedTypingAttributes;
 @property(nonatomic) id <UITextInputDelegate> inputDelegate;
 - (id)characterRangeByExtendingPosition:(id)arg1 inDirection:(long long)arg2;
 - (id)positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;

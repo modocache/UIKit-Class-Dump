@@ -42,6 +42,7 @@
 - (id)variantDisplayString;
 - (void)orderVariantKeys:(_Bool)arg1;
 - (_Bool)behavesAsShiftKey;
+- (_Bool)avoidAutoDeactivation;
 - (_Bool)dynamicDisplayTypeHint;
 - (double)fadeOutDuration;
 - (_Bool)canFadeOutFromState:(int)arg1 toState:(int)arg2;
@@ -91,6 +92,12 @@
 - (int)_variantType;
 - (void)setState:(int)arg1;
 - (int)state;
+- (id)activeShapesFromOutputShapes:(id)arg1 inputShapes:(id)arg2;
+- (void)setActiveGeometriesList:(id)arg1;
+- (id)activeGeometriesList;
+- (void)setGeometriesList:(id)arg1;
+- (id)geometriesList;
+- (id)listShapes;
 - (id)attributeSet:(_Bool)arg1;
 - (id)geometrySet:(_Bool)arg1;
 - (id)keySet;
@@ -128,6 +135,7 @@
 - (id)keyAttributes;
 - (id)geometries;
 - (id)keys;
+- (void)_addKeylayoutKeys:(id)arg1;
 - (void)setAttributes:(id)arg1;
 - (id)keyplaneForKey:(id)arg1;
 - (id)keyForString:(id)arg1;
@@ -154,6 +162,8 @@
 - (id)shape;
 - (_Bool)subtreesAreOrdered;
 - (_Bool)isLeafType;
+- (void)elaborateLayoutWithSize:(struct CGSize)arg1 scale:(double)arg2;
+- (long long)_keyCountOnNamedRow:(id)arg1;
 - (void)zipAttributes;
 - (void)zipGeometrySet;
 - (void)zipGeometries:(_Bool)arg1 attributes:(_Bool)arg2;

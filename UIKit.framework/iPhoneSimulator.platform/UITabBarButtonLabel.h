@@ -14,23 +14,30 @@ __attribute__((visibility("hidden")))
     double _boundsWidth;
     _UITabBarItemAppearanceStorage *_appearanceStorage;
     _Bool _isSelected;
+    _Bool _isHighlighted;
     Class _appearanceGuideClass;
     UIColor *_unselectedTintColor;
 }
 
++ (double)_fontPointSizeForIdiom:(long long)arg1;
 @property(retain, nonatomic, getter=_unselectedTintColor, setter=_setUnselectedTintColor:) UIColor *unselectedTintColor; // @synthesize unselectedTintColor=_unselectedTintColor;
 @property(nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (id)_fontForIdiom:(long long)arg1;
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (void)_updateForFontChangeWithIdiom:(long long)arg1;
 - (void)_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset)arg1;
+- (void)setHighlighted:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1;
-- (void)updateTextColorsForSelection;
+- (void)updateTextColorsForState;
 - (void)tintColorDidChange;
 - (void)sizeToFitBounds:(struct CGRect)arg1;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
+- (_Bool)_shouldCeilSizeToViewScale;
 - (void)dealloc;
 
 @end

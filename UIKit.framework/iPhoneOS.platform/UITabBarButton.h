@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSValue, UIColor, UIImage, UITabBarButtonLabel, UITabBarSelectionIndicatorView, UIView, _UIBadgeView;
+@class NSMutableDictionary, NSValue, UIColor, UIImage, UITabBarButtonLabel, UITabBarSelectionIndicatorView, UIView, _UIBadgeView;
 
 __attribute__((visibility("hidden")))
 @interface UITabBarButton : UIControl
@@ -24,28 +24,34 @@ __attribute__((visibility("hidden")))
     struct UIOffset _infoOffset;
     UIImage *_customSelectedIndicatorImage;
     NSValue *_labelOffsetValue;
-    _Bool _selectedImageColoringIsStale;
+    NSMutableDictionary *_buttonTintColorsForState;
+    NSMutableDictionary *_contentTintColorsForState;
+    _Bool _showsHighlightedState;
     _Bool _centerAllContents;
-    double _templateImageWidth;
     Class _appearanceGuideClass;
     UIColor *_unselectedTintColor;
 }
 
 + (id)_defaultLabelColor;
-+ (id)_defaultLabelFont;
 @property(retain, nonatomic, getter=_unselectedTintColor, setter=_setUnselectedTintColor:) UIColor *unselectedTintColor; // @synthesize unselectedTintColor=_unselectedTintColor;
 @property(nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
 @property(nonatomic, setter=_setCenterAllContents:) _Bool _centerAllContents; // @synthesize _centerAllContents;
-@property(nonatomic, setter=_setSelectedImageColoringIsStale:) _Bool _selectedImageColoringIsStale; // @synthesize _selectedImageColoringIsStale;
-@property(nonatomic, setter=_setTemplateImageWidth:) double _templateImageWidth; // @synthesize _templateImageWidth;
+@property(nonatomic, setter=_setShowsHighlightedState:) _Bool _showsHighlightedState; // @synthesize _showsHighlightedState;
 @property(readonly, nonatomic) UITabBarButtonLabel *tabBarButtonLabel; // @synthesize tabBarButtonLabel=_label;
 @property(retain, nonatomic) NSValue *labelOffsetValue; // @synthesize labelOffsetValue=_labelOffsetValue;
+- (id)_contentTintColorForState:(unsigned long long)arg1;
+- (void)_setContentTintColor:(id)arg1 forState:(unsigned long long)arg2;
+- (id)_buttonTintColorForState:(unsigned long long)arg1;
+- (void)_setButtonTintColor:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (struct UIOffset)_titlePositionAdjustment;
 - (void)_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (struct CGRect)_responderSelectionRectForWindow:(id)arg1;
+- (void)_focusStateDidChange;
+- (_Bool)_isFocusableElement;
 - (void)_setLabelHidden:(_Bool)arg1;
 - (void)_setCustomSelectedIndicatorImage:(id)arg1;
 - (_Bool)_useBarHeight;
@@ -55,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_frameForSelectedIndicator;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
-- (void)tintColorDidChange;
 - (void)setEnabled:(_Bool)arg1;
 - (void)_setBadgeAnimated:(_Bool)arg1;
 - (void)_badgeAnimationDidStop:(id)arg1 finished:(id)arg2;
@@ -67,8 +72,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, getter=_isSelected, setter=_setSelected:) _Bool _selected;
 - (void)_setUnselectedTintColor:(id)arg1 forceLabelToConform:(_Bool)arg2;
 - (void)_updateToMatchCurrentState;
+- (void)setHighlighted:(_Bool)arg1;
 - (void)_updateInfoFrame;
 - (void)_showSelectedIndicator:(_Bool)arg1 changeSelection:(_Bool)arg2;
+- (void)_setUpSelectedIndicatorViewIfNeeded;
+- (void)_updateSelectedIndicatorView;
 - (id)_swappableImageView;
 - (struct CGRect)_tabBarHitRect;
 - (void)_setTabBarHitRect:(struct CGRect)arg1;

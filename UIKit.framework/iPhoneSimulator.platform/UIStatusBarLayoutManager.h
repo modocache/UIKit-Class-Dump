@@ -13,30 +13,32 @@ __attribute__((visibility("hidden")))
 {
     UIStatusBarForegroundView *_foregroundView;
     int _region;
-    UIStatusBarItemView *_itemViews[32];
+    UIStatusBarItemView *_itemViews[30];
     _Bool _persistentAnimationsEnabled;
+    _Bool _usesVerticalLayout;
 }
 
+@property(readonly, nonatomic) _Bool usesVerticalLayout; // @synthesize usesVerticalLayout=_usesVerticalLayout;
 @property(nonatomic) _Bool persistentAnimationsEnabled; // @synthesize persistentAnimationsEnabled=_persistentAnimationsEnabled;
 @property(nonatomic) UIStatusBarForegroundView *foregroundView; // @synthesize foregroundView=_foregroundView;
-- (struct CGRect)_repositionedNewFrame:(struct CGRect)arg1 widthDelta:(double)arg2;
-- (double)_positionAfterPlacingItemView:(id)arg1 startPosition:(double)arg2;
-- (struct CGRect)_frameForItemView:(id)arg1 startPosition:(double)arg2;
+- (struct CGRect)_repositionedNewFrame:(struct CGRect)arg1 sizeDelta:(double)arg2;
+- (double)_positionAfterPlacingItemView:(id)arg1 startPosition:(double)arg2 firstView:(_Bool)arg3;
+- (struct CGRect)_frameForItemView:(id)arg1 startPosition:(double)arg2 firstView:(_Bool)arg3;
 - (double)_startPosition;
 - (SEL)_itemSortSelector;
 - (id)_itemViewsSortedForLayout;
 - (id)_itemViews;
 - (id)_createViewForItem:(id)arg1 withData:(id)arg2 actions:(int)arg3;
 - (id)_viewForItem:(id)arg1;
-- (double)_widthNeededForItemView:(id)arg1;
-- (void)itemView:(id)arg1 widthChangedBy:(double)arg2;
+- (double)_sizeNeededForItemView:(id)arg1;
+- (void)itemView:(id)arg1 sizeChangedBy:(double)arg2;
 - (_Bool)itemIsVisible:(id)arg1;
 - (struct CGRect)rectForItems:(id)arg1;
 - (double)removeOverlap:(double)arg1 fromItems:(id)arg2;
 - (double)distributeOverlap:(double)arg1 amongItems:(id)arg2;
 - (void)clearOverlapFromItems:(id)arg1;
-- (double)widthNeededForItems:(id)arg1;
-- (double)widthNeededForItem:(id)arg1;
+- (double)sizeNeededForItems:(id)arg1;
+- (double)sizeNeededForItem:(id)arg1;
 - (void)makeVisibleItemsPerformPendedActions;
 - (void)positionInvisibleItems;
 - (void)removeDisabledItems:(_Bool *)arg1;
@@ -51,8 +53,11 @@ __attribute__((visibility("hidden")))
 - (void)setVisibilityOfItem:(id)arg1 visible:(_Bool)arg2;
 - (void)setVisibilityOfAllItems:(_Bool)arg1;
 - (_Bool)prepareEnabledItems:(_Bool *)arg1 withData:(id)arg2 actions:(int)arg3;
+- (void)_addOriginDelta:(double)arg1 toPoint:(struct CGPoint *)arg2;
+- (void)_setOrigin:(double)arg1 forPoint:(struct CGPoint *)arg2;
+- (double)_dimensionForSize:(struct CGSize)arg1;
 - (void)dealloc;
-- (id)initWithRegion:(int)arg1 foregroundView:(id)arg2;
+- (id)initWithRegion:(int)arg1 foregroundView:(id)arg2 usesVerticalLayout:(_Bool)arg3;
 
 @end
 

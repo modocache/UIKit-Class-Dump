@@ -6,27 +6,55 @@
 
 #import <UIKit/UIKeyboardLayoutStar.h>
 
-@class UIView;
+@class UIKBTree, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardLayoutCursor : UIKeyboardLayoutStar
 {
+    UIKBTree *_indirectKeyboard;
     UIView *_selectionView;
     long long _selectedKeyIndex;
+    _Bool _suppressOperations;
 }
 
++ (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2;
++ (id)carKeyboardNameForKeyboard:(id)arg1 screenTraits:(id)arg2;
+- (_Bool)_handleMoveWithEvent:(id)arg1;
+- (void)_moveWithEvent:(id)arg1;
+- (_Bool)_handleWheelChangedWithEvent:(id)arg1;
+- (void)_wheelChangedWithEvent:(id)arg1;
+- (_Bool)_handlePhysicalKeyDownWithEvent:(id)arg1;
 - (void)physicalKeyDownWithEvent:(id)arg1;
+- (_Bool)_handleRemoteControlReceivedWithEvent:(id)arg1;
 - (void)remoteControlReceivedWithEvent:(id)arg1;
-- (void)handleDirectionalInput:(int)arg1;
+- (_Bool)_handlePhysicalButtonEvent:(id)arg1;
+- (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
+- (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
+- (_Bool)handleVisualDirectionalInput:(int)arg1;
+- (_Bool)handleLinearDirectionalInput:(int)arg1;
 - (void)takeKeyAction:(id)arg1;
+- (_Bool)canHandleEvent:(id)arg1;
 - (void)setSelectionPoint:(struct CGPoint)arg1;
+- (void)setHighlightedVariantIndex:(long long)arg1 key:(id)arg2;
 - (void)setSelectedKeyIndex:(long long)arg1;
+- (void)deactivateCurrentKey;
 - (struct CGRect)selectionFrameForKeyIndex:(long long)arg1;
 - (void)updateSelectionForCurrentKeyplane;
 - (id)keyplaneKeyForCurrentKeyplane;
-- (_Bool)acceptsDirectionInput;
+- (void)setCursorLocation:(long long)arg1;
+- (long long)cursorLocation;
+- (int)enabledStateForKey:(id)arg1;
+- (int)activeStateForKey:(id)arg1;
+- (_Bool)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
+- (_Bool)shouldPreventInputManagerHitTestingForKey:(id)arg1;
+- (void)setKeyplaneName:(id)arg1;
+- (void)flushKeyCache:(id)arg1;
 - (void)setKeyboardAppearance:(long long)arg1;
+- (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
+@property(readonly, nonatomic) UIKBTree *currentKey;
+- (void)runWithSuppressedActions:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

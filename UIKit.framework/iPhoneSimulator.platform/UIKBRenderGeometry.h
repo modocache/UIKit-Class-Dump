@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)applyInsets:(struct UIEdgeInsets)arg1;
 - (void)overlayWithGeometry:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)initWithShape:(id)arg1;

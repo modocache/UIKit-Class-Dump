@@ -11,6 +11,7 @@
 @interface UITabBar (Static) <_UIBackdropViewGraphicsQualityChangeDelegate>
 - (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (void)_positionTabBarButtons:(id)arg1 ignoringItem:(id)arg2;
+- (struct CGRect)_tabAreaLayoutBounds;
 - (void)_configureItems:(id)arg1;
 - (void)_updateDividerImagesIfNecessary;
 - (void)_configureTabBarReplacingItem:(id)arg1 withNewItem:(id)arg2 dragging:(_Bool)arg3 swapping:(_Bool)arg4;

@@ -6,12 +6,16 @@
 
 #import <UIKit/UICollectionView.h>
 
+@class NSIndexPath;
+
 __attribute__((visibility("hidden")))
 @interface UIKBCandidateCollectionView : UICollectionView
 {
 }
 
+- (void)configureAsCandidatesBar;
 - (_Bool)_selectAndScrollToItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(unsigned long long)arg3;
+@property(readonly, nonatomic) NSIndexPath *selectedItemIndexPath;
 
 @end
 

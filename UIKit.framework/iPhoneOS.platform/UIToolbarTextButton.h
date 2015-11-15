@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)_setPressed:(_Bool)arg1;
 - (void)dealloc;
-- (void)_setWantsLetterpressTitle;
 - (id)initWithTitle:(id)arg1 pressedTitle:(id)arg2 withFont:(id)arg3 withBarStyle:(long long)arg4 withStyle:(long long)arg5 withTitleWidth:(float)arg6 possibleTitles:(id)arg7 withToolbarTintColor:(id)arg8;
 
 @end

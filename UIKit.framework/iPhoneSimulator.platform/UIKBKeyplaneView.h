@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)cacheKeysForRenderFlags:(id)arg1;
 @property(readonly, nonatomic) NSString *cacheKey;
 - (void)layoutSubviews;
+- (_Bool)isPasscodeStyle;
 - (_Bool)validForKeyplane:(id)arg1 withVisualStyle:(int)arg2;
 - (void)dealloc;
 - (void)removeFromSuperview;

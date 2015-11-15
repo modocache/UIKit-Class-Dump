@@ -126,6 +126,7 @@
         unsigned int updateInsetBottom:1;
         unsigned int beingDraggedByChildScrollView:1;
         unsigned int adjustsTargetsOnContentOffsetChanges:1;
+        unsigned int forwardsTouchesUpResponderChain:1;
     } _scrollViewFlags;
     _Bool _useContentDimensionVariablesForConstraintLowering;
     id _scrollTestParameters;
@@ -223,6 +224,8 @@
 @property(readonly, nonatomic, getter=isTracking) _Bool tracking;
 - (_Bool)cancelMouseTracking;
 - (_Bool)cancelTouchTracking;
+- (void)_setForwardsTouchesUpResponderChain:(_Bool)arg1;
+- (_Bool)_forwardsTouchesUpResponderChain;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
@@ -280,6 +283,7 @@
 - (void)_setTransfersScrollToContainer:(_Bool)arg1;
 - (_Bool)_transfersScrollToContainer;
 @property(nonatomic) _Bool alwaysBounceVertical;
+- (double)keyboardBottomInsetAdjustmentDelta;
 - (_Bool)updateInsetBottomDuringKeyboardDismiss;
 - (void)setUpdateInsetBottomDuringKeyboardDismiss:(_Bool)arg1;
 - (_Bool)bouncesVertically;
@@ -327,7 +331,9 @@
 - (void)_updatePanGestureConfiguration;
 - (id)_panGestureRecognizer;
 - (void)_updateUsesStaticScrollBar;
+- (_Bool)_usesLowFidelityPanning;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (void)_flashScrollIndicatorsPersistingPreviousFlashes:(_Bool)arg1;
 - (void)_setUsesStaticScrollBar:(_Bool)arg1;
 - (id)_staticScrollBar;
 - (void)dealloc;

@@ -10,10 +10,12 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidatePocketShadow : UIView
 {
     _Bool _shadowFadesToBottom;
+    _Bool _drawsShadow;
     double _shadowHeightGrowthFactor;
 }
 
 + (double)width;
+@property(nonatomic) _Bool drawsShadow; // @synthesize drawsShadow=_drawsShadow;
 @property(nonatomic) _Bool shadowFadesToBottom; // @synthesize shadowFadesToBottom=_shadowFadesToBottom;
 @property(nonatomic) double shadowHeightGrowthFactor; // @synthesize shadowHeightGrowthFactor=_shadowHeightGrowthFactor;
 - (void)drawRect:(struct CGRect)arg1;

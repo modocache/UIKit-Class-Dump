@@ -54,7 +54,6 @@
         unsigned int isRotatingWithPopover:1;
         unsigned int cancelButtonManagementDisabled:1;
         unsigned int allowDisablingNavigationBarHiding:1;
-        unsigned int adjustsSearchBarContentInsetForIndexBar:1;
         unsigned int showsResultsForEmptyField:1;
         unsigned int searchBarCanBeHoisted:1;
         unsigned int animatingSearchResultsDisappearance:1;
@@ -77,6 +76,7 @@
 @property(readonly, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property(readonly, nonatomic) UIViewController *searchContentsController; // @synthesize searchContentsController=_viewController;
 @property(nonatomic) id <UISearchDisplayDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)_containedInPopover;
 - (double)_statusBarHeight;
 - (_Bool)_shouldAccountForStatusBarHeight;
 - (_Bool)_searchBarInNavigationControllerComponent;
@@ -98,8 +98,6 @@
 @property(nonatomic, getter=_isCancelButtonManagementDisabled, setter=_setCancelButtonManagementDisabled:) _Bool cancelButtonManagementDisabled;
 - (void)_clearViewController;
 @property(nonatomic) _Bool dimTableViewOnEmptySearchString;
-- (_Bool)_adjustsSearchBarContentInsetForIndexBar;
-- (void)_setAdjustsSearchBarContentInsetForIndexBar:(_Bool)arg1;
 - (_Bool)_allowDisablingNavigationBarHiding;
 - (void)_setAllowDisablingNavigationBarHiding:(_Bool)arg1;
 @property(nonatomic, getter=isNavigationBarHidingEnabled) _Bool navigationBarHidingEnabled;
@@ -139,7 +137,6 @@
 - (void)_searchBarSuperviewChanged;
 - (void)_searchBarSuperviewWillChange;
 - (void)_indexBarFrameChanged:(id)arg1;
-- (void)_updateSearchBarForTableViewIndexBar:(id)arg1;
 - (void)_setTableViewVisible:(_Bool)arg1 inView:(id)arg2;
 - (void)_hoistSearchBar;
 - (void)_adjustTableViewContentInsetsAndOffsetsIgnoringCurrent:(_Bool)arg1;

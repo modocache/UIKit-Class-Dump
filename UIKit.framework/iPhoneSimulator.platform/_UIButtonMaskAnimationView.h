@@ -6,17 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton;
+@class UIButton, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface _UIButtonMaskAnimationView : UIView
 {
+    unsigned long long _hardEdge;
+    UIView *_hardEdgeLine;
     UIButton *_delegate;
 }
 
 @property(nonatomic) UIButton *delegate; // @synthesize delegate=_delegate;
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
+@property unsigned long long hardEdge;
+@property(nonatomic) UIColor *borderColor;
+@property double borderWidth;
+- (void)layoutSubviews;
+- (struct CGRect)_frameForLine;
+- (void)dealloc;
+- (id)init;
 
 @end
 

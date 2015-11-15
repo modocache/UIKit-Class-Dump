@@ -10,6 +10,7 @@
 
 @interface _UIBackdropColorSettings : NSObject
 {
+    _Bool _hasObservedValues;
     double _averageHue;
     double _averageSaturation;
     double _averageBrightness;
@@ -21,6 +22,7 @@
     double _previousContrast;
 }
 
+@property(nonatomic) _Bool hasObservedValues; // @synthesize hasObservedValues=_hasObservedValues;
 @property(nonatomic) double previousContrast; // @synthesize previousContrast=_previousContrast;
 @property(nonatomic) double previousAverageBrightness; // @synthesize previousAverageBrightness=_previousAverageBrightness;
 @property(nonatomic) double previousAverageSaturation; // @synthesize previousAverageSaturation=_previousAverageSaturation;

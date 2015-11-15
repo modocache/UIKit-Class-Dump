@@ -25,17 +25,21 @@ __attribute__((visibility("hidden")))
     long long _lastSectionTestedForNumberOfItemsBeforeSection;
     long long _lastResultForNumberOfItemsBeforeSection;
     struct CGSize _contentSize;
+    NSMutableArray *_clonedCellAttributes;
+    NSMutableArray *_clonedSupplementaryAttributes;
+    NSMutableArray *_clonedDecorationAttributes;
     struct {
         unsigned int contentSizeIsValid:1;
         unsigned int itemCountsAreValid:1;
         unsigned int layoutIsPrepared:1;
         unsigned int layoutLocked:1;
     } _collectionViewDataFlags;
-    NSMutableArray *_clonedLayoutAttributes;
 }
 
 + (void)initialize;
-@property(readonly, nonatomic) NSArray *clonedLayoutAttributes; // @synthesize clonedLayoutAttributes=_clonedLayoutAttributes;
+@property(readonly, nonatomic) NSArray *clonedDecorationAttributes; // @synthesize clonedDecorationAttributes=_clonedDecorationAttributes;
+@property(readonly, nonatomic) NSArray *clonedSupplementaryAttributes; // @synthesize clonedSupplementaryAttributes=_clonedSupplementaryAttributes;
+@property(readonly, nonatomic) NSArray *clonedCellAttributes; // @synthesize clonedCellAttributes=_clonedCellAttributes;
 @property(nonatomic, getter=isLayoutLocked) _Bool layoutLocked;
 @property(readonly, nonatomic) _Bool layoutIsPrepared;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;

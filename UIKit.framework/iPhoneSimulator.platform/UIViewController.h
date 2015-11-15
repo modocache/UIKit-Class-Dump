@@ -105,7 +105,6 @@
     NSMutableArray *_childViewControllers;
     double _customNavigationInteractiveTransitionDuration;
     double _customNavigationInteractiveTransitionPercentComplete;
-    id <UIViewControllerTransitioningDelegate> _transitionDelegate;
     UITransitionView *_customTransitioningView;
     double _navigationControllerContentOffsetAdjustment;
     _UILayoutGuide *_topLayoutGuide;
@@ -187,7 +186,6 @@
 @property(nonatomic, setter=_setNavigationControllerContentOffsetAdjustment:) double _navigationControllerContentOffsetAdjustment; // @synthesize _navigationControllerContentOffsetAdjustment;
 @property(nonatomic, setter=_setNavigationControllerContentInsetAdjustment:) struct UIEdgeInsets _navigationControllerContentInsetAdjustment; // @synthesize _navigationControllerContentInsetAdjustment;
 @property(retain, nonatomic) UITransitionView *customTransitioningView; // @synthesize customTransitioningView=_customTransitioningView;
-@property(retain, nonatomic) id <UIViewControllerTransitioningDelegate> transitioningDelegate; // @synthesize transitioningDelegate=_transitionDelegate;
 @property(nonatomic) double customNavigationInteractiveTransitionPercentComplete; // @synthesize customNavigationInteractiveTransitionPercentComplete=_customNavigationInteractiveTransitionPercentComplete;
 @property(nonatomic) double customNavigationInteractiveTransitionDuration; // @synthesize customNavigationInteractiveTransitionDuration=_customNavigationInteractiveTransitionDuration;
 @property(copy, nonatomic) CDUnknownBlockType afterAppearanceBlock; // @synthesize afterAppearanceBlock=_afterAppearance;
@@ -445,6 +443,9 @@
 - (void)_addChildViewController:(id)arg1;
 - (void)_removeChildViewController:(id)arg1;
 - (void)_enumerateVisibleChildControllers:(_Bool)arg1 includePresentedChildren:(_Bool)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)_barBackdropGroupNameForAncestorViewController:(id *)arg1;
+- (void)_enumerateAncestorViewControllersUntilStop:(_Bool *)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)_backdropBarGroupName;
 - (void)updateTitleForViewController:(id)arg1;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
 - (id)_nextViewControllerInResponderChain;
@@ -476,6 +477,7 @@
 - (id)existingView;
 - (_Bool)isViewLoaded;
 @property(retain, nonatomic) UIView *view;
+- (void)_cleanupLayoutGuides;
 - (void)_setSharedView:(id)arg1;
 - (void)loadViewIfRequired;
 - (void)viewDidUnload;
@@ -606,9 +608,11 @@
 - (void)_unembedContentView;
 - (void)_embedContentViewInView:(id)arg1 withContentFrame:(struct CGRect)arg2 delegate:(id)arg3;
 - (void)_unembedContentViewSettingDelegate:(id)arg1;
+- (_Bool)_viewControllerWasSelected;
 - (id)_uiCollectionView;
 - (_Bool)useLayoutToLayoutNavigationTransitions;
 - (id)_animatorForOperation:(long long)arg1 fromViewController:(id)arg2 toViewController:(id)arg3;
+@property(nonatomic) id <UIViewControllerTransitioningDelegate> transitioningDelegate;
 - (void)attentionClassDumpUser:(id)arg1 yesItsUsAgain:(id)arg2 althoughSwizzlingAndOverridingPrivateMethodsIsFun:(id)arg3 itWasntMuchFunWhenYourAppStoppedWorking:(id)arg4 pleaseRefrainFromDoingSoInTheFutureOkayThanksBye:(id)arg5;
 - (long long)_imagePickerStatusBarStyle;
 - (_Bool)_displaysFullScreen;

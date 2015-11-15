@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;
 - (void)setNeedsDisplay;
 - (void)displayLayer:(id)arg1;
+- (_Bool)requiresSublayers;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 

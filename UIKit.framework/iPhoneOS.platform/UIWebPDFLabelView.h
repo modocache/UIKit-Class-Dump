@@ -6,18 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class NSTimer, UILabel, _UIHighlightView;
+@class NSTimer, UILabel, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface UIWebPDFLabelView : UIView
 {
     UILabel *_label;
-    _UIHighlightView *_highlight;
+    _UIBackdropView *_backdropView;
     NSTimer *_timer;
     unsigned long long currentPageIndex;
 }
 
 @property(nonatomic) unsigned long long currentPageIndex; // @synthesize currentPageIndex;
+- (void)_makeRoundedCorners;
 - (void)fadeOut;
 - (void)_fadeOutAnimationDidStop:(id)arg1 finished:(id)arg2;
 - (void)showNowInSuperView:(id)arg1 atOrigin:(struct CGPoint)arg2 withText:(id)arg3 animated:(_Bool)arg4;

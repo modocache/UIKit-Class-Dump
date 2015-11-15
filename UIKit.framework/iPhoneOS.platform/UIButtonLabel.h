@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     UIButton *_button;
 }
 
++ (id)_defaultAttributes;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)_defaultAttributes;
 - (struct CGSize)intrinsicContentSize;

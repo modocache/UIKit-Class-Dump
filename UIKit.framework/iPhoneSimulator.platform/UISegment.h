@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
         unsigned int autosizeText:1;
         unsigned int isMomentary:1;
         unsigned int wasSelected:1;
+        unsigned int needsBackgroundAndContentViewUpdate:1;
+        unsigned int contentTextPaddingEnabled:1;
     } _segmentFlags;
     NSArray *_infoConstraints;
     double _requestedScaleFactor;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 + (id)_backgroundImageWithStorage:(id)arg1 style:(long long)arg2 mini:(_Bool)arg3 state:(unsigned long long)arg4 position:(unsigned int)arg5 drawMode:(int *)arg6 defaultBlock:(CDUnknownBlockType)arg7;
 @property(nonatomic) double requestedScaleFactor; // @synthesize requestedScaleFactor=_requestedScaleFactor;
 @property(copy, nonatomic, setter=_setInfoConstraints:) NSArray *_infoConstraints; // @synthesize _infoConstraints;
+- (void)layoutSubviews;
 - (id)viewForBaselineLayout;
 - (double)_idealWidth;
 - (struct UIEdgeInsets)_paddingInsets;
@@ -54,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)setPosition:(unsigned int)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)_positionInfoWithoutAnimation;
 - (void)_positionInfo;
 - (void)updateConstraints;
 - (void)_invalidateInfoConstraints;
@@ -88,7 +92,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_hasSelectedColor;
 - (id)_currentOptionsStyleTextShadowColor;
 - (id)_currentOptionsStyleTextColor;
-- (void)_updateBackgroundImage;
+- (void)_updateBackgroundAndContentViews;
+- (void)_updateBackgroundAndContentViewsIfNeeded;
 - (void)updateDividerViewForChangedSegment:(id)arg1;
 - (void)insertDividerView;
 - (id)_dividerImage;
@@ -96,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (id)_dividerImageIsCustom:(_Bool *)arg1;
 - (unsigned long long)_segmentState;
 - (_Bool)_isInMiniBar;
+- (void)setNeedsBackgroundAndContentViewUpdate;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;

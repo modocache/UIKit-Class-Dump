@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateWrappedViewFrame;
 - (void)_setIsCenterCell:(_Bool)arg1 shouldModifyAlphaOfView:(_Bool)arg2;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)_commonInit;
 
 @end
 

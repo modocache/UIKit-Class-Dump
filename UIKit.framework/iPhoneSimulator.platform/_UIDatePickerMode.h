@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSDate, NSDateComponents, NSString, UIColor, UIFont, _UIDatePickerView;
+@class NSArray, NSDate, NSDateComponents, NSNumberFormatter, NSString, UIColor, UIFont, _UIDatePickerView;
 
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerMode : NSObject
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSString *_amString;
     NSString *_pmString;
     NSDateComponents *_todayDateComponents;
+    NSNumberFormatter *_formatter;
     _UIDatePickerView *_datePickerView;
     unsigned long long _numberOfComponents;
     long long _minuteInterval;

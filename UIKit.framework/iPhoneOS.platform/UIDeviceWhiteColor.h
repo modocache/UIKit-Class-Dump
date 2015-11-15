@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     long long cachedColorOnceToken;
 }
 
-- (_Bool)_getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
+- (_Bool)getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 - (_Bool)getWhite:(double *)arg1 alpha:(double *)arg2;
 - (double)alphaComponent;
 - (struct CGColor *)CGColor;

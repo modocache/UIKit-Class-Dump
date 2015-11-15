@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic, setter=_setTargetInterfaceOrientation:) long long _targetInterfaceOrientation; // @synthesize _targetInterfaceOrientation;
 - (id)debugDescription;
 - (void)_unapplyAllEffects;
+- (_Bool)_motionEffect:(id)arg1 belongsToView:(id)arg2;
 - (_Bool)_hasMotionEffectsForView:(id)arg1;
 - (id)_motionEffectsForView:(id)arg1;
 - (void)_unregisterAllMotionEffectsForView:(id)arg1;

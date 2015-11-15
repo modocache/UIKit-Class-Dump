@@ -8,10 +8,11 @@
 
 #import "NSCoding.h"
 
-@class NSArray, NSAttributedString, NSString, UIColor, UIFont, UIImage, UIImageView, UILabel, UIView, _UIButtonMaskAnimationView;
+@class NSArray, NSAttributedString, NSString, UIColor, UIFont, UIImage, UIImageView, UILabel, UITapGestureRecognizer, UIView, _UIButtonMaskAnimationView;
 
 @interface UIButton : UIControl <NSCoding>
 {
+    unsigned long long _externalFlatEdge;
     struct __CFDictionary *_contentLookup;
     struct UIEdgeInsets _contentEdgeInsets;
     struct UIEdgeInsets _titleEdgeInsets;
@@ -21,6 +22,7 @@
     UILabel *_titleView;
     _Bool _initialized;
     unsigned long long _lastDrawingControlState;
+    UITapGestureRecognizer *_selectGestureRecognizer;
     struct {
         unsigned int reversesTitleShadowWhenHighlighted:1;
         unsigned int adjustsImageWhenHighlighted:1;
@@ -118,8 +120,10 @@
 - (long long)_buttonType;
 - (void)_setButtonType:(long long)arg1;
 - (void)_setupTitleView;
+- (void)_setupTitleViewRequestingLayout:(_Bool)arg1;
 - (id)_newLabelWithFrame:(struct CGRect)arg1;
 - (void)_setupImageView;
+- (id)_createPreparedImageViewWithFrame:(struct CGRect)arg1;
 - (id)_setupBackgroundView;
 - (id)_newImageViewWithFrame:(struct CGRect)arg1;
 - (void)setTitleShadowOffset:(struct CGSize)arg1;
@@ -129,6 +133,13 @@
 - (void)setFont:(id)arg1;
 - (id)font;
 - (void)layoutSubviews;
+- (void)_layoutTitleView;
+- (void)_updateTitleView;
+- (void)_layoutImageView;
+- (void)_updateImageView;
+- (void)_layoutBackgroundImageView;
+- (void)_updateBackgroundImageView;
+- (_Bool)_shouldUpdatePressedness;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
@@ -176,12 +187,21 @@
 - (id)_borderColorForState:(unsigned long long)arg1;
 - (id)_fadeOutAnimationWithKeyPath:(id)arg1;
 - (id)_transitionAnimationWithKeyPath:(id)arg1;
+@property(setter=_setExternalFlatEdge:) unsigned long long _externalFlatEdge;
+- (id)_externalImageColorForState:(unsigned long long)arg1;
+- (id)_externalBorderColorForState:(unsigned long long)arg1;
+- (id)_externalTitleColorForState:(unsigned long long)arg1;
+- (long long)_externalDrawingStyleForState:(unsigned long long)arg1;
 - (void)_willMoveToWindow:(id)arg1;
 - (void)_setupDrawingStyleForState:(unsigned long long)arg1;
+- (struct CGRect)_highlightBoundsForDrawingStyle;
+- (void)_prepareMaskAnimationViewIfNecessary;
 - (struct CGRect)_selectedIndicatorBounds;
 - (id)_selectedIndicatorViewWithImage:(id)arg1;
 - (double)_selectedIndicatorAlpha;
 - (void)_updateSelectionViewForState:(unsigned long long)arg1;
+- (_Bool)_imageNeedsCompositingModeWhenSelected;
+- (_Bool)_textNeedsCompositingModeWhenSelected;
 - (void)_setupPressednessForState:(unsigned long long)arg1;
 - (void)_updateMaskState;
 - (_Bool)_hasHighlightColor;
@@ -190,6 +210,13 @@
 - (struct UIEdgeInsets)_pathImageEdgeInsets;
 - (struct UIEdgeInsets)_pathTitleEdgeInsets;
 - (void)tintColorDidChange;
+- (void)_selectGestureChanged:(id)arg1;
+- (void)_uninstallSelectGestureRecognizer;
+- (void)_installSelectGestureRecognizer;
+- (void)_focusStateDidChange;
+- (_Bool)_isFocusableElement;
+- (_Bool)_isExternalRoundedRectButtonWithPressednessState;
+- (_Bool)_isExternalRoundedRectButton;
 - (_Bool)_isModernButton;
 - (void)setContentVerticalAlignment:(long long)arg1;
 - (void)setContentHorizontalAlignment:(long long)arg1;
@@ -204,12 +231,14 @@
 @property(nonatomic) _Bool reversesTitleShadowWhenHighlighted; // @dynamic reversesTitleShadowWhenHighlighted;
 @property(nonatomic) struct UIEdgeInsets titleEdgeInsets; // @dynamic titleEdgeInsets;
 @property(nonatomic) struct UIEdgeInsets contentEdgeInsets; // @dynamic contentEdgeInsets;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
 - (void)_applyAppropriateChargeForButtonType;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)setEnabled:(_Bool)arg1;
 - (void)setSelected:(_Bool)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)_setFrame:(struct CGRect)arg1 deferLayout:(_Bool)arg2;
 @property(readonly, nonatomic) long long buttonType;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

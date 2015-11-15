@@ -83,8 +83,10 @@ __attribute__((visibility("hidden")))
 - (_Bool)_canGetPadding;
 - (_Bool)_infoIsButton;
 - (_Bool)_isBordered;
+- (_Bool)_isBorderedOtherThanAccessibility;
 - (void)layoutSubviews;
 - (void)_adjustPushButtonForMiniBar:(_Bool)arg1 isChangingBarHeight:(_Bool)arg2;
+- (id)_customOrAccessibilityBackgroundImageForState:(unsigned long long)arg1 style:(long long)arg2 isMini:(_Bool)arg3;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)setHighlighted:(_Bool)arg1;
@@ -113,6 +115,11 @@ __attribute__((visibility("hidden")))
 - (void)setImage:(id)arg1;
 - (void)_sizeView:(id)arg1 toPossibleTitles:(id)arg2 pressedTitle:(id)arg3;
 - (void)setSizesToFitImage:(_Bool)arg1;
+@property(nonatomic, setter=_setCreatedByBarButtonItem:) _Bool _createdByBarButtonItem;
+- (_Bool)_wantsAccessibilityButtonShapes;
+- (_Bool)_showsAccessibilityBackgroundWhenEnabled;
+- (void)_setWantsBlendModeForAccessibilityBackgrounds:(_Bool)arg1;
+- (void)_setWantsLetterpressContent;
 - (void)dealloc;
 - (id)initWithImage:(id)arg1 pressedImage:(id)arg2 label:(id)arg3 labelHeight:(float)arg4 withBarStyle:(long long)arg5 withStyle:(long long)arg6 withInsets:(struct UIEdgeInsets)arg7 possibleTitles:(id)arg8 possibleSystemItems:(id)arg9 withToolbarTintColor:(id)arg10 bezel:(_Bool)arg11 imageInsets:(struct UIEdgeInsets)arg12 glowInsets:(struct UIEdgeInsets)arg13 landscape:(_Bool)arg14;
 - (id)_newButton;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSLayoutConstraint, UIActivityGroupCancelButton, UIActivityGroupView, UIControl, UIView, _UIBackdropView;
+@class NSLayoutConstraint, UIActivityGroupCancelButton, UIActivityGroupView, UIControl, UIScrollView, UIView, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface UIActivityGroupListViewController : UIViewController
@@ -21,10 +21,12 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_statusBlurHeight;
     long long _currentStatusBarStyle;
     UIControl *_dimView;
+    UIScrollView *_scrollView;
     UIActivityGroupView *_groupView;
 }
 
 @property(retain, nonatomic) UIActivityGroupView *groupView; // @synthesize groupView=_groupView;
+@property(retain, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(retain, nonatomic) UIControl *dimView; // @synthesize dimView=_dimView;
 @property(nonatomic) long long currentStatusBarStyle; // @synthesize currentStatusBarStyle=_currentStatusBarStyle;
 @property(retain, nonatomic) NSLayoutConstraint *statusBlurHeight; // @synthesize statusBlurHeight=_statusBlurHeight;

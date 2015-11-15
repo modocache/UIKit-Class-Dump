@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 - (id)_emojiDefaultControlKeyActiveBackgroundColorGradient;
 - (id)_emojiInputViewKeyBackgroundColorGradient;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
+- (id)controlKeyBackgroundColorName;
+- (id)defaultKeyBackgroundColorName;
 
 @end
 

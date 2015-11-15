@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _usingVerticalArrows;
 }
 
++ (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2;
 - (void)layoutSubviews;
 - (void)updatePageControlWithStatus:(_Bool)arg1 rightControlButtonEnabled:(_Bool)arg2;
 - (void)_changePage:(id)arg1;

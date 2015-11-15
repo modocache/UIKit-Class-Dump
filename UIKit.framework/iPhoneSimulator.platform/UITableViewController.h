@@ -9,7 +9,7 @@
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 
-@class UIRefreshControl, UITableView, UITableViewDataSource;
+@class UIRefreshControl, UITableView, UITableViewDataSource, _UIFilteredDataSource;
 
 @interface UITableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
@@ -21,8 +21,13 @@
         unsigned int insetsApplied:1;
         unsigned int adjustingInsets:1;
     } _tableViewControllerFlags;
+    _UIFilteredDataSource *_filteredDataSource;
+    long long _filteredDataType;
 }
 
+- (void)_refreshFilteredDataSourceFilterTypeForScreen:(id)arg1;
+- (void)_setFilteredDataType:(long long)arg1;
+- (long long)_filteredDataType;
 - (void)tableView:(id)arg1 didEndEditingRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 indentationLevelForRowAtIndexPath:(id)arg2;
@@ -39,11 +44,15 @@
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (void)_adjustTableForKeyboardInfo:(id)arg1;
 @property(retain, nonatomic) UIRefreshControl *refreshControl;
+- (_Bool)_viewControllerWasSelected;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
+- (long long)_resolvedDataSourceFilterTypeForScreen:(id)arg1;
 - (void)loadView;
+- (void)_applyDefaultDataSourceToTable:(id)arg1;
 @property(nonatomic) _Bool clearsSelectionOnViewWillAppear;
 @property(retain, nonatomic) UITableView *tableView;
 - (id)_existingTableView;

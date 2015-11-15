@@ -11,6 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
+- (id)shiftedWhiteControlKeyTraits;
+- (id)shiftedControlKeyTraits;
 - (id)activeControlKeyTraits;
 - (id)controlKeyTraits;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
@@ -27,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (id)_preferredScriptFontForRendering:(int)arg1;
 - (id)displayContentsForKey:(id)arg1;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
+- (id)controlKeyBackgroundColorName;
+- (id)defaultKeyBackgroundColorName;
 
 @end
 

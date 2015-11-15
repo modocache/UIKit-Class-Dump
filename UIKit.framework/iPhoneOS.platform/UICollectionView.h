@@ -24,8 +24,12 @@
     long long _firstResponderViewType;
     NSString *_firstResponderViewKind;
     NSIndexPath *_firstResponderIndexPath;
-    NSMutableDictionary *_allVisibleViewsDict;
-    NSMutableDictionary *_clonedViewsDict;
+    NSMutableDictionary *_visibleCellsDict;
+    NSMutableDictionary *_visibleSupplementaryViewsDict;
+    NSMutableDictionary *_visibleDecorationViewsDict;
+    NSMutableDictionary *_clonedCellsDict;
+    NSMutableDictionary *_clonedSupplementaryViewsDict;
+    NSMutableDictionary *_clonedDecorationViewsDict;
     NSIndexPath *_pendingSelectionIndexPath;
     NSMutableSet *_pendingDeselectionIndexPaths;
     UICollectionViewData *_collectionViewData;
@@ -65,6 +69,7 @@
     UICollectionViewLayout *_nextLayoutForInteractiveTranstion;
     NSMutableDictionary *_interactiveTransitionValueTrackingDict;
     NSMutableArray *_trackedValuesKeys;
+    NSMutableDictionary *_invalidatedAttributes;
     struct {
         unsigned int delegateShouldHighlightItemAtIndexPath:1;
         unsigned int delegateDidHighlightItemAtIndexPath:1;
@@ -115,6 +120,8 @@
 - (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
+- (void)_unhighlightAllItemsAndHighlightGlobalItem:(long long)arg1;
+- (void)_highlightFirstVisibleItemIfAppropriate;
 - (void)_moveWithEvent:(id)arg1;
 - (_Bool)canBecomeFirstResponder;
 - (void)_cellMenuDismissed;
@@ -154,12 +161,12 @@
 - (void)insertSections:(id)arg1;
 - (void)_updateSections:(id)arg1 updateAction:(int)arg2;
 - (id)_arrayForUpdateAction:(int)arg1;
-- (id)_currentUpdate;
+@property(readonly, nonatomic, getter=_currentUpdate) UICollectionViewUpdate *currentUpdate;
 - (void)_reuseSupplementaryView:(id)arg1;
 - (void)_reuseCell:(id)arg1;
 - (id)dequeueReusableSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2 forIndexPath:(id)arg3;
 - (id)dequeueReusableCellWithReuseIdentifier:(id)arg1 forIndexPath:(id)arg2;
-- (id)_dequeueReusableViewOfKind:(id)arg1 withIdentifier:(id)arg2 forIndexPath:(id)arg3;
+- (id)_dequeueReusableViewOfKind:(id)arg1 withIdentifier:(id)arg2 forIndexPath:(id)arg3 viewCategory:(unsigned long long)arg4;
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfSupplementaryViewOfKind:(id)arg2 withReuseIdentifier:(id)arg3;
 - (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfCellWithReuseIdentifier:(id)arg2;
 - (void)registerNib:(id)arg1 forSupplementaryViewOfKind:(id)arg2 withReuseIdentifier:(id)arg3;
@@ -182,6 +189,7 @@
 - (id)indexPathForSupplementaryView:(id)arg1;
 - (id)indexPathForCell:(id)arg1;
 - (id)_indexPathForView:(id)arg1 ofType:(unsigned long long)arg2;
+- (id)_visibleViewDictForElementCategory:(unsigned long long)arg1 elementKind:(id)arg2;
 - (id)indexPathForItemAtPoint:(struct CGPoint)arg1;
 - (id)layoutAttributesForSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
@@ -201,11 +209,16 @@
 - (void)setCollectionViewLayout:(id)arg1 animated:(_Bool)arg2;
 - (_Bool)_visible;
 - (void)layoutSubviews;
+- (void)_setVisibleView:(id)arg1 forLayoutAttributes:(id)arg2;
+- (id)_visibleViewForLayoutAttributes:(id)arg1;
+- (id)_visibleCellForIndexPath:(id)arg1;
 - (id)_viewControllerToNotifyOnLayoutSubviews;
 - (void)_updateBackgroundView;
 - (id)_doubleSidedAnimationsForView:(id)arg1 withStartingLayoutAttributes:(id)arg2 startingLayout:(id)arg3 endingLayoutAttributes:(id)arg4 endingLayout:(id)arg5 withAnimationSetup:(CDUnknownBlockType)arg6 animationCompletion:(CDUnknownBlockType)arg7 enableCustomAnimations:(_Bool)arg8 customAnimationsType:(unsigned long long)arg9;
 - (void)_ensureViewsAreLoadedInRect:(struct CGRect)arg1;
 - (void)_updateVisibleCellsNow:(_Bool)arg1;
+- (_Bool)_shouldFadeCellsForBoundChangeWhileRotating;
+- (void)_applyLayoutAttributes:(id)arg1 toView:(id)arg2;
 - (void)setContentSize:(struct CGSize)arg1;
 - (id)_createPreparedSupplementaryViewForElementOfKind:(id)arg1 atIndexPath:(id)arg2 withLayoutAttributes:(id)arg3 applyAttributes:(_Bool)arg4;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(_Bool)arg3;
@@ -220,6 +233,7 @@
 - (void)_resumeReloads;
 - (void)_suspendReloads;
 @property(nonatomic) _Bool allowsMultipleSelection;
+- (_Bool)_highlightItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(unsigned long long)arg3;
 - (_Bool)_highlightItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(long long)arg3 notifyDelegate:(_Bool)arg4;
 - (void)_unhighlightItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 notifyDelegate:(_Bool)arg3;
 @property(nonatomic) _Bool allowsSelection;
@@ -228,9 +242,8 @@
 - (void)selectItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(unsigned long long)arg3;
 - (void)_selectItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(unsigned long long)arg3 notifyDelegate:(_Bool)arg4;
 - (void)_deselectAllAnimated:(_Bool)arg1 notifyDelegate:(_Bool)arg2;
-- (id)_visibleViewsDict;
-- (id)_collectionViewData;
-- (id)_layoutAttributesForItemsInRect:(struct CGRect)arg1;
+@property(readonly, nonatomic, getter=_visibleViews) NSArray *visibleViews;
+@property(readonly, nonatomic, getter=_collectionViewData) UICollectionViewData *collectionViewData;
 - (id)indexPathsForSelectedItems;
 - (_Bool)_dataSourceImplementsNumberOfSections;
 - (void)_reloadDataIfNeeded;

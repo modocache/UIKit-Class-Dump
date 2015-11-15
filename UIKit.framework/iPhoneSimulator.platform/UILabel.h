@@ -8,7 +8,7 @@
 
 #import "NSCoding.h"
 
-@class NSAttributedString, NSMutableAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelScaledMetrics;
+@class NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelScaledMetrics;
 
 @interface UILabel : UIView <NSCoding>
 {
@@ -18,7 +18,7 @@
     long long _measuredNumberOfLines;
     double _lastLineBaseline;
     double _minimumScaleFactor;
-    NSMutableAttributedString *_attributedText;
+    id _content;
     NSAttributedString *_synthesizedAttributedText;
     NSMutableDictionary *_defaultAttributes;
     double _minimumFontSize;
@@ -46,7 +46,9 @@
         unsigned int drawsDebugBaselines:1;
         unsigned int explicitBaselineOffset:1;
         unsigned int usesSimpleTextEffects:1;
+        unsigned int isComplexString:1;
     } _textLabelFlags;
+    _Bool _wantsUnderlineForAccessibilityButtonShapesEnabled;
     double _preferredMaxLayoutWidth;
 }
 
@@ -55,6 +57,7 @@
 + (id)defaultFont;
 @property(nonatomic) double minimumScaleFactor; // @synthesize minimumScaleFactor=_minimumScaleFactor;
 @property(nonatomic) double preferredMaxLayoutWidth; // @synthesize preferredMaxLayoutWidth=_preferredMaxLayoutWidth;
+@property(nonatomic, setter=_setWantsUnderlineForAccessibilityButtonShapesEnabled:) _Bool _wantsUnderlineForAccessibilityButtonShapesEnabled; // @synthesize _wantsUnderlineForAccessibilityButtonShapesEnabled;
 - (_Bool)_usesSimpleTextEffects;
 - (void)_setUsesSimpleTextEffects:(_Bool)arg1;
 - (_Bool)drawsUnderline;
@@ -125,10 +128,12 @@
 @property(nonatomic, getter=isEnabled) _Bool enabled;
 @property(nonatomic, getter=isUserInteractionEnabled) _Bool userInteractionEnabled; // @dynamic userInteractionEnabled;
 @property(copy, nonatomic) NSAttributedString *attributedText;
+- (void)_setAttributedText:(id)arg1 andTakeOwnership:(_Bool)arg2;
 @property(copy, nonatomic) NSString *text;
 - (void)_setText:(id)arg1;
 - (void)_invalidateTextSize;
 - (struct CGRect)_textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2 includingShadow:(_Bool)arg3;
+- (_Bool)_shouldCeilSizeToViewScale;
 - (id)_stringDrawingContext;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2;
 - (struct CGSize)textSize;
@@ -142,7 +147,9 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_commonInit;
 @property(retain, nonatomic, getter=_synthesizedAttributedText, setter=_setSynthesizedAttributedText:) NSAttributedString *_synthesizedAttributedText;
+- (void)_invalidateSynthesizedAttributedTextAndLayout;
 - (void)_invalidateDefaultAttributes;
+- (id)_synthesizedTextAttributes;
 - (id)_compatibilityAttributedString;
 - (void)_setDefaultAttributes:(id)arg1;
 - (id)_defaultAttributes;
@@ -154,6 +161,10 @@
 @property(readonly, nonatomic) double _firstLineBaselineOffsetFromBoundsTop;
 @property(readonly, nonatomic) double _capOffsetFromBoundsTop;
 - (long long)_measuredNumberOfLines;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (_Bool)_shouldShowAccessibilityButtonShapesUnderline;
+- (void)_accessibilityButtonShapesChangedNotification:(id)arg1;
+- (void)_accessibilityButtonShapesParametersDidChange;
 - (struct CGSize)rawSize;
 - (void)setRawSize:(struct CGSize)arg1;
 - (void)drawContentsInRect:(struct CGRect)arg1;

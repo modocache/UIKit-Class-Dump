@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct CGContext *_cachingContext;
     CDUnknownBlockType _cachingContextCompletion;
     _Bool _opaque;
+    _Bool _containsRGBContent;
     struct CGContext *_ctx;
     double _scale;
     long long _renderFlags;
@@ -22,8 +23,10 @@ __attribute__((visibility("hidden")))
     struct CGSize _size;
 }
 
++ (void)clearInternalCaches;
 + (struct CGContext *)imageContextWithSize:(struct CGSize)arg1 scale:(double)arg2 opaque:(_Bool)arg3 invert:(_Bool)arg4;
 + (id)rendererWithContext:(struct CGContext *)arg1 withSize:(struct CGSize)arg2 withScale:(double)arg3 opaque:(_Bool)arg4 renderFlags:(long long)arg5;
+@property(readonly, nonatomic) _Bool containsRGBContent; // @synthesize containsRGBContent=_containsRGBContent;
 @property(retain, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
 @property(readonly, nonatomic) long long renderFlags; // @synthesize renderFlags=_renderFlags;
 @property(readonly, nonatomic) _Bool opaque; // @synthesize opaque=_opaque;
@@ -39,17 +42,17 @@ __attribute__((visibility("hidden")))
 - (void)addPathForRenderGeometry:(id)arg1;
 - (void)addPathForTraits:(id)arg1 displayRect:(struct CGRect *)arg2;
 - (void)addRoundRect:(struct CGRect)arg1 radius:(double)arg2 corners:(unsigned long long)arg3;
-- (void)renderKeyPathContents:(id)arg1 withTraits:(id)arg2;
+- (_Bool)renderKeyPathContents:(id)arg1 withTraits:(id)arg2;
 - (void)drawShiftPath:(_Bool)arg1 weight:(double)arg2 transform:(struct CGAffineTransform)arg3 color:(struct CGColor *)arg4;
 - (void)drawPath:(struct CGPath *)arg1 weight:(double)arg2 transform:(struct CGAffineTransform)arg3 color:(struct CGColor *)arg4 fill:(_Bool)arg5;
 - (struct CGPath *)_deleteGlyphPaths;
 - (struct CGPath *)_thickShiftGlyphPath;
 - (struct CGPath *)_thinShiftGlyphPath;
-- (void)renderKeyStringContents:(id)arg1 withTraits:(id)arg2;
+- (_Bool)renderKeyStringContents:(id)arg1 withTraits:(id)arg2;
 - (_Bool)_drawKeyString:(id)arg1 inRect:(struct CGRect)arg2 withStyle:(id)arg3;
 - (_Bool)_drawSingleSymbol:(id)arg1 inRect:(struct CGRect)arg2 withStyle:(id)arg3;
-- (void)renderKeyImageContents:(id)arg1 withTraits:(id)arg2;
-- (void)_drawKeyImage:(id)arg1 inRect:(struct CGRect)arg2 withStyle:(id)arg3;
+- (_Bool)renderKeyImageContents:(id)arg1 withTraits:(id)arg2;
+- (void)_drawKeyImage:(id)arg1 inRect:(struct CGRect)arg2 withStyle:(id)arg3 force1xImages:(_Bool)arg4;
 - (void)_renderVariantsFromKeyContents:(id)arg1 withTraits:(id)arg2;
 - (void)renderKeyContents:(id)arg1 withTraits:(id)arg2;
 - (void)renderBackgroundTraits:(id)arg1;
@@ -64,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIImage *renderedImage; // @synthesize renderedImage=_renderedImage;
 @property(readonly, nonatomic) struct CGContext *context; // @synthesize context=_ctx;
 - (void)ensureContext;
+- (struct CGColor *)_validColorForColor:(struct CGColor *)arg1;
 - (void)dealloc;
 - (id)initWithContext:(struct CGContext *)arg1 withSize:(struct CGSize)arg2 withScale:(double)arg3 opaque:(_Bool)arg4 renderFlags:(long long)arg5;
 

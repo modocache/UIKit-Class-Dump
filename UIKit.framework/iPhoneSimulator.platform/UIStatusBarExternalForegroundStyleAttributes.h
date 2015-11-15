@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)homeImageName;
+- (id)textForNetworkType:(int)arg1;
 - (double)textOffsetForStyle:(long long)arg1;
 - (id)makeTextFontForStyle:(long long)arg1;
 - (id)expandedNameForImageName:(id)arg1;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)edgeInsetsForBatteryInsides;
 - (double)edgePadding;
 - (double)standardPadding;
+- (_Bool)usesVerticalLayout;
 - (double)scale;
 
 @end

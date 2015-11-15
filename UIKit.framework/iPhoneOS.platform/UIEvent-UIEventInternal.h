@@ -7,6 +7,7 @@
 #import <UIKit/UIEvent.h>
 
 @interface UIEvent (UIEventInternal)
+- (double)_wheelVelocity;
 - (_Bool)isKeyDown;
 - (void)_sendEventToResponder:(id)arg1;
 - (id)_windows;

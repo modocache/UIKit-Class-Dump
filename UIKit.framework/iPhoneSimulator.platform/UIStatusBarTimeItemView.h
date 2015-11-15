@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (long long)textStyle;
-- (_Bool)cachesImage;
 - (id)contentsImage;
 - (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 

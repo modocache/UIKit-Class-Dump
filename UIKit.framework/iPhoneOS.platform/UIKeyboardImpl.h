@@ -216,7 +216,13 @@
 - (void)setCaretVisible:(_Bool)arg1;
 - (void)setCaretBlinks:(_Bool)arg1;
 - (void)startCaretBlinkIfNeeded;
-- (void)remoteControlEvent:(id)arg1;
+- (_Bool)canHandleEvent:(id)arg1;
+- (void)_moveWithEvent:(id)arg1;
+- (void)_wheelChangedWithEvent:(id)arg1;
+- (void)remoteControlReceivedWithEvent:(id)arg1;
+- (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
+- (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
 - (void)showKeyboardIfNeeded;
 - (void)ejectKeyDown;
 - (void)toggleSoftwareKeyboard;
@@ -406,6 +412,7 @@
 - (void)updateInputManagerAutocapitalizationType;
 - (void)recomputeActiveInputModesFromList:(id)arg1;
 - (void)recomputeActiveInputModes;
+- (_Bool)shouldForceASCIICapable;
 - (_Bool)shouldSwitchInputMode:(id)arg1;
 - (void)performOperations:(id)arg1;
 - (void)releaseInputManagerIfInactive;
@@ -524,6 +531,7 @@
 - (void)setInputModeToNextASCIICapableInPreferredList;
 - (void)finishSetInputModeToNextInPreferredListWithExecutionContext:(id)arg1;
 - (void)setInputModeToNextInPreferredListWithExecutionContext:(id)arg1;
+- (id)nextInputModeInPreferencedList;
 - (id)getLastUsedInputMode;
 - (void)updateLastUsedInputMode:(id)arg1;
 - (_Bool)isAllowedInputMode:(id)arg1;

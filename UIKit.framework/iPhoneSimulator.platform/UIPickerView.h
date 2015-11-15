@@ -8,12 +8,13 @@
 
 #import "NSCoding.h"
 #import "UIPickerTableViewContainerDelegate.h"
+#import "UIPickerViewScrollTesting.h"
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 
-@class CALayer, NSMutableArray, UIColor, UIImageView;
+@class CALayer, NSMutableArray, UIColor, UIImageView, _UIPickerViewTestParameters;
 
-@interface UIPickerView : UIView <UIPickerTableViewContainerDelegate, UITableViewDelegate, NSCoding, UITableViewDataSource>
+@interface UIPickerView : UIView <UIPickerTableViewContainerDelegate, UITableViewDelegate, UIPickerViewScrollTesting, NSCoding, UITableViewDataSource>
 {
     NSMutableArray *_tables;
     UIView *_topFrame;
@@ -49,6 +50,7 @@
     _Bool _usesModernStyle;
     UIColor *_textColor;
     UIColor *_textShadowColor;
+    _UIPickerViewTestParameters *_currentTestParameters;
     _Bool _isInLayoutSubviews;
     _Bool _magnifierEnabled;
 }
@@ -62,6 +64,10 @@
 @property(nonatomic, setter=_setInLayoutSubviews:) _Bool _isInLayoutSubviews; // @synthesize _isInLayoutSubviews;
 @property(nonatomic) id <UIPickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property(nonatomic) id <UIPickerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
+- (void)_noteScrollingFinishedForComponent:(long long)arg1;
+- (void)_completeCurrentTest;
+- (void)_iterateOnCurrentTest;
+- (void)_performScrollTest:(id)arg1 withIterations:(long long)arg2 rowsToScroll:(long long)arg3 inComponent:(long long)arg4;
 - (struct CATransform3D)_perspectiveTransform;
 - (_Bool)_shouldDrawWithModernStyle;
 @property(retain, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
@@ -83,11 +89,11 @@
 - (void)_setDrawsBackground:(_Bool)arg1;
 - (_Bool)_usesCheckedSelection;
 - (void)_setUsesCheckedSelection:(_Bool)arg1;
-- (void)_sendSelectionChangedFromTable:(id)arg1;
+- (void)_sendSelectionChangedFromTable:(id)arg1 notify:(_Bool)arg2;
 - (_Bool)_usesCheckSelection;
 - (_Bool)allowsMultipleSelection;
 - (void)setAllowsMultipleSelection:(_Bool)arg1;
-- (void)_sendSelectionChangedForComponent:(long long)arg1;
+- (void)_sendSelectionChangedForComponent:(long long)arg1 notify:(_Bool)arg2;
 @property(nonatomic) _Bool showsSelectionIndicator;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

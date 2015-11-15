@@ -23,6 +23,7 @@
 - (void)_promoteSelfOrDescendantToFirstResponderIfNecessary;
 - (void)deferredBecomeFirstResponder;
 - (_Bool)becomeFirstResponder;
+- (_Bool)canBecomeFirstResponder;
 - (void)_makeSubtreePerformSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3 copySublayers:(_Bool)arg4;
 - (void)_makeSubtreePerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (id)_findFirstSubviewWantingToBecomeFirstResponder;

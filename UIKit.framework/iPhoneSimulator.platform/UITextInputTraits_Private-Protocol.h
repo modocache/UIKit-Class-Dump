@@ -16,7 +16,6 @@
 @property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(nonatomic) _Bool useInterfaceLanguageForLocalization;
-@property(nonatomic) _Bool forceEnableDictation;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(nonatomic) int shortcutConversionType;
 @property(nonatomic) _Bool learnsCorrections;
@@ -25,6 +24,7 @@
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) int emptyContentReturnKeyType;
+@property(nonatomic) _Bool forceEnableDictation;
 @property(nonatomic) _Bool acceptsEmoji;
 @property(nonatomic) _Bool contentsIsSingleValue;
 @property(nonatomic) _Bool isSingleLineDocument;

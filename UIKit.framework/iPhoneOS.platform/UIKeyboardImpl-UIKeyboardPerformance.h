@@ -7,6 +7,7 @@
 #import <UIKit/UIKeyboardImpl.h>
 
 @interface UIKeyboardImpl (UIKeyboardPerformance)
++ (void)sendPerformanceNotification:(id)arg1;
 + (void)markElapsed:(id)arg1;
 + (void)markPerformance:(id)arg1;
 + (void)setParentTestForProfiling:(id)arg1;

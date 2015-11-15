@@ -7,8 +7,6 @@
 #import "NSBundle.h"
 
 @interface NSBundle (UIKeyboardFactoryAdditions)
-+ (id)_rivenFactory;
-+ (id)_rivenBundle;
 + (id)_typologyBundle;
 @end
 

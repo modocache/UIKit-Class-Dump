@@ -44,6 +44,7 @@
 - (void)clearContentColorAccumulator;
 - (_Bool)accumulateChangesToContentColor:(id)arg1 contrast:(double)arg2;
 - (_Bool)accumulateChangesToContentColor:(id)arg1;
+- (void)dealloc;
 
 @end
 

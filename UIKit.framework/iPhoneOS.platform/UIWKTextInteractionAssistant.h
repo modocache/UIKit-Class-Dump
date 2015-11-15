@@ -16,6 +16,11 @@
 - (void)twoFingerRangedSelectGesture:(id)arg1;
 - (void)twoFingerSingleTap:(id)arg1;
 - (void)oneFingerTripleTap:(id)arg1;
+- (void)rangeSelectionMoved:(struct CGPoint)arg1 withTouchPoint:(struct CGPoint)arg2;
+- (void)rangeSelectionEnded:(struct CGPoint)arg1;
+- (void)rangeSelectionStarted:(struct CGPoint)arg1;
+- (void)updateWithMagnifierTerminalPoint:(_Bool)arg1;
+- (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 - (void)oneFingerDoubleTap:(id)arg1;
 - (void)oneFingerTapSelectsAll:(id)arg1;
 - (void)oneFingerTapInUneditable:(id)arg1;
@@ -23,6 +28,7 @@
 - (void)tapAndAHalf:(id)arg1;
 - (void)loupeGesture:(id)arg1;
 - (void)oneFingerTap:(id)arg1;
+- (void)selectionChangedWithTouchAt:(struct CGPoint)arg1 withSelectionTouch:(long long)arg2;
 - (void)selectionChangedWithGestureAt:(struct CGPoint)arg1 withGesture:(long long)arg2 withState:(long long)arg3;
 - (void)scrollSelectionToVisible;
 - (_Bool)containerIsBrowserView;

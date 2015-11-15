@@ -10,10 +10,11 @@
 #import "UITextAutoscrolling.h"
 #import "UITextInput.h"
 #import "UITextInputControllerDelegate.h"
+#import "UITextInputTraits_Private.h"
 
-@class NSAttributedString, NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UITextContainerView, _UITextViewRestorableScrollPosition;
+@class NSAttributedString, NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UITextContainerView, _UITextViewRestorableScrollPosition;
 
-@interface UITextView : UIScrollView <UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInput>
+@interface UITextView : UIScrollView <UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, UITextInput>
 {
     id _private;
     NSTextStorage *_textStorage;
@@ -62,7 +63,9 @@
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (_Bool)respondsToSelector:(SEL)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
+- (void)takeTraitsFrom:(id)arg1;
 - (id)_textInputTraits;
+@property(nonatomic) _Bool forceEnableDictation;
 - (id)metadataDictionariesForDictationResults;
 - (void)_registerUndoOperationForReplacementWithActionName:(id)arg1 replacementText:(id)arg2;
 - (void)_setDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
@@ -209,6 +212,7 @@
 - (void)_setPreferredMaxLayoutWidth:(double)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)_updateContentSize;
 - (void)layoutSubviews;
 - (void)_resyncContainerFrameForNonAutolayout;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(_Bool)arg2;
@@ -229,15 +233,38 @@
 - (void)_commonInitWithTextContainer:(id)arg1 isDecoding:(_Bool)arg2 isEditable:(_Bool)arg3 isSelectable:(_Bool)arg4;
 
 // Remaining properties
+@property(nonatomic) _Bool acceptsEmoji;
+@property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
+@property(nonatomic) _Bool contentsIsSingleValue;
+@property(nonatomic) _Bool deferBecomingResponder;
 @property(nonatomic) id <UITextViewDelegate> delegate;
+@property(nonatomic) _Bool displaySecureTextUsingPlainText;
+@property(nonatomic) int emptyContentReturnKeyType;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
+@property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent;
+@property(retain, nonatomic) UIColor *insertionPointColor;
+@property(nonatomic) unsigned long long insertionPointWidth;
+@property(nonatomic) _Bool isSingleLineDocument;
 @property(nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property(nonatomic) long long keyboardType; // @dynamic keyboardType;
+@property(nonatomic) _Bool learnsCorrections;
+@property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @dynamic secureTextEntry;
+@property(retain, nonatomic) UIColor *selectionBarColor;
+@property(retain, nonatomic) UIImage *selectionDragDotImage;
+@property(retain, nonatomic) UIColor *selectionHighlightColor;
+@property(nonatomic) int shortcutConversionType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
+@property(nonatomic) _Bool suppressReturnKeyStyling;
+@property(nonatomic) int textLoupeVisibility;
+@property(nonatomic) int textSelectionBehavior;
+@property(nonatomic) id textSuggestionDelegate;
+@property(nonatomic) struct __CFCharacterSet *textTrimmingSet;
+@property(nonatomic) _Bool useInterfaceLanguageForLocalization;
 
 @end
 

@@ -10,7 +10,6 @@
 - (void)setButtonItems:(id)arg1;
 - (id)buttonItems;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
-- (void)tintColorDidChange;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

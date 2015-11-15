@@ -20,14 +20,17 @@
     UIWindow *_screenDisablingWindow;
     double _startedPausingWindows;
     NSMutableArray *_pausedWindows;
+    struct __CFDictionary *_touchMap;
+    NSArray *_availableDisplayModes;
+    unsigned int _canAccessDisplaySeed;
+    unsigned int _connectionSeed;
     struct {
         unsigned int bitsPerComponent:4;
         unsigned int initialized:1;
         unsigned int connected:1;
         unsigned int overscanCompensation:2;
-        unsigned int hasShownWindows:1;
         unsigned int canAccessDisplay:1;
-        unsigned int canAccessDisplayValid:1;
+        unsigned int canAccessDisplaySeedValid:1;
         unsigned int screenUpdatesDisabled:1;
     } _screenFlags;
     _Bool _wantsSoftwareDimming;
@@ -49,6 +52,7 @@
 + (id)_screenWithDisplayName:(id)arg1;
 + (id)_workspaceCapableScreens;
 + (id)screens;
++ (void)_enumerateScreensWithBlock:(CDUnknownBlockType)arg1;
 + (struct CGAffineTransform)transformToRotateScreen:(double)arg1;
 + (struct CGAffineTransform)transformForScreenOriginRotation:(double)arg1;
 + (id)mainScreen;
@@ -68,11 +72,14 @@
 - (void)_postBrightnessDidChangeNotificationIfAppropriate;
 - (float)rawBrightnessForBacklightLevel:(float)arg1;
 - (id)_lazySoftwareDimmingWindow;
+- (_Bool)_areMusicListsLimited;
+- (_Bool)_areListsLimited;
+- (_Bool)_isUIElementLimited:(id)arg1;
+- (_Bool)_canFocusViews;
+- (struct __CFDictionary *)_touchMap;
+- (void)_setTouchMap:(struct __CFDictionary *)arg1;
 - (void)_updateWorkspaceCapableScreenType;
 - (_Bool)_isWorkspaceCapable;
-- (void)_applicationWillResignActive:(id)arg1;
-- (void)_applicationDidBecomeActive:(id)arg1;
-- (void)_setWantsFocus:(_Bool)arg1;
 - (id)_displayID;
 - (void)_setCapability:(id)arg1 forKey:(id)arg2;
 - (id)_capabilityForKey:(id)arg1;
@@ -88,12 +95,12 @@
 - (double)_scale;
 @property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
 - (id)displayLinkWithTarget:(id)arg1 selector:(SEL)arg2;
-- (void)_requestFocusIfNecessary;
 - (void)_prepareForWindow;
 - (_Bool)_hasStatusBar;
 - (_Bool)_isMainScreen;
 - (_Bool)_isExternal;
 - (id)_name;
+- (unsigned int)_seed;
 - (unsigned int)_integerDisplayID;
 @property(nonatomic) long long overscanCompensation;
 @property(readonly, nonatomic) NSArray *availableModes;
@@ -114,6 +121,7 @@
 - (_Bool)_isRotatable;
 - (_Bool)_areBoundsJailed;
 - (struct UIEdgeInsets)_jailedBoundsEdgeInsets;
+- (struct UIEdgeInsets)_rawJailedBoundsEdgeInsets;
 - (struct CGRect)_applicationFrameForInterfaceOrientation:(long long)arg1;
 - (struct CGRect)_applicationFrameForInterfaceOrientation:(long long)arg1 usingStatusbarHeight:(double)arg2;
 - (void)_updateOverscanCompensationAllowingBackgroundUpdate:(_Bool)arg1;
@@ -121,8 +129,10 @@
 - (_Bool)_isOverscanned;
 - (_Bool)_hasWindows;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)_updateAvailableDisplayModes;
 - (void)dealloc;
 - (id)initWithDisplay:(id)arg1;
+- (void)_ensureConnectedIfPossible;
 - (id)snapshot;
 - (id)snapshotView;
 - (void)_enableScreenUpdates;

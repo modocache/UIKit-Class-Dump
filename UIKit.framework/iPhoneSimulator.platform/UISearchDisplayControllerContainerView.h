@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)collapseTopView;
 - (void)updateTopViewHeight:(double)arg1 animateUpdate:(_Bool)arg2;
 - (void)updateTopViewHeight:(double)arg1;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 topViewHeight:(double)arg2;
 
 @end

@@ -14,6 +14,7 @@
 }
 
 @property(nonatomic, setter=_setHostTintAdjustmentMode:) long long _hostTintAdjustmentMode; // @synthesize _hostTintAdjustmentMode;
+- (_Bool)_presentActionSheet:(id)arg1 inView:(id)arg2 fromYCoordinate:(double)arg3;
 - (long long)_defaultTintAdjustmentMode;
 - (_Bool)_isClippedByScreenJail;
 - (_Bool)_needsShakesWhenInactive;

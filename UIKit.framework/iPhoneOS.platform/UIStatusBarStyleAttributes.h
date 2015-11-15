@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     UIStatusBarForegroundStyleAttributes *_foregroundStyle;
 }
 
+- (long long)tapButtonType;
 - (_Bool)shouldShowInternalItemType:(int)arg1 withScreenCapabilities:(id)arg2;
 - (double)glowAnimationDuration;
 - (id)newForegroundStyleWithHeight:(double)arg1;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)backgroundColorWithTintColor:(id)arg1;
 - (_Bool)shouldUseVisualAltitude;
 - (_Bool)isDoubleHeight;
+- (_Bool)usesVerticalLayout;
 - (_Bool)isTransparent;
 - (_Bool)isTranslucent;
 - (_Bool)areTopCornersRounded;

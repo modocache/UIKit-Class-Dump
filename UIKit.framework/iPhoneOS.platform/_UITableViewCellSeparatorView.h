@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) _Bool drawsWithVibrantLightMode; // @synthesize drawsWithVibrantLightMode=_drawsWithVibrantLightMode;
+- (void)layoutSubviews;
 - (void)dealloc;
 
 @end

@@ -10,6 +10,11 @@
 {
 }
 
++ (id)_alternateExternalDetailTextColor;
++ (id)_externalDetailTextColor;
++ (id)_alternateExternalTextColor;
++ (id)_externalTextColor;
++ (id)_alternateUISwitchableSelectorPairs;
 + (id)layoutManagerForTableViewCellStyle:(long long)arg1;
 - (struct CGRect)textRectForCell:(id)arg1;
 - (struct CGRect)contentEndingRectForCell:(id)arg1 forDisplayOfDeleteConfirmation:(_Bool)arg2;

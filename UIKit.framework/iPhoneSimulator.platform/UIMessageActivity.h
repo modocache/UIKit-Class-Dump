@@ -10,11 +10,13 @@
 
 @interface UIMessageActivity : UIActivity
 {
+    _Bool _sourceIsManaged;
     MFMessageComposeViewController *_messageComposeViewController;
 }
 
 + (long long)activityCategory;
 @property(retain, nonatomic) MFMessageComposeViewController *messageComposeViewController; // @synthesize messageComposeViewController=_messageComposeViewController;
+@property(nonatomic) _Bool sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 - (void)_cleanup;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(int)arg2;
 - (id)activityViewController;

@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+#import "_UITouchPhaseChangeDelegate.h"
+
 @class AFDictationConnection, AFDictationOptions, AFPreferences, NSArray, NSString, NSTimer, UIAlertView, UIDictationTestOps;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationController : NSObject
+@interface UIDictationController : NSObject <_UITouchPhaseChangeDelegate>
 {
     AFDictationConnection *_connection;
     AFDictationOptions *_options;
@@ -25,6 +27,7 @@ __attribute__((visibility("hidden")))
     _Bool _connectionWasAlreadyAliveForStatisticsLogging;
     UIDictationTestOps *_dictationDebuggingOperations;
     NSString *_language;
+    _Bool _isInDebuggingModes;
     _Bool cancelledByWaitingForLocalResults;
     _Bool dictationStartedFromGesture;
     _Bool _performTestOperationForEditing;
@@ -41,7 +44,7 @@ __attribute__((visibility("hidden")))
 + (id)stringForState:(int)arg1;
 + (void)logDictationString:(id)arg1;
 + (void)didBeginEditingInTextView:(id)arg1;
-+ (id)streamingHypothesisForPhrases:(id)arg1;
++ (id)myTranslationForPhrases:(id)arg1;
 + (id)activeConnection;
 + (int)viewMode;
 + (_Bool)starkScreenExists;
@@ -53,7 +56,7 @@ __attribute__((visibility("hidden")))
 + (id)serializedDictationPhrases:(id)arg1;
 + (id)serializedDictationPhrases:(id)arg1 fromKeyboard:(_Bool)arg2 transform:(struct __CFString *)arg3;
 + (id)interpretation:(id)arg1 forPhraseIndex:(unsigned long long)arg2 isShiftLocked:(_Bool)arg3 autocapitalizationType:(long long)arg4;
-+ (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString *)arg2;
++ (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString *)arg2 ranges:(id *)arg3;
 + (void)applicationDidChangeStatusBarFrame;
 + (void)siriPreferencesChanged;
 + (void)applicationWillResignActive;
@@ -76,10 +79,13 @@ __attribute__((visibility("hidden")))
 + (_Bool)dictationIsFunctional;
 + (_Bool)fetchCurrentInputModeSupportsDictation;
 + (id)serializedDictationPhrasesFromTokenMatrix:(id)arg1 fromKeyboard:(_Bool)arg2 transform:(struct __CFString *)arg3;
++ (id)serializedInterpretationFromTokens:(id)arg1 transform:(struct __CFString *)arg2 fromKeyboard:(_Bool)arg3 interpretationIndex:(unsigned long long)arg4;
 + (id)inputModeNameForDictation;
 + (_Bool)isRunning;
 + (id)sharedInstance;
 + (id)activeInstance;
++ (double)serverManualEndpointingThreshold;
++ (_Bool)usingServerManualEndpointingThreshold;
 + (_Bool)setupForOpeningConnections;
 + (_Bool)setupForPhraseSerialization;
 + (_Bool)openAssistantFrameworkIfNecessary;
@@ -103,6 +109,8 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnectionSpeechRecordingWillBegin:(id)arg1;
 - (void)dictationConnection:(id)arg1 didHypothesizePhrases:(id)arg2 languageModel:(id)arg3;
 - (void)setupToInsertResultForNewHypothesis:(id)arg1;
+- (long long)startOfPreviousHypothesis;
+- (void)dictationConnection:(id)arg1 didRecognizeTokens:(id)arg2 languageModel:(id)arg3;
 - (void)dictationConnection:(id)arg1 didRecognizePhrases:(id)arg2 languageModel:(id)arg3 correctionIdentifier:(id)arg4;
 - (void)finishDictationRecognition:(id)arg1;
 - (void)insertSerializedDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
@@ -117,10 +125,12 @@ __attribute__((visibility("hidden")))
 - (void)startDictationForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)startDictationForStark;
 - (void)switchToDictationInputMode;
+- (void)_touchPhaseChangedForTouch:(id)arg1;
+- (void)switchToDictationInputModeWithTouch:(id)arg1;
 - (void)startDictation;
 - (void)startDictationForReason:(long long)arg1;
 - (void)setupForDictationStartForReason:(long long)arg1;
-- (void)setupForStreamingDictationStart;
+- (void)setupForDebuggingDictationStart;
 - (void)dismissDictationView:(id)arg1;
 - (_Bool)wasDisabledDueToTelephonyActivity;
 - (_Bool)dictationEnabled;

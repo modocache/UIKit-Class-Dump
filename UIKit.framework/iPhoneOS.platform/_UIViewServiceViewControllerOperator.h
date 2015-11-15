@@ -99,8 +99,8 @@ __attribute__((visibility("hidden")))
 - (void)__hostedActionSheetDidPresent;
 - (void)_dismissActionSheet:(id)arg1 withClickedButtonIndex:(long long)arg2 animated:(_Bool)arg3;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (void)_presentActionSheet:(id)arg1 asPopoverFromBarButtonItem:(id)arg2 orFromRect:(struct CGRect)arg3 inView:(id)arg4 withPreferredArrowDirections:(unsigned long long)arg5 passthroughViews:(id)arg6 backgroundStyle:(long long)arg7 animated:(_Bool)arg8;
-- (void)_presentActionSheet:(id)arg1 inView:(id)arg2 fromYCoordinate:(double)arg3;
+- (_Bool)_presentActionSheet:(id)arg1 asPopoverFromBarButtonItem:(id)arg2 orFromRect:(struct CGRect)arg3 inView:(id)arg4 withPreferredArrowDirections:(unsigned long long)arg5 passthroughViews:(id)arg6 backgroundStyle:(long long)arg7 animated:(_Bool)arg8;
+- (_Bool)_presentActionSheet:(id)arg1 inView:(id)arg2 fromYCoordinate:(double)arg3;
 - (void)_firstResponderDidChange:(id)arg1;
 - (_Bool)becomeFirstResponder;
 - (void)__setHostTintColor:(id)arg1 tintAdjustmentMode:(long long)arg2;

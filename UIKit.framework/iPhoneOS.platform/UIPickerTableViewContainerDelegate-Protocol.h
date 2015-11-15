@@ -10,7 +10,6 @@
 - (void)setAllowsMultipleSelection:(_Bool)arg1;
 - (_Bool)_usesCheckSelection;
 - (_Bool)_soundsEnabled;
-- (void)_sendSelectionChangedFromTable:(UIPickerTableView *)arg1;
 - (void)_sendCheckedRow:(long long)arg1 inTableView:(UITableView *)arg2 checked:(_Bool)arg3;
 
 @optional

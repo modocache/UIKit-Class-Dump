@@ -21,19 +21,20 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int barTranslucence:3;
         unsigned int barStyle:3;
-        unsigned int barWantsAdaptiveBackdrop:1;
+        unsigned int paletteWantsAdaptiveBackdrop:1;
     } _navbarFlags;
 }
 
 @property(retain, nonatomic, getter=_shadowView, setter=_setShadowView:) UIView *shadowView; // @synthesize shadowView=_shadowView;
 - (void)didMoveToSuperview;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
 - (id)backdropView:(id)arg1 willChangeToGraphicsQuality:(long long)arg2;
 - (void)updateBackgroundView;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)_setFrame:(struct CGRect)arg1 forceUpdateBackgroundImage:(_Bool)arg2;
-@property(nonatomic) _Bool barWantsAdaptiveBackdrop;
+@property(nonatomic) _Bool paletteWantsAdaptiveBackdrop;
 @property(nonatomic, getter=isTranslucent) _Bool translucent;
 @property(nonatomic) long long barStyle;
 @property(retain, nonatomic) UIColor *barTintColor;

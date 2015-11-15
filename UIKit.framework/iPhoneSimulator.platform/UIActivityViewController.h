@@ -104,6 +104,7 @@
 - (void)viewDidLoad;
 - (void)_updateActivityItems:(id)arg1;
 - (id)_availableActivities;
+- (id)_availableActivitiesForItems:(id)arg1;
 - (_Bool)_shouldShowSystemActivity:(id)arg1;
 - (id)_activityItemValues;
 - (void)dealloc;

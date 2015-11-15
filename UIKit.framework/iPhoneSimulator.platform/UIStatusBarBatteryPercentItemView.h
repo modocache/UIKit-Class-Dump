@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (long long)textAlignment;
 - (_Bool)animatesDataChange;
 - (double)extraRightPadding;
-- (_Bool)cachesImage;
 - (id)contentsImage;
 - (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 - (void)dealloc;

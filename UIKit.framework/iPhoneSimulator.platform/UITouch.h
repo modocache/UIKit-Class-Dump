@@ -36,10 +36,12 @@
         unsigned int _abandonForwardingRecord:1;
     } _touchFlags;
     _Bool _eaten;
+    id <_UITouchPhaseChangeDelegate> __phaseChangeDelegate;
     struct CGSize _displacement;
 }
 
 + (id)_createTouchesWithGSEvent:(struct __GSEvent *)arg1 phase:(long long)arg2 view:(id)arg3;
+@property(retain, nonatomic, setter=_setPhaseChangeDelegate:) id <_UITouchPhaseChangeDelegate> _phaseChangeDelegate; // @synthesize _phaseChangeDelegate=__phaseChangeDelegate;
 @property(nonatomic, getter=_isEaten, setter=_setEaten:) _Bool _eaten; // @synthesize _eaten;
 @property(nonatomic, setter=_setEdgeType:) long long _edgeType; // @synthesize _edgeType;
 @property(nonatomic, setter=_setDisplacement:) struct CGSize _displacement; // @synthesize _displacement;

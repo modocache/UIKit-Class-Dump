@@ -17,13 +17,22 @@ __attribute__((visibility("hidden")))
     _Bool _hasUpdatedFrame;
 }
 
++ (void)overlayRelevantSettings:(id)arg1 ontoSettings:(id)arg2;
++ (void)_updatedSecondaryBackdropsWithSettings:(id)arg1;
++ (void)_unregisterSecondaryBackdropView:(id)arg1;
++ (void)_registerSecondaryBackdropView:(id)arg1;
++ (id)triggerNotificationNames;
++ (id)unconditionalTriggerNotificationNames;
 @property(readonly, nonatomic) _Bool _hasUpdatedFrame; // @synthesize _hasUpdatedFrame;
+- (void)didCallRenderInContextOnBackdropViewLayer;
+- (void)willCallRenderInContextOnBackdropViewLayer;
+- (void)layoutSubviews;
 - (void)applySettings:(id)arg1;
 - (void)triggerUpdate:(id)arg1;
 - (void)transitionToStyle:(long long)arg1;
 - (int)textEffectsVisibilityLevel;
 - (void)updateFrame:(struct CGRect)arg1 withCorners:(int)arg2;
-- (void)addSecondaryBackdropView:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2 primaryBackdrop:(_Bool)arg3;
 

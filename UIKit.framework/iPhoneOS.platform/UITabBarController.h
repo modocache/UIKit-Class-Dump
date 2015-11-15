@@ -7,11 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import "NSCoding.h"
+#import "UIGestureRecognizerDelegate.h"
 #import "UITabBarDelegate.h"
 
-@class NSArray, NSMutableArray, UIMoreNavigationController, UINavigationController, UITabBar, UIView;
+@class NSArray, NSMutableArray, NSString, UIMoreNavigationController, UINavigationController, UITabBar, UITapGestureRecognizer, UIView;
 
-@interface UITabBarController : UIViewController <UITabBarDelegate, NSCoding>
+@interface UITabBarController : UIViewController <UIGestureRecognizerDelegate, UITabBarDelegate, NSCoding>
 {
     UITabBar *_tabBar;
     UIView *_containerView;
@@ -26,6 +27,8 @@
     unsigned long long _customMaxItems;
     unsigned long long _defaultMaxItems;
     long long _tabBarPosition;
+    UITapGestureRecognizer *_backGestureRecognizer;
+    UITapGestureRecognizer *_selectGestureRecognizer;
     struct {
         unsigned int isShowingMoreItem:1;
         unsigned int needsToRebuildItems:1;
@@ -40,11 +43,13 @@
     UIView *_accessoryView;
     id <UIViewControllerAnimatedTransitioning> __animator;
     id <UIViewControllerInteractiveTransitioning> __interactor;
+    NSString *__backdropGroupName;
 }
 
 + (Class)_moreNavigationControllerClass;
 + (_Bool)doesOverrideSupportedInterfaceOrientations;
 + (_Bool)doesOverridePreferredInterfaceOrientationForPresentation;
+@property(retain, nonatomic, getter=_backdropGroupName, setter=_setBackdropGroupName:) NSString *_backdropGroupName; // @synthesize _backdropGroupName=__backdropGroupName;
 @property(retain, nonatomic, setter=_setInteractor:) id <UIViewControllerInteractiveTransitioning> _interactor; // @synthesize _interactor=__interactor;
 @property(retain, nonatomic, setter=_setAnimator:) id <UIViewControllerAnimatedTransitioning> _animator; // @synthesize _animator=__animator;
 @property(nonatomic) id <UITabBarControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -92,6 +97,7 @@
 - (id)_viewControllerForTabBarItem:(id)arg1;
 - (void)_setTabBarPosition:(long long)arg1;
 - (long long)_effectiveTabBarPosition;
+- (id)_backdropBarGroupName;
 - (long long)_tabBarPosition;
 @property(readonly, nonatomic) UITabBar *tabBar;
 - (id)_viewControllersInTabBar;
@@ -105,6 +111,7 @@
 - (void)tabBar:(id)arg1 didEndCustomizingItems:(id)arg2 changed:(_Bool)arg3;
 - (void)tabBar:(id)arg1 willEndCustomizingItems:(id)arg2 changed:(_Bool)arg3;
 - (id)_viewsWithDisabledInteractionGivenTransitionContext:(id)arg1;
+- (void)tabBarSizingDidChange:(id)arg1;
 - (void)tabBar:(id)arg1 willBeginCustomizingItems:(id)arg2;
 - (void)beginCustomizingTabBar:(id)arg1;
 @property(copy, nonatomic) NSArray *customizableViewControllers; // @synthesize customizableViewControllers=_customizableViewControllers;
@@ -125,6 +132,11 @@
 - (void)_rebuildTabBarItemsIfNeeded;
 @property(copy, nonatomic) NSArray *viewControllers;
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
+- (_Bool)_isTabBarFocused;
+- (id)_responderSelectionContainerViewForResponder:(id)arg1;
+- (void)_performSelectGesture:(id)arg1;
+- (void)_performBackGesture:(id)arg1;
+- (_Bool)_gestureRecognizerShouldBegin:(id)arg1;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (_Bool)_reallyWantsFullScreenLayout;
 - (void)updateTabBarItemForViewController:(id)arg1;

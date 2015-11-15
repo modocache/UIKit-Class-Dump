@@ -18,6 +18,7 @@
     NSArray *_mediaTypes;
     NSMutableDictionary *_properties;
     int _previousStatusBarStyle;
+    _Bool _previousStatusBarHidden;
     struct {
         unsigned int visible:1;
         unsigned int isCleaningUp:1;

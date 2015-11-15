@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_setFrame:(struct CGRect)arg1 forceUpdateBackgroundImage:(_Bool)arg2;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (id)_customShadowImageForSearchBar;
+- (id)_adaptiveBackdrop;
 - (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
 - (id)backdropView:(id)arg1 willChangeToGraphicsQuality:(long long)arg2;
 - (void)didMoveToSuperview;

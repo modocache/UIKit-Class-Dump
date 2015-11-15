@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2;
 - (double)skinnyKeyThreshold;
+- (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)shiftKeyImageName;
 - (id)deleteKeyImageName;

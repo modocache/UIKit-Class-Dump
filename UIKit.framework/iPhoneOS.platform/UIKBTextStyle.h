@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSString *fontName; // @synthesize fontName=_fontName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)overlayWithStyle:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)init;

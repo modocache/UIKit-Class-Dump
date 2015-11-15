@@ -32,6 +32,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithImage:(id)arg1 capInsets:(struct UIEdgeInsets)arg2;
 - (id)_initWithOtherImage:(id)arg1;
+- (void)_configureFromImage:(id)arg1;
+- (_Bool)_suppressesAccessibilityHairlineThickening;
 
 @end
 

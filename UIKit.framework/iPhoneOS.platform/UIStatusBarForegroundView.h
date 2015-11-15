@@ -11,7 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface UIStatusBarForegroundView : UIView
 {
-    _Bool _itemIsEnabled[32];
+    _Bool _usesVerticalLayout;
+    _Bool _itemIsEnabled[30];
     UIStatusBarLayoutManager *_layoutManagers[3];
     int _ignoreDataLevel;
     NSMutableArray *_actionAnimationStack;
@@ -43,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)setStatusBarData:(id)arg1 actions:(int)arg2 animated:(_Bool)arg3;
 - (void)_setStatusBarData:(id)arg1 actions:(int)arg2 animated:(_Bool)arg3;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 foregroundStyle:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 foregroundStyle:(id)arg2 usesVerticalLayout:(_Bool)arg3;
 
 @end
 

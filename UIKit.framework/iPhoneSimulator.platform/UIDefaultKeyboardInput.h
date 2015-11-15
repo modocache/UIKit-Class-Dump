@@ -54,6 +54,7 @@
 - (_Bool)isEditable;
 @property(readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
 - (id)selectionView;
+@property(nonatomic) _Bool forceEnableDictation;
 @property(nonatomic) _Bool acceptsEmoji; // @dynamic acceptsEmoji;
 - (void)setSecure:(_Bool)arg1;
 - (_Bool)isSecure;
@@ -105,7 +106,6 @@
 @property(nonatomic) int emptyContentReturnKeyType;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
 @property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent;
-@property(nonatomic) _Bool forceEnableDictation;
 @property(retain, nonatomic) UIColor *insertionPointColor; // @dynamic insertionPointColor;
 @property(nonatomic) unsigned long long insertionPointWidth; // @dynamic insertionPointWidth;
 @property(nonatomic) _Bool isSingleLineDocument;

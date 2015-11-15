@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
+- (void)setFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 colorBurnColor:(id)arg2 plusDColor:(id)arg3;
 
 @end

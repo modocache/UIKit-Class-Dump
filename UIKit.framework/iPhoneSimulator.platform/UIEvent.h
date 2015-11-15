@@ -33,6 +33,7 @@
 - (struct __IOHIDEvent *)_hidEvent;
 - (struct __GSEvent *)_gsEvent;
 - (id)_initWithEvent:(struct __GSEvent *)arg1 touches:(id)arg2;
+- (double)_wheelVelocity;
 - (_Bool)isKeyDown;
 - (void)_sendEventToResponder:(id)arg1;
 - (id)_windows;

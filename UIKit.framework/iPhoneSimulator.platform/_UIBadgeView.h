@@ -15,7 +15,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)setBlinks:(_Bool)arg1;
+- (void)_updateBackgroundBlinks:(_Bool)arg1;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
 - (void)layoutSubviews;
+- (void)_updateLabelFont;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)setValue:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)dealloc;

@@ -71,10 +71,14 @@
 + (id)colorWithHue:(double)arg1 saturation:(double)arg2 brightness:(double)arg3 alpha:(double)arg4;
 + (id)colorWithWhite:(double)arg1 alpha:(double)arg2;
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (id)_alternateUISwitchableSelectorPairs;
 + (void)initialize;
-- (id)_colorCombinedWithColors:(id)arg1;
-- (id)_colorCombinedWithColor:(id)arg1;
+- (id)_colorBlendedWithColors:(id)arg1;
+- (id)_colorBlendedWithColor:(id)arg1;
+- (id)_colorBlendedWithColor:(id)arg1 compositingFilter:(id)arg2;
+- (double)_luminanceDifferenceFromColor:(id)arg1;
 - (double)_luminance;
+- (double)_colorDifferenceFromColor:(id)arg1;
 - (_Bool)_isSimilarToColor:(id)arg1 withinPercentage:(double)arg2;
 @property(retain, nonatomic, getter=_systemColorName, setter=_setSystemColorName:) NSString *systemColorName;
 - (_Bool)isPatternColor;

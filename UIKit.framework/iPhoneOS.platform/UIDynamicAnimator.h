@@ -28,6 +28,7 @@
     NSMutableArray *_endContacts;
     _Bool _isInWorldStepMethod;
     _Bool _needsLocalBehaviorReevaluation;
+    _Bool _stopping;
     unsigned long long _referenceSystemType;
     unsigned long long _integralization;
     struct {

@@ -6,27 +6,31 @@
 
 #import "NSObject.h"
 
+#import "NSCopying.h"
+
 __attribute__((visibility("hidden")))
-@interface UIKBRenderConfig : NSObject
+@interface UIKBRenderConfig : NSObject <NSCopying>
 {
     _Bool _lightKeyboard;
     double _blurRadius;
     double _blurSaturation;
     double _keycapOpacity;
-    double _keyborderOpacity;
+    double _lightLatinKeycapOpacity;
 }
 
-+ (id)passcodeConfig;
++ (long long)backdropStyleForStyle:(long long)arg1;
++ (id)configForAppearance:(long long)arg1;
 + (id)darkConfig;
 + (id)defaultConfig;
 @property(nonatomic) _Bool lightKeyboard; // @synthesize lightKeyboard=_lightKeyboard;
-@property(nonatomic) double keyborderOpacity; // @synthesize keyborderOpacity=_keyborderOpacity;
+@property(nonatomic) double lightLatinKeycapOpacity; // @synthesize lightLatinKeycapOpacity=_lightLatinKeycapOpacity;
 @property(nonatomic) double keycapOpacity; // @synthesize keycapOpacity=_keycapOpacity;
 @property(nonatomic) double blurSaturation; // @synthesize blurSaturation=_blurSaturation;
 @property(nonatomic) double blurRadius; // @synthesize blurRadius=_blurRadius;
 @property(readonly, nonatomic) long long backdropStyle;
 @property(readonly, nonatomic) _Bool whiteText;
 - (id)description;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 
 @end

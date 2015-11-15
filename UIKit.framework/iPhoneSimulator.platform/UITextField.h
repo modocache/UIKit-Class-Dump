@@ -80,13 +80,11 @@
     _Bool _originFromBaselineLayoutIsInvalid;
     NSLayoutConstraint *_baselineLayoutConstraint;
     _UIBaselineLayoutStrut *_baselineLayoutLabel;
-    NSDictionary *_defaultTextAttributes;
 }
 
 + (void)_preheatDictationIfNecessary;
 + (_Bool)_isDisplayingShortcutViewController;
 + (_Bool)_isCompatibilityTextField;
-@property(copy, nonatomic) NSDictionary *defaultTextAttributes; // @synthesize defaultTextAttributes=_defaultTextAttributes;
 @property(retain) UIView *inputView; // @synthesize inputView=_inputView;
 @property(nonatomic) long long rightViewMode; // @synthesize rightViewMode=_rightViewMode;
 @property(retain, nonatomic) UIView *rightView; // @synthesize rightView=_rightView;
@@ -100,6 +98,8 @@
 @property(nonatomic) long long borderStyle; // @synthesize borderStyle=_borderStyle;
 @property(retain, nonatomic, setter=_setBaselineLayoutLabel:) _UIBaselineLayoutStrut *_baselineLayoutLabel; // @synthesize _baselineLayoutLabel;
 @property(retain, nonatomic, setter=_setBaselineLayoutConstraint:) NSLayoutConstraint *_baselineLayoutConstraint; // @synthesize _baselineLayoutConstraint;
+- (void)willMoveToWindow:(id)arg1;
+- (void)_createInteractionAssistant;
 - (id)_backgroundView;
 - (id)_systemBackgroundView;
 - (void)setContinuousSpellCheckingEnabled:(_Bool)arg1;
@@ -298,7 +298,7 @@
 - (id)createPlaceholderLabelWithFont:(id)arg1 andTextAlignment:(long long)arg2;
 - (Class)_placeholderLabelClass;
 - (void)setContentVerticalAlignment:(long long)arg1;
-- (void)setDefaultAttributes:(id)arg1;
+@property(copy, nonatomic) NSDictionary *defaultTextAttributes;
 @property(nonatomic) long long textAlignment;
 @property(retain, nonatomic) UIFont *font;
 - (void)disableClearsOnInsertion;
@@ -317,6 +317,7 @@
 @property(copy, nonatomic) NSAttributedString *attributedText;
 - (void)_scrollRangeToVisible:(struct _NSRange)arg1 animated:(_Bool)arg2;
 - (void)_sanitizeText:(id)arg1;
+- (_Bool)_textNeedsSanitizing:(id)arg1;
 - (void)_setAttributedText:(id)arg1 onFieldEditorAndSetCaretSelectionAfterText:(_Bool)arg2;
 @property(copy, nonatomic) NSString *text;
 - (void)finishedSettingTextOrAttributedText;
@@ -397,6 +398,7 @@
 - (void)_initialScrollDidFinish:(id)arg1;
 - (void)_activateSelectionView;
 - (void)_stopObservingFieldEditorScroll;
+- (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
 - (_Bool)becomeFirstResponder;

@@ -23,6 +23,7 @@
 
 + (id)shapeByCombining:(id)arg1 withShape:(id)arg2;
 + (id)shape;
+@property(nonatomic) _Bool scaled; // @synthesize scaled=m_scaled;
 @property(readonly, nonatomic) unsigned long long uid; // @synthesize uid=m_uid;
 @property(nonatomic) struct CGRect paddedFrame; // @synthesize paddedFrame=m_paddedFrame;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=m_frame;
@@ -33,6 +34,7 @@
 - (void)addRectFrom:(id)arg1 widthFraction:(double)arg2 adjustOriginFactor:(double)arg3;
 - (void)addRectFrom:(id)arg1;
 - (id)description;
+- (_Bool)shouldUseGeometry;
 - (_Bool)isEmpty;
 @property(readonly, nonatomic) struct CGRect originalFrame;
 - (void)setFrameOnly:(struct CGRect)arg1;

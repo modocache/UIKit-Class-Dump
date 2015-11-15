@@ -11,7 +11,7 @@
 #import "_UIBarPositioningInternal.h"
 #import "_UIShadowedView.h"
 
-@class NSArray, UIColor, UIImageView, _UIBackdropView;
+@class NSArray, NSString, UIColor, UIImageView, _UIBackdropView;
 
 @interface UIToolbar : UIView <_UIShadowedView, _UIBackdropViewGraphicsQualityChangeDelegate, _UIBarPositioningInternal, UIBarPositioning>
 {
@@ -40,8 +40,10 @@
     _Bool _isAdaptiveToolbarDisabled;
     _Bool _wantsLetterpressContent;
     long long _barPosition;
+    NSString *_backdropViewLayerGroupName;
 }
 
+@property(retain, nonatomic, getter=_backdropViewLayerGroupName, setter=_setBackdropViewLayerGroupName:) NSString *backdropViewLayerGroupName; // @synthesize backdropViewLayerGroupName=_backdropViewLayerGroupName;
 @property(readonly, nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
 @property(nonatomic, setter=_setWantsLetterpressContent:) _Bool _wantsLetterpressContent; // @synthesize _wantsLetterpressContent;
 @property(nonatomic, getter=_isAdaptiveToolbarDisabled, setter=_setAdaptiveToolbarDisabled:) _Bool _adaptiveToolbarDisabled; // @synthesize _adaptiveToolbarDisabled=_isAdaptiveToolbarDisabled;
@@ -58,7 +60,6 @@
 - (void)animateToolbarItemIndex:(unsigned long long)arg1 duration:(double)arg2 target:(id)arg3 didFinishSelector:(SEL)arg4;
 - (void)layoutSubviews;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
-- (void)tintColorDidChange;
 - (_Bool)isMinibar;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)invalidateIntrinsicContentSize;
@@ -87,7 +88,6 @@
 @property(nonatomic) long long barStyle;
 - (void)setBarStyle:(long long)arg1 force:(_Bool)arg2;
 - (void)_updateOpacity;
-- (void)_updateToolbarButtonsForInteractionTintColorChange;
 - (double)extraEdgeInsets;
 - (void)setExtraEdgeInsets:(double)arg1;
 - (void)dealloc;

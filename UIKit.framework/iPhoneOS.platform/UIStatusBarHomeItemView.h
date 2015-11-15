@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)usesAdvancedActions;
 - (long long)buttonType;
+- (double)extraRightPadding;
 - (id)contentsImage;
 
 @end

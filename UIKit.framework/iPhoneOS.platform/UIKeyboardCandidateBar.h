@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateBar : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateBarLayoutDelegate, UICollectionViewDataSource>
 {
     _Bool _canExtend;
+    _Bool _forceReloadInitiallyHiddenCandidates;
     _Bool _shouldSkipLayoutUntilScrollViewAnimationEnds;
     _Bool _didSkipLayout;
     NSString *_inlineText;
@@ -35,6 +36,8 @@ __attribute__((visibility("hidden")))
     struct CGPoint _dragStartOffset;
 }
 
++ (double)defaultPagingDistanceThreshold;
++ (double)defaultPagingVelocityThreshold;
 + (double)defaultCandidateWidth;
 + (double)heightForInterfaceOrientation:(long long)arg1;
 + (double)height;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSIndexPath *dragStartPreviousPageIndexPath; // @synthesize dragStartPreviousPageIndexPath=_dragStartPreviousPageIndexPath;
 @property(copy, nonatomic) NSIndexPath *dragStartNextPageIndexPath; // @synthesize dragStartNextPageIndexPath=_dragStartNextPageIndexPath;
 @property(nonatomic) struct CGPoint dragStartOffset; // @synthesize dragStartOffset=_dragStartOffset;
+@property(nonatomic) _Bool forceReloadInitiallyHiddenCandidates; // @synthesize forceReloadInitiallyHiddenCandidates=_forceReloadInitiallyHiddenCandidates;
 @property(nonatomic) _Bool canExtend; // @synthesize canExtend=_canExtend;
 @property(retain, nonatomic) NSArray *filteredCandidates; // @synthesize filteredCandidates=_filteredCandidates;
 @property(retain, nonatomic) TIKeyboardCandidateResultSet *candidateResultSet; // @synthesize candidateResultSet=_candidateResultSet;
@@ -93,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)candidateListShouldBeDismissed:(id)arg1;
 - (void)candidateListSelectionDidChange:(id)arg1;
 - (void)candidateListAcceptCandidate:(id)arg1;
+- (unsigned long long)viewOffsetForCandidateAtIndex:(unsigned long long)arg1;
 - (void)revealHiddenCandidates;
 - (unsigned long long)selectedSortIndex;
 - (id)statisticsIdentifier;

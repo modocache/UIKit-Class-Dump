@@ -21,6 +21,8 @@
 - (void)updateScrollViewContentInsetBottom:(double)arg1;
 - (void)finishScrollViewTransition;
 - (void)hideScrollViewHorizontalScrollIndicator:(_Bool)arg1;
+- (_Bool)_shouldDelayRotationForWindow:(id)arg1;
+- (_Bool)_isAccessoryViewChangedOnly;
 - (_Bool)_isTransitioning;
 - (id)_inheritedRenderConfig;
 - (void)updateInputAccessoryViewVisibility:(_Bool)arg1 withDuration:(double)arg2;
@@ -48,6 +50,7 @@
 @property(retain, nonatomic) UIInputViewSet *inputViews;
 - (void)setInputViews:(id)arg1 animated:(_Bool)arg2;
 - (void)setInputViews:(id)arg1 animationStyle:(id)arg2;
+- (_Bool)skipTransitionForInputViews:(id)arg1;
 - (id)computeTransitionFromInputViews:(id)arg1 toInputViews:(id)arg2 animationStyle:(id)arg3;
 - (id)computeTransitionForInputViews:(id)arg1 fromOrientation:(long long)arg2 toOrientation:(long long)arg3;
 - (_Bool)shouldApplySettingsForBackdropView:(id)arg1;
@@ -61,6 +64,7 @@
 - (void)finishExtraViewsForTransition:(id)arg1;
 - (void)addExtraViewsForTransition:(id)arg1;
 - (void)updateExtraViewsForStart:(_Bool)arg1 onTransition:(id)arg2;
+- (void)endClippingForTransition:(id)arg1;
 - (id)containerForClippingMode:(int)arg1 onTransition:(id)arg2;
 - (struct CGRect)calculateSnapshotRectForTransition:(id)arg1 forStart:(_Bool)arg2;
 - (struct CGRect)calculateRectForTransition:(id)arg1 forStart:(_Bool)arg2;

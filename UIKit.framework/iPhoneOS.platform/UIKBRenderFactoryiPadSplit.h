@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (double)defaultPathWeight;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
 - (double)skinnyKeyThreshold;
+- (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)shiftKeyImageName;
 - (id)deleteKeyImageName;

@@ -8,11 +8,12 @@
 
 #import "UIBarPositioning.h"
 #import "UIStatusBarTinting.h"
+#import "UITextInputTraits_Private.h"
 #import "_UIBarPositioningInternal.h"
 
-@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UISearchBarTextField, UITapGestureRecognizer, _UIBackdropView, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
+@class NSArray, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UILabel, UISearchBarTextField, UITapGestureRecognizer, UITextInputTraits, _UIBackdropView, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
 
-@interface UISearchBar : UIView <UIStatusBarTinting, _UIBarPositioningInternal, UIBarPositioning>
+@interface UISearchBar : UIView <UITextInputTraits_Private, UIStatusBarTinting, _UIBarPositioningInternal, UIBarPositioning>
 {
     UISearchBarTextField *_searchField;
     UILabel *_promptLabel;
@@ -38,6 +39,7 @@
     UIView *_maskView;
     UITapGestureRecognizer *_tapToActivateGestureRecognizer;
     UIBarButtonItem *_cancelBarButtonItem;
+    UITextInputTraits *_textInputTraits;
     struct {
         unsigned int barStyle:3;
         unsigned int showsBookmarkButton:1;
@@ -56,6 +58,7 @@
         unsigned int containedInNavigationPalette:1;
         unsigned int drawsBackgroundInPalette:1;
         unsigned int centerPlaceholder:1;
+        unsigned int searchFieldLeftViewMode:2;
     } _searchBarFlags;
     _Bool __forceCenteredPlaceholderLayout;
     UIColor *_statusBarTintColor;
@@ -71,6 +74,9 @@
 @property(retain, nonatomic, setter=_setStatusBarTintColor:) UIColor *_statusBarTintColor; // @synthesize _statusBarTintColor;
 @property(retain, nonatomic) UIColor *barTintColor; // @synthesize barTintColor=_barTintColor;
 @property(nonatomic) id <UISearchBarDelegate> delegate; // @synthesize delegate=_delegate;
+- (void)setSearchFieldLeftViewMode:(long long)arg1;
+- (long long)searchFieldLeftViewMode;
+- (void)_updateInsetsForTableView:(id)arg1;
 - (void)tappedSearchBar:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_updatePlaceholderColor;
@@ -150,12 +156,14 @@
 - (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)_defaultHeight;
-- (int)shortcutConversionType;
-- (void)setShortcutConversionType:(int)arg1;
-@property(nonatomic) long long keyboardType;
-@property(nonatomic) long long spellCheckingType;
-@property(nonatomic) long long autocorrectionType;
-@property(nonatomic) long long autocapitalizationType;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+- (id)valueForKey:(id)arg1;
+- (id)_supportedTextInputTraits;
+- (_Bool)respondsToSelector:(SEL)arg1;
+- (id)methodSignatureForSelector:(SEL)arg1;
+- (id)forwardingTargetForSelector:(SEL)arg1;
+- (void)takeTraitsFrom:(id)arg1;
+- (id)textInputTraits;
 - (id)cancelButton;
 - (void)setCancelButton:(id)arg1;
 - (_Bool)usesEmbeddedAppearance;
@@ -186,6 +194,7 @@
 - (void)didMoveToWindow:(id)arg1;
 - (void)willMoveToWindow:(id)arg1;
 - (id)_scopeBar;
+@property(readonly, nonatomic, getter=_searchBarTextField) UISearchBarTextField *searchBarTextField;
 - (id)searchField;
 - (id)controller;
 - (void)setController:(id)arg1;
@@ -201,6 +210,40 @@
 - (id)_scopeBarContainer;
 - (long long)_barPosition;
 - (void)_setBarPosition:(long long)arg1;
+
+// Remaining properties
+@property(nonatomic) _Bool acceptsEmoji;
+@property(nonatomic) _Bool acceptsFloatingKeyboard;
+@property(nonatomic) _Bool acceptsSplitKeyboard;
+@property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
+@property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
+@property(nonatomic) _Bool contentsIsSingleValue;
+@property(nonatomic) _Bool deferBecomingResponder;
+@property(nonatomic) _Bool displaySecureTextUsingPlainText;
+@property(nonatomic) int emptyContentReturnKeyType;
+@property(nonatomic) _Bool enablesReturnKeyAutomatically;
+@property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent;
+@property(nonatomic) _Bool forceEnableDictation;
+@property(retain, nonatomic) UIColor *insertionPointColor;
+@property(nonatomic) unsigned long long insertionPointWidth;
+@property(nonatomic) _Bool isSingleLineDocument;
+@property(nonatomic) long long keyboardAppearance;
+@property(nonatomic) long long keyboardType; // @dynamic keyboardType;
+@property(nonatomic) _Bool learnsCorrections;
+@property(nonatomic) _Bool returnKeyGoesToNextResponder;
+@property(nonatomic) long long returnKeyType;
+@property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
+@property(retain, nonatomic) UIColor *selectionBarColor;
+@property(retain, nonatomic) UIImage *selectionDragDotImage;
+@property(retain, nonatomic) UIColor *selectionHighlightColor;
+@property(nonatomic) int shortcutConversionType;
+@property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
+@property(nonatomic) _Bool suppressReturnKeyStyling;
+@property(nonatomic) int textLoupeVisibility;
+@property(nonatomic) int textSelectionBehavior;
+@property(nonatomic) id textSuggestionDelegate;
+@property(nonatomic) struct __CFCharacterSet *textTrimmingSet;
+@property(nonatomic) _Bool useInterfaceLanguageForLocalization;
 
 @end
 

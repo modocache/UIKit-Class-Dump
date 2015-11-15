@@ -25,6 +25,7 @@
     _Bool m_explicitlySpecified;
 }
 
++ (id)codeStringForValue:(CDStruct_73524d89)arg1;
 + (id)geometryWithRect:(struct CGRect)arg1;
 + (id)geometry;
 @property(nonatomic) _Bool explicitlySpecified; // @synthesize explicitlySpecified=m_explicitlySpecified;
@@ -37,6 +38,7 @@
 @property(nonatomic, setter=setY:) CDStruct_73524d89 y; // @synthesize y=m_y;
 @property(nonatomic, setter=setX:) CDStruct_73524d89 x; // @synthesize x=m_x;
 @property(retain, nonatomic) NSString *name; // @synthesize name=m_name;
+- (_Bool)usesAutomaticMetrics;
 - (_Bool)usesPercentages;
 - (id)overrideGeometry:(id)arg1;
 - (struct CGRect)paddedFrameWithResolvedFrame:(struct CGRect)arg1;

@@ -82,6 +82,7 @@
     NSMutableDictionary *_preservedAccessoryViewNextResponderSets;
     UIResponder *_responderWithoutAutomaticAppearanceEnabled;
     UITextEffectsWindow *_containerWindow;
+    _Bool _springBoardLockStateIsLocked;
     UIInputViewSet *_transientInputViewSet;
     id <_UIPeripheralHostCustomTransition> _customTransitionInfo;
     double _ambiguousControlCenterActivationMargin;
@@ -107,11 +108,8 @@
 @property(retain, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 @property(retain, nonatomic) UIKeyboardRotationState *rotationState; // @synthesize rotationState=_rotationState;
 @property(nonatomic) _Bool automaticAppearanceEnabled; // @synthesize automaticAppearanceEnabled=_automaticAppearanceEnabled;
-- (void)transitionDidFinish;
 - (void)transitionDidFinish:(_Bool)arg1;
-- (void)updateFrame:(struct CGRect)arg1 withProgress:(double)arg2 withDuration:(double)arg3 splitHeightDelta:(double)arg4;
-- (void)updateFrame:(struct CGRect)arg1 withDuration:(double)arg2 splitHeightDelta:(double)arg3;
-- (void)updateFrame:(struct CGRect)arg1 withProgress:(double)arg2 withDuration:(double)arg3;
+- (void)updateProgress:(double)arg1 mergedHeight:(double)arg2 splitHeight:(double)arg3;
 - (void)setAccessoryViewVisible:(_Bool)arg1 delay:(double)arg2;
 - (id)nextAnimationStyle:(_Bool)arg1;
 - (id)nextAnimationStyle;
@@ -187,6 +185,7 @@
 - (struct CGSize)sizeOfInputViewForInputViewSet:(id)arg1 withInterfaceOrientation:(long long)arg2;
 - (void)textEffectsWindowDidRotate:(id)arg1;
 - (void)peripheralHostDidEnterBackground:(id)arg1;
+- (void)springBoardLockStateChanged:(id)arg1;
 - (void)peripheralHostWillResume:(id)arg1;
 - (void)completeCurrentTransitionIfNeeded;
 - (_Bool)hasDictationKeyboard;
@@ -213,6 +212,8 @@
 - (void)updateScrollViewContentInsetBottom:(double)arg1;
 - (void)finishScrollViewTransition;
 - (void)hideScrollViewHorizontalScrollIndicator:(_Bool)arg1;
+- (_Bool)_shouldDelayRotationForWindow:(id)arg1;
+- (_Bool)_isAccessoryViewChangedOnly;
 - (_Bool)_isTransitioning;
 - (id)_inheritedRenderConfig;
 - (void)updateInputAccessoryViewVisibility:(_Bool)arg1 withDuration:(double)arg2;
@@ -240,6 +241,7 @@
 @property(retain, nonatomic) UIInputViewSet *inputViews;
 - (void)setInputViews:(id)arg1 animated:(_Bool)arg2;
 - (void)setInputViews:(id)arg1 animationStyle:(id)arg2;
+- (_Bool)skipTransitionForInputViews:(id)arg1;
 - (id)computeTransitionFromInputViews:(id)arg1 toInputViews:(id)arg2 animationStyle:(id)arg3;
 - (id)computeTransitionForInputViews:(id)arg1 fromOrientation:(long long)arg2 toOrientation:(long long)arg3;
 - (_Bool)shouldApplySettingsForBackdropView:(id)arg1;
@@ -253,6 +255,7 @@
 - (void)finishExtraViewsForTransition:(id)arg1;
 - (void)addExtraViewsForTransition:(id)arg1;
 - (void)updateExtraViewsForStart:(_Bool)arg1 onTransition:(id)arg2;
+- (void)endClippingForTransition:(id)arg1;
 - (id)containerForClippingMode:(int)arg1 onTransition:(id)arg2;
 - (struct CGRect)calculateSnapshotRectForTransition:(id)arg1 forStart:(_Bool)arg2;
 - (struct CGRect)calculateRectForTransition:(id)arg1 forStart:(_Bool)arg2;

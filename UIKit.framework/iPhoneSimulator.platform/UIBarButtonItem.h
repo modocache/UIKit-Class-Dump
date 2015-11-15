@@ -36,8 +36,8 @@
         unsigned int imageHasEffects:1;
     } _barButtonItemFlags;
     _Bool _flexible;
-    _Bool _viewWantsLetterpressImage;
-    _Bool _needsViewUpdateForLetterpressImage;
+    _Bool __viewWantsLetterpressImage;
+    _Bool __needsViewUpdateForLetterpressImage;
     double _toolbarCharge;
     double _minimumWidth;
     double _maximumWidth;
@@ -49,9 +49,9 @@
 + (id)_appearanceBlindViewClasses;
 + (Class)classForNavigationButton;
 + (void)_getSystemItemStyle:(long long *)arg1 title:(id *)arg2 image:(id *)arg3 selectedImage:(id *)arg4 action:(SEL *)arg5 forBarStyle:(long long)arg6 landscape:(_Bool)arg7 alwaysBordered:(_Bool)arg8 usingSystemItem:(long long)arg9 usingItemStyle:(long long)arg10;
+@property(readonly, nonatomic) _Bool _needsViewUpdateForLetterpressImage; // @synthesize _needsViewUpdateForLetterpressImage=__needsViewUpdateForLetterpressImage;
+@property(readonly, nonatomic) _Bool _viewWantsLetterpressImage; // @synthesize _viewWantsLetterpressImage=__viewWantsLetterpressImage;
 @property(retain, nonatomic, setter=_setItemVariation:) UIBarButtonItem *_itemVariation; // @synthesize _itemVariation=__itemVariation;
-@property(readonly, nonatomic) _Bool _needsViewUpdateForLetterpressImage; // @synthesize _needsViewUpdateForLetterpressImage;
-@property(readonly, nonatomic) _Bool _viewWantsLetterpressImage; // @synthesize _viewWantsLetterpressImage;
 @property(copy, nonatomic, setter=_setStylesForSizingTitles:) NSDictionary *_stylesForSizingTitles; // @synthesize _stylesForSizingTitles;
 @property(nonatomic, setter=_setFlexible:) _Bool _flexible; // @synthesize _flexible;
 @property(nonatomic, setter=_setMaximumWidth:) double _maximumWidth; // @synthesize _maximumWidth;

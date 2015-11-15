@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     long long cachedColorOnceToken;
 }
 
-- (_Bool)_getWhite:(double *)arg1 alpha:(double *)arg2;
+- (_Bool)getWhite:(double *)arg1 alpha:(double *)arg2;
 - (_Bool)getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
 - (_Bool)getHue:(double *)arg1 saturation:(double *)arg2 brightness:(double *)arg3 alpha:(double *)arg4;
 - (double)alphaComponent;

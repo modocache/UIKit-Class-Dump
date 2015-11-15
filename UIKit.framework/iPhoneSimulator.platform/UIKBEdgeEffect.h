@@ -18,15 +18,18 @@ __attribute__((visibility("hidden")))
     double _inset;
     double _weight;
     UIKBGradient *_gradient;
+    double _opacity;
 }
 
 + (id)effectWithColor:(id)arg1 edges:(unsigned long long)arg2 inset:(double)arg3 weight:(double)arg4;
+@property(nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property(retain, nonatomic) UIKBGradient *gradient; // @synthesize gradient=_gradient;
 @property(nonatomic) double weight; // @synthesize weight=_weight;
 @property(nonatomic) double inset; // @synthesize inset=_inset;
 @property(nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct CGColor *)CGColor;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (void)dealloc;
 - (id)initWithColor:(id)arg1 edges:(unsigned long long)arg2 inset:(double)arg3 weight:(double)arg4;

@@ -9,7 +9,7 @@
 #import "UIStatusBarServerClient.h"
 #import "UIStatusBarStateObserver.h"
 
-@class NSMutableArray, NSMutableSet, NSNumber, NSString, UIColor, UILabel, UIStatusBarBackgroundView, UIStatusBarForegroundView, UIStatusBarServer, UIStatusBarStyleAnimationParameters, UIStatusBarStyleAttributes, UIStatusBarStyleRequest, UIStatusBarWindow;
+@class NSMutableArray, NSMutableSet, NSNumber, NSString, UIColor, UILabel, UIStatusBarBackgroundView, UIStatusBarForegroundView, UIStatusBarServer, UIStatusBarStyleAnimationParameters, UIStatusBarStyleAttributes, UIStatusBarStyleRequest, UIStatusBarWindow, UIView;
 
 @interface UIStatusBar : _UIScrollsToTopInitiatorView <UIStatusBarServerClient, UIStatusBarStateObserver>
 {
@@ -20,6 +20,7 @@
     UIStatusBarBackgroundView *_backgroundView;
     UIStatusBarForegroundView *_foregroundView;
     UILabel *_doubleHeightLabel;
+    UIView *_doubleHeightLabelContainer;
     NSString *_currentDoubleHeightText;
     CDStruct_0e61b686 _currentRawData;
     NSMutableArray *_interruptedAnimationCompositeViews;
@@ -87,6 +88,7 @@
 - (struct CGAffineTransform)_hiddenTransformForHideAnimationParameters:(id)arg1;
 - (_Bool)_isTransparent;
 - (id)_backgroundView;
+- (void)statusBarStateProvider:(id)arg1 didChangeDoubleHeightStatusStringForStyle:(long long)arg2;
 - (void)statusBarStateProvider:(id)arg1 didPostStatusBarData:(const CDStruct_0e61b686 *)arg2 withActions:(int)arg3;
 - (void)statusBarServer:(id)arg1 didReceiveDoubleHeightStatusString:(id)arg2 forStyle:(long long)arg3;
 - (void)statusBarServer:(id)arg1 didReceiveGlowAnimationState:(_Bool)arg2 forStyle:(long long)arg3;
@@ -97,6 +99,7 @@
 - (void)_endDisablingRasterizationForReason:(id)arg1;
 - (void)_beginDisablingRasterizationForReason:(id)arg1;
 - (void)_updateShouldRasterize;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
 - (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_currentStyleAttributes;
 - (void)setStyleRequest:(id)arg1 animationParameters:(id)arg2;
@@ -121,6 +124,8 @@
 - (void)setHidden:(_Bool)arg1;
 - (void)setHidden:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)setHidden:(_Bool)arg1 animationParameters:(id)arg2;
+- (void)_statusBarDidAnimateRotation;
+- (void)_statusBarWillAnimateRotation;
 - (void)setOrientation:(long long)arg1;
 - (void)layoutSubviews;
 - (void)setTintColor:(id)arg1 withDuration:(double)arg2;
@@ -144,6 +149,8 @@
 - (id)currentDoubleHeightLabelText;
 - (void)_adjustDoubleHeightTextVisibility;
 - (void)_setDoubleHeightStatusString:(id)arg1;
+- (id)_doubleHeightStatusStringForStyle:(long long)arg1;
+- (_Bool)_shouldUseInProcessProviderDoubleHeightStatusString;
 - (void)_requestStyleAttributes:(id)arg1 animationParameters:(id)arg2;
 - (void)requestStyle:(long long)arg1 animationParameters:(id)arg2;
 - (void)requestStyle:(long long)arg1 animation:(int)arg2 startTime:(double)arg3 duration:(double)arg4 curve:(long long)arg5;

@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (id)traitsForToggleButtonWithSize:(struct CGSize)arg1 highlighted:(_Bool)arg2 edges:(unsigned long long)arg3;
 - (id)traitsForCellSize:(struct CGSize)arg1 highlighted:(_Bool)arg2 edges:(_Bool)arg3;
 - (id)initWithRenderConfig:(id)arg1;
+- (id)controlKeyBackgroundColorName;
+- (id)defaultKeyBackgroundColorName;
 
 @end
 

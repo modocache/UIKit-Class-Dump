@@ -15,6 +15,8 @@
 - (void)_setInputMode:(id)arg1;
 - (id)_typeCharacter:(id)arg1 withError:(struct CGPoint)arg2 shouldTypeVariants:(_Bool)arg3 baseKeyForVariants:(_Bool)arg4;
 - (id)_touchPoint:(struct CGPoint)arg1;
+- (void)_setSplit:(_Bool)arg1;
+- (void)_setUndocked:(_Bool)arg1;
 - (void)_changeToKeyplane:(id)arg1;
 - (id)_keyplaneNamed:(id)arg1;
 - (id)_keyplaneForKey:(id)arg1;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGRect)constrainFrameToScreen:(struct CGRect)arg1;
+- (int)textEffectsVisibilityLevel;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
 - (void)_updateTransformLayerForClassicPresentation;
 - (_Bool)_canAffectStatusBarAppearance;

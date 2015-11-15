@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NSString, UIButton, UILabel, _UIBackdropView;
+@class NSLayoutConstraint, NSMutableArray, NSString, UIButton, UILabel, _UIBackdropView;
 
 @interface _UIContentUnavailableView : UIView
 {
@@ -22,15 +22,23 @@
     UIView *_fromSnapshot;
     UIView *_toSnapshot;
     struct CGSize _fromSnapshotSize;
+    NSMutableArray *_containerViewContraints;
     NSString *_message;
     NSString *_buttonTitle;
     CDUnknownBlockType _buttonAction;
+    unsigned long long _vibrantOptions;
 }
 
+@property(nonatomic) unsigned long long vibrantOptions; // @synthesize vibrantOptions=_vibrantOptions;
 @property(copy, nonatomic) CDUnknownBlockType buttonAction; // @synthesize buttonAction=_buttonAction;
 @property(copy, nonatomic) NSString *buttonTitle; // @synthesize buttonTitle=_buttonTitle;
 @property(copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+- (_Bool)_hasVibrantButton;
+- (_Bool)_hasVibrantText;
+- (double)_labelAlpha;
+- (id)_flatTextColor;
+- (id)_vibrantBaseColor;
 - (void)windowDidRotateNotification:(id)arg1;
 - (void)windowWillAnimateRotateNotification:(id)arg1;
 - (void)windowWillRotateNotification:(id)arg1;
@@ -38,8 +46,10 @@
 - (void)updateConstraints;
 - (void)_actionButtonPressed:(id)arg1;
 - (void)_updateViewHierarchy;
-- (id)_buttonBackgroundImageForStyle:(unsigned long long)arg1;
+- (void)layoutSubviews;
+- (id)_buttonBackgroundImageForStyle:(unsigned long long)arg1 controlState:(unsigned long long)arg2;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 title:(id)arg2 style:(unsigned long long)arg3 includeBackdrop:(_Bool)arg4;
 - (id)initWithFrame:(struct CGRect)arg1 title:(id)arg2 style:(unsigned long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 

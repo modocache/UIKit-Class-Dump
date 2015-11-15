@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)createEndpointButtonWithRect:(struct CGRect)arg1 action:(SEL)arg2;
 - (id)endpointButton;
 - (id)endpointButtonImageWithRect:(struct CGRect)arg1 pressed:(_Bool)arg2;
+- (void)highlightEndpointButton;
 - (void)applicationWillResignActive;
 
 @end

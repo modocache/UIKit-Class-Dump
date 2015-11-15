@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateInlineFloatingView : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateGridCollectionViewControllerDelegate>
 {
     _Bool _reducedWidth;
+    _Bool _showHiddenCandidatesOnly;
     int _position;
     TIKeyboardCandidateResultSet *_candidateSet;
     NSString *_inlineText;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _previousCollapsedFrame;
 }
 
+@property(nonatomic) _Bool showHiddenCandidatesOnly; // @synthesize showHiddenCandidatesOnly=_showHiddenCandidatesOnly;
 @property(nonatomic) struct CGRect previousCollapsedFrame; // @synthesize previousCollapsedFrame=_previousCollapsedFrame;
 @property(nonatomic) int position; // @synthesize position=_position;
 @property(nonatomic) id <UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
@@ -67,11 +69,14 @@ __attribute__((visibility("hidden")))
 - (id)candidates;
 - (void)candidatesDidChange;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(_Bool)arg5;
+- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(_Bool)arg6 showHiddenCandidatesOnly:(_Bool)arg7;
 - (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(_Bool)arg6;
+- (void)setCandidateSet:(id)arg1 showHiddenCandidatesOnly:(_Bool)arg2;
 - (void)adjustFrameForInlineText:(id)arg1 inlineRect:(struct CGRect)arg2 maxX:(double)arg3;
 - (struct CGRect)adjustedFrameFromDesiredFrame:(struct CGRect)arg1 textHeight:(double)arg2;
 - (_Bool)isAcceptableFrame:(struct CGRect)arg1 afterScrollBy:(double)arg2;
 - (struct CGRect)adjustedInlineRectFromInlineText:(id)arg1 inlineRect:(struct CGRect)arg2;
+- (void)revealHiddenCandidates;
 - (_Bool)isHiddenCandidatesList;
 - (_Bool)isExtendedList;
 - (void)expand;

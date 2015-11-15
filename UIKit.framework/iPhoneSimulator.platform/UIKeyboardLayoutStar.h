@@ -6,7 +6,7 @@
 
 #import <UIKit/UIKeyboardLayout.h>
 
-@class CADisplayLink, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIDelayedAction, UIKBBackgroundView, UIKBKeyplaneView, UIKBRenderConfig, UIKBTree, UISwipeGestureRecognizer, UIView, UIView<UIKeyboardRivenTransitionView>;
+@class CADisplayLink, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIDelayedAction, UIKBBackgroundView, UIKBKeyplaneView, UIKBRenderConfig, UIKBTree, UIKeyboardSplitTransitionView, UISwipeGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardLayoutStar : UIKeyboardLayout
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
     UISwipeGestureRecognizer *_rightSwipeRecognizer;
     UISwipeGestureRecognizer *_leftSwipeRecognizer;
     UISwipeGestureRecognizer *_upSwipeRecognizer;
-    UIView<UIKeyboardRivenTransitionView> *_transitionView;
+    UIKeyboardSplitTransitionView *_transitionView;
     double _initialSplitProgress;
     double _finalSplitProgress;
     double _initialPinchSeparation;
@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
     _Bool _ghostKeysEnabled;
     UIDelayedAction *_delayedCentroidUpdate;
     _Bool _isRebuilding;
+    NSString *_layoutTag;
     _Bool _preRotateShift;
     NSString *_preRotateKeyplaneName;
     struct CGPoint _keyPeripheralInset;
@@ -82,19 +83,24 @@ __attribute__((visibility("hidden")))
     UIView *_dimKeyboardImageView;
     _Bool _keyboardImageViewIsDim;
     _Bool _isOutOfBounds;
+    NSMutableSet *_keysUnderIndicator;
     int playKeyClickSoundOn;
     UIKBRenderConfig *_renderConfig;
 }
 
++ (id)sharedRivenKeyplaneGenerator;
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2;
-+ (id)keyboardWithName:(id)arg1 screen:(id)arg2;
++ (id)keyboardWithName:(id)arg1 screenTraits:(id)arg2;
 + (id)keyboardFromFactoryWithName:(id)arg1 screen:(id)arg2;
++ (void)accessibilitySensitivityChanged;
++ (Class)_subclassForScreenTraits:(id)arg1;
+@property(retain, nonatomic) NSString *layoutTag; // @synthesize layoutTag=_layoutTag;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property(copy, nonatomic) NSString *preTouchKeyplaneName; // @synthesize preTouchKeyplaneName=_preTouchKeyplaneName;
 @property(nonatomic) int playKeyClickSoundOn; // @synthesize playKeyClickSoundOn;
 @property(copy, nonatomic) NSString *localizedInputKey; // @synthesize localizedInputKey=_localizedInputKey;
-@property(readonly, nonatomic) _Bool showDictationKey; // @synthesize showDictationKey=_showDictationKey;
-@property(nonatomic) _Bool showIntlKey; // @synthesize showIntlKey=_showIntlKey;
+@property(readonly, nonatomic) _Bool showsDictationKey; // @synthesize showsDictationKey=_showDictationKey;
+@property(readonly, nonatomic) _Bool showsInternationalKey; // @synthesize showsInternationalKey=_showIntlKey;
 @property(nonatomic) _Bool didLongPress; // @synthesize didLongPress=_didLongPress;
 @property(nonatomic) _Bool autoShift; // @synthesize autoShift=_autoshift;
 @property(nonatomic) _Bool shift; // @synthesize shift=_shift;
@@ -188,6 +194,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForSplitTransition;
 - (double)interpretPinchSeparationValues;
 - (id)activationIndicatorView;
+- (void)setHideKeysUnderIndicator:(_Bool)arg1;
 - (_Bool)shouldShowIndicator;
 - (void)showPopupVariantsForKey:(id)arg1;
 - (id)_keyplaneVariantsKeyForString:(id)arg1;
@@ -201,7 +208,7 @@ __attribute__((visibility("hidden")))
 - (void)setAction:(SEL)arg1 forKey:(id)arg2;
 - (void)setTarget:(id)arg1 forKey:(id)arg2;
 - (void)setLabel:(id)arg1 forKey:(id)arg2;
-- (void)setLayoutTag:(id)arg1;
+- (void)updateLayoutTags;
 - (void)didClearInput;
 - (void)touchMultitapTimer;
 - (void)cancelMultitapTimer;
@@ -250,12 +257,12 @@ __attribute__((visibility("hidden")))
 - (void)updateBackgroundIfNeeded;
 - (void)updateBackgroundCorners;
 - (_Bool)handwritingPlane;
+- (void)setPasscodeOutlineAlpha:(double)arg1;
 - (struct CGImage *)renderedKeyplaneWithToken:(id)arg1 split:(_Bool)arg2;
 - (struct CGImage *)renderedImageWithToken:(id)arg1;
 - (struct CGImage *)renderedImageWithStateFallbacksForToken:(id)arg1;
 - (struct CGImage *)cachedCompositeImageWithCacheKey:(id)arg1;
 - (void)rebuildSplitTransitionView;
-- (void)rebuildSplitTransitionViewFromKeyplane:(id)arg1 toKeyplane:(id)arg2;
 - (void)updateLocalizedKeys:(_Bool)arg1;
 - (void)updateLocalizedKeysOnKeyplane:(id)arg1;
 - (_Bool)canProduceString:(id)arg1;
@@ -278,6 +285,7 @@ __attribute__((visibility("hidden")))
 - (void)removeFromSuperview;
 - (void)clearUnusedObjects:(_Bool)arg1;
 - (void)willMoveToWindow:(id)arg1;
+- (void)accessibilitySensitivityChanged;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(readonly, nonatomic, getter=isRotating) _Bool rotating;
@@ -290,6 +298,7 @@ __attribute__((visibility("hidden")))
 - (void)activateCompositeKey:(id)arg1 direction:(int)arg2 flickString:(id)arg3 popupInfo:(id)arg4;
 - (void)showPopupView:(int)arg1 withKey:(id)arg2 popupInfo:(id)arg3 force:(_Bool)arg4;
 - (void)setKeyboardDim:(_Bool)arg1;
+- (void)setDisableInteraction:(_Bool)arg1;
 - (void)setKeyboardDim:(_Bool)arg1 amount:(double)arg2 withDuration:(double)arg3;
 - (void)handleDismissFlickView;
 - (void)handleDismissFlickView:(id)arg1;

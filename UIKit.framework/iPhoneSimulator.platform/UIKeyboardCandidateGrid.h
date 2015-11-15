@@ -9,11 +9,12 @@
 #import "UIKeyboardCandidateGridCollectionViewControllerDelegate.h"
 #import "UIKeyboardCandidateList.h"
 #import "UIKeyboardCandidateListDelegate.h"
+#import "UIKeyboardCandidateRowViewControllerDelegate.h"
 
-@class NSArray, NSMutableDictionary, NSString, TIKeyboardCandidateResultSet, UIImageView, UIKBBackdropView, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateGridHeader, UIKeyboardCandidateSortControl;
+@class NSArray, NSMutableDictionary, NSString, TIKeyboardCandidateResultSet, UIImageView, UIKBBackdropView, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateGridHeader, UIKeyboardCandidateRowViewController, UIKeyboardCandidateSortControl;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateGrid : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateGridCollectionViewControllerDelegate>
+@interface UIKeyboardCandidateGrid : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateGridCollectionViewControllerDelegate, UIKeyboardCandidateRowViewControllerDelegate>
 {
     UIImageView *_backgroundView;
     UIView *_topBarShadow;
@@ -22,7 +23,7 @@ __attribute__((visibility("hidden")))
     UIKeyboardCandidateGridHeader *_gridHeader;
     _Bool _drawTopShadow;
     _Bool _drawBottomShadow;
-    _Bool _showHiddenCandidatesOnly;
+    _Bool _secondaryCandidatesViewIsCurrent;
     int _candidatesVisualStyle;
     id <UIKeyboardCandidateListDelegate> _candidateListDelegate;
     TIKeyboardCandidateResultSet *_candidateSet;
@@ -33,9 +34,11 @@ __attribute__((visibility("hidden")))
     UIKBBackdropView *_backdropView;
     NSArray *_sortedCandidates;
     NSString *_inlineText;
+    UIKeyboardCandidateRowViewController *_secondaryCandidatesViewController;
 }
 
-@property(nonatomic) _Bool showHiddenCandidatesOnly; // @synthesize showHiddenCandidatesOnly=_showHiddenCandidatesOnly;
+@property(nonatomic) _Bool secondaryCandidatesViewIsCurrent; // @synthesize secondaryCandidatesViewIsCurrent=_secondaryCandidatesViewIsCurrent;
+@property(retain, nonatomic) UIKeyboardCandidateRowViewController *secondaryCandidatesViewController; // @synthesize secondaryCandidatesViewController=_secondaryCandidatesViewController;
 @property(retain, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;
 @property(retain, nonatomic) NSArray *sortedCandidates; // @synthesize sortedCandidates=_sortedCandidates;
 @property(retain, nonatomic) UIKBBackdropView *backdropView; // @synthesize backdropView=_backdropView;
@@ -56,11 +59,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)gridCollectionViewSelectedSortMethodIndex:(id)arg1;
 - (void)sortSelectionBarAction:(id)arg1;
 @property(readonly, nonatomic) NSMutableDictionary *collectionViewControllers; // @synthesize collectionViewControllers=_collectionViewControllers;
-- (void)setCandidateSet:(id)arg1 showHiddenCandidatesOnly:(_Bool)arg2;
-- (void)revealHiddenCandidates;
 - (void)candidateListShouldBeDismissed:(id)arg1;
 - (void)candidateListSelectionDidChange:(id)arg1;
 - (void)candidateListAcceptCandidate:(id)arg1;
+- (void)revealHiddenCandidates;
 - (_Bool)handleTabKeyWithShift:(_Bool)arg1;
 - (_Bool)handleNumberKey:(unsigned long long)arg1;
 - (unsigned long long)selectedSortIndex;

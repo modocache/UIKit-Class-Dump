@@ -95,6 +95,11 @@
         unsigned int backdropOverlayMode:2;
         unsigned int tintAdjustmentMode:2;
         unsigned int isReferenceView:1;
+        unsigned int focusState:2;
+        unsigned int hasUserInterfaceIdiom:1;
+        unsigned int userInterfaceIdiom:3;
+        unsigned int ancestorDefinesTintColor:1;
+        unsigned int ancestorDefinesTintAdjustmentMode:1;
     } _viewFlags;
     long long _retainCount;
     long long _tintAdjustmentDimmingCount;
@@ -117,6 +122,9 @@
 + (void)_endSuspendingMotionEffectsForReason:(id)arg1;
 + (void)_beginSuspendingMotionEffectsForReason:(id)arg1;
 + (id)_motionEffectEngine;
++ (void)_setTintColorUpdating:(_Bool)arg1;
++ (_Bool)_tintColorUpdating;
++ (id)_defaultInteractionTintColorForIdiom:(long long)arg1;
 + (Class)layerClass;
 + (_Bool)_preventsAppearanceProxyCustomization;
 + (void)_performCustomizableAppearanceModifications:(CDUnknownBlockType)arg1;
@@ -126,6 +134,8 @@
 + (id)_appearanceWhenContainedIn:(id)arg1;
 + (id)_appearanceRecorder;
 + (id)appearance;
++ (void)_removeHierarchyTrackingVisitor:(id)arg1;
++ (void)_addHierarchyTrackingVisitor:(id)arg1;
 + (void)throttledFlush;
 + (void)flush;
 + (double)_durationForRotationFromInterfaceOrientation:(long long)arg1 toInterfaceOrientation:(long long)arg2 withBaseDuration:(double)arg3;
@@ -184,6 +194,7 @@
 + (id)_currentAnimationAttributes;
 + (id)_defaultUIViewActionForLayer:(id)arg1 forKey:(id)arg2 forView:(id)arg3;
 + (id)_defaultUIViewActionForLayer:(id)arg1 forKey:(id)arg2;
++ (_Bool)_hasActiveAnimationContext;
 + (void)performSystemAnimation:(unsigned long long)arg1 onViews:(id)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)transitionFromView:(id)arg1 toView:(id)arg2 duration:(double)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)transitionWithView:(id)arg1 duration:(double)arg2 options:(unsigned long long)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
@@ -210,8 +221,8 @@
 + (void)_endDisablingPromoteDescendantToFirstResponder;
 + (void)_beginDisablingPromoteDescendantToFirstResponder;
 + (void)_initializeForIdiom:(long long)arg1;
-+ (void)_initializeForIdiomIfNecessary:(long long)arg1;
-+ (_Bool)_requiresInitializationForIdiom:(long long)arg1;
++ (void)_registerClassForIdiomInitializationIfNeccessary;
++ (void)_performInitializationForIdiomIfNeccessary:(long long)arg1;
 + (void)_transitionFromView:(id)arg1 toView:(id)arg2 duration:(double)arg3 options:(unsigned long long)arg4 animations:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 + (_Bool)_invalidatesViewUponCreation;
 + (void)_setInvalidatesViewUponCreation:(_Bool)arg1;
@@ -227,6 +238,7 @@
 @property(nonatomic, setter=_setShouldArchiveUIAppearanceTags:) _Bool _shouldArchiveUIAppearanceTags; // @synthesize _shouldArchiveUIAppearanceTags;
 @property(readonly, nonatomic) NSArray *_constraintsExceptingSubviewAutoresizingConstraints; // @synthesize _constraintsExceptingSubviewAutoresizingConstraints;
 @property(retain, nonatomic, setter=_setInternalConstraints:) NSMutableArray *_internalConstraints; // @synthesize _internalConstraints;
+@property(nonatomic) unsigned long long _countOfMotionEffectsInSubtree; // @synthesize _countOfMotionEffectsInSubtree;
 @property(readonly, nonatomic) NSISVariable *_minYVariable; // @synthesize _minYVariable;
 @property(readonly, nonatomic) NSISVariable *_minXVariable; // @synthesize _minXVariable;
 @property(readonly, nonatomic) NSISVariable *_boundsHeightVariable; // @synthesize _boundsHeightVariable;
@@ -263,7 +275,6 @@
 - (void)_recursivelyReconsiderMotionEffectSuspension;
 - (void)_recursivelyConsiderResumingMotionEffects;
 - (void)_recursivelySuspendMotionEffects;
-- (unsigned long long)_countOfMotionEffectsInSubtree;
 - (_Bool)_motionEffectsAreSuspended;
 - (void)setMotionEffects:(id)arg1;
 - (id)_motionEffects;
@@ -275,7 +286,7 @@
 - (void)removeMotionEffect:(id)arg1;
 - (void)_addMotionEffect:(id)arg1;
 - (void)addMotionEffect:(id)arg1;
-- (void)_modifyMotionEffectCountOfSelfAndAncestorsBy:(long long)arg1;
+- (void)_dispatchMotionEffectsVisitorWithDelta:(long long)arg1;
 - (_Bool)_isInVisibleHierarchy;
 - (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
 - (void)_updateBackdropMaskFrames;
@@ -306,20 +317,29 @@
 - (void)_setDrawsAsBackdropOverlayWithBlendMode:(long long)arg1;
 - (void)_setDrawsAsBackdropOverlay:(_Bool)arg1;
 - (_Bool)_drawsAsBackdropOverlay;
+- (void)_focusStateDidChange;
+- (void)_setFocusState:(long long)arg1;
+- (long long)_focusState;
+- (_Bool)_isFocusableElement;
+@property(nonatomic, getter=_ancestorDefinesTintAdjustmentMode, setter=_setAncestorDefinesTintAdjustmentMode:) _Bool _ancestorDefinesTintAdjustmentMode;
+@property(nonatomic, getter=_ancestorDefinesTintColor, setter=_setAncestorDefinesTintColor:) _Bool _ancestorDefinesTintColor;
 - (void)_endOcclusion:(id)arg1;
 - (void)_beginOcclusion:(id)arg1;
 - (_Bool)_hasNormalTintAdjustmentMode;
 - (void)interactionTintColorDidChange;
 - (id)tintColor;
+- (id)__darkSystemColorForColor:(id)arg1;
 - (id)_normalInheritedTintColor;
 @property(retain, nonatomic) UIColor *interactionTintColor;
 - (void)tintColorDidChange;
+- (long long)_primitiveTintAdjustmentMode;
 - (void)setTintAdjustmentMode:(long long)arg1;
 - (long long)tintAdjustmentMode;
 - (long long)_defaultTintAdjustmentMode;
 - (void)setTintColor:(id)arg1;
 - (id)_inheritedInteractionTintColor;
 - (id)_tintColorArchivingKey;
+- (void)_dispatchTintColorVisitorWithReasons:(unsigned long long)arg1;
 - (void)_setAppearanceIsInvalid:(_Bool)arg1;
 - (_Bool)_appearanceIsInvalid;
 - (void)_invalidateAppearanceForSubviewsOfClass:(Class)arg1;
@@ -354,6 +374,7 @@
 - (id)init;
 - (Class)_appearanceGuideClass;
 - (id)_appearanceContainer;
+- (void)_receiveVisitor:(id)arg1;
 - (double)_baselineOffsetFromBottom;
 - (void)_didRemoveDependentConstraint:(id)arg1;
 - (void)_didAddDependentConstraint:(id)arg1;
@@ -428,6 +449,7 @@
 - (void)_promoteSelfOrDescendantToFirstResponderIfNecessary;
 - (void)deferredBecomeFirstResponder;
 - (_Bool)becomeFirstResponder;
+- (_Bool)canBecomeFirstResponder;
 - (void)_makeSubtreePerformSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3 copySublayers:(_Bool)arg4;
 - (void)_makeSubtreePerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (id)_findFirstSubviewWantingToBecomeFirstResponder;
@@ -521,8 +543,8 @@
 - (void)setSize:(struct CGSize)arg1;
 - (struct CGSize)size;
 - (id)initWithSize:(struct CGSize)arg1;
+- (_Bool)_isInteractiveElement;
 - (id)_disabledColor;
-- (void)_recursivelyUpdateBackdropMaskFrames;
 - (struct CGRect)_visualAltitudeSensitiveBoundsWithInfiniteEdges:(unsigned long long)arg1;
 - (id)_viewControllerToNotifyOnLayoutSubviews;
 - (void)_unregisterAsReferenceView;
@@ -530,7 +552,6 @@
 - (void)_unregisterFromAnimators;
 - (void)_notifyReferenceViewSizeChange;
 - (id)_encodableSubviews;
-- (void)_recursiveNotifyInteractionTintColorDidChangeForReasons:(unsigned long long)arg1;
 @property(readonly, nonatomic, getter=_currentScreenScale) double currentScreenScale;
 - (void)_recursivelyNameLayerTree;
 - (void)_setBackgroundCGColor:(struct CGColor *)arg1;
@@ -554,6 +575,7 @@
 - (void)_encodeBackgroundColorWithCoder:(id)arg1;
 - (void)_encodeFrameWithCoder:(id)arg1;
 - (id)_subviewAtIndex:(long long)arg1;
+- (long long)_viewOrderRelativeToView:(id)arg1;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (_Bool)_isAlphaHittableAndHasAlphaHittableAncestors;
 @property(nonatomic, getter=_viewDelegate, setter=_setViewDelegate:) UIViewController *viewDelegate;
@@ -590,8 +612,12 @@
 - (void)_webCustomViewWasRemovedFromSuperview:(id)arg1;
 - (void)_webCustomViewWillBeRemovedFromSuperview;
 - (void)_webCustomViewWasAddedAsSubviewOfView:(id)arg1;
+- (void)_performUpdatesForPossibleChangesOfIdiom:(long long)arg1 orScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (void)_didChangeFromIdiomOnScreen:(id)arg1 traverseHierarchy:(_Bool)arg2;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
+- (void)_willChangeToIdiomOnScreen:(id)arg1 traverseHierarchy:(_Bool)arg2;
+@property(nonatomic, getter=_userInterfaceIdiom, setter=_setUserInterfaceIdiom:) long long _userInterfaceIdiom;
 - (void)_applyScreenScaleToContentScaleFactorIfNotSpecifiedByDeveloper;
 - (_Bool)_shouldInheritScreenScaleAsContentScaleFactor;
 - (void)_applyAppearanceInvocations;
@@ -637,6 +663,7 @@
 - (id)_enclosingScrollableScrollerIncludingSelf;
 - (_Bool)_isScrollingEnabled;
 - (id)_enclosingScrollerIncludingSelf;
+- (_Bool)_areAccessibilityButtonShapesEnabled;
 - (void)_prepareToAppearInNavigationItemOnLeft:(_Bool)arg1;
 - (id)_window;
 - (void)gestureEnded:(struct __GSEvent *)arg1;

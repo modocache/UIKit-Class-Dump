@@ -63,6 +63,7 @@
 - (void)_setBatteryLevel:(float)arg1;
 - (void)_setBatteryState:(long long)arg1;
 - (void)_setProximityState:(_Bool)arg1;
+- (long long)_keyboardGraphicsQuality;
 
 @end
 

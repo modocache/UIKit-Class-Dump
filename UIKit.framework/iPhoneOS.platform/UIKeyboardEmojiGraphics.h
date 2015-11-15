@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     struct CGGradient *_backgroundGradient;
 }
 
++ (_Bool)boldText;
 + (id)pressIndicatorViewWithFrame:(struct CGRect)arg1 whiteKeyboard:(_Bool)arg2;
 + (double)emojiPageControlYOffset:(_Bool)arg1;
 + (double)optionalDescriptionPadding:(_Bool)arg1;

@@ -11,8 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)dealloc;
 - (void)computeOutputSettingsUsingModel:(id)arg1;
+- (void)_accessibilityButtonShapesDidChangeNotification:(id)arg1;
 - (void)setDefaultValues;
+- (id)initWithDefaultValuesForGraphicsQuality:(long long)arg1;
 
 @end
 

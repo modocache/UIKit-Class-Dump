@@ -44,10 +44,14 @@
     UIImage *_grayscaleTintMaskImage;
     UIView *_colorTintView;
     UIImage *_colorTintMaskImage;
+    UIView *_colorBurnTintView;
+    UIImage *_colorBurnTintMaskImage;
     CAFilter *_gaussianBlurFilter;
     CAFilter *_colorSaturateFilter;
     CAFilter *_tintFilter;
     UIView *_contentView;
+    UIView *_darkeningTintView;
+    UIImage *_darkeningTintMaskImage;
     long long _maskMode;
     NSMutableSet *_partialMaskViews;
     UIView *_grayscaleTintMaskViewContainer;
@@ -116,10 +120,14 @@
 @property(nonatomic) long long maskMode; // @synthesize maskMode=_maskMode;
 @property(nonatomic) _Bool contentViewAccessorGuard; // @synthesize contentViewAccessorGuard=_contentViewAccessorGuard;
 @property(nonatomic) _Bool contentViewAccessed; // @synthesize contentViewAccessed=_contentViewAccessed;
+@property(retain, nonatomic) UIImage *darkeningTintMaskImage; // @synthesize darkeningTintMaskImage=_darkeningTintMaskImage;
+@property(retain, nonatomic) UIView *darkeningTintView; // @synthesize darkeningTintView=_darkeningTintView;
 @property(retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property(retain, nonatomic) CAFilter *tintFilter; // @synthesize tintFilter=_tintFilter;
 @property(retain, nonatomic) CAFilter *colorSaturateFilter; // @synthesize colorSaturateFilter=_colorSaturateFilter;
 @property(retain, nonatomic) CAFilter *gaussianBlurFilter; // @synthesize gaussianBlurFilter=_gaussianBlurFilter;
+@property(retain, nonatomic) UIImage *colorBurnTintMaskImage; // @synthesize colorBurnTintMaskImage=_colorBurnTintMaskImage;
+@property(retain, nonatomic) UIView *colorBurnTintView; // @synthesize colorBurnTintView=_colorBurnTintView;
 @property(retain, nonatomic) UIImage *colorTintMaskImage; // @synthesize colorTintMaskImage=_colorTintMaskImage;
 @property(retain, nonatomic) UIView *colorTintView; // @synthesize colorTintView=_colorTintView;
 @property(retain, nonatomic) UIImage *grayscaleTintMaskImage; // @synthesize grayscaleTintMaskImage=_grayscaleTintMaskImage;
@@ -145,6 +153,8 @@
 @property(retain, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property(nonatomic) _Bool autosizesToFitSuperview; // @synthesize autosizesToFitSuperview=_autosizesToFitSuperview;
 @property(nonatomic) long long style; // @synthesize style=_style;
+- (_Bool)disablesOccludedBackdropBlurs;
+- (void)setDisablesOccludedBackdropBlurs:(_Bool)arg1;
 - (void)applySettings:(id)arg1;
 - (void)applySettingsWithBuiltInAnimation:(id)arg1;
 - (void)computeAndApplySettingsForTransition;
@@ -153,6 +163,8 @@
 - (void)adjustTintImplementationIfNeeded:(id)arg1;
 - (void)ensureProperSubviewOrdering;
 - (void)addContentViewIfNeededForSettings:(id)arg1;
+- (void)addDarkeningTintViewIfNeededForSettings:(id)arg1;
+- (void)addColorBurnTintViewIfNeededForSettings:(id)arg1;
 - (void)addColorTintViewIfNeededForSettings:(id)arg1;
 - (void)addGrayscaleTintViewIfNeededForSettings:(id)arg1;
 - (void)addBackdropEffectViewIfNeededForSettings:(id)arg1;

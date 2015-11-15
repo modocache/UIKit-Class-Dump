@@ -9,10 +9,9 @@
 @interface UITabBarItem (Static)
 + (id)_appearanceBlindViewClasses;
 - (void)_updateView;
-- (void)_updateViewForIdiom:(long long)arg1;
-- (void)_updateViewForIdiom:(long long)arg1 positionItems:(_Bool)arg2;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2 withTint:(_Bool)arg3 idiom:(long long)arg4;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2 idiom:(long long)arg3;
+- (void)_updateViewAndPositionItems:(_Bool)arg1;
+- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2 withTint:(_Bool)arg3;
+- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2;
 - (void)_setTitleTextAttributeValue:(id)arg1 forAttributeKey:(id)arg2 state:(unsigned long long)arg3;
 - (id)nextResponder;
 - (id)_updateImageWithTintColor:(id)arg1 isSelected:(_Bool)arg2 getImageOffset:(struct UIOffset *)arg3;

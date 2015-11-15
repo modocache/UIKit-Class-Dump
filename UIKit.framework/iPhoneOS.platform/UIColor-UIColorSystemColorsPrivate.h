@@ -7,17 +7,36 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (UIColorSystemColorsPrivate)
++ (id)_alternateForegroundColor2;
++ (id)_alternateForegroundColor;
++ (id)_alternateTextColor2;
++ (id)_alternateTextColor;
++ (id)_alternateBackgroundColor2;
++ (id)_alternateBackgroundColor;
 + (id)_webContentBackgroundColor;
 + (id)_systemSelectedColor;
++ (id)_externalBarBackgroundColor;
++ (id)_alternateGrayColorForFontSize:(double)arg1;
 + (id)_grayColorForFontSize:(double)arg1;
++ (id)_alternateSystemInteractionTintColor;
 + (id)_dimmingViewColor;
 + (id)_translucentPaperTextureColor;
 + (id)noContentDarkGradientBackgroundColor;
 + (id)noContentLightGradientBackgroundColor;
++ (id)_accessibilityButtonShapesNoBlendModeBackgroundColorOnDark;
++ (id)_accessibilityButtonShapesNoBlendModeBackgroundColorOnLight;
++ (id)_accessibilityButtonShapesDisabledBackgroundColorOnDark;
++ (id)_accessibilityButtonShapesBackgroundColorOnDark;
++ (id)_accessibilityButtonShapesBackgroundColorOnLight;
++ (id)_externalSystemSuperDarkGrayColor;
++ (id)_externalSystemExtraDarkGrayColor;
++ (id)_externalSystemDarkGrayColor;
++ (id)_externalSystemGrayColor;
++ (id)_externalSystemMidGrayColor;
++ (id)_externalSystemWhiteColor;
 + (id)_systemMidGrayTintColor;
 + (id)_barStyleBlackHairlineShadowColor;
 + (id)_barHairlineShadowColor;
-+ (id)_alternateSystemInteractionTintColor;
 + (id)_systemDestructiveTintColor;
 + (id)_systemInteractionTintColor;
 @end

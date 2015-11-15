@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)_physicalButtonsForWindow:(id)arg1;
 - (id)_allPhysicalButtons;
 - (id)_windows;
+- (long long)type;
 - (void)dealloc;
 - (id)_init;
 

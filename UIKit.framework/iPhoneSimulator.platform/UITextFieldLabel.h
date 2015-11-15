@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)_defaultAttributes;
 + (id)defaultFont;
 - (_Bool)_shouldDrawUnderlinesLikeWebKit;
 - (void)drawTextInRect:(struct CGRect)arg1;

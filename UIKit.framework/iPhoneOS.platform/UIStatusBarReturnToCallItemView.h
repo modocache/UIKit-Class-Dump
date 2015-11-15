@@ -4,15 +4,20 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarReturnToAppItemView.h>
+#import <UIKit/UIStatusBarAppIconItemView.h>
+
+@class UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarReturnToCallItemView : UIStatusBarReturnToAppItemView
+@interface UIStatusBarReturnToCallItemView : UIStatusBarAppIconItemView
 {
+    UILabel *_textLabel;
 }
 
-- (long long)buttonType;
-- (id)_text;
+- (id)_appBundleIdentifier;
+- (void)layoutSubviews;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
+- (void)dealloc;
 
 @end
 

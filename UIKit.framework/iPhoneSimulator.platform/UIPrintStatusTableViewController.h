@@ -6,13 +6,12 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSDateFormatter, PKJob, UIButton;
+@class NSDateFormatter, PKJob;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintStatusTableViewController : UITableViewController
 {
     PKJob *_printJob;
-    UIButton *_cancelButton;
     NSDateFormatter *_sentFormatter;
 }
 

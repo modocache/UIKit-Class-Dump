@@ -6,12 +6,12 @@
 
 #import <UIKit/UIKeyboardCandidateToggleButton.h>
 
-@class UIImage, UIView;
+@class UIImage, UIKeyboardCandidatePocketShadow;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateUnsplitKeyboardToggleButton : UIKeyboardCandidateToggleButton
 {
-    UIView *_pocketShadow;
+    UIKeyboardCandidatePocketShadow *_pocketShadow;
     UIImage *_backgroundNormal;
     UIImage *_backgroundHighlighted;
     _Bool _drawsBackground;

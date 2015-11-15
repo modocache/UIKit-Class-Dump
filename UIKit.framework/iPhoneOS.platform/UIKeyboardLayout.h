@@ -15,9 +15,16 @@
     NSMutableArray *_uncommittedTouches;
     UITouch *_activeTouch;
     UITouch *_shiftKeyTouch;
+    long long _cursorLocation;
+    _Bool _disableInteraction;
     UIKeyboardTaskQueue *_taskQueue;
+    _Bool hideKeysUnderIndicator;
 }
 
++ (Class)_subclassForScreenTraits:(id)arg1;
+@property(nonatomic) _Bool hideKeysUnderIndicator; // @synthesize hideKeysUnderIndicator;
+@property(nonatomic) _Bool disableInteraction; // @synthesize disableInteraction=_disableInteraction;
+@property(nonatomic) long long cursorLocation; // @synthesize cursorLocation=_cursorLocation;
 @property(retain, nonatomic) UITouch *shiftKeyTouch; // @synthesize shiftKeyTouch=_shiftKeyTouch;
 @property(retain, nonatomic) UITouch *activeTouch; // @synthesize activeTouch=_activeTouch;
 - (id)simulateTouchForCharacter:(id)arg1 errorVector:(struct CGPoint)arg2 shouldTypeVariants:(_Bool)arg3 baseKeyForVariants:(_Bool)arg4;
@@ -27,10 +34,10 @@
 - (id)keyplaneForKey:(id)arg1;
 - (id)baseKeyForString:(id)arg1;
 - (id)currentKeyplane;
+- (void)setPasscodeOutlineAlpha:(double)arg1;
 - (_Bool)shouldFadeToLayout;
 - (_Bool)shouldFadeFromLayout;
 - (void)fadeWithInvocation:(id)arg1;
-- (_Bool)acceptsDirectionInput;
 - (SEL)handlerForNotification:(id)arg1;
 - (struct CGRect)frameForKeylayoutName:(id)arg1;
 - (struct CGSize)dragGestureSize;
@@ -38,7 +45,7 @@
 - (double)hitBuffer;
 - (void)physicalKeyUpWithEvent:(id)arg1;
 - (void)physicalKeyDownWithEvent:(id)arg1;
-- (void)remoteControlReceivedWithEvent:(id)arg1;
+- (_Bool)canHandleEvent:(id)arg1;
 - (_Bool)canForceTouchCommit:(id)arg1;
 - (void)commitTouches:(id)arg1 executionContext:(id)arg2;
 - (void)forceUpdatesForCommittedTouch;

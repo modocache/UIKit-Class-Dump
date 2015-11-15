@@ -13,29 +13,31 @@ __attribute__((visibility("hidden")))
 {
     _Bool _isCustomGlyph;
     _Bool _secondaryIsCustomGlyph;
-    _Bool _fallbackIsCustomGlyph;
     _Bool _fillPath;
+    _Bool _force1xImages;
     NSString *_displayString;
     NSString *_displayStringImage;
+    NSString *_secondaryDisplayStringImage;
     NSString *_secondaryDisplayString;
-    NSString *_fallbackDisplayString;
     NSArray *_variantDisplayStrings;
     NSArray *_variantDisplayImages;
     long long _highlightedVariantIndex;
     long long _displayPathType;
+    UIKBKeyDisplayContents *_fallbackContents;
 }
 
 + (id)displayContents;
+@property(retain, nonatomic) UIKBKeyDisplayContents *fallbackContents; // @synthesize fallbackContents=_fallbackContents;
+@property(nonatomic) _Bool force1xImages; // @synthesize force1xImages=_force1xImages;
 @property(nonatomic) _Bool fillPath; // @synthesize fillPath=_fillPath;
 @property(nonatomic) long long displayPathType; // @synthesize displayPathType=_displayPathType;
 @property(nonatomic) long long highlightedVariantIndex; // @synthesize highlightedVariantIndex=_highlightedVariantIndex;
 @property(retain, nonatomic) NSArray *variantDisplayImages; // @synthesize variantDisplayImages=_variantDisplayImages;
 @property(retain, nonatomic) NSArray *variantDisplayStrings; // @synthesize variantDisplayStrings=_variantDisplayStrings;
-@property(nonatomic) _Bool fallbackIsCustomGlyph; // @synthesize fallbackIsCustomGlyph=_fallbackIsCustomGlyph;
 @property(nonatomic) _Bool secondaryIsCustomGlyph; // @synthesize secondaryIsCustomGlyph=_secondaryIsCustomGlyph;
 @property(nonatomic) _Bool isCustomGlyph; // @synthesize isCustomGlyph=_isCustomGlyph;
-@property(retain, nonatomic) NSString *fallbackDisplayString; // @synthesize fallbackDisplayString=_fallbackDisplayString;
 @property(retain, nonatomic) NSString *secondaryDisplayString; // @synthesize secondaryDisplayString=_secondaryDisplayString;
+@property(retain, nonatomic) NSString *secondaryDisplayStringImage; // @synthesize secondaryDisplayStringImage=_secondaryDisplayStringImage;
 @property(retain, nonatomic) NSString *displayStringImage; // @synthesize displayStringImage=_displayStringImage;
 @property(retain, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 - (id)description;

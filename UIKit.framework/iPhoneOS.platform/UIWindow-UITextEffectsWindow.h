@@ -8,6 +8,8 @@
 
 @interface UIWindow (UITextEffectsWindow)
 - (double)_classicOffset;
+- (void)matchDeviceOrientation:(id)arg1;
+- (void)keyboardDidHide;
 - (void)matchDeviceOrientation;
 - (void)setupForOrientation:(long long)arg1;
 @end

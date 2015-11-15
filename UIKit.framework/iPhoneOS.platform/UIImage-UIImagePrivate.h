@@ -16,6 +16,8 @@
 + (id)imageNamed:(id)arg1 inBundle:(id)arg2;
 + (id)kitImageNamed:(id)arg1;
 + (id)applicationImageNamed:(id)arg1;
+- (_Bool)_suppressesAccessibilityHairlineThickening;
+- (id)_imageThatSuppressesAccessibilityHairlineThickening;
 - (id)_flatImageWithColor:(id)arg1;
 - (CDStruct_afa449f9)_calculateStatistics;
 - (id)_resizableImageWithSubimageInsets:(struct UIEdgeInsets)arg1 resizeInsets:(struct UIEdgeInsets)arg2;

@@ -9,8 +9,10 @@
 @class NSIndexPath, UICollectionView, UICollectionViewLayout;
 
 @protocol UIKeyboardCandidateBarLayoutDelegate <UICollectionViewDelegate>
-- (void)candidateBarLayoutDidFinishPreparingLayout;
 - (struct CGSize)sizeOfDummyItemForCollectionView:(UICollectionView *)arg1 layout:(UICollectionViewLayout *)arg2;
 - (struct CGSize)collectionView:(UICollectionView *)arg1 layout:(UICollectionViewLayout *)arg2 sizeForItemAtIndexPath:(NSIndexPath *)arg3;
+
+@optional
+- (void)candidateBarLayoutDidFinishPreparingLayout;
 @end
 

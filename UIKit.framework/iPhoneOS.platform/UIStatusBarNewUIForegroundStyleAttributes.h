@@ -31,12 +31,14 @@ __attribute__((visibility("hidden")))
 - (id)expandedNameForImageName:(id)arg1;
 - (double)edgePadding;
 - (void)drawBluetoothBatteryInsidesWithSize:(struct CGSize)arg1 capacity:(double)arg2;
+- (int)bluetoothBatteryImageIdWithCapacity:(double)arg1;
 - (struct UIEdgeInsets)edgeInsetsForBluetoothBatteryInsides;
 - (struct UIEdgeInsets)edgeInsetsForBatteryInsides;
 - (double)batteryAccessoryMargin;
 - (id)_batteryColorForCapacity:(double)arg1 lowCapacity:(double)arg2 charging:(_Bool)arg3;
 - (_Bool)_isForegroundColorSafe:(id)arg1;
 - (void)drawBatteryInsidesWithSize:(struct CGSize)arg1 capacity:(double)arg2 charging:(_Bool)arg3;
+- (int)batteryImageIdWithCapacity:(double)arg1;
 - (double)_roundDimension:(double)arg1;
 - (long long)activityIndicatorStyleWithSyncActivity:(_Bool)arg1;
 - (id)uniqueIdentifier;

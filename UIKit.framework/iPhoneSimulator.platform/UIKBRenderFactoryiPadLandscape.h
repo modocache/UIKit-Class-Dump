@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (double)defaultVariantSizeThreshold;
 - (double)skinnyKeyThreshold;
+- (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)shiftKeyImageName;
 - (id)deleteKeyImageName;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)dismissKeyOffset;
 - (struct CGPoint)dualStringKeyOffset;
 - (double)fallbackFontSize;
+- (double)zhuyinFirstToneKeyFontSize;
 - (double)facemarkKeyFontSize;
 - (double)emailDotKeyFontSize;
 - (double)smallKanaKeyFontSize;

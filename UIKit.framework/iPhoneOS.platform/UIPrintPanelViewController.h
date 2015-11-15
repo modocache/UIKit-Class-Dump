@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _Bool showDuplex;
 @property(retain, nonatomic) UIPrintPaper *paper;
 @property(readonly, nonatomic) NSArray *paperList;
+- (id)_removeRollsFrom:(id)arg1;
 @property(nonatomic) long long copies;
 @property(nonatomic) struct _NSRange pageRange;
 @property(readonly, nonatomic) long long pageCount;

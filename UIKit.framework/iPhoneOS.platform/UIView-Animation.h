@@ -63,6 +63,7 @@
 + (id)_currentAnimationAttributes;
 + (id)_defaultUIViewActionForLayer:(id)arg1 forKey:(id)arg2 forView:(id)arg3;
 + (id)_defaultUIViewActionForLayer:(id)arg1 forKey:(id)arg2;
++ (_Bool)_hasActiveAnimationContext;
 - (void)_enumerateDescendentViews:(CDUnknownBlockType)arg1;
 - (void)_removeAllAnimations:(_Bool)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;

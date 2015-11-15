@@ -29,6 +29,7 @@
     _Bool _highlighted;
 }
 
++ (Class)_contentViewClass;
 @property(retain, nonatomic) UIView *selectedBackgroundView; // @synthesize selectedBackgroundView=_selectedBackgroundView;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;

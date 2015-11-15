@@ -11,8 +11,5 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
-- (void)setAlpha:(double)arg1;
-
 @end
 

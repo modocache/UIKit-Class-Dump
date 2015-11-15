@@ -34,6 +34,7 @@
         unsigned int useProportionalWidthSegments:1;
         unsigned int translucentBackground:1;
         unsigned int appearanceNeedsUpdate:1;
+        unsigned int contentTextPaddingEnabled:1;
     } _segmentedControlFlags;
     _Bool __hasTranslucentOptionsBackground;
 }
@@ -99,7 +100,7 @@
 - (struct CGRect)frame;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)sizeToFit;
-- (void)_setSelected:(_Bool)arg1 forSegmentAtIndex:(int)arg2;
+- (void)_setSelected:(_Bool)arg1 forSegmentAtIndex:(int)arg2 forceInfoDisplay:(_Bool)arg3;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_animateContentChangeWithAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setSelectedSegmentIndex:(long long)arg1 notify:(_Bool)arg2 animate:(_Bool)arg3;
@@ -130,6 +131,7 @@
 - (void)setTransparentBackground:(_Bool)arg1;
 - (long long)barStyle;
 - (void)setBarStyle:(long long)arg1;
+- (void)_setContentTextPaddingEnabled:(_Bool)arg1;
 - (void)_setAutosizeText:(_Bool)arg1;
 @property(nonatomic, getter=isMomentary) _Bool momentary;
 - (void)setSegmentControlStyle:(long long)arg1;

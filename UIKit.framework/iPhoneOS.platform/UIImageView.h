@@ -14,13 +14,14 @@
     UIImage *_decompressingImage;
     UIImage *_decompressingHighlightedImage;
     struct UIEdgeInsets _cachedEdgeInsetsForEffects;
+    _Bool _templateSettingsAreInvalid;
     _Bool _edgeInsetsForEffectsAreValid;
     _Bool __animatesContents;
-    struct UIEdgeInsets _edgeInsetsForEffects;
 }
 
 @property(nonatomic, setter=_setAnimatesContents:) _Bool _animatesContents; // @synthesize _animatesContents=__animatesContents;
 @property(nonatomic, setter=_setEdgeInsetsForEffectsAreValid:) _Bool _edgeInsetsForEffectsAreValid; // @synthesize _edgeInsetsForEffectsAreValid;
+@property(readonly, nonatomic) _Bool _templateSettingsAreInvalid; // @synthesize _templateSettingsAreInvalid;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)setAnimating:(_Bool)arg1;
 - (struct CGImage *)imageRef;
@@ -32,11 +33,13 @@
 - (void)tintColorDidChange;
 - (id)_effectiveTintColorWithImage:(id)arg1;
 @property(nonatomic, setter=_setMasksTemplateImages:) _Bool _masksTemplateImages;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 @property(nonatomic, setter=_setTemplateImageRenderingEffects:) unsigned long long _templateImageRenderingEffects;
 @property(nonatomic, setter=_setDefaultRenderingMode:) long long _defaultRenderingMode;
-@property(readonly, nonatomic) struct UIEdgeInsets _edgeInsetsForEffects; // @synthesize _edgeInsetsForEffects;
+@property(readonly, nonatomic) struct UIEdgeInsets _edgeInsetsForEffects;
 - (void)_updateTemplateProperties;
 - (void)_templateSettingsDidChange;
+- (void)_invalidateTemplateSettings;
 - (void)_updateMasking;
 - (_Bool)_shouldTreatImageAsTemplate:(id)arg1;
 - (id)_activeImage;

@@ -6,16 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class NSInvocation, UIButton;
+@class NSArray, NSInvocation, UIButton;
 
 __attribute__((visibility("hidden")))
 @interface _UIStaticScrollBar : UIView
 {
     UIButton *_upButton;
     UIButton *_downButton;
+    UIView *_dividerLine;
     NSInvocation *_invocation;
+    NSArray *_buttonConstraints;
+    _Bool _shouldInsetButtons;
 }
 
+@property(nonatomic) _Bool shouldInsetButtons; // @synthesize shouldInsetButtons=_shouldInsetButtons;
+- (struct CGRect)centeringBounds;
+- (void)_updateButtonConstraints;
 - (void)buttonTapped:(id)arg1;
 - (void)setTarget:(id)arg1 forAction:(SEL)arg2;
 - (void)dealloc;

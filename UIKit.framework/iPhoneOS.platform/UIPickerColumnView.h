@@ -26,13 +26,18 @@ __attribute__((visibility("hidden")))
     struct CGRect _tableFrame;
     struct CATransform3D _perspectiveTransform;
     UIColor *__textColor;
+    double _leftHitTestExtension;
+    double _rightHitTestExtension;
 }
 
+@property(nonatomic) double rightHitTestExtension; // @synthesize rightHitTestExtension=_rightHitTestExtension;
+@property(nonatomic) double leftHitTestExtension; // @synthesize leftHitTestExtension=_leftHitTestExtension;
 @property(retain, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *_textColor; // @synthesize _textColor=__textColor;
 @property(nonatomic) struct CATransform3D perspectiveTransform; // @synthesize perspectiveTransform=_perspectiveTransform;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)_visibleCellClosestToPoint:(struct CGPoint)arg1 inView:(id)arg2;
 - (id)_allVisibleCells;
 - (struct _NSRange)_visibleGlobalRows;
 - (void)pickerTableView:(id)arg1 didChangeSelectionBarRowFrom:(long long)arg2 to:(long long)arg3;
@@ -46,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfRowsInSection:(long long)arg1;
 - (_Bool)_usesCheckSelection;
 - (_Bool)_soundsEnabled;
-- (void)_sendSelectionChangedFromTable:(id)arg1;
 - (void)_sendCheckedRow:(long long)arg1 inTableView:(id)arg2 checked:(_Bool)arg3;
 @property(nonatomic) struct CGRect selectionBarRect;
 - (void)clearDataSourceAndDelegate;
@@ -55,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)isRowChecked:(long long)arg1;
 - (_Bool)selectRow:(long long)arg1 animated:(_Bool)arg2 notify:(_Bool)arg3;
 - (double)_horizontalBiasForEndTables;
+- (_Bool)_pointLiesWithinEffectiveTableBounds:(struct CGPoint)arg1;
 - (struct CGRect)_tableFrame;
 - (id)_preferredTable;
 - (_Bool)_containsTable:(id)arg1;

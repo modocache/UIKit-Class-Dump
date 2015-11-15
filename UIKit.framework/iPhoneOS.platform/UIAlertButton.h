@@ -13,15 +13,17 @@ __attribute__((visibility("hidden")))
 {
     double _imageOffset;
     _Bool _isNewStyle;
-    UIImageView *_overlayView;
+    UIImageView *_highlightView;
 }
 
-@property(readonly) UIImageView *overlayView; // @synthesize overlayView=_overlayView;
+@property(readonly) UIImageView *highlightView; // @synthesize highlightView=_highlightView;
 @property(nonatomic) _Bool isNewStyle; // @synthesize isNewStyle=_isNewStyle;
 @property(nonatomic) double imageOffset; // @synthesize imageOffset=_imageOffset;
 - (void)dealloc;
 - (void)setEnabled:(_Bool)arg1;
-- (void)_transitionBackgroundViewToHighlighted:(_Bool)arg1;
+- (void)_focusStateDidChange;
+- (_Bool)_isFocusableElement;
+- (void)_transitionHighlightViewToHighlighted:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)image;

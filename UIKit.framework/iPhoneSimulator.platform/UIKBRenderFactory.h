@@ -15,6 +15,7 @@
     double _rivenSizeFactor;
     _Bool _lightweightFactory;
     double _scale;
+    _Bool _boldTextEnabled;
 }
 
 + (id)segmentedControlColor:(_Bool)arg1;
@@ -35,6 +36,9 @@
 - (id)lightPadKeycapsFontName;
 - (id)thinKeycapsFontName;
 - (id)lightKeycapsFontName;
+- (id)controlKeyShadowColorName;
+- (id)defaultKeyShadowColorName;
+- (id)controlKeyForegroundColorName;
 - (id)controlKeyBackgroundColorName;
 - (id)defaultKeyBackgroundColorName;
 - (void)removeAllLayoutSegments;
@@ -44,8 +48,10 @@
 - (id)displayContentsForKey:(id)arg1;
 - (id)keyImageNameWithSkinnyVariation:(id)arg1;
 - (double)skinnyKeyThreshold;
+- (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)shiftKeyImageName;
+- (id)deleteKeyXImageName;
 - (id)deleteKeyImageName;
 - (id)handwritingMoreKeyImageName;
 - (id)muttitapReverseKeyImageName;
@@ -55,6 +61,7 @@
 - (id)globalEmojiKeyImageName;
 - (id)globalKeyImageName;
 - (id)traitsHashStringForKey:(id)arg1 withGeometry:(id)arg2 controlOpacities:(_Bool)arg3;
+- (id)hashStringElement;
 - (id)traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
@@ -67,6 +74,14 @@
 - (void)dealloc;
 - (void)modifyTraitsForDetachedInputSwitcher:(id)arg1 withKey:(id)arg2;
 - (double)keyCornerRadius;
+- (id)extraPasscodePaddleTraits;
+- (id)passcodeShiftedControlKeyTraits;
+- (id)passcodeActiveControlKeyTraits;
+- (id)passcodeControlKeyTraits;
+- (id)passcodeKeyEdgeColorName;
+- (double)passcodeEdgeWeight;
+- (id)passcodeBackgroundTraitsForKeyplane:(id)arg1;
+- (void)modifyKeyTraitsForPasscode:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 
 @end
 

@@ -26,6 +26,9 @@ __attribute__((visibility("hidden")))
 - (double)letterFontSize;
 - (double)numberFontSize;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
+- (id)controlKeyForegroundColorName;
+- (id)controlKeyBackgroundColorName;
+- (id)defaultKeyBackgroundColorName;
 
 @end
 

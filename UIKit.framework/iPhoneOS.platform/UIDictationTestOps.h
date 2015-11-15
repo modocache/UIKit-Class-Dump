@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)willEndEditingInInputDelegate:(id)arg1;
 - (void)pushReplaceSelectionWithText:(id)arg1;
 - (void)_performReplaceSelectedText:(id)arg1;
+- (void)pushInsertCrossfadingTextForSpeech:(id)arg1;
 - (void)pushInsertTextForSpeech:(id)arg1;
 - (void)pushSelectRangeForSpeech:(struct _NSRange)arg1;
 - (void)dictationWillBeginInDocument:(id)arg1;

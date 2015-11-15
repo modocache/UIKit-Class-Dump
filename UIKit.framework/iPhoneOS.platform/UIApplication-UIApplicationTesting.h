@@ -21,6 +21,8 @@
 - (_Bool)handleTestURL:(id)arg1;
 - (void)failedTest:(id)arg1 withResults:(id)arg2;
 - (void)failedTest:(id)arg1;
+- (void)finishedTest:(id)arg1 waitForCommit:(_Bool)arg2 extraResults:(id)arg3 withTeardownBlock:(CDUnknownBlockType)arg4;
+- (void)finishedTest:(id)arg1 waitForCommit:(_Bool)arg2 extraResults:(id)arg3;
 - (void)finishedTest:(id)arg1 extraResults:(id)arg2 waitForNotification:(id)arg3;
 - (void)finishedTest:(id)arg1 extraResults:(id)arg2 withTeardownBlock:(CDUnknownBlockType)arg3;
 - (void)finishedTest:(id)arg1 extraResults:(id)arg2;
@@ -34,9 +36,12 @@
 - (_Bool)isPPTAvailable;
 - (void)_sendDictionaryToPPT:(id)arg1;
 - (void)finishedSubTest:(id)arg1 forTest:(id)arg2;
+- (void)startedSubTest:(id)arg1 forTest:(id)arg2 withMetrics:(id)arg3;
 - (void)startedSubTest:(id)arg1 forTest:(id)arg2;
+- (id)subTest:(id)arg1 ForTest:(id)arg2 withMetrics:(id)arg3;
 - (id)resultsForTest:(id)arg1;
 - (void)startedTest:(id)arg1;
+- (id)_currentFrameCountForTestDisplay;
 - (_Bool)isRunningSuspendTest;
 - (_Bool)isRunningQuitTest;
 - (_Bool)isRunningTest:(id)arg1;
@@ -49,6 +54,7 @@
 - (void)runTest:(id)arg1 forAnimation:(id)arg2;
 - (void)_noteAnimationFinished:(id)arg1;
 - (void)_noteAnimationStarted:(id)arg1;
+- (void)installCACommitCompletionBlock:(CDUnknownBlockType)arg1;
 - (_Bool)runTest:(id)arg1 options:(id)arg2;
 - (id)_currentTests;
 - (_Bool)launchedToTest;

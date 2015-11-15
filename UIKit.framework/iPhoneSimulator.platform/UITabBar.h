@@ -9,7 +9,7 @@
 #import "_UIBackdropViewGraphicsQualityChangeDelegate.h"
 #import "_UIShadowedView.h"
 
-@class NSArray, NSMutableArray, UIColor, UIImage, UITabBarItem, _UIBackdropView, _UITabBarAppearanceStorage, _UITabBarBackgroundView;
+@class NSArray, NSMutableArray, NSString, UIColor, UIImage, UITabBarItem, _UIBackdropView, _UITabBarAppearanceStorage, _UITabBarBackgroundView;
 
 @interface UITabBar : UIView <_UIBackdropViewGraphicsQualityChangeDelegate, _UIShadowedView>
 {
@@ -40,6 +40,7 @@
     _Bool _dividerImagesChangeWithSelection;
     _Bool _dividerImagesAreInvalid;
     _Bool _hidesShadow;
+    _Bool _showsHighlightedState;
     double _nextSelectionSlideDuration;
     NSMutableArray *_dividerImageViews;
     long long _itemPositioning;
@@ -47,11 +48,19 @@
     double _itemSpacing;
     long long _barMetrics;
     long long _imageStyle;
+    long long _tabBarSizing;
+    UIView *_accessoryView;
+    NSString *_backdropViewLayerGroupName;
 }
 
 + (void)_initializeForIdiom:(long long)arg1;
++ (id)_unselectedTabTintColorForView:(id)arg1;
 + (id)_tabBarForView:(id)arg1;
 + (float)_buttonGap;
+@property(retain, nonatomic, getter=_backdropViewLayerGroupName, setter=_setBackdropViewLayerGroupName:) NSString *backdropViewLayerGroupName; // @synthesize backdropViewLayerGroupName=_backdropViewLayerGroupName;
+@property(nonatomic, setter=_setAccessoryView:) UIView *_accessoryView; // @synthesize _accessoryView;
+@property(nonatomic, setter=_setTabBarSizing:) long long _tabBarSizing; // @synthesize _tabBarSizing;
+@property(nonatomic, setter=_setShowsHighlightedState:) _Bool _showsHighlightedState; // @synthesize _showsHighlightedState;
 @property(nonatomic, setter=_setHidesShadow:) _Bool _hidesShadow; // @synthesize _hidesShadow;
 @property(nonatomic, setter=_setBarMetrics:) long long _barMetrics; // @synthesize _barMetrics;
 @property(nonatomic) double itemSpacing; // @synthesize itemSpacing=_itemSpacing;
@@ -76,7 +85,8 @@
 @property(retain, nonatomic) UIImage *selectionIndicatorImage;
 @property(retain, nonatomic) UIImage *shadowImage;
 @property(retain, nonatomic) UIImage *backgroundImage;
-- (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
+- (void)_makeCurrentButtonFirstResponder;
+- (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
 - (_Bool)isCustomizing;
 - (_Bool)endCustomizingAnimated:(_Bool)arg1;
 - (void)beginCustomizingItems:(id)arg1;
@@ -97,6 +107,8 @@
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
 @property(nonatomic) UITabBarItem *selectedItem;
 - (void)_animateSelectionChangeFromView:(id)arg1 toView:(id)arg2 duration:(double)arg3;
+- (void)_accessibilityButtonShapesEnabledDidChangeNotification:(id)arg1;
+- (void)_accessibilityButtonShapesParametersDidChange;
 - (id)_topmostDividerImageView;
 @property(copy, nonatomic) NSArray *items;
 @property(nonatomic, getter=isLocked) _Bool locked;
@@ -111,8 +123,6 @@
 @property(nonatomic, setter=_setInterTabButtonSpacing:) double _interTabButtonSpacing;
 @property(nonatomic, setter=_setTabButtonWidth:) double _tabButtonWidth;
 - (void)_cleanupAdaptiveBackdrop;
-- (void)_setTabBarTabStyle:(long long)arg1;
-- (long long)_tabBarTabStyle;
 - (id)_appearanceStorage;
 @property(nonatomic) long long barStyle;
 @property(nonatomic, getter=isTranslucent) _Bool translucent;
@@ -128,7 +138,6 @@
 - (void)setButtonItems:(id)arg1;
 - (id)buttonItems;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
-- (void)tintColorDidChange;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
@@ -147,6 +156,7 @@
 - (void)_alertWillShow:(_Bool)arg1 duration:(float)arg2;
 - (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (void)_positionTabBarButtons:(id)arg1 ignoringItem:(id)arg2;
+- (struct CGRect)_tabAreaLayoutBounds;
 - (void)_configureItems:(id)arg1;
 - (void)_updateDividerImagesIfNecessary;
 - (void)_configureTabBarReplacingItem:(id)arg1 withNewItem:(id)arg2 dragging:(_Bool)arg3 swapping:(_Bool)arg4;

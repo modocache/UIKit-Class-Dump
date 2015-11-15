@@ -6,14 +6,21 @@
 
 #import <UIKit/UIInternalEvent.h>
 
+@class NSMutableArray;
+
 __attribute__((visibility("hidden")))
 @interface UIWheelEvent : UIInternalEvent
 {
+    NSMutableArray *_recentScrollTimestamps;
 }
 
+- (double)_wheelVelocity;
+- (_Bool)_canHaveVelocity;
 - (void)_sendEventToResponder:(id)arg1;
 - (long long)subtype;
 - (long long)type;
+- (void)_setHIDEvent:(struct __IOHIDEvent *)arg1;
+- (void)dealloc;
 
 @end
 

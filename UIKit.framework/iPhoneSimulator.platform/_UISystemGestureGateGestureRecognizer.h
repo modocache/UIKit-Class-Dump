@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)canBePreventedByGestureRecognizer:(id)arg1;
 - (_Bool)canPreventGestureRecognizer:(id)arg1;
 - (_Bool)_shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
-- (_Bool)_shouldReceiveTouch:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

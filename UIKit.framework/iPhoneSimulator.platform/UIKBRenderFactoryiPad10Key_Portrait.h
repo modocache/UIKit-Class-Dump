@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (double)controlColumnWidthFactor;
 - (id)muttitapReverseKeyImageName;
 - (id)multitapCompleteKeyImageName;
+- (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)shiftKeyImageName;
 - (double)keyCornerRadius;

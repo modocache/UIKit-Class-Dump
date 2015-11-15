@@ -13,6 +13,8 @@ __attribute__((visibility("hidden")))
 
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderConfig:(id)arg3 keycapsFontName:(id)arg4;
 - (void)setupLayoutSegments;
+- (id)shiftedControlKeyTraits;
+- (id)shiftDeleteGlyphTraits;
 - (double)_row4ControlSegmentWidth;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)dismissKeyOffset;
 - (struct CGPoint)dualStringKeyOffset;
 - (double)fallbackFontSize;
+- (double)zhuyinFirstToneKeyFontSize;
 - (double)facemarkKeyFontSize;
 - (double)emailDotKeyFontSize;
 - (double)smallKanaKeyFontSize;
@@ -42,7 +45,12 @@ __attribute__((visibility("hidden")))
 - (double)dualStringKeyFontSizeAdjustment;
 - (double)stringKeyFontSize;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
+- (id)backgroundTraitsForKeyplane:(id)arg1;
+- (id)controlKeyForegroundColorName;
+- (id)controlKeyBackgroundColorName;
+- (id)defaultKeyBackgroundColorName;
 - (double)skinnyKeyThreshold;
+- (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)shiftKeyImageName;
 - (id)deleteKeyImageName;
@@ -51,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)dismissKeyImageName;
 - (id)dictationKeyImageName;
 - (id)globalKeyImageName;
+- (struct CGPoint)secondaryShiftKeyOffset;
 - (struct CGPoint)shiftKeyOffset;
 - (struct CGPoint)deleteKeyOffset;
 - (struct CGPoint)dictationKeyOffset;

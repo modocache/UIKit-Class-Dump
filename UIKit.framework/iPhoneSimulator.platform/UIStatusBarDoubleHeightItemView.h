@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     _Bool _ellipsize;
 }
 
-- (_Bool)cachesImage;
 - (double)extraRightPadding;
 - (id)contentsImage;
 - (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;

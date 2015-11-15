@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)setupLayoutSegments;
+- (id)shiftDeleteGlyphTraits;
 - (id)shiftLockControlKeyTraits;
 - (id)shiftedControlKeyTraits;
 - (id)activeControlKeyTraits;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (double)_row4ControlSegmentWidth;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2;
+- (_Bool)_popupMenuStyleForKey:(id)arg1;
 - (_Bool)_popupStyleForKey:(id)arg1;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (double)dualStringBottomAdditionalOffsetForDisplayContents:(id)arg1;
@@ -30,7 +32,10 @@ __attribute__((visibility("hidden")))
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
+- (id)controlKeyForegroundColorName;
+- (id)controlKeyBackgroundColorName;
 - (double)skinnyKeyThreshold;
+- (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (id)shiftKeyImageName;
 - (id)deleteKeyImageName;
@@ -38,12 +43,14 @@ __attribute__((visibility("hidden")))
 - (id)multitapCompleteKeyImageName;
 - (id)dictationKeyImageName;
 - (id)globalKeyImageName;
+- (struct CGPoint)secondaryShiftKeyOffset;
 - (struct CGPoint)shiftKeyOffset;
 - (struct CGPoint)deleteKeyOffset;
 - (struct CGPoint)moreABCKeyOffset;
 - (struct CGPoint)more123KeyOffset;
 - (struct CGPoint)dictationKeyOffset;
 - (struct CGPoint)internationalKeyOffset;
+- (double)zhuyinFirstToneKeyFontSize;
 
 @end
 

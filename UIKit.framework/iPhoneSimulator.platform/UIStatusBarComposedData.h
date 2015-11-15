@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarComposedData : NSObject <NSCopying>
 {
     CDStruct_0e61b686 _rawData;
-    _Bool _itemEnabled[32];
+    _Bool _itemEnabled[30];
     NSString *_doubleHeightStatus;
 }
 

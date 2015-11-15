@@ -66,6 +66,7 @@
 - (id)initWithTitle:(id)arg1 image:(id)arg2 selectedImage:(id)arg3;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 tag:(long long)arg3;
 - (id)init;
+- (id)_internalTemplateImages;
 - (void)_updateToMatchCurrentState;
 - (_Bool)_isSelected;
 - (void)_setSelected:(_Bool)arg1;

@@ -25,8 +25,9 @@
     _Bool _immutablePathIsValid;
 }
 
-+ (id)_continuousRoundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadii:(id)arg3 segments:(int)arg4;
++ (id)_continuousRoundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadii:(id)arg3 segments:(int)arg4 smoothPillShapes:(_Bool)arg5;
 + (id)_continuousRoundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadius:(struct CGSize)arg3 segments:(int)arg4;
++ (id)_bezierPathWithPillRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
 + (id)_roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadius:(double)arg3 segments:(int)arg4 legacyCorners:(_Bool)arg5;
 + (id)_roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadius:(double)arg3 segments:(int)arg4;
 + (id)roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 withCornerRadii:(id)arg3;

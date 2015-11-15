@@ -20,16 +20,18 @@ __attribute__((visibility("hidden")))
     UIKBRenderConfig *m_renderConfig;
     CALayer *_keyBorders;
     CALayer *_keyBackgrounds;
+    CALayer *_keyForegrounds;
     CALayer *_keyCaps;
+    CALayer *_keyCapHint;
     int _renderedKeyState;
-    _Bool _usesControlOpacities;
+    NSString *_cachedTraitsHashString;
     _Bool _renderAsMask;
     UIKeyboardMenuView *_popupMenu;
 }
 
 @property(nonatomic) _Bool renderAsMask; // @synthesize renderAsMask=_renderAsMask;
-@property(nonatomic) _Bool usesControlOpacities; // @synthesize usesControlOpacities=_usesControlOpacities;
 @property(nonatomic) UIKeyboardMenuView *popupMenu; // @synthesize popupMenu=_popupMenu;
+@property(retain, nonatomic) NSString *cachedTraitsHashString; // @synthesize cachedTraitsHashString=_cachedTraitsHashString;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=m_renderConfig;
 @property(nonatomic) struct CGRect drawFrame; // @synthesize drawFrame=m_drawFrame;
 @property(readonly, nonatomic) UIKBTree *key; // @synthesize key=m_key;
@@ -43,12 +45,14 @@ __attribute__((visibility("hidden")))
 - (void)displayLayer:(id)arg1;
 - (void)_popuplateLayer:(id)arg1 withContents:(id)arg2;
 - (void)layoutSubviews;
+- (_Bool)requiresSublayers;
 - (_Bool)_shouldUpdateLayers;
 @property(readonly) long long cachedRenderFlags;
 - (id)cacheKeysForRenderFlags:(id)arg1;
 @property(readonly, nonatomic) NSString *cacheKey;
 @property(readonly, nonatomic) struct UIEdgeInsets displayInsets;
 - (void)dimKeyCaps:(double)arg1 duration:(double)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_applyAppearanceInvocations;
 - (_Bool)_viewShouldBeOpaque;
 - (int)textEffectsVisibilityLevel;

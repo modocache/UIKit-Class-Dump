@@ -30,6 +30,7 @@
 - (_Bool)isExtendedList;
 
 @optional
+- (unsigned long long)viewOffsetForCandidateAtIndex:(unsigned long long)arg1;
 - (NSString *)inlineText;
 - (TIKeyboardCandidateResultSet *)candidates;
 - (void)revealHiddenCandidates;

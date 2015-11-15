@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     _Bool _ignoresGeometryChanges;
 }
 
++ (id)_defaultAttributes;
 @property(nonatomic) _Bool ignoresGeometryChanges; // @synthesize ignoresGeometryChanges=_ignoresGeometryChanges;
 - (void)setFrame:(struct CGRect)arg1;
 

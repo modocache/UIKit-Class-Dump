@@ -8,7 +8,7 @@
 
 #import "UIGestureRecognizerDelegate.h"
 
-@class NSArray, NSUUID, UIGestureRecognizer, UINavigationBar, UINavigationTransitionView, UITapGestureRecognizer, UIToolbar, UIView, _UINavigationControllerPalette, _UINavigationInteractiveTransition, _UINavigationParallaxTransition;
+@class NSArray, NSString, NSUUID, UIGestureRecognizer, UINavigationBar, UINavigationTransitionView, UITapGestureRecognizer, UIToolbar, UIView, _UINavigationControllerPalette, _UINavigationInteractiveTransition, _UINavigationParallaxTransition;
 
 @interface UINavigationController : UIViewController <UIGestureRecognizerDelegate>
 {
@@ -83,10 +83,12 @@
     CDUnknownBlockType __updateNavigationBarHandler;
     long long _builtinTransitionStyle;
     double _builtinTransitionGap;
+    NSString *__backdropGroupName;
 }
 
 + (_Bool)doesOverrideSupportedInterfaceOrientations;
 + (_Bool)doesOverridePreferredInterfaceOrientationForPresentation;
+@property(retain, nonatomic, getter=_backdropGroupName, setter=_setBackdropGroupName:) NSString *_backdropGroupName; // @synthesize _backdropGroupName=__backdropGroupName;
 @property(nonatomic, getter=_builtinTransitionGap, setter=_setBuiltinTransitionGap:) double builtinTransitionGap; // @synthesize builtinTransitionGap=_builtinTransitionGap;
 @property(nonatomic, getter=_builtinTransitionStyle, setter=_setBuiltinTransitionStyle:) long long builtinTransitionStyle; // @synthesize builtinTransitionStyle=_builtinTransitionStyle;
 @property(copy, nonatomic, setter=_setUpdateNavigationBarHandler:) CDUnknownBlockType _updateNavigationBarHandler; // @synthesize _updateNavigationBarHandler=__updateNavigationBarHandler;
@@ -245,6 +247,7 @@
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)viewDidUnload;
 - (void)purgeMemoryForReason:(int)arg1;
+- (_Bool)_viewControllerWasSelected;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (id)_viewControllerForDisappearCallback;
@@ -295,6 +298,8 @@
 - (void)_setClipUnderlapWhileTransitioning:(_Bool)arg1;
 @property(nonatomic, getter=isNavigationBarHidden) _Bool navigationBarHidden;
 - (void)setNavigationBar:(id)arg1;
+- (id)_backdropBarGroupName;
+- (id)_navigationBarHiddenByDefault:(_Bool)arg1;
 @property(readonly, nonatomic) UINavigationBar *navigationBar;
 - (id)_viewsWithDisabledInteractionGivenTransitionContext:(id)arg1;
 - (void)setNavigationBarClass:(Class)arg1;
@@ -321,6 +326,7 @@
 - (void)_setViewControllers_7_0:(id)arg1 transition:(int)arg2 animated:(_Bool)arg3;
 - (void)_setViewControllers:(id)arg1 transition:(int)arg2;
 - (void)_setViewControllers:(id)arg1 transition:(int)arg2 animated:(_Bool)arg3;
+- (void)_updateNavigationBarItems:(_Bool)arg1;
 - (id)_navigationItems;
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;
 - (int)_transitionForOldViewControllers:(id)arg1 newViewControllers:(id)arg2;

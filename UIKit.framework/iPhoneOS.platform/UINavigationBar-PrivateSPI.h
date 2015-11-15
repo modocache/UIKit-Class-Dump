@@ -27,5 +27,6 @@
 
 // Remaining properties
 @property(readonly, nonatomic) NSString *_backdropViewLayerGroupName; // @dynamic _backdropViewLayerGroupName;
+@property(nonatomic, setter=_setRequestedMaxBackButtonWidth:) double _requestedMaxBackButtonWidth; // @dynamic _requestedMaxBackButtonWidth;
 @end
 

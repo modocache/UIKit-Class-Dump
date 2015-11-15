@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool _alwaysShowExtensionCandidates;
     _Bool _hasSecondaryCandidates;
     _Bool _showHiddenCandidatesOnly;
+    _Bool _singleLineMode;
     _Bool _showsExtensionCandidates;
     _Bool _supportsNumberKeySelection;
     _Bool _secondaryCandidatesViewIsCurrent;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool supportsNumberKeySelection; // @synthesize supportsNumberKeySelection=_supportsNumberKeySelection;
 @property(nonatomic) _Bool showsExtensionCandidates; // @synthesize showsExtensionCandidates=_showsExtensionCandidates;
 @property(nonatomic) double groupBarWidth; // @synthesize groupBarWidth=_groupBarWidth;
+@property(nonatomic) _Bool singleLineMode; // @synthesize singleLineMode=_singleLineMode;
 @property(nonatomic) _Bool showHiddenCandidatesOnly; // @synthesize showHiddenCandidatesOnly=_showHiddenCandidatesOnly;
 @property(retain, nonatomic) UIKBCandidateCollectionView *secondaryCandidatesView; // @synthesize secondaryCandidatesView=_secondaryCandidatesView;
 @property(nonatomic) _Bool hasSecondaryCandidates; // @synthesize hasSecondaryCandidates=_hasSecondaryCandidates;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, UILabel, UIToolbar, UIViewController, UIWindow, _UIModalItem;
+@class NSMutableArray, NSMutableDictionary, NSString, UILabel, UIToolbar, UIViewController, UIWindow, _UIAlertExternalViewController, _UIModalItem;
 
 @interface UIAlertView : UIView
 {
@@ -103,6 +103,8 @@
     UIViewController *_accessoryViewController;
     _Bool _textFieldsHidden;
     _UIModalItem *_representedModalItem;
+    _UIAlertExternalViewController *_externalAlertViewController;
+    UIViewController *externalViewControllerForPresentation;
 }
 
 + (id)_popupAlertBackground:(_Bool)arg1;
@@ -114,6 +116,7 @@
 + (id)_alertViewForWindow:(id)arg1;
 + (id)_alertViewForSessionWithRemoteViewController:(id)arg1;
 + (id)_remoteAlertViewWithBlock:(CDUnknownBlockType)arg1;
+@property(retain, nonatomic, getter=_externalViewControllerForPresentation, setter=_setExternalViewControllerForPresentation:) UIViewController *externalViewControllerForPresentation; // @synthesize externalViewControllerForPresentation;
 - (void)_willRotateKeyboard;
 - (void)_keyboardDidHide:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
@@ -143,6 +146,7 @@
 @property(nonatomic) id delegate;
 - (void)dealloc;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 delegate:(id)arg3 defaultButton:(id)arg4 cancelButton:(id)arg5 otherButtons:(id)arg6;
+- (id)addTextFieldWithValue:(id)arg1 label:(id)arg2;
 - (void)_showByReplacingPreviousAlertAnimated:(_Bool)arg1;
 - (void)_showByReplacingAlert:(id)arg1 animated:(_Bool)arg2;
 - (id)_representedModalItem;
@@ -202,6 +206,9 @@
 - (void)popupAlertAnimated:(_Bool)arg1;
 - (void)popupAlertAnimated:(_Bool)arg1 animationType:(int)arg2;
 - (void)popupAlertAnimated:(_Bool)arg1 atOffset:(double)arg2;
+- (void)_externalViewControllerHadButtonTapped:(long long)arg1;
+- (void)_dismissExternalViewController;
+- (void)_prepareExternalViewControllerIfNecessary;
 - (void)popupAlertAnimated:(_Bool)arg1 animationType:(int)arg2 atOffset:(double)arg3;
 - (void)_loginFieldDidChangeForItem:(id)arg1;
 - (void)_passwordFieldDidChangeForItem:(id)arg1;
@@ -222,6 +229,7 @@
 - (id)taglineTextLabel;
 - (id)bodyTextLabel;
 - (id)titleLabel;
+- (id)_titleLabel;
 - (void)_rotatingAnimationDidStop:(id)arg1;
 - (void)_updateFrameForDisplay;
 - (void)_cancelAnimated:(_Bool)arg1;
@@ -250,8 +258,7 @@
 - (void)_showKeyboard:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_showManualKBIfNecessary;
 - (void)_keyboardHiddingAnimationDidStop:(id)arg1 finished:(id)arg2;
-- (_Bool)showsOverSpringBoardAlerts;
-- (void)setShowsOverSpringBoardAlerts:(_Bool)arg1;
+@property(nonatomic) _Bool showsOverSpringBoardAlerts;
 - (_Bool)_needsKeyboard;
 - (_Bool)_manualKeyboardIsVisible;
 - (id)tableView;
@@ -310,10 +317,8 @@
 - (void)_setAlertSheetStyleFromButtonBar:(id)arg1;
 - (long long)_currentOrientation;
 - (_Bool)requiresPortraitOrientation;
-- (void)setGroupsTextFields:(_Bool)arg1;
-- (_Bool)groupsTextFields;
+@property(nonatomic) _Bool groupsTextFields;
 - (id)initWithTitle:(id)arg1 buttons:(id)arg2 defaultButtonIndex:(int)arg3 delegate:(id)arg4 context:(id)arg5;
-- (id)addTextFieldWithValue:(id)arg1 label:(id)arg2;
 
 @end
 

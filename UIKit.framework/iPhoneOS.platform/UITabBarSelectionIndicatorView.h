@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (void)setFrame:(struct CGRect)arg1;
 - (void)dealloc;
+- (void)setImage:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 withImageName:(id)arg2 orCustomImage:(id)arg3;
 
 @end
