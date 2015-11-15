@@ -14,12 +14,12 @@ __attribute__((visibility("hidden")))
     UIView *_alternate;
 }
 
-- (void)setBlinks:(BOOL)arg1;
+- (void)setBlinks:(_Bool)arg1;
 - (void)layoutSubviews;
 - (void)setValue:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)dealloc;
-- (id)initWithValue:(id)arg1 blinks:(BOOL)arg2;
+- (id)initWithValue:(id)arg1 blinks:(_Bool)arg2;
 
 @end
 

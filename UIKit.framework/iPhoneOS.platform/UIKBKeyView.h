@@ -8,34 +8,52 @@
 
 #import "UIKBCacheableView.h"
 
-@class UIKBTree;
+@class CALayer, NSString, UIKBRenderConfig, UIKBTree, UIKeyboardMenuView;
 
 __attribute__((visibility("hidden")))
 @interface UIKBKeyView : UIView <UIKBCacheableView>
 {
-    UIKBTree *m_keyboard;
+    UIKBTree *m_keyplane;
     UIKBTree *m_key;
-    int m_state;
-    struct CGPoint m_drawOrigin;
-    int m_clipCorners;
+    struct CGRect m_drawFrame;
     struct __CFBoolean *m_allowsCaching;
+    UIKBRenderConfig *m_renderConfig;
+    CALayer *_keyBorders;
+    CALayer *_keyBackgrounds;
+    CALayer *_keyCaps;
+    int _renderedKeyState;
+    _Bool _usesControlOpacities;
+    _Bool _renderAsMask;
+    UIKeyboardMenuView *_popupMenu;
 }
 
-@property(nonatomic) struct CGPoint drawOrigin; // @synthesize drawOrigin=m_drawOrigin;
-@property(nonatomic) int clipCorners; // @synthesize clipCorners=m_clipCorners;
-@property(readonly, nonatomic) int state; // @synthesize state=m_state;
+@property(nonatomic) _Bool renderAsMask; // @synthesize renderAsMask=_renderAsMask;
+@property(nonatomic) _Bool usesControlOpacities; // @synthesize usesControlOpacities=_usesControlOpacities;
+@property(nonatomic) UIKeyboardMenuView *popupMenu; // @synthesize popupMenu=_popupMenu;
+@property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=m_renderConfig;
+@property(nonatomic) struct CGRect drawFrame; // @synthesize drawFrame=m_drawFrame;
 @property(readonly, nonatomic) UIKBTree *key; // @synthesize key=m_key;
-@property(readonly, nonatomic) UIKBTree *keyboard; // @synthesize keyboard=m_keyboard;
+@property(readonly, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=m_keyplane;
+- (id)_generateBackdropMaskImage;
 - (void)drawRect:(struct CGRect)arg1;
-@property(readonly, nonatomic) float cachedWidth;
-@property(readonly, nonatomic) BOOL cacheDeferable;
+- (void)drawContentsOfRenderers:(id)arg1;
+@property(readonly, nonatomic) _Bool keepNonPersistent;
+@property(readonly, nonatomic) double cachedWidth;
+@property(readonly, nonatomic) _Bool cacheDeferable;
 - (void)displayLayer:(id)arg1;
-@property(readonly) BOOL shouldCache;
-- (id)cacheKey;
+- (id)_setupLayerIfNoLayer:(id)arg1 withContents:(id)arg2;
+- (_Bool)_shouldUpdateLayers;
+@property(readonly) long long cachedRenderFlags;
+- (id)cacheKeysForRenderFlags:(id)arg1;
+@property(readonly, nonatomic) NSString *cacheKey;
+@property(readonly, nonatomic) struct UIEdgeInsets displayInsets;
+- (void)dimKeyCaps:(double)arg1 duration:(double)arg2;
+- (void)_applyAppearanceInvocations;
+- (_Bool)_viewShouldBeOpaque;
 - (int)textEffectsVisibilityLevel;
 - (void)dealloc;
-- (void)updateForKeyboard:(id)arg1 key:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 keyboard:(id)arg2 key:(id)arg3 state:(int)arg4;
+- (void)updateForKeyplane:(id)arg1 key:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 
 @end
 

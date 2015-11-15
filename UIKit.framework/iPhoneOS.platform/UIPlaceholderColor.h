@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (BOOL)retainWeakReference;
-- (BOOL)allowsWeakReference;
+- (_Bool)retainWeakReference;
+- (_Bool)allowsWeakReference;
 - (oneway void)release;
-- (unsigned int)retainCount;
+- (unsigned long long)retainCount;
 - (id)retain;
 - (id)autorelease;
 

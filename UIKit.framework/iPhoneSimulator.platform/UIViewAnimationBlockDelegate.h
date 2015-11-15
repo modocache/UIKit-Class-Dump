@@ -9,18 +9,21 @@
 __attribute__((visibility("hidden")))
 @interface UIViewAnimationBlockDelegate : NSObject
 {
-    BOOL _didBeginBlockAnimation;
-    BOOL _allowUserInteraction;
-    BOOL _isZeroDuration;
+    _Bool _didBeginBlockAnimation;
+    _Bool _allowUserInteraction;
+    _Bool _isZeroDuration;
+    _Bool _allowsUserInteractionToCutOffEndOfAnimation;
+    _Bool _animationDidStopSent;
     CDUnknownBlockType _start;
     CDUnknownBlockType _completion;
 }
 
-+ (void)setAnimationBlockDelegateWithDuration:(double)arg1 options:(unsigned int)arg2 start:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-@property(readonly, nonatomic) BOOL _allowsUserInteraction; // @synthesize _allowsUserInteraction=_allowUserInteraction;
++ (void)setAnimationBlockDelegateWithDuration:(double)arg1 options:(unsigned long long)arg2 start:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+@property(readonly, nonatomic) _Bool _allowsUserInteraction; // @synthesize _allowsUserInteraction=_allowUserInteraction;
+- (_Bool)_allowsUserInteractionToCutOffEndOfAnimation;
 - (void)_sendDeferredCompletion:(id)arg1;
-- (void)_didEndBlockAnimation:(id)arg1 finished:(id)arg2 context:(void *)arg3;
-- (void)_willBeginBlockAnimation:(id)arg1 context:(void *)arg2;
+- (void)_didEndBlockAnimation:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_willBeginBlockAnimation:(id)arg1 context:(id)arg2;
 - (void)dealloc;
 
 @end

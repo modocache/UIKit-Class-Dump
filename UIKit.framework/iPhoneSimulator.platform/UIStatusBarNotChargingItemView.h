@@ -14,9 +14,8 @@ __attribute__((visibility("hidden")))
     NSString *_notChargingString;
 }
 
-- (BOOL)usesSmallerTextFont;
-- (id)contentsImageForStyle:(int)arg1;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (id)contentsImage;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 - (void)dealloc;
 
 @end

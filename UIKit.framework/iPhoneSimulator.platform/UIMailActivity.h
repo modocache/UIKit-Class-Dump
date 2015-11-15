@@ -6,25 +6,51 @@
 
 #import <UIKit/UIActivity.h>
 
-@class MFMailComposeViewController;
+#import "UIStateRestoring.h"
 
-@interface UIMailActivity : UIActivity
+@class MFMailComposeViewController, NSString;
+
+@interface UIMailActivity : UIActivity <UIStateRestoring>
 {
+    _Bool _keyboardVisible;
+    _Bool _sourceIsManaged;
+    _Bool _hasAnyAccount;
+    _Bool _hasFilteredAccount;
+    NSString *_autosaveIdentifier;
     MFMailComposeViewController *_mailComposeViewController;
 }
 
++ (long long)activityCategory;
 @property(retain, nonatomic) MFMailComposeViewController *mailComposeViewController; // @synthesize mailComposeViewController=_mailComposeViewController;
+@property(nonatomic) _Bool hasFilteredAccount; // @synthesize hasFilteredAccount=_hasFilteredAccount;
+@property(nonatomic) _Bool hasAnyAccount; // @synthesize hasAnyAccount=_hasAnyAccount;
+@property(retain, nonatomic) NSString *autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
+@property(nonatomic) _Bool sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
+@property(nonatomic) _Bool keyboardVisible; // @synthesize keyboardVisible=_keyboardVisible;
+- (void)decodeRestorableStateWithCoder:(id)arg1;
+- (void)encodeRestorableStateWithCoder:(id)arg1;
 - (void)_cleanup;
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(int)arg2 error:(id)arg3;
 - (void)setSubject:(id)arg1;
 - (id)activityViewController;
 - (void)_setSubject:(id)arg1;
 - (void)prepareWithActivityItems:(id)arg1;
-- (BOOL)canPerformWithActivityItems:(id)arg1;
+- (_Bool)canPerformWithActivityItems:(id)arg1;
+- (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
+- (_Bool)_restoreDraft;
+- (id)_stateRestorationDraftIsAvailable;
+- (void)_deleteMailDraftIdentifierRestorationArchive:(id)arg1;
+- (void)_saveDraft:(id)arg1;
+- (id)_mailDraftRestorationURL;
 - (id)activityTitle;
 - (id)_activityImage;
 - (id)activityType;
 - (void)dealloc;
+- (id)init;
+
+// Remaining properties
+@property(readonly, nonatomic) Class objectRestorationClass;
+@property(readonly, nonatomic) id <UIStateRestoring> restorationParent;
 
 @end
 

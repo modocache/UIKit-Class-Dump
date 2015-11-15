@@ -8,7 +8,7 @@
 
 #import "NSCoding.h"
 
-@class NSMutableDictionary, NSMutableIndexSet, UICollectionView;
+@class NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewLayoutInvalidationContext, UIDynamicAnimator;
 
 @interface UICollectionViewLayout : NSObject <NSCoding>
 {
@@ -16,24 +16,49 @@
     struct CGSize _collectionViewBoundsSize;
     NSMutableDictionary *_initialAnimationLayoutAttributesDict;
     NSMutableDictionary *_finalAnimationLayoutAttributesDict;
+    NSMutableDictionary *_deletedSupplementaryIndexPathsDict;
+    NSMutableDictionary *_insertedSupplementaryIndexPathsDict;
+    NSMutableDictionary *_deletedDecorationIndexPathsDict;
+    NSMutableDictionary *_insertedDecorationIndexPathsDict;
     NSMutableIndexSet *_deletedSectionsSet;
     NSMutableIndexSet *_insertedSectionsSet;
     NSMutableDictionary *_decorationViewClassDict;
     NSMutableDictionary *_decorationViewNibDict;
     NSMutableDictionary *_decorationViewExternalObjectsTables;
+    UICollectionViewLayout *_transitioningFromLayout;
+    UICollectionViewLayout *_transitioningToLayout;
+    _Bool _inTransitionFromTransitionLayout;
+    _Bool _inTransitionToTransitionLayout;
+    UIDynamicAnimator *_animator;
+    UICollectionViewLayoutInvalidationContext *_invalidationContext;
 }
 
++ (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
 @property(readonly, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
+- (struct CGPoint)updatesContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
+- (struct CGPoint)transitionContentOffsetForProposedContentOffset:(struct CGPoint)arg1 keyItemIndexPath:(id)arg2;
+- (void)_didFinishLayoutTransitionAnimations:(_Bool)arg1;
+- (void)finalizeLayoutTransition;
+- (void)prepareForTransitionFromLayout:(id)arg1;
+- (void)prepareForTransitionToLayout:(id)arg1;
+- (void)_finalizeLayoutTransition;
+- (void)_prepareForTransitionFromLayout:(id)arg1;
+- (void)_prepareForTransitionToLayout:(id)arg1;
 - (void)registerNib:(id)arg1 forDecorationViewOfKind:(id)arg2;
 - (void)registerClass:(Class)arg1 forDecorationViewOfKind:(id)arg2;
 - (id)snapshottedLayoutAttributeForItemAtIndexPath:(id)arg1;
-- (id)layoutAttributesForSuplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (void)finalizeCollectionViewUpdates;
 - (void)prepareForCollectionViewUpdates:(id)arg1;
+- (struct CGRect)bounds;
 - (struct CGSize)collectionViewContentSize;
+- (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2;
+- (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2 type:(unsigned long long)arg3;
+- (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1;
 - (struct CGPoint)targetContentOffsetForProposedContentOffset:(struct CGPoint)arg1 withScrollingVelocity:(struct CGPoint)arg2;
-- (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
+- (_Bool)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (void)invalidateLayoutWithContext:(id)arg1;
 - (void)invalidateLayout;
 - (void)prepareLayout;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
@@ -44,20 +69,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)init;
-- (void)_setExternalObjectTable:(id)arg1 forNibLoadingOfDecorationViewOfKind:(id)arg2;
-- (id)_decorationViewForLayoutAttributes:(id)arg1;
-- (void)_finalizeCollectionViewItemAnimations;
-- (id)finalLayoutAttributesForDisappearingDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
-- (id)initialLayoutAttributesForAppearingDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
-- (id)finalLayoutAttributesForDisappearingSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
-- (id)initialLayoutAttributesForAppearingSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
-- (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
-- (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
-- (void)_prepareToAnimateFromCollectionViewItems:(id)arg1 atContentOffset:(struct CGPoint)arg2 toItems:(id)arg3 atContentOffset:(struct CGPoint)arg4;
-- (void)finalizeAnimatedBoundsChange;
-- (void)prepareForAnimatedBoundsChange:(struct CGRect)arg1;
-- (void)_setCollectionViewBoundsSize:(struct CGSize)arg1;
-- (void)_setCollectionView:(id)arg1;
 
 @end
 

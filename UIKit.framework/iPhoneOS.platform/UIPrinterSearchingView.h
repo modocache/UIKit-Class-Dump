@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)layoutSubviews;
-- (void)setSearching:(BOOL)arg1;
+- (void)setSearching:(_Bool)arg1;
 - (void)searchTimeout;
 - (void)dealloc;
 - (id)initInView:(id)arg1;

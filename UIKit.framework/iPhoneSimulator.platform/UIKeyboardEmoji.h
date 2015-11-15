@@ -11,17 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmoji : NSObject
 {
-    NSString *emojiString;
-    unsigned short _glyph;
+    NSString *_emojiString;
+    _Bool _hasDingbat;
 }
 
-+ (id)emojiWithString:(id)arg1;
-@property unsigned short glyph; // @synthesize glyph=_glyph;
-@property(retain) NSString *emojiString; // @synthesize emojiString;
-- (BOOL)isEqual:(id)arg1;
-@property(readonly) NSString *key;
++ (id)emojiWithString:(id)arg1 hasDingbat:(_Bool)arg2;
+@property _Bool hasDingbat; // @synthesize hasDingbat=_hasDingbat;
+@property(retain, nonatomic) NSString *emojiString; // @synthesize emojiString=_emojiString;
+- (_Bool)isEqual:(id)arg1;
+- (id)key;
 - (void)dealloc;
-- (id)initWithString:(id)arg1;
+- (id)initWithString:(id)arg1 hasDingbat:(_Bool)arg2;
 
 @end
 

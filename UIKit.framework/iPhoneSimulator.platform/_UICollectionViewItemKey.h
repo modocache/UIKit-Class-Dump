@@ -15,22 +15,26 @@ __attribute__((visibility("hidden")))
 {
     NSIndexPath *_indexPath;
     NSString *_identifier;
-    unsigned int type;
+    _Bool _isClone;
+    unsigned long long _type;
 }
 
 + (id)collectionItemKeyForLayoutAttributes:(id)arg1;
 + (id)collectionItemKeyForDecorationViewOfKind:(id)arg1 andIndexPath:(id)arg2;
 + (id)collectionItemKeyForSupplementaryViewOfKind:(id)arg1 andIndexPath:(id)arg2;
 + (id)collectionItemKeyForCellWithIndexPath:(id)arg1;
-@property(nonatomic) unsigned int type; // @synthesize type;
-@property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(retain, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
-- (unsigned int)hash;
-- (BOOL)isEqual:(id)arg1;
+@property(readonly, nonatomic) _Bool isClone; // @synthesize isClone=_isClone;
+@property(readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+@property(readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property(readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)copyAsClone:(_Bool)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)dealloc;
-- (id)init;
+- (id)initWithType:(unsigned long long)arg1 indexPath:(id)arg2 identifier:(id)arg3 clone:(_Bool)arg4;
+- (id)initWithType:(unsigned long long)arg1 indexPath:(id)arg2 identifier:(id)arg3;
 
 @end
 

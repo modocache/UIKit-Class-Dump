@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface UIPrintInteractionControllerInternals : NSObject
 {
-    int _pageCount;
+    long long _pageCount;
     struct _NSRange _pageRange;
-    int _currentPage;
+    long long _currentPage;
     UIPrintPanelViewController *_printPanelViewController;
     UIPrintingProgress *_printingProgress;
     PKPrinter *_printer;
@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
     PKPrintSettings *_printSettings;
     UIPrintInfo *_activePrintInfo;
     int _printInfoState;
-    BOOL _supressNotifyDismissed;
+    _Bool _supressNotifyDismissed;
     UIPrintPageRenderer *_formatterRenderer;
-    BOOL _manualPrintPageEnabled;
+    _Bool _manualPrintPageEnabled;
 }
 
 - (void)dealloc;

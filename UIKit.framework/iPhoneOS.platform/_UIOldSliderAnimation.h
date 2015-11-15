@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
     float _startValue;
     float _endValue;
-    BOOL _sendAction;
+    _Bool _sendAction;
 }
 
 - (void)setProgress:(float)arg1;

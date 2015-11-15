@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
 + (id)threadSafeNodeWithNode:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;
-- (BOOL)respondsToSelector:(SEL)arg1;
-- (BOOL)conformsToProtocol:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isKindOfClass:(Class)arg1;
+- (_Bool)respondsToSelector:(SEL)arg1;
+- (_Bool)conformsToProtocol:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isKindOfClass:(Class)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)initWithNode:(id)arg1;

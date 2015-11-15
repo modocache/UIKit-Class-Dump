@@ -6,33 +6,31 @@
 
 #import <UIKit/UIView.h>
 
-@class UIColor, UIImageView, UIStatusBarCorners;
+@class UIImageView, UIStatusBarCorners, UIStatusBarStyleAttributes;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarBackgroundView : UIView
 {
-    int _style;
-    UIColor *_tintColor;
+    UIStatusBarStyleAttributes *_style;
     UIStatusBarCorners *_topCorners;
     UIImageView *_glowView;
-    BOOL _glowEnabled;
-    BOOL _suppressGlow;
+    _Bool _glowEnabled;
+    _Bool _suppressGlow;
 }
 
-- (BOOL)_topCornersAreRoundedForStyle:(int)arg1;
-- (id)_glowImageForStyle:(int)arg1;
-- (id)_baseImageForStyle:(int)arg1;
-- (id)_imageNameForStyle:(int)arg1;
+- (_Bool)_topCornersAreRounded;
+- (id)_glowImage;
+- (id)_baseImage;
+- (id)_backgroundImageName;
 - (void)_stopGlowAnimation;
-- (void)_startGlowAnimationWaitForNextCycle:(BOOL)arg1;
-- (BOOL)_styleCanGlow:(int)arg1;
-- (void)setSuppressesGlow:(BOOL)arg1;
-- (void)_setGlowAnimationEnabled:(BOOL)arg1 waitForNextCycle:(BOOL)arg2;
-- (void)setGlowAnimationEnabled:(BOOL)arg1;
-- (id)tintColor;
-- (int)style;
+- (void)_startGlowAnimationWaitForNextCycle:(_Bool)arg1;
+- (_Bool)_styleCanGlow;
+- (void)setSuppressesGlow:(_Bool)arg1;
+- (void)_setGlowAnimationEnabled:(_Bool)arg1 waitForNextCycle:(_Bool)arg2;
+- (void)setGlowAnimationEnabled:(_Bool)arg1;
+- (id)style;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 style:(int)arg2 tintColor:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 style:(id)arg2 backgroundColor:(id)arg3;
 
 @end
 

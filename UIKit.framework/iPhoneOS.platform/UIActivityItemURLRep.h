@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
     UIImage *_thumbnail;
 }
 
+@property(nonatomic) int attachmentURLType; // @synthesize attachmentURLType=_attachmentURLType;
 @property(retain, nonatomic) UIImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property(retain, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-@property(nonatomic) int attachmentURLType; // @synthesize attachmentURLType=_attachmentURLType;
 - (id)scheme;
-- (BOOL)isFileURL;
+- (_Bool)isFileURL;
 - (void)dealloc;
 
 @end

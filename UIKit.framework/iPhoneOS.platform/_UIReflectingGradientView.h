@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)layerClass;
-- (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 
 @end
 

@@ -11,14 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface UITableViewCellUnhighlightedState : NSObject
 {
-    BOOL _opaque;
-    BOOL _highlighted;
+    _Bool _opaque;
+    _Bool _highlighted;
     UIColor *_backgroundColor;
 }
 
 @property(retain) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-@property BOOL highlighted; // @synthesize highlighted=_highlighted;
-@property BOOL opaque; // @synthesize opaque=_opaque;
+@property _Bool highlighted; // @synthesize highlighted=_highlighted;
+@property _Bool opaque; // @synthesize opaque=_opaque;
 - (void)dealloc;
 
 @end

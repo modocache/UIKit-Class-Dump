@@ -7,21 +7,21 @@
 @class UIScrollView, UIView;
 
 @protocol _UIWebRotationDelegate
-- (BOOL)considerHeightOfRectOfInterestForRotation;
+- (_Bool)considerHeightOfRectOfInterestForRotation;
 - (struct CGRect)activeRectForRectOfInterest:(struct CGRect)arg1;
-- (float)heightToKeepVisible;
-- (float)minimumVerticalContentOffset;
+- (double)heightToKeepVisible;
+- (double)minimumVerticalContentOffset;
 - (struct CGRect)rectOfInterestForRotation;
-- (float)minimumScaleForSize:(struct CGSize)arg1;
-- (void)updateBoundariesOfScrollView:(UIScrollView *)arg1 withScales:(CDStruct_869f9c67)arg2;
-- (CDStruct_869f9c67)scalesForContainerSize:(struct CGSize)arg1;
-- (float)currentDocumentScale;
-- (float)zoomedDocumentScale;
+- (double)minimumScaleForSize:(struct CGSize)arg1;
+- (void)updateBoundariesOfScrollView:(UIScrollView *)arg1 withScales:(CDStruct_39925896)arg2;
+- (CDStruct_39925896)scalesForContainerSize:(struct CGSize)arg1;
+- (double)currentDocumentScale;
+- (double)zoomedDocumentScale;
 - (UIView *)contentView;
 - (UIScrollView *)enclosingScrollView;
 
 @optional
 - (struct CGSize)contentSizeForScrollView:(UIScrollView *)arg1;
-- (float)scaleForProposedNewScale:(float)arg1 andOldScale:(float)arg2;
+- (double)scaleForProposedNewScale:(double)arg1 andOldScale:(double)arg2;
 @end
 

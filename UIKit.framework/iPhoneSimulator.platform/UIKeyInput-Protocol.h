@@ -11,6 +11,6 @@
 @protocol UIKeyInput <UITextInputTraits>
 - (void)deleteBackward;
 - (void)insertText:(NSString *)arg1;
-- (BOOL)hasText;
+- (_Bool)hasText;
 @end
 

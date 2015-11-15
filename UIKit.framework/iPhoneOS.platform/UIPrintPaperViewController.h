@@ -16,13 +16,12 @@ __attribute__((visibility("hidden")))
 
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (int)tableView:(id)arg1 numberOfRowsInSection:(int)arg2;
-- (int)numberOfSectionsInTableView:(id)arg1;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)loadView;
 - (void)adjustPopoverSize;
-- (unsigned int)supportedInterfaceOrientations;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
-- (void)dealloc;
+- (unsigned long long)supportedInterfaceOrientations;
+- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (id)initWithPrintPanelViewController:(id)arg1;
 
 @end

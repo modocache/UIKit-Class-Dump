@@ -4,40 +4,53 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UICollectionViewCell.h>
 
 #import "UIKBCacheableView.h"
 
-@class NSString, UIKeyboardCandidate;
+@class NSString, UIKBThemedView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateBarCell : UIView <UIKBCacheableView>
+@interface UIKeyboardCandidateBarCell : UICollectionViewCell <UIKBCacheableView>
 {
-    UIKeyboardCandidate *m_candidate;
-    NSString *m_candidateText;
-    id m_target;
-    SEL m_action;
-    struct CGSize m_textSize;
-    BOOL m_highlighted;
-    BOOL m_special;
+    _Bool _beginsFirstPage;
+    _Bool _endsLastPage;
+    _Bool _isAtLeftEdge;
+    UIKBThemedView *_themedView;
+    UILabel *_label;
+    NSString *_candidateText;
 }
 
-+ (id)fontForCandidateText:(id)arg1;
-@property(readonly, nonatomic) struct CGSize stringSize; // @synthesize stringSize=m_textSize;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
++ (_Bool)highlightAffectsBackground;
++ (double)widthForCandidateText:(id)arg1;
++ (struct UIEdgeInsets)cacheInsets;
++ (id)textColorWithHighlight:(_Bool)arg1 whiteText:(_Bool)arg2;
++ (id)font;
++ (id)reuseIdentifier;
+@property(nonatomic) _Bool isAtLeftEdge; // @synthesize isAtLeftEdge=_isAtLeftEdge;
+@property(nonatomic) _Bool endsLastPage; // @synthesize endsLastPage=_endsLastPage;
+@property(nonatomic) _Bool beginsFirstPage; // @synthesize beginsFirstPage=_beginsFirstPage;
+@property(copy, nonatomic) NSString *candidateText; // @synthesize candidateText=_candidateText;
+@property(retain, nonatomic) UILabel *label; // @synthesize label=_label;
+@property(retain, nonatomic) UIKBThemedView *themedView; // @synthesize themedView=_themedView;
 - (void)drawRect:(struct CGRect)arg1;
-@property(readonly, nonatomic) float cachedWidth;
-@property(readonly, nonatomic) BOOL cacheDeferable;
+@property(readonly, nonatomic) _Bool keepNonPersistent;
+@property(readonly, nonatomic) double cachedWidth;
+@property(readonly, nonatomic) _Bool cacheDeferable;
 - (void)displayLayer:(id)arg1;
-- (BOOL)shouldCache;
-- (id)cacheKey;
-@property(nonatomic) BOOL highlighted;
+- (id)cacheKeysForRenderFlags:(id)arg1;
+@property(readonly, nonatomic) NSString *cacheKey;
+- (void)updateIsAtLeftEdgeState;
+- (void)setHighlighted:(_Bool)arg1;
+- (void)setSelected:(_Bool)arg1;
+- (void)updateLabels;
+- (void)_setRenderConfig:(id)arg1;
+- (void)didMoveToWindow;
+- (void)setCandidate:(id)arg1;
+- (void)prepareForReuse;
+- (void)applyLayoutAttributes:(id)arg1;
 - (void)dealloc;
-- (id)initWithCandidate:(id)arg1 tag:(int)arg2 target:(id)arg3 action:(SEL)arg4;
-- (id)initWithCandidateText:(id)arg1 tag:(int)arg2 target:(id)arg3 action:(SEL)arg4;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

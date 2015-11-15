@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardSyntheticTouch : NSObject
 {
     double timestamp;
-    int phase;
-    unsigned int tapCount;
+    long long phase;
+    unsigned long long tapCount;
     UIWindow *window;
     struct CGPoint locationInWindow;
     unsigned char _pathIndex;
@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) unsigned char _pathIndex; // @synthesize _pathIndex;
 @property(nonatomic) struct CGPoint locationInWindow; // @synthesize locationInWindow;
 @property(retain, nonatomic) UIWindow *window; // @synthesize window;
-@property(nonatomic) unsigned int tapCount; // @synthesize tapCount;
-@property(nonatomic) int phase; // @synthesize phase;
+@property(nonatomic) unsigned long long tapCount; // @synthesize tapCount;
+@property(nonatomic) long long phase; // @synthesize phase;
 @property(nonatomic) double timestamp; // @synthesize timestamp;
 - (struct CGPoint)getLocationInWindow;
 - (struct CGPoint)previousLocationInView:(id)arg1;

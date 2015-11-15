@@ -6,17 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class UIColor;
-
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidatePocketShadow : UIView
 {
-    UIColor *_objectColor;
-    UIColor *_shadowColor;
+    _Bool _shadowFadesToBottom;
+    double _shadowHeightGrowthFactor;
 }
 
++ (double)width;
+@property(nonatomic) _Bool shadowFadesToBottom; // @synthesize shadowFadesToBottom=_shadowFadesToBottom;
+@property(nonatomic) double shadowHeightGrowthFactor; // @synthesize shadowHeightGrowthFactor=_shadowHeightGrowthFactor;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

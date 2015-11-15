@@ -8,21 +8,23 @@
 
 #import "NSCoding.h"
 
-@class NSCalendar, NSDate, NSLocale, NSTimeZone, _UIDatePickerView;
+@class NSCalendar, NSDate, NSLocale, NSTimeZone, UIColor, _UIDatePickerView;
 
 @interface UIDatePicker : UIControl <NSCoding>
 {
     _UIDatePickerView *_pickerView;
+    _Bool _useCurrentDateDuringDecoding;
 }
 
 + (Class)_pickerViewClass;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)invalidateIntrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
-- (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
-- (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
-- (void)setDate:(id)arg1 animated:(BOOL)arg2;
-@property(nonatomic) int minuteInterval; // @dynamic minuteInterval;
+- (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
+- (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
+- (void)setDate:(id)arg1 animated:(_Bool)arg2;
+@property(nonatomic) long long minuteInterval; // @dynamic minuteInterval;
 @property(nonatomic) double countDownDuration; // @dynamic countDownDuration;
 @property(retain, nonatomic) NSDate *maximumDate; // @dynamic maximumDate;
 @property(retain, nonatomic) NSDate *minimumDate; // @dynamic minimumDate;
@@ -32,7 +34,7 @@
 @property(retain, nonatomic) NSLocale *locale; // @dynamic locale;
 - (void)_setLocale:(id)arg1;
 - (id)_locale;
-@property(nonatomic) int datePickerMode; // @dynamic datePickerMode;
+@property(nonatomic) long long datePickerMode; // @dynamic datePickerMode;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)awakeFromNib;
@@ -41,25 +43,33 @@
 - (void)_insertPickerView;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)setDate:(id)arg1 animate:(BOOL)arg2;
+- (void)setDate:(id)arg1 animate:(_Bool)arg2;
+- (void)setBackgroundColor:(id)arg1;
 - (int)second;
 - (int)minute;
 - (int)hour;
-- (void)setHighlightsToday:(BOOL)arg1;
-- (void)setStaggerTimeIntervals:(BOOL)arg1;
+- (void)setHighlightsToday:(_Bool)arg1;
+- (void)setStaggerTimeIntervals:(_Bool)arg1;
 - (void)setDateComponents:(id)arg1;
 - (id)dateComponents;
-- (double)timeInterval;
-- (void)setTimeInterval:(double)arg1;
 - (void)setDelegate:(id)arg1;
-@property(nonatomic, getter=_allowsZeroCountdownDuration, setter=_setAllowsZeroCountdownDuration:) BOOL allowsZeroCountdownDuration;
-@property(nonatomic, getter=_drawsBackground, setter=_setDrawsBackground:) BOOL drawsBackground;
-@property(nonatomic, getter=_usesBlackChrome, setter=_setUsesBlackChrome:) BOOL usesBlackChrome;
-@property(readonly, nonatomic, getter=_dateUnderSelectionBar) NSDate *dateUnderSelectionBar;
-- (void)_setHidesLabels:(BOOL)arg1;
-- (void)_setHighlightsToday:(BOOL)arg1;
-- (float)_contentWidth;
-- (id)_selectedTextForCalendarUnit:(unsigned int)arg1;
+@property(nonatomic, getter=_useCurrentDateDuringDecoding, setter=_setUseCurrentDateDuringDecoding:) _Bool useCurrentDateDuringDecoding;
+@property(retain, nonatomic, getter=_textShadowColor, setter=_setTextShadowColor:) UIColor *textShadowColor;
+@property(retain, nonatomic, getter=_textColor, setter=_setTextColor:) UIColor *textColor;
+@property(retain, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
+@property(nonatomic, getter=_usesModernStyle, setter=_setUsesModernStyle:) _Bool _usesModernStyle;
+@property(nonatomic, getter=_allowsZeroTimeInterval, setter=_setAllowsZeroTimeInterval:) _Bool allowsZeroTimeInterval; // @dynamic allowsZeroTimeInterval;
+@property(nonatomic, getter=_allowsZeroCountDownDuration, setter=_setAllowsZeroCountDownDuration:) _Bool allowsZeroCountDownDuration; // @dynamic allowsZeroCountDownDuration;
+@property(nonatomic, getter=_drawsBackground, setter=_setDrawsBackground:) _Bool drawsBackground; // @dynamic drawsBackground;
+@property(nonatomic, getter=_usesBlackChrome, setter=_setUsesBlackChrome:) _Bool usesBlackChrome; // @dynamic usesBlackChrome;
+@property(readonly, nonatomic, getter=_dateUnderSelectionBar) NSDate *dateUnderSelectionBar; // @dynamic dateUnderSelectionBar;
+- (void)_setHidesLabels:(_Bool)arg1;
+- (void)_setHighlightsToday:(_Bool)arg1;
+@property(readonly, nonatomic, getter=_contentWidth) double contentWidth; // @dynamic contentWidth;
+@property(readonly, nonatomic, getter=_isTimeIntervalMode) _Bool isTimeIntervalMode; // @dynamic isTimeIntervalMode;
+- (id)_labelTextForCalendarUnit:(unsigned long long)arg1;
+- (id)_selectedTextForCalendarUnit:(unsigned long long)arg1;
+@property(nonatomic) double timeInterval; // @dynamic timeInterval;
 
 @end
 

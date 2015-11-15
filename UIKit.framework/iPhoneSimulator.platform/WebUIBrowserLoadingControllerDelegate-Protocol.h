@@ -11,6 +11,8 @@
 @protocol WebUIBrowserLoadingControllerDelegate <NSObject>
 
 @optional
+- (void)webThreadWebView:(WebView *)arg1 didLayout:(unsigned long long)arg2;
+- (void)webView:(WebView *)arg1 didHandleOnloadEventsForFrame:(WebFrame *)arg2;
 - (void)webView:(WebView *)arg1 didFirstVisuallyNonEmptyLayoutInFrame:(WebFrame *)arg2;
 - (void)webView:(WebView *)arg1 didClearWindowObject:(WebScriptObject *)arg2 forFrame:(WebFrame *)arg3;
 - (void)webView:(WebView *)arg1 didChangeLocationWithinPageForFrame:(WebFrame *)arg2;
@@ -20,12 +22,16 @@
 - (void)webView:(WebView *)arg1 didFailProvisionalLoadWithError:(NSError *)arg2 forFrame:(WebFrame *)arg3;
 - (void)webView:(WebView *)arg1 didReceiveServerRedirectForProvisionalLoadForFrame:(WebFrame *)arg2;
 - (void)webView:(WebView *)arg1 didStartProvisionalLoadForFrame:(WebFrame *)arg2;
+- (void)browserLoadingController:(WebUIBrowserLoadingController *)arg1 reportNetworkDataUsage:(struct _WBUNetworkDataUsage)arg2;
+- (_Bool)browserLoadingControllerShouldEvaluateUserEnteredJavaScript:(WebUIBrowserLoadingController *)arg1;
 - (NSString *)browserLoadingController:(WebUIBrowserLoadingController *)arg1 userVisibleStringForURL:(NSURL *)arg2;
+- (void)browserLoadingControllerDidUpdateLoadingState:(WebUIBrowserLoadingController *)arg1;
 - (void)browserLoadingController:(WebUIBrowserLoadingController *)arg1 didFinishLoadingWithError:(NSError *)arg2 dataSource:(WebDataSource *)arg3;
 - (void)browserLoadingControllerDidStartLoading:(WebUIBrowserLoadingController *)arg1;
 - (void)browserLoadingControllerWillStartUserDrivenLoad:(WebUIBrowserLoadingController *)arg1;
-- (BOOL)browserLoadingControllerShouldShowProvisionalURLs:(WebUIBrowserLoadingController *)arg1;
-- (void)browserLoadingController:(WebUIBrowserLoadingController *)arg1 willLoadRequest:(NSURLRequest *)arg2 userDriven:(BOOL)arg3;
+- (_Bool)browserLoadingControllerShouldShowProvisionalURLs:(WebUIBrowserLoadingController *)arg1;
+- (void)browserLoadingController:(WebUIBrowserLoadingController *)arg1 failedToStartLoadingRequest:(NSURLRequest *)arg2 error:(NSError *)arg3;
+- (void)browserLoadingController:(WebUIBrowserLoadingController *)arg1 willLoadRequest:(NSURLRequest *)arg2 userDriven:(_Bool)arg3;
 - (void)browserLoadingControllerDidUpdateEstimatedProgress:(WebUIBrowserLoadingController *)arg1;
 - (void)browserLoadingControllerDidUpdateSecurity:(WebUIBrowserLoadingController *)arg1;
 - (void)browserLoadingControllerDidUpdateBackForward:(WebUIBrowserLoadingController *)arg1;

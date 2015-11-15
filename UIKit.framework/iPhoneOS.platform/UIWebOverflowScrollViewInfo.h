@@ -6,12 +6,13 @@
 
 #import "NSObject.h"
 
-@class UIView, UIWebOverflowScrollView;
+@class CALayer, UIView, UIWebOverflowScrollView;
 
 __attribute__((visibility("hidden")))
 @interface UIWebOverflowScrollViewInfo : NSObject
 {
     UIWebOverflowScrollView *_scrollView;
+    CALayer *_scrollViewLayer;
     UIView *_oldSuperview;
 }
 

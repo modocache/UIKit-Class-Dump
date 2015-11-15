@@ -21,14 +21,14 @@ __attribute__((visibility("hidden")))
     UIWebSelectionNode *_fromLeftByContracting;
     UIWebSelectionGraph *_sharedGraph;
     UIWebSelection *_selection;
-    BOOL _invalid;
+    _Bool _invalid;
 }
 
 @property(retain) UIWebSelection *selection; // @synthesize selection=_selection;
 - (void)invalidate;
-- (id)nodeByMovingEdge:(int)arg1 outwards:(BOOL)arg2;
+- (id)nodeByMovingEdge:(int)arg1 outwards:(_Bool)arg2;
 - (int)oppositeEdge:(int)arg1;
-- (id *)nodeByReferenceFromEdge:(int)arg1 outwards:(BOOL)arg2;
+- (id *)nodeByReferenceFromEdge:(int)arg1 outwards:(_Bool)arg2;
 - (void)dealloc;
 - (id)initWithSelection:(id)arg1 inGraph:(id)arg2;
 

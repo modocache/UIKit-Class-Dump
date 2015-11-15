@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface UIWebLayer : CALayer
 {
-    BOOL _layoutsSuspended;
+    _Bool _layoutsSuspended;
 }
 
-- (void)setLayoutsSuspended:(BOOL)arg1;
+- (void)setLayoutsSuspended:(_Bool)arg1;
 - (void)setNeedsLayout;
 
 @end

@@ -12,12 +12,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGRect)constrainFrameToScreen:(struct CGRect)arg1;
-- (void)handleStatusBarChangeFromHeight:(float)arg1 toHeight:(float)arg2;
+- (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;
 - (void)_updateTransformLayerForClassicPresentation;
-- (BOOL)_affectsTintView;
-- (BOOL)isInternalWindow;
+- (_Bool)_canAffectStatusBarAppearance;
+- (_Bool)isInternalWindow;
 - (id)representation;
-- (BOOL)_shouldUseKeyWindowStack;
 - (void)_handleMouseUp:(struct __GSEvent *)arg1;
 
 @end

@@ -7,9 +7,10 @@
 #import "XPCProxy.h"
 
 @interface XPCProxy (UIKit_Extensions)
-- (id)disconnect;
+- (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_uikit_disconnect;
 - (id)_disconnectionInvocation;
-- (id)proxyWithNewTarget:(id)arg1 label:(id)arg2;
-- (id)proxyWithNewTarget:(id)arg1 queue:(id)arg2;
+- (id)proxyWithNewTarget:(id)arg1 label:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (id)proxyWithNewTarget:(id)arg1 queue:(id)arg2 errorHandler:(CDUnknownBlockType)arg3;
 @end
 

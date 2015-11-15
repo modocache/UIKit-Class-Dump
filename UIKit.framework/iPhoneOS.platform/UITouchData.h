@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 @interface UITouchData : NSObject
 {
     struct CGPoint startTouchDownLocation;
-    unsigned int lastTapCount;
+    unsigned long long lastTapCount;
     double lastTouchUpTimestamp;
     double lastTouchDownTimestamp;
-    BOOL touchIsValidTap;
+    _Bool touchIsValidTap;
     UITouch *lastTouch;
 }
 

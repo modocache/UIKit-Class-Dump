@@ -6,14 +6,16 @@
 
 #import <UIKit/UISharedArtwork.h>
 
+#import "_UISharedArtworkResolving.h"
+
 __attribute__((visibility("hidden")))
-@interface UIImageTableArtwork : UISharedArtwork
+@interface UIImageTableArtwork : UISharedArtwork <_UISharedArtworkResolving>
 {
 }
 
 + (id)sharedInstance;
 + (void)initialize;
-- (void)cacheImage:(id)arg1 name:(id)arg2 index:(unsigned int)arg3;
+- (void)cacheImage:(id)arg1 name:(id)arg2 index:(unsigned long long)arg3;
 
 @end
 

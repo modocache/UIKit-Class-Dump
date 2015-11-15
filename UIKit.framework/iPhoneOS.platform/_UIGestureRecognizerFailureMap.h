@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 
 + (void)buildFailureMapForGestureRecognizer:(id)arg1;
 + (void)buildFailureMapForGestureRecognizers:(id)arg1;
-- (BOOL)isGestureRecognizerWaitingForGestureRecognizersToFail:(id)arg1;
-@property(readonly) BOOL hasUnmetFailureRequirementsOrDependents;
+- (_Bool)isGestureRecognizerWaitingForGestureRecognizersToFail:(id)arg1;
+@property(readonly) _Bool hasUnmetFailureRequirementsOrDependents;
 - (void)gestureRecognizerFinished:(id)arg1 withEvent:(id)arg2;
 - (void)_queueRecognizersForResetIfFinished;
 - (void)_gestureRecognizerFinished:(id)arg1 withEvent:(id)arg2;

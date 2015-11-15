@@ -6,32 +6,38 @@
 
 #import "NSObject.h"
 
-@class NSError, NSObject<OS_dispatch_queue>, NSString, _UIAsyncInvocation;
+@class NSArray, NSError, NSObject<OS_dispatch_queue>, NSString, _UIAsyncInvocation, _UIRemoteViewControllerConnectionInfo;
 
 __attribute__((visibility("hidden")))
 @interface _UIRemoteViewControllerConnectionRequest : NSObject
 {
+    _Bool _useXPCObjects;
     CDUnknownBlockType _handler;
     NSString *_viewServiceBundleIdentifier;
     NSString *_viewControllerClassName;
-    BOOL _propagateAppearanceCustomizations;
+    NSArray *_serializedAppearanceCustomizations;
+    _Bool _legacyAppearance;
+    id _exportedHostingObject;
+    id <_UIViewServiceDeputyXPCInterface> _serviceViewControllerDeputyInterface;
     _UIAsyncInvocation *_cancelInvocationForCurrentOperation;
-    CDStruct_5a8e6190 _connectionInfo;
+    _UIRemoteViewControllerConnectionInfo *_connectionInfo;
     NSObject<OS_dispatch_queue> *_queue;
-    BOOL _isCancelledOrComplete;
+    _Bool _isCancelledOrComplete;
     NSError *_error;
     _UIAsyncInvocation *_requestCancellationInvocation;
 }
 
-+ (id)requestViewController:(id)arg1 fromServiceWithBundleIdentifier:(id)arg2 propagateAppearanceCustomizations:(BOOL)arg3 connectionHandler:(CDUnknownBlockType)arg4;
++ (id)requestViewController:(id)arg1 fromServiceWithBundleIdentifier:(id)arg2 serializedAppearanceCustomizations:(id)arg3 legacyAppearance:(_Bool)arg4 useXPCObjects:(_Bool)arg5 exportedHostingObject:(id)arg6 serviceViewControllerDeputyInterface:(id)arg7 connectionHandler:(CDUnknownBlockType)arg8;
 - (id)_cancelWithError:(id)arg1;
 - (void)_didFinishEstablishingConnection;
+- (void)_connectToViewControllerControlMessageDeputy;
 - (void)_connectToServiceViewController;
 - (void)_sendServiceTextEffectsRequest;
 - (void)_connectToTextEffectsOperator;
 - (void)_sendServiceViewControllerRequest;
 - (void)_connectToViewControllerOperator;
 - (void)_connectToViewService;
+- (void)_connectToDeputyWithInterface:(id)arg1 orType:(id)arg2 fromExportedHostingObject:(id)arg3 successHandler:(CDUnknownBlockType)arg4;
 - (void)_cancelUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 

@@ -19,9 +19,9 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void)didSelectItemAtIndex:(int)arg1;
 - (id)titleForItemAtIndex:(int)arg1;
-- (int)defaultSelectedIndex;
+- (long long)defaultSelectedIndex;
 - (struct CGSize)preferredSize;
-- (int)numberOfItems;
+- (long long)numberOfItems;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

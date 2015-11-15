@@ -6,12 +6,16 @@
 
 #import <UIKit/UIView.h>
 
+@class UIKBTree;
+
 __attribute__((visibility("hidden")))
 @interface UIKBDimmingView : UIView
 {
+    UIKBTree *_keyplane;
 }
 
 - (void)drawRect:(struct CGRect)arg1;
+- (void)refreshStyleForKeyplane:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -17,16 +17,16 @@ __attribute__((visibility("hidden")))
 + (id)plusImage;
 + (id)minusImage;
 + (float)defaultWidth;
-- (void)setSelected:(BOOL)arg1;
-- (BOOL)isHighlighted;
-- (void)setHighlighted:(BOOL)arg1;
-- (void)setSelected:(BOOL)arg1 highlighted:(BOOL)arg2;
+- (void)setSelected:(_Bool)arg1;
+- (_Bool)isHighlighted;
+- (void)setHighlighted:(_Bool)arg1;
+- (void)setSelected:(_Bool)arg1 highlighted:(_Bool)arg2;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)setHiding:(BOOL)arg1;
-- (BOOL)isHiding;
-- (BOOL)isRotating;
-- (BOOL)isRotated;
-- (void)toggleRotate:(BOOL)arg1;
+- (void)setHiding:(_Bool)arg1;
+- (_Bool)isHiding;
+- (_Bool)isRotating;
+- (_Bool)isRotated;
+- (void)toggleRotate:(_Bool)arg1;
 - (id)initWithRemoveControl:(id)arg1;
 
 @end

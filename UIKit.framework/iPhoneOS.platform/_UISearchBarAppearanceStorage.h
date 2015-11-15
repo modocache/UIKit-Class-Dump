@@ -15,15 +15,17 @@ __attribute__((visibility("hidden")))
     NSValue *searchFieldPositionAdjustment;
     NSMutableDictionary *iconImages;
     UIImage *separatorImage;
+    UIImage *scopeBarBackgroundImage;
 }
 
+@property(retain, nonatomic) UIImage *scopeBarBackgroundImage; // @synthesize scopeBarBackgroundImage;
 @property(retain, nonatomic) UIImage *separatorImage; // @synthesize separatorImage;
 @property(retain, nonatomic) NSValue *searchFieldPositionAdjustment; // @synthesize searchFieldPositionAdjustment;
 - (void)dealloc;
-- (id)imageForIcon:(int)arg1 state:(unsigned int)arg2;
-- (void)setImage:(id)arg1 forIcon:(int)arg2 state:(unsigned int)arg3;
-- (id)searchFieldBackgroundImageForState:(unsigned int)arg1;
-- (void)setSearchFieldBackgroundImage:(id)arg1 forState:(unsigned int)arg2;
+- (id)imageForIcon:(long long)arg1 state:(unsigned long long)arg2;
+- (void)setImage:(id)arg1 forIcon:(long long)arg2 state:(unsigned long long)arg3;
+- (id)searchFieldBackgroundImageForState:(unsigned long long)arg1;
+- (void)setSearchFieldBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
 
 @end
 

@@ -8,20 +8,27 @@
 
 #import "UIStatusBarTinting.h"
 
-@class UIColor;
+@class UIColor, _UIHostedWindowHostingHandle;
 
 @interface _UIRemoteView : UIView <UIStatusBarTinting>
 {
+    _Bool _actsAsTintView;
     UIColor *_statusBarTintColor;
-    BOOL _actsAsTintView;
+    _UIHostedWindowHostingHandle *_hostedWindowHostingHandle;
+    CDUnknownBlockType _tintColorDidChangeHandler;
 }
 
 + (id)viewWithRemoteContextID:(unsigned int)arg1;
++ (id)viewWithHostedWindowHostingHandle:(id)arg1;
 + (Class)layerClass;
-@property(nonatomic, setter=_setActsAsTintView:) BOOL _actsAsTintView; // @synthesize _actsAsTintView;
+@property(copy, nonatomic) CDUnknownBlockType tintColorDidChangeHandler; // @synthesize tintColorDidChangeHandler=_tintColorDidChangeHandler;
+@property(retain, nonatomic) _UIHostedWindowHostingHandle *hostedWindowHostingHandle; // @synthesize hostedWindowHostingHandle=_hostedWindowHostingHandle;
+@property(nonatomic, setter=_setActsAsTintView:) _Bool _actsAsTintView; // @synthesize _actsAsTintView;
 @property(retain, nonatomic, setter=_setStatusBarTintColor:) UIColor *_statusBarTintColor; // @synthesize _statusBarTintColor;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_setStatusBarTintColor:(id)arg1 duration:(double)arg2;
+- (void)tintColorDidChange;
+- (void)setContextID:(unsigned int)arg1;
 - (void)applyTransformUndoingRemoteRootLayerTransform:(struct CGAffineTransform)arg1 frame:(struct CGRect)arg2;
 - (void)dealloc;
 

@@ -4,35 +4,40 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIKBSplitImageView.h>
 
 #import "UIKBCacheableView.h"
 
-@class NSString;
+@class NSObject, NSString, UIKBRenderConfig, UIKBTree;
 
 __attribute__((visibility("hidden")))
-@interface UIKBBackgroundView : UIView <UIKBCacheableView>
+@interface UIKBBackgroundView : UIKBSplitImageView <UIKBCacheableView>
 {
+    UIKBTree *_keyplane;
     int _visualStyle;
-    NSString *_layoutName;
-    id _geometryCacheKey;
+    NSObject *_geometryCacheKey;
     struct CGRect _splitLeftRect;
     struct CGRect _splitLeftCacheRect;
     struct CGRect _splitRightRect;
     struct CGRect _splitRightCacheRect;
     int _topCorners;
-    UIView *_splitLeft;
-    UIView *_splitRight;
-    BOOL _isSplit;
-    BOOL _centerFilled;
+    _Bool _isSplit;
+    _Bool _centerFilled;
+    _Bool _hasCandidateKeys;
+    UIKBRenderConfig *_renderConfig;
 }
 
-@property(readonly, nonatomic) float cachedWidth;
-@property(readonly, nonatomic) BOOL cacheDeferable;
+@property(retain, nonatomic) NSObject *geometryCacheKey; // @synthesize geometryCacheKey=_geometryCacheKey;
+@property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
+@property(readonly, nonatomic) _Bool keepNonPersistent;
+@property(readonly, nonatomic) double cachedWidth;
+@property(readonly, nonatomic) _Bool cacheDeferable;
 - (void)displayLayer:(id)arg1;
-- (id)cacheKey;
+- (id)cacheKeysForRenderFlags:(id)arg1;
+@property(readonly, nonatomic) NSString *cacheKey;
+- (void)drawContentsOfRenderers:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)refreshStyleForKeyboard:(id)arg1;
+- (void)refreshStyleForKeyplane:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

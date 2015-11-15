@@ -13,8 +13,7 @@ __attribute__((visibility("hidden")))
 {
     struct __CFSet *dictionary;
     NSData *data;
-    int size;
-    int mtime;
+    long long size;
 }
 
 - (void)dealloc;

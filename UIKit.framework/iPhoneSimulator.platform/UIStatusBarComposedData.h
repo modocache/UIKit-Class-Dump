@@ -13,18 +13,18 @@
 __attribute__((visibility("hidden")))
 @interface UIStatusBarComposedData : NSObject <NSCopying>
 {
-    CDStruct_24dca785 _rawData;
-    char _itemEnabled[24];
+    CDStruct_0e61b686 _rawData;
+    _Bool _itemEnabled[32];
     NSString *_doubleHeightStatus;
 }
 
 @property(copy, nonatomic) NSString *doubleHeightStatus; // @synthesize doubleHeightStatus=_doubleHeightStatus;
-- (void)setItem:(int)arg1 enabled:(BOOL)arg2;
-- (BOOL)isItemEnabled:(int)arg1;
-@property(readonly, nonatomic) CDStruct_24dca785 *rawData;
+- (void)setItem:(int)arg1 enabled:(_Bool)arg2;
+- (_Bool)isItemEnabled:(int)arg1;
+@property(readonly, nonatomic) CDStruct_0e61b686 *rawData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithRawData:(const CDStruct_24dca785 *)arg1;
+- (id)initWithRawData:(const CDStruct_0e61b686 *)arg1;
 
 @end
 

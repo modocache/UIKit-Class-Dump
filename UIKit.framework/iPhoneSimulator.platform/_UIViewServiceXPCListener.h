@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_incomingConnectionQueue;
     _UIAsyncInvocation *_invalidationInvocation;
     int __automatic_invalidation_retainCount;
-    BOOL __automatic_invalidation_invalidated;
+    _Bool __automatic_invalidation_invalidated;
 }
 
 - (id)invalidate;
@@ -23,9 +23,9 @@ __attribute__((visibility("hidden")))
 - (id)endpoint;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)_isDeallocating;
-- (BOOL)_tryRetain;
-- (unsigned int)retainCount;
+- (_Bool)_isDeallocating;
+- (_Bool)_tryRetain;
+- (unsigned long long)retainCount;
 - (oneway void)release;
 - (id)retain;
 - (int)__automatic_invalidation_logic;

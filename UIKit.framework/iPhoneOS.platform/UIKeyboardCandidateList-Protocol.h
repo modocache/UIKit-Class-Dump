@@ -6,35 +6,42 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSString, UIKeyboardCandidate, UIKeyboardLayout;
+@class NSString, TIKeyboardBehaviors, TIKeyboardCandidate, TIKeyboardCandidateResultSet;
 
 @protocol UIKeyboardCandidateList <NSObject>
-- (void)configureKeyboard:(UIKeyboardLayout *)arg1;
-- (unsigned int)count;
-- (void)candidateAcceptedAtIndex:(unsigned int)arg1;
-- (UIKeyboardCandidate *)candidateAtIndex:(unsigned int)arg1;
-- (unsigned int)currentIndex;
-- (UIKeyboardCandidate *)currentCandidate;
+- (unsigned long long)selectedSortIndex;
+- (NSString *)statisticsIdentifier;
+- (TIKeyboardBehaviors *)keyboardBehaviors;
+- (_Bool)hasCandidates;
+- (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentIndex;
+- (TIKeyboardCandidate *)currentCandidate;
+- (void)showPreviousRow;
+- (void)showNextRow;
 - (void)showPreviousPage;
 - (void)showNextPage;
-- (void)showPageAtIndex:(unsigned int)arg1;
 - (void)showPreviousCandidate;
 - (void)showNextCandidate;
-- (void)showCandidate:(UIKeyboardCandidate *)arg1;
-- (void)showCandidateAtIndex:(unsigned int)arg1;
+- (void)showCandidate:(TIKeyboardCandidate *)arg1;
+- (void)showCandidateAtIndex:(unsigned long long)arg1;
 - (void)setUIKeyboardCandidateListDelegate:(id <UIKeyboardCandidateListDelegate>)arg1;
-- (void)layout;
-- (void)setCandidates:(NSArray *)arg1 inlineText:(NSString *)arg2 inlineRect:(struct CGRect)arg3 maxX:(float)arg4 layout:(BOOL)arg5;
+- (void)setCandidates:(TIKeyboardCandidateResultSet *)arg1 inlineText:(NSString *)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(_Bool)arg5;
+- (_Bool)isHiddenCandidatesList;
+- (_Bool)isExtendedList;
 
 @optional
+- (NSString *)inlineText;
+- (TIKeyboardCandidateResultSet *)candidates;
+- (void)revealHiddenCandidates;
+- (void)jumpToCompositions;
 - (void)candidatesDidChange;
-- (BOOL)hasPreviousPage;
-- (BOOL)hasNextPage;
-- (BOOL)handleTabKeyWithShift:(BOOL)arg1;
-- (BOOL)handleNumberKey:(unsigned int)arg1;
+- (_Bool)hasPreviousPage;
+- (_Bool)hasNextPage;
+- (_Bool)handleTabKeyWithShift:(_Bool)arg1;
+- (_Bool)handleNumberKey:(unsigned long long)arg1;
 - (void)setCompletionContext:(NSString *)arg1;
-- (void)showCaret:(BOOL)arg1 gradually:(BOOL)arg2;
+- (void)showCaret:(_Bool)arg1 gradually:(_Bool)arg2;
 - (void)setInlineText:(NSString *)arg1;
-- (void)setCandidates:(NSArray *)arg1 type:(int)arg2 inlineText:(NSString *)arg3 inlineRect:(struct CGRect)arg4 maxX:(float)arg5 layout:(BOOL)arg6;
+- (void)setCandidates:(TIKeyboardCandidateResultSet *)arg1 type:(int)arg2 inlineText:(NSString *)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(_Bool)arg6;
 @end
 

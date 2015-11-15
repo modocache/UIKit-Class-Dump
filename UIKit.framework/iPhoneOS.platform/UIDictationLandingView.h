@@ -6,36 +6,50 @@
 
 #import <UIKit/UIView.h>
 
-@class NSTimer, UITextRange;
+#import "_UIBasicAnimationFactory.h"
+
+@class CADisplayLink, NSInvocationOperation, UITextRange;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationLandingView : UIView
+@interface UIDictationLandingView : UIView <_UIBasicAnimationFactory>
 {
-    int _highlighted;
-    NSTimer *_timer;
     UITextRange *_range;
     id _placeholder;
-    BOOL _didHaveText;
-    BOOL _willInsertResult;
-    float _diameter;
-    float _margin;
+    _Bool _didHaveText;
+    _Bool _willInsertResult;
+    double _angle;
+    double _diameter;
+    CADisplayLink *_displayLink;
+    double _startTime;
+    double _shrinkStartTime;
+    _Bool _shrinking;
+    NSInvocationOperation *_afterShrinkCompletionInvocation;
 }
 
 + (id)activeInstance;
 + (id)sharedInstance;
-+ (float)widthForLineHeight:(float)arg1;
-+ (float)diameterForLineHeight:(float)arg1;
-@property(nonatomic) BOOL willInsertResult; // @synthesize willInsertResult=_willInsertResult;
++ (double)widthForLineHeight:(double)arg1;
++ (double)diameterForLineHeight:(double)arg1;
+@property(nonatomic) _Bool willInsertResult; // @synthesize willInsertResult=_willInsertResult;
+- (id)_timingFunctionForAnimation;
+- (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (double)fadeOutDuration;
 - (void)stopLandingForError;
-- (void)errorAnimationDidFinish;
+- (void)errorShakeDidFinish;
+- (void)errorShrinkDidFinish;
 - (void)stopLanding;
-- (void)startLanding;
-- (BOOL)delegateWasEmpty;
+- (void)startLandingIfNecessary;
+- (void)startDisplayLinkIfNecessary;
+- (void)showCursor;
+- (void)hideCursor;
+- (_Bool)delegateWasEmpty;
 - (void)updatePosition;
-- (void)placeDots;
-- (void)advanceLanding:(id)arg1;
-- (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)advanceLanding:(id)arg1;
+- (void)shrinkWithCompletionInvocation:(id)arg1;
+- (void)rotateBy:(double)arg1;
+- (void)clearRotation;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

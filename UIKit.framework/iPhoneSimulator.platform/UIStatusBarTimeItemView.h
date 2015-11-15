@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (id)contentsImageForStyle:(int)arg1;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (long long)textStyle;
+- (_Bool)cachesImage;
+- (id)contentsImage;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 
 @end
 

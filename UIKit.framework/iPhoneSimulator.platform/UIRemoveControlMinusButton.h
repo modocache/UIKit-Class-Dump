@@ -20,14 +20,14 @@ __attribute__((visibility("hidden")))
 + (id)plusImage;
 + (id)minusImage;
 + (float)defaultWidth;
-- (void)_toggleRotateAnimationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (BOOL)isRotating;
-- (BOOL)isRotated;
-- (void)toggleRotate:(BOOL)arg1;
+- (void)_toggleRotateAnimationDidStop:(id)arg1 finished:(_Bool)arg2;
+- (_Bool)isRotating;
+- (_Bool)isRotated;
+- (void)toggleRotate:(_Bool)arg1;
 - (void)animator:(id)arg1 stopAnimation:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1;
-- (BOOL)isHiding;
-- (void)setHiding:(BOOL)arg1;
+- (_Bool)isHiding;
+- (void)setHiding:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithRemoveControl:(id)arg1;
 

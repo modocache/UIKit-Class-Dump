@@ -15,12 +15,13 @@ __attribute__((visibility("hidden")))
     struct CGSize presentationSize;
 }
 
-+ (float)defaultExtendedControlHeight;
++ (double)defaultExtendedControlHeight;
 @property struct CGSize presentationSize; // @synthesize presentationSize;
 - (void)candidatesDidChange;
 - (id)activeCandidateList;
-- (void)setCandidateBarExtended:(BOOL)arg1 fromRect:(struct CGRect)arg2;
-- (unsigned int)_numberOfColumns:(BOOL)arg1;
+- (void)setCandidateViewExtended:(_Bool)arg1;
+- (unsigned long long)_numberOfColumns:(_Bool)arg1;
+- (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

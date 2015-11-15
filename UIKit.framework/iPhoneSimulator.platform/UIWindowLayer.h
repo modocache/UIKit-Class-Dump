@@ -14,5 +14,7 @@ __attribute__((visibility("hidden")))
     UIWindow *_window;
 }
 
+- (id)actionForKey:(id)arg1;
+
 @end
 

@@ -9,13 +9,15 @@
 __attribute__((visibility("hidden")))
 @interface UIRemoteControlEvent : UIInternalEvent
 {
-    int _subtype;
+    long long _subtype;
 }
 
 - (void)_simpleRemoteActionNotification:(id)arg1;
-- (void)_setSubtype:(int)arg1;
-- (int)subtype;
-- (int)type;
+- (void)_sendEventToResponder:(id)arg1;
+- (id)_windows;
+- (void)_setSubtype:(long long)arg1;
+- (long long)subtype;
+- (long long)type;
 - (void)dealloc;
 - (id)_init;
 

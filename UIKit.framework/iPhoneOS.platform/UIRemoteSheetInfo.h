@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     id _delegate;
     SEL _selector;
     void *_context;
-    int _returnCode;
+    long long _returnCode;
 }
 
-@property(nonatomic) int returnCode; // @synthesize returnCode=_returnCode;
+@property(nonatomic) long long returnCode; // @synthesize returnCode=_returnCode;
 @property(nonatomic) void *context; // @synthesize context=_context;
 @property(nonatomic) SEL selector; // @synthesize selector=_selector;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;

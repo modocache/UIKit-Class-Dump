@@ -17,12 +17,12 @@ __attribute__((visibility("hidden")))
     NSString *identifierForStringsFile;
     NSData *archiveData;
     UINibDecoder *nibDecoder;
-    BOOL instantiatingForSimulator;
-    BOOL captureImplicitLoadingContextOnDecode;
+    _Bool instantiatingForSimulator;
+    _Bool captureImplicitLoadingContextOnDecode;
 }
 
-@property BOOL captureImplicitLoadingContextOnDecode; // @synthesize captureImplicitLoadingContextOnDecode;
-@property(nonatomic) BOOL instantiatingForSimulator; // @synthesize instantiatingForSimulator;
+@property _Bool captureImplicitLoadingContextOnDecode; // @synthesize captureImplicitLoadingContextOnDecode;
+@property(nonatomic) _Bool instantiatingForSimulator; // @synthesize instantiatingForSimulator;
 @property(retain, nonatomic) UINibDecoder *nibDecoder; // @synthesize nibDecoder;
 @property(copy, nonatomic) NSData *archiveData; // @synthesize archiveData;
 @property(copy, nonatomic) NSString *identifierForStringsFile; // @synthesize identifierForStringsFile;

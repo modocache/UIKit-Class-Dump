@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     UIImage *_image;
 }
 
-- (BOOL)useBlockyMagnificationInClassic;
+- (_Bool)useBlockyMagnificationInClassic;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)setImage:(id)arg1;

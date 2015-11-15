@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)_alwaysShowEditAlertView;
+- (_Bool)_alwaysShowEditAlertView;
 - (void)redo;
 - (void)undo;
 

@@ -6,24 +6,33 @@
 
 #import <UIKit/UIActivity.h>
 
-@class SLComposeViewController;
+@class NSString, SLComposeViewController, UIImage;
 
 @interface UISocialActivity : UIActivity
 {
+    NSString *_socialActivityType;
     SLComposeViewController *_socialComposeViewController;
+    UIImage *_composedImage;
 }
 
++ (long long)activityCategory;
+@property(retain, nonatomic) UIImage *composedImage; // @synthesize composedImage=_composedImage;
 @property(retain, nonatomic) SLComposeViewController *socialComposeViewController; // @synthesize socialComposeViewController=_socialComposeViewController;
+@property(copy, nonatomic) NSString *socialActivityType; // @synthesize socialActivityType=_socialActivityType;
 - (void)_cleanup;
+- (struct CGSize)_thumbnailSize;
 - (id)activityViewController;
 - (void)prepareWithActivityItems:(id)arg1;
-- (BOOL)canPerformWithActivityItems:(id)arg1;
+- (_Bool)canPerformWithActivityItems:(id)arg1;
+- (long long)_blockingActivityItemTypes;
+- (long long)_activityItemTypes;
 - (id)_serviceType;
-- (int)_maxImageDataSize;
+- (long long)_maxImageDataSize;
 - (id)_activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (void)dealloc;
+- (id)initActivityType:(id)arg1;
 
 @end
 

@@ -16,9 +16,15 @@ __attribute__((visibility("hidden")))
     UIKBTree *_keyplane;
     UIKBTree *_slidOffKey;
     struct CGPoint _initialPoint;
+    struct CGPoint _initialDragPoint;
+    _Bool _dragged;
     int _stage;
+    _Bool _maySuppressUpAction;
 }
 
+@property(nonatomic) _Bool maySuppressUpAction; // @synthesize maySuppressUpAction=_maySuppressUpAction;
+@property(nonatomic) _Bool dragged; // @synthesize dragged=_dragged;
+@property(nonatomic) struct CGPoint initialDragPoint; // @synthesize initialDragPoint=_initialDragPoint;
 @property(nonatomic) int stage; // @synthesize stage=_stage;
 @property(nonatomic) struct CGPoint initialPoint; // @synthesize initialPoint=_initialPoint;
 @property(retain, nonatomic) UIKBTree *slidOffKey; // @synthesize slidOffKey=_slidOffKey;

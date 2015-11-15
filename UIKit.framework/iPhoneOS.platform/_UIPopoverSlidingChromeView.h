@@ -12,17 +12,18 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct UIEdgeInsets)contentViewInsets;
-+ (float)cornerRadius;
-+ (float)arrowBase;
-+ (float)arrowHeight;
-- (void)setArrowDirection:(unsigned int)arg1;
-- (unsigned int)arrowDirection;
-- (void)setArrowOffset:(float)arg1;
-- (float)arrowOffset;
-- (id)_shadowPathForRect:(struct CGRect)arg1 arrowDirection:(unsigned int)arg2;
++ (double)cornerRadius;
++ (double)arrowBase;
++ (double)arrowHeight;
+- (void)layoutSubviews;
+- (void)setArrowDirection:(unsigned long long)arg1;
+- (unsigned long long)arrowDirection;
+- (void)setArrowOffset:(double)arg1;
+- (double)arrowOffset;
+- (id)_shadowPathForRect:(struct CGRect)arg1 arrowDirection:(unsigned long long)arg2;
 - (struct CGSize)_shadowOffset;
-- (float)_shadowRadius;
-- (float)_shadowOpacity;
+- (double)_shadowRadius;
+- (double)_shadowOpacity;
 - (struct UIEdgeInsets)_shadowInsets;
 
 @end

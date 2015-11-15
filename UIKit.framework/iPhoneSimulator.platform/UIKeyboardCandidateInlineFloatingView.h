@@ -6,73 +6,76 @@
 
 #import <UIKit/UIView.h>
 
+#import "UIKeyboardCandidateGridCollectionViewControllerDelegate.h"
 #import "UIKeyboardCandidateList.h"
 #import "UIKeyboardCandidateListDelegate.h"
-#import "UIKeyboardCandidateScrollViewControllerDelegate.h"
 
-@class NSArray, NSString, UIKeyboardCandidateScrollViewController, UIKeyboardCandidateSortControl;
+@class NSString, TIKeyboardCandidateResultSet, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateSortControl;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateInlineFloatingView : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateScrollViewControllerDelegate>
+@interface UIKeyboardCandidateInlineFloatingView : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateGridCollectionViewControllerDelegate>
 {
-    BOOL _reducedWidth;
-    NSArray *_candidates;
-    NSString *_inlineText;
-    struct CGRect _inlineRect;
-    float _maxX;
-    BOOL _expanded;
-    UIKeyboardCandidateScrollViewController *_scrollViewController;
-    id <UIKeyboardCandidateListDelegate> _candidateListDelegate;
+    _Bool _reducedWidth;
     int _position;
-    struct CGRect _previousCollapsedFrame;
+    TIKeyboardCandidateResultSet *_candidateSet;
+    NSString *_inlineText;
+    double _maxX;
+    UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
+    id <UIKeyboardCandidateListDelegate> _candidateListDelegate;
     UIKeyboardCandidateSortControl *_sortSelectionBar;
+    struct CGRect _inlineRect;
+    struct CGRect _previousCollapsedFrame;
 }
 
 @property(nonatomic) struct CGRect previousCollapsedFrame; // @synthesize previousCollapsedFrame=_previousCollapsedFrame;
 @property(nonatomic) int position; // @synthesize position=_position;
 @property(nonatomic) id <UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
-@property(readonly, nonatomic, getter=isReducedWidth) BOOL reducedWidth; // @synthesize reducedWidth=_reducedWidth;
-@property(nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
-@property(nonatomic) float maxX; // @synthesize maxX=_maxX;
+@property(readonly, nonatomic, getter=isReducedWidth) _Bool reducedWidth; // @synthesize reducedWidth=_reducedWidth;
+@property(nonatomic) double maxX; // @synthesize maxX=_maxX;
 @property(nonatomic) struct CGRect inlineRect; // @synthesize inlineRect=_inlineRect;
 @property(copy, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;
-@property(retain, nonatomic) NSArray *candidates; // @synthesize candidates=_candidates;
+@property(retain, nonatomic) TIKeyboardCandidateResultSet *candidateSet; // @synthesize candidateSet=_candidateSet;
 @property(readonly, nonatomic) UIKeyboardCandidateSortControl *sortSelectionBar; // @synthesize sortSelectionBar=_sortSelectionBar;
-@property(readonly, nonatomic) UIKeyboardCandidateScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
+@property(readonly, nonatomic) UIKeyboardCandidateGridCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
 - (void)sortSelectionBarAction;
 - (void)padInlineFloatingViewExpand:(id)arg1;
-- (BOOL)padInlineFloatingViewIsExpanded:(id)arg1;
+- (_Bool)padInlineFloatingViewIsExpanded:(id)arg1;
+- (unsigned long long)gridCollectionViewNumberOfColumns:(id)arg1;
+- (unsigned long long)gridCollectionViewSelectedSortMethodIndex:(id)arg1;
 - (void)candidateListShouldBeDismissed:(id)arg1;
 - (void)candidateListSelectionDidChange:(id)arg1;
 - (void)candidateListAcceptCandidate:(id)arg1;
-- (BOOL)handleTabKeyWithShift:(BOOL)arg1;
-- (BOOL)handleNumberKey:(unsigned int)arg1;
-- (void)configureKeyboard:(id)arg1;
-- (unsigned int)count;
-- (void)candidateAcceptedAtIndex:(unsigned int)arg1;
-- (id)candidateAtIndex:(unsigned int)arg1;
-- (unsigned int)currentIndex;
+- (_Bool)handleTabKeyWithShift:(_Bool)arg1;
+- (_Bool)handleNumberKey:(unsigned long long)arg1;
+- (unsigned long long)selectedSortIndex;
+- (id)statisticsIdentifier;
+- (id)keyboardBehaviors;
+- (_Bool)hasCandidates;
+- (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentIndex;
 - (id)currentCandidate;
+- (void)showPreviousRow;
+- (void)showNextRow;
 - (void)showPreviousPage;
 - (void)showNextPage;
-- (void)showPageAtIndex:(unsigned int)arg1;
 - (void)showPreviousCandidate;
 - (void)showNextCandidate;
-- (void)showCandidateAtIndex:(unsigned int)arg1;
+- (void)showCandidateAtIndex:(unsigned long long)arg1;
 - (void)showCandidate:(id)arg1;
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (void)layout;
+- (id)candidates;
 - (void)candidatesDidChange;
-- (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(float)arg4 layout:(BOOL)arg5;
-- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(float)arg5 layout:(BOOL)arg6;
-- (void)adjustFrameForInlineText:(id)arg1 inlineRect:(struct CGRect)arg2 maxX:(float)arg3;
-- (struct CGRect)adjustedFrameFromDesiredFrame:(struct CGRect)arg1 textHeight:(float)arg2;
-- (BOOL)isAcceptableFrame:(struct CGRect)arg1 afterScrollBy:(float)arg2;
+- (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(_Bool)arg5;
+- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(_Bool)arg6;
+- (void)adjustFrameForInlineText:(id)arg1 inlineRect:(struct CGRect)arg2 maxX:(double)arg3;
+- (struct CGRect)adjustedFrameFromDesiredFrame:(struct CGRect)arg1 textHeight:(double)arg2;
+- (_Bool)isAcceptableFrame:(struct CGRect)arg1 afterScrollBy:(double)arg2;
 - (struct CGRect)adjustedInlineRectFromInlineText:(id)arg1 inlineRect:(struct CGRect)arg2;
-- (void)collapse;
+- (_Bool)isHiddenCandidatesList;
+- (_Bool)isExtendedList;
 - (void)expand;
-- (struct CGSize)expandedSize;
-- (struct CGSize)collapsedSize;
+- (struct CGSize)size;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)activeCandidateList;
 - (void)dealloc;

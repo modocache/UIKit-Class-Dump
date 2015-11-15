@@ -14,18 +14,24 @@
     NSString *_reuseIdentifier;
     UICollectionView *_collectionView;
     struct {
-        unsigned int inUpdateAnimation:1;
+        unsigned int updateAnimationCount:5;
+        unsigned int wasDequeued:1;
     } _reusableViewFlags;
 }
 
 @property(readonly, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
-- (void)_setInUpdateAnimation:(BOOL)arg1;
-- (BOOL)_isInUpdateAnimation;
+- (_Bool)_disableRasterizeInAnimations;
+- (_Bool)_wasDequeued;
+- (void)_markAsDequeued;
+- (void)_clearUpdateAnimation;
+- (void)_addUpdateAnimation;
+- (_Bool)_isInUpdateAnimation;
 - (void)_setCollectionView:(id)arg1;
 - (id)_collectionView;
 - (void)_setReuseIdentifier:(id)arg1;
 - (id)_layoutAttributes;
 - (void)_setLayoutAttributes:(id)arg1;
+- (void)_setBaseLayoutAttributes:(id)arg1;
 - (void)didTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (void)willTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (void)applyLayoutAttributes:(id)arg1;

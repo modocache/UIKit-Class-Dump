@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     NSTimer *_autoscrollTimer;
     UIShadowView *_topShadowView;
     UIShadowView *_bottomShadowView;
-    BOOL _wasScrollingEnabled;
+    _Bool _wasScrollingEnabled;
 }
 
 @end

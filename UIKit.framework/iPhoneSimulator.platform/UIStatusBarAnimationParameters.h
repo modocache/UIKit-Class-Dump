@@ -8,16 +8,25 @@
 
 @interface UIStatusBarAnimationParameters : NSObject
 {
-    double _startTime;
     double _duration;
-    int _curve;
+    double _delay;
+    long long _curve;
+    id <_UIBasicAnimationFactory> _animationFactory;
+    double _startTime;
 }
 
-@property(nonatomic) int curve; // @synthesize curve=_curve;
-@property(nonatomic) double duration; // @synthesize duration=_duration;
++ (void)animateWithParameters:(id)arg1 fromCurrentState:(_Bool)arg2 frameInterval:(double)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)animateWithParameters:(id)arg1 fromCurrentState:(_Bool)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)animateWithParameters:(id)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 @property(nonatomic) double startTime; // @synthesize startTime=_startTime;
+@property(retain, nonatomic) id <_UIBasicAnimationFactory> animationFactory; // @synthesize animationFactory=_animationFactory;
+@property(nonatomic) long long curve; // @synthesize curve=_curve;
+@property(nonatomic) double duration; // @synthesize duration=_duration;
+@property(nonatomic) double delay; // @synthesize delay=_delay;
+- (_Bool)shouldAnimate;
 - (id)initWithEmptyParameters;
 - (id)initWithDefaultParameters;
+- (void)dealloc;
 - (id)init;
 
 @end

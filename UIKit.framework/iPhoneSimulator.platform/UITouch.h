@@ -6,18 +6,20 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSMutableArray, UIView, UIWindow;
+#import "_UIResponderForwardable.h"
 
-@interface UITouch : NSObject
+@class NSArray, NSMutableArray, UIResponder, UIView, UIWindow;
+
+@interface UITouch : NSObject <_UIResponderForwardable>
 {
-    float _movementMagnitudeSquared;
+    double _movementMagnitudeSquared;
     double _timestamp;
-    int _phase;
-    int _savedPhase;
-    unsigned int _tapCount;
+    long long _phase;
+    long long _savedPhase;
+    unsigned long long _tapCount;
+    long long _edgeType;
     UIWindow *_window;
     UIView *_view;
-    UIView *_gestureView;
     UIView *_warpedIntoView;
     NSMutableArray *_gestureRecognizers;
     NSMutableArray *_forwardingRecord;
@@ -33,50 +35,58 @@
         unsigned int _sentTouchesEnded:1;
         unsigned int _abandonForwardingRecord:1;
     } _touchFlags;
-    BOOL _eaten;
+    _Bool _eaten;
+    struct CGSize _displacement;
 }
 
-+ (id)_createTouchesWithGSEvent:(struct __GSEvent *)arg1 phase:(int)arg2 view:(id)arg3;
-@property(nonatomic, getter=_isEaten, setter=_setEaten:) BOOL _eaten; // @synthesize _eaten;
++ (id)_createTouchesWithGSEvent:(struct __GSEvent *)arg1 phase:(long long)arg2 view:(id)arg3;
+@property(nonatomic, getter=_isEaten, setter=_setEaten:) _Bool _eaten; // @synthesize _eaten;
+@property(nonatomic, setter=_setEdgeType:) long long _edgeType; // @synthesize _edgeType;
+@property(nonatomic, setter=_setDisplacement:) struct CGSize _displacement; // @synthesize _displacement;
 @property(nonatomic, setter=_setPathMajorRadius:) float _pathMajorRadius; // @synthesize _pathMajorRadius;
 @property(nonatomic, setter=_setPathIdentity:) unsigned char _pathIdentity; // @synthesize _pathIdentity;
 @property(nonatomic, setter=_setPathIndex:) unsigned char _pathIndex; // @synthesize _pathIndex;
+@property(nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
 - (void)_loadStateFromTouch:(id)arg1;
 - (struct CGPoint)previousLocationInView:(id)arg1;
 - (struct CGPoint)locationInView:(id)arg1;
 @property(readonly, nonatomic) NSArray *gestureRecognizers;
 @property(readonly, nonatomic) UIView *view;
 @property(readonly, nonatomic) UIWindow *window;
-@property(nonatomic) BOOL sentTouchesEnded;
-- (BOOL)isDelayed;
-- (void)setIsDelayed:(BOOL)arg1;
-@property(nonatomic) BOOL isTap;
-@property(readonly, nonatomic) unsigned int tapCount;
-- (int)info;
-@property(readonly, nonatomic) int phase;
+@property(nonatomic) _Bool sentTouchesEnded;
+- (_Bool)isDelayed;
+- (void)setIsDelayed:(_Bool)arg1;
+@property(nonatomic) _Bool isTap;
+@property(readonly, nonatomic) unsigned long long tapCount;
+- (long long)info;
+@property(readonly, nonatomic) long long phase;
 @property(readonly, nonatomic) double timestamp;
 - (void)dealloc;
-- (BOOL)_isStationaryRelativeToTouches:(id)arg1;
+- (_Bool)_isStationaryRelativeToTouches:(id)arg1;
 - (void)_updateMovementMagnitudeForLocation:(struct CGPoint)arg1;
 @property(retain, nonatomic) UIView *warpedIntoView;
+@property(retain, nonatomic, setter=_setResponder:) UIResponder *_responder;
+- (SEL)_responderSelectorForPhase:(long long)arg1;
 - (id)_forwardingRecord;
-- (BOOL)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
-- (int)_compareIndex:(id)arg1;
+- (void)_abandonForwardingRecord;
+- (_Bool)_isAbandoningForwardingRecord;
+- (id)_mutableForwardingRecord;
+- (_Bool)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
+- (long long)_compareIndex:(id)arg1;
 - (struct CGPoint)_previousLocationInWindow:(id)arg1;
 - (struct CGPoint)_locationInWindow:(id)arg1;
 - (void)_popPhase;
-- (void)_pushPhase:(int)arg1;
+- (void)_pushPhase:(long long)arg1;
 - (void)_clearGestureRecognizers;
 - (id)_gestureRecognizers;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (void)_addGestureRecognizer:(id)arg1;
 - (id)description;
 - (id)_phaseDescription;
-- (void)_setLocationInWindow:(struct CGPoint)arg1 resetPrevious:(BOOL)arg2;
-@property(retain, nonatomic) UIView *gestureView;
-- (BOOL)_isFirstTouchForView;
-- (void)_setIsFirstTouchForView:(BOOL)arg1;
-- (float)_distanceFrom:(id)arg1 inView:(id)arg2;
+- (void)_setLocationInWindow:(struct CGPoint)arg1 resetPrevious:(_Bool)arg2;
+- (_Bool)_isFirstTouchForView;
+- (void)_setIsFirstTouchForView:(_Bool)arg1;
+- (double)_distanceFrom:(id)arg1 inView:(id)arg2;
 
 @end
 

@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface UIWebRotatingNodePopover : NSObject <UIPopoverControllerDelegate>
 {
-    BOOL _isRotating;
+    _Bool _isRotating;
     DOMNode *_node;
     struct CGPoint _presentationPoint;
     UIPopoverController *_popoverController;
@@ -27,9 +27,9 @@ __attribute__((visibility("hidden")))
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)didRotate:(id)arg1;
 - (void)willRotate:(id)arg1;
-- (void)dismissPopoverAnimated:(BOOL)arg1;
-- (void)presentPopoverAnimated:(BOOL)arg1;
-- (unsigned int)popoverArrowDirections;
+- (void)dismissPopoverAnimated:(_Bool)arg1;
+- (void)presentPopoverAnimated:(_Bool)arg1;
+- (unsigned long long)popoverArrowDirections;
 - (void)dealloc;
 - (id)initWithDOMNode:(id)arg1;
 

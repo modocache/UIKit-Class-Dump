@@ -6,7 +6,7 @@
 
 #import <UIKit/UIInputView.h>
 
-@class UIImageView, UIKeyboardCandidateBar, UIKeyboardCandidateGrid, UIKeyboardCandidateSortControl, UIKeyboardCandidateSplitKeyboardToggleButton, UIKeyboardCandidateUnsplitKeyboardToggleButton;
+@class UIImageView, UIKeyboardCandidateBar, UIKeyboardCandidateGrid, UIKeyboardCandidateSortControl, UIKeyboardCandidateSplitKeyboardToggleButton, UIKeyboardCandidateUnsplitKeyboardToggleButton, UIView<UIKeyboardCandidateList>;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateView : UIInputView
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UIKeyboardCandidateBar *_bar;
     UIKeyboardCandidateSortControl *_sortControl;
     UIKeyboardCandidateGrid *_extendedView;
+    UIView<UIKeyboardCandidateList> *_inlineView;
     UIImageView *_leftBackground;
     UIImageView *_rightBackground;
     UIKeyboardCandidateUnsplitKeyboardToggleButton *_leftButton;
@@ -25,22 +26,28 @@ __attribute__((visibility("hidden")))
     } _candidateBarFlags;
 }
 
-+ (float)defaultExtendedControlHeight;
++ (double)defaultExtendedControlHeight;
 + (id)activeCandidateList;
 + (void)setActiveCandidateView:(id)arg1;
 + (id)activeCandidateView;
++ (id)sharedInstanceForInlineView:(_Bool)arg1;
++ (id)sharedInstanceForInlineView;
 + (id)sharedInstance;
-- (unsigned int)_numberOfColumns:(BOOL)arg1;
+@property(retain, nonatomic) UIView<UIKeyboardCandidateList> *inlineView; // @synthesize inlineView=_inlineView;
+- (void)setCandidatesToExtendedViewFromCollapsedView:(id)arg1;
+- (unsigned long long)_numberOfColumns:(_Bool)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)willMoveToSuperview:(id)arg1;
 - (void)layoutSubviews;
+- (double)barHeight;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)_toggleExtendedCandidateView:(id)arg1;
-- (void)setCandidateBarExtended:(BOOL)arg1;
+- (void)setCandidateViewExtended:(_Bool)arg1;
 - (void)candidatesDidChange;
 - (id)activeCandidateList;
-- (void)setCandidateBarCanExtend:(BOOL)arg1;
+- (void)setCandidateBarCanExtend:(_Bool)arg1;
+- (_Bool)isExtended;
 - (void)updatePageControlStatus;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

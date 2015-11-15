@@ -24,15 +24,15 @@ __attribute__((visibility("hidden")))
 
 @property(readonly, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 @property(readonly, nonatomic) UIImage *tintedImage; // @synthesize tintedImage=_tintedImage;
-- (BOOL)isContentDiscarded;
+- (_Bool)isContentDiscarded;
 - (void)discardContentIfPossible;
 - (void)endContentAccess;
-- (BOOL)beginContentAccess;
-- (id)_tintedDisclosureImage:(BOOL)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned int)hash;
+- (_Bool)beginContentAccess;
+- (id)_tintedDisclosureImage:(_Bool)arg1;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 - (void)dealloc;
-- (id)initWithPressed:(BOOL)arg1 tintColor:(id)arg2;
+- (id)initWithPressed:(_Bool)arg1 tintColor:(id)arg2;
 
 @end
 

@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)_includeInDefaultImageSnapshot;
-- (BOOL)_affectsTintView;
+- (_Bool)_includeInDefaultImageSnapshot;
+- (_Bool)_canAffectStatusBarAppearance;
 
 @end
 

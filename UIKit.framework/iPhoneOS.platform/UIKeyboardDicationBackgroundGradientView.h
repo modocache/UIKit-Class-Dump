@@ -6,13 +6,28 @@
 
 #import <UIKit/UIView.h>
 
+#import "_UIBasicAnimationFactory.h"
+
+@class UIDictationView, UIKBRenderConfig;
+
 __attribute__((visibility("hidden")))
-@interface UIKeyboardDicationBackgroundGradientView : UIView
+@interface UIKeyboardDicationBackgroundGradientView : UIView <_UIBasicAnimationFactory>
 {
+    UIKBRenderConfig *_renderConfig;
+    UIDictationView *_dictationView;
 }
 
+@property(nonatomic) UIDictationView *dictationView; // @synthesize dictationView=_dictationView;
+@property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
+- (void)layoutSubviews;
 - (void)drawRect:(struct CGRect)arg1;
 - (struct CGRect)_backgroundFillFrame;
+- (id)_timingFunctionForAnimation;
+- (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (void)startColorTransitionOut;
+- (void)startColorTransitionIn;
+- (id)backgroundColorForCurrentRenderConfig;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -11,17 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface _UIDocumentActivityViewController : UIActivityViewController
 {
-    BOOL hideSystemActivities;
+    _Bool hideSystemActivities;
     UIDocumentInteractionController *_documentInteractionController;
-    BOOL _hideSystemActivities;
+    _Bool _hideSystemActivities;
 }
 
-@property(nonatomic) BOOL hideSystemActivities; // @synthesize hideSystemActivities=_hideSystemActivities;
+@property(nonatomic) _Bool hideSystemActivities; // @synthesize hideSystemActivities=_hideSystemActivities;
 @property(nonatomic) UIDocumentInteractionController *documentInteractionController; // @synthesize documentInteractionController=_documentInteractionController;
 - (void)_performActivity:(id)arg1;
 - (void)_prepareActivity:(id)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (BOOL)_shouldShowSystemActivity:(id)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (_Bool)sourceIsManaged;
+- (_Bool)_shouldShowSystemActivity:(id)arg1;
 
 @end
 

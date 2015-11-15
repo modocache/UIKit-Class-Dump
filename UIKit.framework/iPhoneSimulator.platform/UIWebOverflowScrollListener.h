@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void)scrollViewDidScrollToTop:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
-- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(_Bool)arg2;
 - (void)_didCompleteScrolling;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)initWithScrollView:(id)arg1;

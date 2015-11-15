@@ -7,6 +7,7 @@
 @class UIView;
 
 @protocol UIWebFormControl
+- (void)controlEndEditing;
 - (void)controlBeginEditing;
 - (UIView *)controlView;
 @end

@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)emojiUsed:(id)arg1;
 - (double)scoreForEmoji:(id)arg1;
 - (double)scoreForSequence:(int)arg1;
-- (BOOL)isAncientSequence:(int)arg1;
+- (_Bool)isAncientSequence:(int)arg1;
 - (void)dealloc;
 - (id)initWithInputView:(id)arg1;
 

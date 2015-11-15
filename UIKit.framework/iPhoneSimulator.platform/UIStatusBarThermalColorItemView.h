@@ -10,12 +10,12 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarThermalColorItemView : UIStatusBarItemView
 {
     int _thermalColor;
-    BOOL _sunlightMode;
+    _Bool _sunlightMode;
 }
 
 - (id)_color;
-- (id)contentsImageForStyle:(int)arg1;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (id)contentsImage;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 
 @end
 

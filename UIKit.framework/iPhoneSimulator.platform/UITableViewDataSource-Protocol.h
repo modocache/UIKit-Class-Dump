@@ -10,17 +10,17 @@
 
 @protocol UITableViewDataSource <NSObject>
 - (UITableViewCell *)tableView:(UITableView *)arg1 cellForRowAtIndexPath:(NSIndexPath *)arg2;
-- (int)tableView:(UITableView *)arg1 numberOfRowsInSection:(int)arg2;
+- (long long)tableView:(UITableView *)arg1 numberOfRowsInSection:(long long)arg2;
 
 @optional
 - (void)tableView:(UITableView *)arg1 moveRowAtIndexPath:(NSIndexPath *)arg2 toIndexPath:(NSIndexPath *)arg3;
-- (void)tableView:(UITableView *)arg1 commitEditingStyle:(int)arg2 forRowAtIndexPath:(NSIndexPath *)arg3;
-- (int)tableView:(UITableView *)arg1 sectionForSectionIndexTitle:(NSString *)arg2 atIndex:(int)arg3;
+- (void)tableView:(UITableView *)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(NSIndexPath *)arg3;
+- (long long)tableView:(UITableView *)arg1 sectionForSectionIndexTitle:(NSString *)arg2 atIndex:(long long)arg3;
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)arg1;
-- (BOOL)tableView:(UITableView *)arg1 canMoveRowAtIndexPath:(NSIndexPath *)arg2;
-- (BOOL)tableView:(UITableView *)arg1 canEditRowAtIndexPath:(NSIndexPath *)arg2;
-- (NSString *)tableView:(UITableView *)arg1 titleForFooterInSection:(int)arg2;
-- (NSString *)tableView:(UITableView *)arg1 titleForHeaderInSection:(int)arg2;
-- (int)numberOfSectionsInTableView:(UITableView *)arg1;
+- (_Bool)tableView:(UITableView *)arg1 canMoveRowAtIndexPath:(NSIndexPath *)arg2;
+- (_Bool)tableView:(UITableView *)arg1 canEditRowAtIndexPath:(NSIndexPath *)arg2;
+- (NSString *)tableView:(UITableView *)arg1 titleForFooterInSection:(long long)arg2;
+- (NSString *)tableView:(UITableView *)arg1 titleForHeaderInSection:(long long)arg2;
+- (long long)numberOfSectionsInTableView:(UITableView *)arg1;
 @end
 

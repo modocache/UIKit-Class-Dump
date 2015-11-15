@@ -6,41 +6,36 @@
 
 #import "NSObject.h"
 
-#import "XPCProxyTarget.h"
-
-@class BKSProcessAssertion, NSError, NSObject<OS_dispatch_queue>, NSObject<OS_xpc_object>, NSString, _UIAsyncInvocation, _UIViewServiceSessionEndpoint;
+@class BKSProcessAssertion, NSError, NSObject<OS_dispatch_queue>, NSString, NSXPCConnection, _UIAsyncInvocation;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceInterfaceConnectionRequest : NSObject <XPCProxyTarget>
+@interface _UIViewServiceInterfaceConnectionRequest : NSObject
 {
     CDUnknownBlockType _connectionHandler;
     NSString *_serviceBundleIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
-    BOOL _isCancelled;
+    _Bool _isCancelled;
     NSError *_cancellationError;
     _UIAsyncInvocation *_cancellationInvocation;
     int _sessionRequestNotifyToken;
-    NSObject<OS_xpc_object> *_serviceSessionManagerConnection;
     BKSProcessAssertion *_serviceProcessAssertion;
-    _UIViewServiceSessionEndpoint *_serviceSessionEndpoint;
-    _UIAsyncInvocation *_sessionConnectionCancelInvocation;
+    NSXPCConnection *_serviceSessionConnection;
     int __automatic_invalidation_retainCount;
-    BOOL __automatic_invalidation_invalidated;
+    _Bool __automatic_invalidation_invalidated;
 }
 
++ (id)connectToViewServiceViaXPCObjectsWithBundleIdentifier:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
 + (id)connectToViewServiceWithBundleIdentifier:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
-- (id)proxy:(id)arg1 detailedSignatureForSelector:(SEL)arg2;
 - (void)_cancelUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (void)_cancelWithError:(id)arg1;
 - (void)_didConnectToService;
-- (void)_connectToServiceSessionViaEndpoint:(id)arg1;
 - (void)_establishConnection;
 - (void)_createProcessAssertion;
 - (void)_launchService;
 - (void)dealloc;
-- (BOOL)_isDeallocating;
-- (BOOL)_tryRetain;
-- (unsigned int)retainCount;
+- (_Bool)_isDeallocating;
+- (_Bool)_tryRetain;
+- (unsigned long long)retainCount;
 - (oneway void)release;
 - (id)retain;
 - (int)__automatic_invalidation_logic;

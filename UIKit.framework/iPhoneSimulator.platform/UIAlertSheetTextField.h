@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     UIThreePartImageView *_sheetBackgroundView;
 }
 
+- (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
+- (struct CGRect)textRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)clearButtonRectForBounds:(struct CGRect)arg1;
 - (id)backgroundView;
 - (void)setBackgroundView:(id)arg1;

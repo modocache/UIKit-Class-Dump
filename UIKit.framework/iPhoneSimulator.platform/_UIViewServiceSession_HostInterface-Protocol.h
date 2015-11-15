@@ -4,9 +4,8 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-@class NSString;
+#import "_UIViewServiceSession_HostInterface_XPCObjects.h"
 
-@protocol _UIViewServiceSession_HostInterface
-- (void)__requestConnectionToDeputyOfType:(NSString *)arg1 withReplyHandler:(void (^)(id, NSError *))arg2;
+@protocol _UIViewServiceSession_HostInterface <_UIViewServiceSession_HostInterface_XPCObjects>
 @end
 

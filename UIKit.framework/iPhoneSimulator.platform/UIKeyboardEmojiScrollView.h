@@ -7,12 +7,13 @@
 #import <UIKit/UIKBKeyView.h>
 
 #import "UIKeyboardEmojiInput.h"
+#import "UIKeyboardEmojiPressIndicationDelegate.h"
 #import "UIScrollViewDelegate.h"
 
-@class NSMutableArray, UIKeyboardEmojiCategory, UIKeyboardEmojiInputController, UILabel, UIPageControl, UIScrollView;
+@class NSMutableArray, UIKeyboardEmojiCategory, UIKeyboardEmojiInputController, UILabel, UIPageControl, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiScrollView : UIKBKeyView <UIScrollViewDelegate, UIKeyboardEmojiInput>
+@interface UIKeyboardEmojiScrollView : UIKBKeyView <UIScrollViewDelegate, UIKeyboardEmojiInput, UIKeyboardEmojiPressIndicationDelegate>
 {
     UIKeyboardEmojiInputController *_inputController;
     UIKeyboardEmojiCategory *_category;
@@ -22,8 +23,12 @@ __attribute__((visibility("hidden")))
     UILabel *_optionalDescription;
     NSMutableArray *_pages;
     int _currentPage;
+    UIView *_pressIndicator;
+    _Bool _whiteText;
 }
 
+@property _Bool whiteText; // @synthesize whiteText=_whiteText;
+@property(retain, nonatomic) UIView *pressIndicator; // @synthesize pressIndicator=_pressIndicator;
 - (void)goToFirstPage;
 - (void)setScrollDelay:(double)arg1;
 - (int)currentPage;
@@ -34,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)pageChanged;
 - (void)saveFirstVisibleEmojiIndex;
 - (void)reloadForCategory:(id)arg1;
-- (int)emojiCountPerPageForRotation;
+- (long long)emojiCountPerPageForRotation;
 - (void)clearPages;
 - (void)interruptScrolling;
 - (void)scrollViewWillBeginDragging:(id)arg1;
@@ -43,9 +48,12 @@ __attribute__((visibility("hidden")))
 - (void)layoutRecents;
 - (void)doLayout;
 - (void)forceLayout;
-- (BOOL)shouldCache;
+- (_Bool)shouldCache;
+- (void)setRenderConfig:(id)arg1;
+- (void)removePressIndicator;
+- (void)installPressIndicatorAtPoint:(struct CGPoint)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 keyboard:(id)arg2 key:(id)arg3 state:(int)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 
 @end
 

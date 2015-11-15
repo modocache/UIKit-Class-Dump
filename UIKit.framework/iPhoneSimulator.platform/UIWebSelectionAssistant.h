@@ -17,13 +17,13 @@ __attribute__((visibility("hidden")))
     UIWebSelectionView *_selectionView;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     UITapAndAHalfRecognizer *_tapAndAHalfGestureRecognizer;
-    BOOL _enabled;
+    _Bool _enabled;
 }
 
 - (void)didRotate:(id)arg1;
 - (void)willRotate:(id)arg1;
-@property(nonatomic) BOOL enabled;
-- (void)layoutChangedByScrolling:(BOOL)arg1;
+@property(nonatomic) _Bool enabled;
+- (void)layoutChangedByScrolling:(_Bool)arg1;
 - (void)hideCallout;
 - (void)resignedFirstResponder;
 - (void)didEndScrollingOverflow;
@@ -35,13 +35,14 @@ __attribute__((visibility("hidden")))
 - (void)tap:(id)arg1;
 - (void)makeWebSelection:(id)arg1;
 @property(readonly, nonatomic) struct CGRect selectionFrame;
+@property(readonly, nonatomic) UIWebSelectionView *selectionView;
 @property(readonly, nonatomic) UIWebSelection *selection;
 - (void)selectionChanged;
 - (void)clearSelection;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (BOOL)isSelectionGestureRecognizer:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (_Bool)isSelectionGestureRecognizer:(id)arg1;
 - (void)setGestureRecognizers;
 - (void)dealloc;
 - (id)initWithWebView:(id)arg1;

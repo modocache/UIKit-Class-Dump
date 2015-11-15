@@ -11,35 +11,35 @@
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 
-@class UIPrintPanelViewController, UIPrintRangePickerView, UITableView;
+@class UIPickerView, UIPrintPanelViewController, UITableView;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintRangeViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UIPrintPanelViewController *_printPanelViewController;
-    int _pageCount;
+    long long _pageCount;
     struct _NSRange _pageRange;
-    UIPrintRangePickerView *_fromPicker;
-    UIPrintRangePickerView *_toPicker;
+    UIPickerView *_fromPicker;
+    UIPickerView *_toPicker;
     UITableView *_tableView;
-    float _pickerWidth;
+    double _pickerWidth;
 }
 
-- (void)pickerView:(id)arg1 didSelectRow:(int)arg2 inComponent:(int)arg3;
-- (id)pickerView:(id)arg1 viewForRow:(int)arg2 forComponent:(int)arg3 reusingView:(id)arg4;
-- (float)pickerView:(id)arg1 rowHeightForComponent:(int)arg2;
-- (float)pickerView:(id)arg1 widthForComponent:(int)arg2;
-- (int)pickerView:(id)arg1 numberOfRowsInComponent:(int)arg2;
-- (int)numberOfComponentsInPickerView:(id)arg1;
+- (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
+- (double)pickerView:(id)arg1 widthForComponent:(long long)arg2;
+- (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
+- (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
+- (long long)numberOfComponentsInPickerView:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (int)tableView:(id)arg1 numberOfRowsInSection:(int)arg2;
-- (int)numberOfSectionsInTableView:(id)arg1;
-- (unsigned int)supportedInterfaceOrientations;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)loadView;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (long long)numberOfSectionsInTableView:(id)arg1;
+- (unsigned long long)supportedInterfaceOrientations;
+- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
+- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (void)viewWillAppear:(_Bool)arg1;
+- (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithPrintPanelViewController:(id)arg1;
 

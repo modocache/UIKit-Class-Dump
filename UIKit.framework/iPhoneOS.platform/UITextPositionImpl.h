@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)wrapWebVisiblePosition:(id)arg1;
 @property(retain, nonatomic) WebVisiblePosition *webVisiblePosition; // @synthesize webVisiblePosition=_webVisiblePosition;
 - (id)description;
-- (BOOL)isEqual:(id)arg1;
+- (_Bool)isEqual:(id)arg1;
 - (void)dealloc;
 
 @end

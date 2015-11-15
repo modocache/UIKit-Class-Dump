@@ -6,55 +6,50 @@
 
 #import <UIKit/UIView.h>
 
-@class InlineCandidateCell, NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, _UIInlineCandidateCell;
 
 __attribute__((visibility("hidden")))
 @interface UIInlineCandidateTextView : UIView
 {
     int m_type;
     int m_edgeType;
-    BOOL m_animating;
+    _Bool m_animating;
     NSMutableArray *_candidateCellArray;
     NSArray *_candidates;
     id _target;
     SEL _action;
-    unsigned int _selectedItem;
-    InlineCandidateCell *_currentlyPushedItem;
-    BOOL _showingArrow;
-    BOOL _arrowHighlighted;
-    BOOL _phraseEditable;
+    unsigned long long _selectedItem;
+    _UIInlineCandidateCell *_currentlyPushedItem;
+    _Bool _showingArrow;
+    _Bool _arrowHighlighted;
+    _Bool _phraseEditable;
 }
 
-- (BOOL)needsWebDocumentViewEventsDirectly;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (struct CGRect)_calculateRectForExpandedHitRegion;
-- (void)mouseUp:(struct __GSEvent *)arg1;
-- (void)_mouseUp:(struct __GSEvent *)arg1 wasCancelled:(BOOL)arg2;
-- (void)mouseDragged:(struct __GSEvent *)arg1;
-- (void)mouseDown:(struct __GSEvent *)arg1;
 - (void)redrawArrow;
 - (id)findCell:(struct CGPoint)arg1;
 - (void)drawRect:(struct CGRect)arg1;
-- (unsigned int)selectedItem;
-- (void)setSelectedItem:(unsigned int)arg1;
+- (unsigned long long)selectedItem;
+- (void)setSelectedItem:(unsigned long long)arg1;
 - (void)showHighlightedArrow;
-- (BOOL)_arrowHighlighted;
-- (unsigned int)numberOfShownItems;
-- (float)_layoutCandidates:(id)arg1 maxCount:(int)arg2 height:(float)arg3 maxScreenWidth:(float)arg4 hasExtensionCandidates:(BOOL)arg5;
+- (_Bool)_arrowHighlighted;
+- (unsigned long long)numberOfShownItems;
+- (double)_layoutCandidates:(id)arg1 maxCount:(int)arg2 height:(double)arg3 maxScreenWidth:(double)arg4 hasExtensionCandidates:(_Bool)arg5;
 - (void)setTarget:(id)arg1 action:(SEL)arg2;
 - (void)_cellSelected:(id)arg1;
-- (void)setAnimating:(BOOL)arg1;
+- (void)setAnimating:(_Bool)arg1;
 - (void)setEdgeType:(int)arg1;
 - (int)textEffectsVisibilityLevel;
 - (int)edgeType;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 candidates:(id)arg2 type:(int)arg3 maxScreenWidth:(float)arg4 hasExtensionCandidates:(BOOL)arg5;
+- (id)initWithFrame:(struct CGRect)arg1 candidates:(id)arg2 type:(int)arg3 maxScreenWidth:(double)arg4 hasExtensionCandidates:(_Bool)arg5;
 
 @end
 

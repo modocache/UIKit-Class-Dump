@@ -19,18 +19,18 @@ __attribute__((visibility("hidden")))
 }
 
 - (double)rotationDelay;
-- (BOOL)visible;
-- (void)dismissAnimated:(BOOL)arg1;
+- (_Bool)visible;
+- (void)dismissAnimated:(_Bool)arg1;
 - (void)cleanupAfterDismiss;
 - (void)show;
-- (void)setDonePrinting:(BOOL)arg1;
+- (void)setDonePrinting:(_Bool)arg1;
 - (void)setMessage:(id)arg1;
 - (void)cancelProgress;
 - (void)doneProgress;
-- (void)didRotateFromInterfaceOrientation:(int)arg1;
-- (void)willAnimateRotationToInterfaceOrientation:(int)arg1 duration:(double)arg2;
-- (unsigned int)supportedInterfaceOrientations;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
+- (void)didRotateFromInterfaceOrientation:(long long)arg1;
+- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (unsigned long long)supportedInterfaceOrientations;
+- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)dealloc;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 printingProgress:(id)arg3;
 

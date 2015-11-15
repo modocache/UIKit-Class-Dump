@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSTimer *_timer;
     NSMutableArray *_activeAnimations;
     double _lastUpdateTime;
-    BOOL _shouldSchedYield;
+    _Bool _shouldSchedYield;
 }
 
 @end

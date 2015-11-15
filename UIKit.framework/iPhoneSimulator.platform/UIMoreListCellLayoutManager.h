@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface UIMoreListCellLayoutManager : UITableViewCellLayoutManager
 {
-    float _widestImageWidth;
+    double _widestImageWidth;
 }
 
-- (void)setWidestImageWidthFromViewControllers:(id)arg1;
+- (double)setWidestImageWidthFromViewControllers:(id)arg1;
 - (void)layoutSubviewsOfCell:(id)arg1;
 
 @end

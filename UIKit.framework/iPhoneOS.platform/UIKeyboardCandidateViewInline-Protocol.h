@@ -10,6 +10,5 @@
 
 @protocol UIKeyboardCandidateViewInline <NSObject>
 - (UIView<UIKeyboardCandidateList> *)activeCandidateList;
-- (void)setCandidateBarExtended:(BOOL)arg1 fromRect:(struct CGRect)arg2;
 @end
 

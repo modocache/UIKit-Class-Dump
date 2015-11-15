@@ -9,13 +9,16 @@
 __attribute__((visibility("hidden")))
 @interface UIStatusBarBluetoothItemView : UIStatusBarItemView
 {
-    BOOL _connected;
-    BOOL _shouldAnimateConnection;
+    _Bool _connected;
+    _Bool _shouldAnimateConnection;
 }
 
-- (id)contentsImageForStyle:(int)arg1;
+- (double)alphaForConnected:(_Bool)arg1;
+- (void)setVisible:(_Bool)arg1;
+- (id)contentsImage;
+- (void)_blinkAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)performPendedActions;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 
 @end
 

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)view;
 - (id)item;
 - (void)dealloc;
+- (void)setSelected:(_Bool)arg1;
 - (id)initWithItem:(id)arg1 inTabBar:(id)arg2;
 
 @end

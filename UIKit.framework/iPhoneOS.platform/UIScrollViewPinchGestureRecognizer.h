@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (float)_hysteresis;
+- (double)_hysteresis;
 - (void)removeTarget:(id)arg1 action:(SEL)arg2;
 - (void)setDelegate:(id)arg1;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;

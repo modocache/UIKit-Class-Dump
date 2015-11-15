@@ -9,11 +9,13 @@
 __attribute__((visibility("hidden")))
 @interface _UIDebugAlignmentRectView : UIView
 {
+    double _baselineOffset;
 }
 
-- (BOOL)isOpaque;
-- (id)_alignmentDebuggingOverlay;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (_Bool)isOpaque;
+- (id)_alignmentDebuggingOverlayCreateIfNecessary:(_Bool)arg1;
+- (void)drawRect:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 baselineOffset:(double)arg2;
 
 @end
 

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)contentsImageForStyle:(int)arg1;
+- (id)contentsImage;
 
 @end
 

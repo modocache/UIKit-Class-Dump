@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void)setTitle:(id)arg1;
 - (void)setSymbol:(id)arg1;
 - (void)dealloc;
-- (id)initWithStyle:(int)arg1 reuseIdentifier:(id)arg2;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)titleFont;
 - (id)symbolFont;
 

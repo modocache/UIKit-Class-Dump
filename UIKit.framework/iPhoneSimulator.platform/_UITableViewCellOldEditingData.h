@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *separatorView; // @synthesize separatorView=_separator;
 @property(retain, nonatomic) UIControl *reorderControl; // @synthesize reorderControl=_grabber;
 - (void)dealloc;
-- (BOOL)dataRequired;
+- (_Bool)dataRequired;
 
 @end
 

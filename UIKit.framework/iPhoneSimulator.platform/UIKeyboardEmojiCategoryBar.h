@@ -26,12 +26,12 @@ __attribute__((visibility("hidden")))
 
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)frameForDivider:(int)arg1;
-- (void)sendActionsForControlEvents:(unsigned int)arg1;
+- (void)sendActionsForControlEvents:(unsigned long long)arg1;
 - (void)setCategory:(id)arg1;
-@property int selectedIndex; // @dynamic selectedIndex;
+@property long long selectedIndex; // @dynamic selectedIndex;
 - (void)releaseImagesAndViews;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 
 @end
 

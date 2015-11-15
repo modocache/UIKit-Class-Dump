@@ -6,16 +6,25 @@
 
 #import <UIKit/UIStatusBarItemView.h>
 
+@class UIView;
+
 __attribute__((visibility("hidden")))
 @interface UIStatusBarBatteryItemView : UIStatusBarItemView
 {
     int _capacity;
     int _state;
+    UIView *_accessoryView;
 }
 
-- (float)extraRightPadding;
-- (id)contentsImageForStyle:(int)arg1;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (double)legibilityStrength;
+- (void)_updateAccessoryImage;
+- (double)extraRightPadding;
+- (id)contentsImage;
+- (id)_accessoryImage;
+- (_Bool)_needsAccessoryImage;
+- (double)_batteryYOffsetWithBackground:(id)arg1;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
+- (void)dealloc;
 
 @end
 

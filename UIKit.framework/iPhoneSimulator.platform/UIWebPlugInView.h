@@ -15,17 +15,17 @@ __attribute__((visibility("hidden")))
     CALayer *_hostingLayer;
     UIView *_uiView;
     struct __CFRunLoopObserver *_mainRunLoopDrawObserver;
-    BOOL _isFullScreen;
-    BOOL _parentedInLayer;
-    BOOL _isQuickTimePlugIn;
-    BOOL _isMapViewPlugIn;
-    BOOL _isiAdPlugIn;
+    _Bool _isFullScreen;
+    _Bool _parentedInLayer;
+    _Bool _isQuickTimePlugIn;
+    _Bool _isMapViewPlugIn;
+    _Bool _isiAdPlugIn;
 }
 
-@property(nonatomic) BOOL isiAdPlugIn; // @synthesize isiAdPlugIn=_isiAdPlugIn;
-@property(nonatomic) BOOL isMapViewPlugIn; // @synthesize isMapViewPlugIn=_isMapViewPlugIn;
-@property(nonatomic) BOOL isQuickTimePlugIn; // @synthesize isQuickTimePlugIn=_isQuickTimePlugIn;
-@property(nonatomic, getter=isParentedInLayer) BOOL parentedInLayer; // @synthesize parentedInLayer=_parentedInLayer;
+@property(nonatomic) _Bool isiAdPlugIn; // @synthesize isiAdPlugIn=_isiAdPlugIn;
+@property(nonatomic) _Bool isMapViewPlugIn; // @synthesize isMapViewPlugIn=_isMapViewPlugIn;
+@property(nonatomic) _Bool isQuickTimePlugIn; // @synthesize isQuickTimePlugIn=_isQuickTimePlugIn;
+@property(nonatomic, getter=isParentedInLayer) _Bool parentedInLayer; // @synthesize parentedInLayer=_parentedInLayer;
 - (void)detachPluginLayer;
 - (void)attachPluginLayer;
 - (void)_detachPluginLayerOnMainThread;
@@ -33,14 +33,14 @@ __attribute__((visibility("hidden")))
 - (void)_disconnectPluginLayers;
 - (void)_connectPluginLayers;
 - (id)pluginLayer;
-- (BOOL)willProvidePluginLayer;
+- (_Bool)willProvidePluginLayer;
 - (void)setWebView:(id)arg1;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (id)objectForWebScript;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)forwardInvocation:(id)arg1;
-- (BOOL)respondsToSelector:(SEL)arg1;
+- (_Bool)respondsToSelector:(SEL)arg1;
 - (void)webPlugInDestroy;
 - (void)webPlugInStop;
 - (void)webPlugInStart;
@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (void)layout;
 - (void)reshape;
-- (BOOL)isParented;
+- (_Bool)isParented;
 - (id)plugInView;
 - (void)invalidateGState;
 - (void)viewDidMoveToWindow;

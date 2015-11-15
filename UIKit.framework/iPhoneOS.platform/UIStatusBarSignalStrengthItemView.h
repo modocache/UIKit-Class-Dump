@@ -11,15 +11,15 @@ __attribute__((visibility("hidden")))
 {
     int _signalStrengthRaw;
     int _signalStrengthBars;
-    BOOL _enableRSSI;
-    BOOL _showRSSI;
+    _Bool _enableRSSI;
+    _Bool _showRSSI;
 }
 
 - (id)_stringForRSSI;
-- (float)extraRightPadding;
+- (double)extraRightPadding;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (id)contentsImageForStyle:(int)arg1;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (id)contentsImage;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 
 @end
 

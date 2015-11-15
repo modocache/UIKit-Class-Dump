@@ -14,12 +14,13 @@ __attribute__((visibility("hidden")))
     NSString *_percentString;
 }
 
-- (int)textAlignment;
-- (BOOL)usesSmallerTextFont;
-- (BOOL)animatesDataChange;
-- (float)extraRightPadding;
-- (id)contentsImageForStyle:(int)arg1;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (long long)textStyle;
+- (long long)textAlignment;
+- (_Bool)animatesDataChange;
+- (double)extraRightPadding;
+- (_Bool)cachesImage;
+- (id)contentsImage;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 - (void)dealloc;
 
 @end

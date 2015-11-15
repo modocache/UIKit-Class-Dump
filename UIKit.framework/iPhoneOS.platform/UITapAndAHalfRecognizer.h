@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UITapAndAHalfRecognizer : UIGestureRecognizer
 {
     struct CGPoint _startPoint;
-    float _allowableMovement;
+    double _allowableMovement;
     int _numberOfFullTaps;
     double _minimumFinalPressDuration;
     NSMutableSet *_activeTouches;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) double minimumFinalPressDuration; // @synthesize minimumFinalPressDuration=_minimumFinalPressDuration;
-@property(nonatomic) float allowableMovement; // @synthesize allowableMovement=_allowableMovement;
+@property(nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
 @property(retain, nonatomic) UITouch *touch; // @synthesize touch=_touch;
 @property(nonatomic) int numberOfFullTaps; // @synthesize numberOfFullTaps=_numberOfFullTaps;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

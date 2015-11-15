@@ -6,42 +6,50 @@
 
 #import <UIKit/UIView.h>
 
-@class UIFont, UINavigationItem;
+@class UILabel, UINavigationItem;
 
 __attribute__((visibility("hidden")))
 @interface UINavigationItemView : UIView
 {
-    UIFont *_font;
     UINavigationItem *_item;
-    float _titleWidth;
-    BOOL _titleAutosizesToFit;
+    struct CGSize _titleSize;
     UIView *_topCrossView;
     UIView *_bottomCrossView;
-    BOOL _isCrossFading;
-    int _lineBreakMode;
+    _Bool _isCrossFading;
+    _Bool _customFontSet;
+    UILabel *_label;
+    _Bool _isFadingInFromCustomAlpha;
 }
 
+@property(nonatomic, setter=_setFadingInFromCustomAlpha:) _Bool _isFadingInFromCustomAlpha; // @synthesize _isFadingInFromCustomAlpha;
 - (void)_cleanUpCrossView;
-- (void)_crossFadeHiddingButton:(BOOL)arg1;
+- (void)_crossFadeHiddingButton:(_Bool)arg1;
 - (void)_prepareCrossViewsForNewSize:(struct CGSize)arg1;
 - (id)_scriptingInfo;
-- (void)_setLineBreakMode:(int)arg1;
+- (void)_setLineBreakMode:(long long)arg1;
 - (id)font;
 - (void)setFont:(id)arg1;
-- (BOOL)titleAutoresizesToFit;
-- (void)setTitleAutoresizesToFit:(BOOL)arg1;
+- (void)_setFont:(id)arg1;
+- (_Bool)titleAutoresizesToFit;
+- (void)setTitleAutoresizesToFit:(_Bool)arg1;
 - (id)title;
-- (float)_titleWidth;
-- (void)_resetTitleWidth;
-- (void)drawRect:(struct CGRect)arg1;
+- (struct CGSize)_titleSize;
+- (void)_resetTitleSize;
+- (void)layoutSubviews;
+- (void)_adjustLabelTrackingIfNecessary;
+- (void)_updateLabel;
+- (struct CGRect)_labelFrame;
+- (double)_titleYAdjustmentCustomization;
+- (void)_updateLabelContents;
+- (void)_updateLabelColor;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)drawText:(id)arg1 inRect:(struct CGRect)arg2 barStyle:(int)arg3;
-- (struct CGSize)_currentTextShadowOffsetForBarStyle:(int)arg1;
-- (id)_currentTextShadowColorForBarStyle:(int)arg1;
-- (id)_currentTextColorForBarStyle:(int)arg1;
-- (BOOL)_useSilverLookForBarStyle:(int)arg1;
+- (struct CGSize)_currentTextShadowOffsetForBarStyle:(long long)arg1;
+- (id)_currentTextShadowColorForBarStyle:(long long)arg1;
+- (id)_currentTextColorForBarStyle:(long long)arg1;
+- (_Bool)_useSilverLookForBarStyle:(long long)arg1;
 - (id)_defaultFont;
 - (id)navigationItem;
+- (void)dealloc;
 - (id)initWithNavigationItem:(id)arg1;
 
 @end

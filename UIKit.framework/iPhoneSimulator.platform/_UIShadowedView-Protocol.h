@@ -6,9 +6,9 @@
 
 #import "NSObject.h"
 
-@class UIImageView;
+@class UIView;
 
 @protocol _UIShadowedView <NSObject>
-- (UIImageView *)_shadowView;
+- (UIView *)_shadowView;
 @end
 

@@ -12,9 +12,10 @@
 {
     _UIAsyncInvocationObserver *_observer;
     CDUnknownBlockType _invocationBlock;
-    long _performToken;
+    _Bool _invocationBlockHasBeenCalled;
 }
 
++ (id)emptyInvocation;
 + (id)invocationWithBlock:(CDUnknownBlockType)arg1;
 - (id)invoke;
 - (void)dealloc;

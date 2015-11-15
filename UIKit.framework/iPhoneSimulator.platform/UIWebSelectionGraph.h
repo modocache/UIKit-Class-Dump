@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)exploreFromNode:(id)arg1;
-- (void)exploreFromNode:(id)arg1 outwards:(BOOL)arg2 maxDepth:(int)arg3;
+- (void)exploreFromNode:(id)arg1 outwards:(_Bool)arg2 maxDepth:(int)arg3;
 - (id)addNodeFromSelection:(id)arg1;
 - (void)clearNodes;
 - (void)dealloc;

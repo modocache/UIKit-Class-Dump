@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _UIQueueingProxy : _UITargetedProxy <XPCProxyTarget>
 {
     int _lock;
-    unsigned int _suspensionCount;
+    unsigned long long _suspensionCount;
     NSMutableArray *_queuedInvocations;
     CDUnknownBlockType _shouldSuspendInvocationBlock;
 }
@@ -22,8 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)proxyWithTarget:(id)arg1;
 + (id)proxyWithTarget:(id)arg1 shouldSuspendInvocationBlock:(CDUnknownBlockType)arg2;
 - (id)description;
-- (BOOL)respondsToSelector:(SEL)arg1;
-- (BOOL)isBlock;
+- (_Bool)respondsToSelector:(SEL)arg1;
 - (void)removeAllEnqueuedInvocations;
 - (void)resume;
 - (void)_dispatchSuspendedMessages;

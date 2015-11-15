@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface _UIWebMediaUploadItem : NSObject
 {
+    _Bool _video;
     NSString *_filePath;
     UIImage *_originalImage;
-    BOOL _video;
 }
 
-+ (id)mediaUploadItemWithFilePath:(id)arg1 image:(id)arg2 isVideo:(BOOL)arg3;
-@property(nonatomic, getter=isVideo) BOOL video; // @synthesize video=_video;
++ (id)mediaUploadItemWithFilePath:(id)arg1 image:(id)arg2 isVideo:(_Bool)arg3;
+@property(nonatomic, getter=isVideo) _Bool video; // @synthesize video=_video;
 @property(retain, nonatomic) UIImage *originalImage; // @synthesize originalImage=_originalImage;
 @property(retain, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
 - (id)displayImage;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)_squareImage:(id)arg1;
 - (struct CGRect)_squareCropRectForSize:(struct CGSize)arg1;
 - (void)dealloc;
-- (id)initWithFilePath:(id)arg1 image:(id)arg2 isVideo:(BOOL)arg3;
+- (id)initWithFilePath:(id)arg1 image:(id)arg2 isVideo:(_Bool)arg3;
 
 @end
 

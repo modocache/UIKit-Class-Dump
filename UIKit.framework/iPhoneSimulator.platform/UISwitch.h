@@ -7,16 +7,24 @@
 #import <UIKit/UIControl.h>
 
 #import "NSCoding.h"
+#import "UIGestureRecognizerDelegate.h"
 
-@class UIColor, UIImage;
+@class UIColor, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIView<_UISwitchInternalViewProtocol>;
 
-@interface UISwitch : UIControl <NSCoding>
+@interface UISwitch : UIControl <UIGestureRecognizerDelegate, NSCoding>
 {
-    id _control;
-    float _enabledAlpha;
+    UILongPressGestureRecognizer *_pressGesture;
+    UIPanGestureRecognizer *_panGesture;
+    UIView<_UISwitchInternalViewProtocol> *_control;
+    _Bool _onStateChangedByLongPressGestureRecognizer;
+    _Bool _onStateChangedByPanGestureRecognizer;
+    _Bool _on;
+    double _enabledAlpha;
 }
 
-@property(nonatomic) float enabledAlpha; // @synthesize enabledAlpha=_enabledAlpha;
+@property(nonatomic, getter=isOn) _Bool on; // @synthesize on=_on;
+@property(nonatomic) double enabledAlpha; // @synthesize enabledAlpha=_enabledAlpha;
+@property(nonatomic, getter=_alwaysShowOnOffLabel, setter=_setAlwaysShowsOnOffLabel:) _Bool alwaysShowOnOffLabel;
 - (void)_populateArchivedSubviews:(id)arg1;
 @property(retain, nonatomic) UIImage *onImage;
 @property(retain, nonatomic) UIImage *offImage;
@@ -26,33 +34,45 @@
 - (id)_onTintColor;
 - (void)_setOnTintColor:(id)arg1;
 @property(retain, nonatomic, getter=_onColor, setter=_setOnColor:) UIColor *onColor;
-- (void)setEnabled:(BOOL)arg1;
-- (void)setAlpha:(float)arg1;
+- (void)setEnabled:(_Bool)arg1;
+- (void)setAlpha:(double)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
-- (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
-- (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
+- (_Bool)_contentHuggingDefault_isUsuallyFixedHeight;
+- (_Bool)_contentHuggingDefault_isUsuallyFixedWidth;
 - (void)_onAnimationDidStop:(id)arg1 finished:(id)arg2 context:(void *)arg3;
-- (void)setOn:(BOOL)arg1 animated:(BOOL)arg2;
-@property(nonatomic, getter=isOn) BOOL on; // @dynamic on;
+- (void)setOn:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)dealloc;
-- (void)_animateToOn:(BOOL)arg1 withDuration:(float)arg2 sendAction:(BOOL)arg3;
+- (void)_animateToOn:(_Bool)arg1 withDuration:(double)arg2 sendAction:(_Bool)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)_encodeFrameWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)init;
+- (void)_handleLongPressNL:(id)arg1;
 - (void)_handleTapNL:(id)arg1;
 - (void)_handlePanNL:(id)arg1;
+- (_Bool)_handleTranslationInPanGestureRecognizer:(id)arg1;
+- (_Bool)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)_commonInitNewLookNeue1;
 - (void)_commonInitNewLook;
-- (BOOL)_useOldSize;
-- (void)setAlternateColors:(BOOL)arg1;
+- (_Bool)_useOldSize;
+- (void)_setKnobBounceMass:(double)arg1;
+- (double)_knobBounceMass;
+- (void)_setKnobBounceStiffness:(double)arg1;
+- (double)_knobBounceStiffness;
+- (void)_setKnobBounceDamping:(double)arg1;
+- (double)_knobBounceDamping;
+- (void)_setKnobBounceDuration:(double)arg1;
+- (double)_knobBounceDuration;
+- (void)_setPressed:(_Bool)arg1 on:(_Bool)arg2 animated:(_Bool)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setAlternateColors:(_Bool)arg1;
 - (id)_scriptingInfo;
-- (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
+- (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
 - (unsigned long long)defaultAccessibilityTraits;
-- (BOOL)isAccessibilityElementByDefault;
+- (_Bool)isAccessibilityElementByDefault;
 
 @end
 

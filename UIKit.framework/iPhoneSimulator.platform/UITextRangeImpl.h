@@ -12,18 +12,18 @@ __attribute__((visibility("hidden")))
 @interface UITextRangeImpl : UITextRange
 {
     DOMRange *_domRange;
-    int _affinityIfCollapsed;
+    long long _affinityIfCollapsed;
 }
 
 + (id)wrapDOMRange:(id)arg1;
-+ (id)wrapDOMRange:(id)arg1 withAffinity:(int)arg2;
-@property(nonatomic) int affinity; // @synthesize affinity=_affinityIfCollapsed;
++ (id)wrapDOMRange:(id)arg1 withAffinity:(long long)arg2;
+@property(nonatomic) long long affinity; // @synthesize affinity=_affinityIfCollapsed;
 @property(retain, nonatomic) DOMRange *domRange; // @synthesize domRange=_domRange;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEmpty;
+- (_Bool)isEqual:(id)arg1;
+- (_Bool)isEmpty;
 - (id)end;
 - (id)start;
-- (void)adjustAffinityOfPosition:(id)arg1 isStart:(BOOL)arg2;
+- (void)adjustAffinityOfPosition:(id)arg1 isStart:(_Bool)arg2;
 - (void)dealloc;
 - (id)description;
 

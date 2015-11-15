@@ -4,17 +4,18 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <UIKit/UIScrollsToTopInitiatorView.h>
+#import <UIKit/_UIScrollsToTopInitiatorView.h>
 
 @class UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface UIClassicStatusBarView : UIScrollsToTopInitiatorView
+@interface UIClassicStatusBarView : _UIScrollsToTopInitiatorView
 {
     UIImageView *_backgroundView;
+    UIImage *_image;
 }
 
-@property(retain, nonatomic) UIImage *image;
+@property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

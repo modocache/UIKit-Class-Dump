@@ -13,23 +13,23 @@
 @interface UIMenuController : NSObject <UICalloutBarDelegate>
 {
     struct CGRect _targetRect;
-    int _arrowDirection;
+    long long _arrowDirection;
 }
 
 + (id)sharedMenuController;
-@property(nonatomic) int arrowDirection; // @synthesize arrowDirection=_arrowDirection;
+@property(nonatomic) long long arrowDirection; // @synthesize arrowDirection=_arrowDirection;
 @property(readonly, nonatomic) struct CGRect menuFrame;
 - (void)update;
 @property(copy, nonatomic) NSArray *menuItems;
-- (void)_setTargetRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3;
+- (void)_setTargetRect:(struct CGRect)arg1 inView:(id)arg2 animated:(_Bool)arg3;
 - (void)setTargetRect:(struct CGRect)arg1 inView:(id)arg2;
 - (void)_windowWillRotate:(id)arg1;
-- (void)setMenuVisible:(BOOL)arg1 animated:(BOOL)arg2;
-- (BOOL)_menuHidden;
-@property(nonatomic, getter=isMenuVisible) BOOL menuVisible;
+- (void)setMenuVisible:(_Bool)arg1 animated:(_Bool)arg2;
+- (_Bool)_menuHidden;
+@property(nonatomic, getter=isMenuVisible) _Bool menuVisible;
 - (void)dealloc;
 - (id)init;
-- (BOOL)_updateAnimated:(BOOL)arg1 checkVisible:(BOOL)arg2;
+- (_Bool)_updateAnimated:(_Bool)arg1 checkVisible:(_Bool)arg2;
 - (void)calloutBar:(id)arg1 didFinishAnimation:(id)arg2;
 - (void)calloutBar:(id)arg1 willStartAnimation:(id)arg2;
 

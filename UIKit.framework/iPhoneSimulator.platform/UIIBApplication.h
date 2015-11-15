@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface UIIBApplication : UIApplication
 {
-    int _statusBarOrientation;
+    long long _statusBarOrientation;
 }
 
-+ (BOOL)rendersLocally;
-- (int)statusBarOrientation;
-- (void)setStatusBarOrientation:(int)arg1 animationParameters:(id)arg2;
++ (_Bool)rendersLocally;
+- (long long)statusBarOrientation;
+- (void)setStatusBarOrientation:(long long)arg1 animationParameters:(id)arg2;
 - (id)init;
 
 @end

@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property UIResponder<UITextInput> *textView; // @synthesize textView=_textView;
 - (void)startTimer;
-- (BOOL)isCloseToCaret;
+- (_Bool)isCloseToCaret;
 - (void)invalidate;
 
 @end

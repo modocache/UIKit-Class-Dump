@@ -7,7 +7,7 @@
 @class PKPrinter;
 
 @protocol PKPrinterBrowserDelegate
-- (void)removePrinter:(PKPrinter *)arg1 moreGoing:(BOOL)arg2;
-- (void)addPrinter:(PKPrinter *)arg1 moreComing:(BOOL)arg2;
+- (void)removePrinter:(PKPrinter *)arg1 moreGoing:(_Bool)arg2;
+- (void)addPrinter:(PKPrinter *)arg1 moreComing:(_Bool)arg2;
 @end
 

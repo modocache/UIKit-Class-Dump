@@ -14,10 +14,10 @@
 
 @property(readonly, nonatomic) UITextPosition *end;
 @property(readonly, nonatomic) UITextPosition *start;
-@property(readonly, nonatomic, getter=isEmpty) BOOL empty;
+@property(readonly, nonatomic, getter=isEmpty) _Bool empty;
 @property(readonly, nonatomic, getter=_isImpl) UITextRangeImpl *isImpl;
-@property(readonly, nonatomic, getter=_isRanged) BOOL isRanged;
-@property(readonly, nonatomic, getter=_isCaret) BOOL isCaret;
+@property(readonly, nonatomic, getter=_isRanged) _Bool isRanged;
+@property(readonly, nonatomic, getter=_isCaret) _Bool isCaret;
 
 @end
 

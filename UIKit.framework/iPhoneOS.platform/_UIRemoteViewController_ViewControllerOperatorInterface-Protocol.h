@@ -7,17 +7,18 @@
 @class NSArray, NSString, NSValue, UIColor, XPCMachSendRight;
 
 @protocol _UIRemoteViewController_ViewControllerOperatorInterface
-- (void)__viewServicePopoverDidSetUseToolbarShine:(BOOL)arg1;
-- (void)__viewServicePopoverDidChangeContentSize:(NSValue *)arg1 animated:(BOOL)arg2 fenceSendRight:(XPCMachSendRight *)arg3 withReplyHandler:(void (^)(id, NSError *))arg4;
-- (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
-- (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
-- (void)__showServiceForText:(NSString *)arg1 type:(int)arg2 fromRectValue:(NSValue *)arg3 replyHandler:(void (^)(id, NSError *))arg4;
+- (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 hidden:(_Bool)arg2;
+- (void)__viewServicePopoverDidSetUseToolbarShine:(_Bool)arg1;
+- (void)__viewServicePopoverDidChangeContentSize:(struct CGSize)arg1 animated:(_Bool)arg2 fenceSendRight:(XPCMachSendRight *)arg3 withReplyHandler:(void (^)(struct CGSize))arg4;
+- (void)__setViewServiceIsDisplayingPopover:(_Bool)arg1;
+- (void)__dismissTextServiceSessionAnimated:(_Bool)arg1;
+- (void)__showServiceForText:(NSString *)arg1 type:(long long)arg2 fromRectValue:(NSValue *)arg3 replyHandler:(void (^)(id, NSError *))arg4;
 - (void)__viewServiceDidUpdateTintColor:(UIColor *)arg1 duration:(double)arg2;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
 - (void)__viewServiceDidUnregisterScrollToTopView;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidPromoteFirstResponder;
-- (void)__dismissActionSheetWithClickedButtonIndex:(int)arg1 animated:(BOOL)arg2;
-- (void)__presentActionSheetFromYCoordinate:(float)arg1 withTitle:(NSString *)arg2 buttonTitles:(NSArray *)arg3 cancelButtonIndex:(int)arg4 destructiveButtonIndex:(int)arg5 style:(int)arg6;
+- (void)__dismissActionSheetWithClickedButtonIndex:(long long)arg1 animated:(_Bool)arg2;
+- (void)__presentActionSheetFromYCoordinate:(double)arg1 withTitle:(NSString *)arg2 buttonTitles:(NSArray *)arg3 cancelButtonIndex:(long long)arg4 destructiveButtonIndex:(long long)arg5 style:(long long)arg6;
 @end
 

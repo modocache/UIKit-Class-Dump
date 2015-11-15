@@ -7,7 +7,9 @@
 #import "NSObject.h"
 
 @interface NSObject (UIAccessibilityPrivate)
-+ (BOOL)__accessibilityGuidedAccessStateEnabled;
++ (void)__accessibilityRequestGuidedAccessSession:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
++ (long long)__accessibilityGuidedAccessRestrictionStateForIdentifier:(id)arg1;
++ (_Bool)__accessibilityGuidedAccessStateEnabled;
 - (void)_accessibilityFinalize;
 - (void)accessibilitySetIdentification:(id)arg1;
 @end

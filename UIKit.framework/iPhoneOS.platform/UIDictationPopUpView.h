@@ -11,8 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)layoutSubviews;
+- (void)setState:(int)arg1;
 - (id)createEndpointButtonWithRect:(struct CGRect)arg1 action:(SEL)arg2;
-- (BOOL)drawsOwnBackground;
+- (_Bool)drawsOwnBackground;
 - (void)returnToKeyboard;
 
 @end

@@ -11,11 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)shouldCompleteOnSuspend;
-- (BOOL)fadeAccessoryView;
+- (_Bool)shouldRecomputeEndFrame;
+- (_Bool)shouldCompleteOnSuspend;
+- (_Bool)fadeAccessoryView;
 - (void)postNotificationsForTransitionEnd;
 - (void)postNotificationsForTransitionStart;
-- (BOOL)subsumesTransition:(id)arg1;
+- (_Bool)subsumesTransition:(id)arg1;
 
 @end
 

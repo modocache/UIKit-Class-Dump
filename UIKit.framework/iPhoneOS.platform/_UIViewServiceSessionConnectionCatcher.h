@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _continuation;
-    BOOL _isInvalidated;
+    _Bool _isInvalidated;
     _UIAsyncInvocation *_invalidationInvocation;
     int __automatic_invalidation_retainCount;
-    BOOL __automatic_invalidation_invalidated;
+    _Bool __automatic_invalidation_invalidated;
 }
 
 + (id)awaitRequestThen:(CDUnknownBlockType)arg1;
@@ -27,9 +27,9 @@ __attribute__((visibility("hidden")))
 - (id)proxy:(id)arg1 detailedSignatureForSelector:(SEL)arg2;
 - (id)invalidate;
 - (void)__requestConnectionToDeputyOfType:(id)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
-- (BOOL)_isDeallocating;
-- (BOOL)_tryRetain;
-- (unsigned int)retainCount;
+- (_Bool)_isDeallocating;
+- (_Bool)_tryRetain;
+- (unsigned long long)retainCount;
 - (oneway void)release;
 - (id)retain;
 - (int)__automatic_invalidation_logic;

@@ -11,15 +11,15 @@
 __attribute__((visibility("hidden")))
 @interface _UIDecompressionInfo : NSObject
 {
-    unsigned long jpegDecodeRequestID;
+    unsigned long long jpegDecodeRequestID;
     NSObject<OS_dispatch_semaphore> *syncSemaphore;
     NSObject<OS_dispatch_semaphore> *metadataSemaphore;
     NSData *imageData;
     struct CGSize maxSize;
     int renderingIntent;
     _UIAsyncInvocation *terminationInvocation;
-    BOOL decompressionComplete;
-    BOOL metadataComplete;
+    _Bool decompressionComplete;
+    _Bool metadataComplete;
 }
 
 - (void)dealloc;

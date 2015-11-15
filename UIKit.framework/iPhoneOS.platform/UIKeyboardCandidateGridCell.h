@@ -4,91 +4,68 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UICollectionViewCell.h>
 
-@class NSString, UIFont, UIKeyboardCandidate;
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateGridCell : UIView
+@interface UIKeyboardCandidateGridCell : UICollectionViewCell
 {
-    UIKeyboardCandidate *_candidate;
+    _Bool _dummy;
+    _Bool _usesGroupHeaderAppearance;
+    _Bool _shouldShowCandidateNumber;
+    _Bool _secondaryCandidateAppearance;
+    int _candidatesVisualStyle;
     NSString *_text;
     NSString *_alternativeText;
-    int _textAlignment;
-    unsigned int _candidateNumber;
-    BOOL _showsCandidateNumber;
+    unsigned long long _candidateNumber;
+    unsigned long long _edges;
+    double _rowHeight;
+    double _rightPadding;
+    CDStruct_961fb75c _visualStyling;
+    long long _textAlignment;
+    double _cellPadding;
+    double _minimumWidth;
     struct CGSize _size;
-    UIFont *_font;
-    float _fontSize;
-    struct CGSize _textSize;
-    UIFont *_alternativeTextFont;
-    float _alternativeTextFontSize;
-    struct CGSize _alternativeTextSize;
     struct CGSize _candidateNumberSize;
-    float _cellPadding;
-    float _minimumWidth;
-    BOOL _highlighted;
-    BOOL _onTopEdge;
-    BOOL _onLeftEdge;
-    BOOL _onRightEdge;
     struct CGRect _visibleBounds;
-    BOOL _usesGroupHeaderAppearance;
-    float _rowHeight;
-    id _target;
-    SEL _action;
-    int _visualStyle;
-    BOOL _placeholderCell;
-    float _rightPadding;
 }
 
-+ (id)groupHeaderCellWithTitle:(id)arg1 visualStyle:(int)arg2;
-+ (id)placeholderCellWithVisualStyle:(int)arg1;
-+ (id)cellWithCandidate:(id)arg1 visualStyle:(int)arg2;
-@property(nonatomic) float rightPadding; // @synthesize rightPadding=_rightPadding;
-@property(nonatomic) BOOL placeholderCell; // @synthesize placeholderCell=_placeholderCell;
-@property(nonatomic) int visualStyle; // @synthesize visualStyle=_visualStyle;
-@property(nonatomic) SEL action; // @synthesize action=_action;
-@property(nonatomic) id target; // @synthesize target=_target;
-@property(nonatomic) float rowHeight; // @synthesize rowHeight=_rowHeight;
-@property(nonatomic) BOOL usesGroupHeaderAppearance; // @synthesize usesGroupHeaderAppearance=_usesGroupHeaderAppearance;
-@property(nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
-@property(nonatomic) BOOL onRightEdge; // @synthesize onRightEdge=_onRightEdge;
-@property(nonatomic) BOOL onLeftEdge; // @synthesize onLeftEdge=_onLeftEdge;
-@property(nonatomic) BOOL onTopEdge; // @synthesize onTopEdge=_onTopEdge;
-@property(nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
-@property(nonatomic) float minimumWidth; // @synthesize minimumWidth=_minimumWidth;
-@property(nonatomic) float cellPadding; // @synthesize cellPadding=_cellPadding;
++ (struct CGColor *)legacy_outlineShadowColorForVisualStyling:(CDStruct_961fb75c)arg1 candidatesVisualStyle:(int)arg2;
++ (struct CGColor *)legacy_outlineColorForVisualStyling:(CDStruct_961fb75c)arg1 candidatesVisualStyle:(int)arg2;
++ (double)widthForCandidate:(id)arg1 candidateNumber:(unsigned long long)arg2 visualStyle:(int)arg3;
++ (struct CGSize)sizeForGroupHeader:(id)arg1 visualStyle:(int)arg2;
++ (double)rightPaddingForIndex;
++ (id)reuseIdentifier;
+@property(nonatomic) double minimumWidth; // @synthesize minimumWidth=_minimumWidth;
+@property(nonatomic) double cellPadding; // @synthesize cellPadding=_cellPadding;
 @property(nonatomic) struct CGSize candidateNumberSize; // @synthesize candidateNumberSize=_candidateNumberSize;
-@property(nonatomic) struct CGSize alternativeTextSize; // @synthesize alternativeTextSize=_alternativeTextSize;
-@property(nonatomic) float alternativeTextFontSize; // @synthesize alternativeTextFontSize=_alternativeTextFontSize;
-@property(retain, nonatomic) UIFont *alternativeTextFont; // @synthesize alternativeTextFont=_alternativeTextFont;
-@property(nonatomic) struct CGSize textSize; // @synthesize textSize=_textSize;
-@property(nonatomic) float fontSize; // @synthesize fontSize=_fontSize;
 @property(nonatomic) struct CGSize size; // @synthesize size=_size;
-@property(nonatomic) unsigned int candidateNumber; // @synthesize candidateNumber=_candidateNumber;
-@property(nonatomic) int textAlignment; // @synthesize textAlignment=_textAlignment;
+@property(nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
+@property(nonatomic) int candidatesVisualStyle; // @synthesize candidatesVisualStyle=_candidatesVisualStyle;
+@property(nonatomic) CDStruct_961fb75c visualStyling; // @synthesize visualStyling=_visualStyling;
+@property(nonatomic) double rightPadding; // @synthesize rightPadding=_rightPadding;
+@property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
+@property(nonatomic) unsigned long long edges; // @synthesize edges=_edges;
+@property(nonatomic) _Bool secondaryCandidateAppearance; // @synthesize secondaryCandidateAppearance=_secondaryCandidateAppearance;
+@property(nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
+@property(nonatomic) _Bool shouldShowCandidateNumber; // @synthesize shouldShowCandidateNumber=_shouldShowCandidateNumber;
+@property(nonatomic) unsigned long long candidateNumber; // @synthesize candidateNumber=_candidateNumber;
 @property(copy, nonatomic) NSString *alternativeText; // @synthesize alternativeText=_alternativeText;
 @property(copy, nonatomic) NSString *text; // @synthesize text=_text;
-@property(copy, nonatomic) UIKeyboardCandidate *candidate; // @synthesize candidate=_candidate;
-@property(retain, nonatomic) UIFont *font; // @synthesize font=_font;
-@property(readonly, nonatomic) BOOL canShowCandidateNumber;
-@property(nonatomic) BOOL showsCandidateNumber; // @synthesize showsCandidateNumber=_showsCandidateNumber;
-- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+@property(nonatomic) _Bool usesGroupHeaderAppearance; // @synthesize usesGroupHeaderAppearance=_usesGroupHeaderAppearance;
+@property(nonatomic) _Bool dummy; // @synthesize dummy=_dummy;
+- (void)setSelected:(_Bool)arg1;
+- (void)setHighlighted:(_Bool)arg1;
+@property(readonly, nonatomic) _Bool canShowCandidateNumber;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawTextWithCandidateNumber;
 - (void)drawText;
-- (void)adjustFontForFrame:(struct CGRect)arg1;
 - (void)drawBackgroundAndBorders;
-- (void)calculateSize;
-- (void)calculateCandidateNumberSize;
-- (void)calculateTextSize;
-- (struct CGSize)_sizeForText:(id)arg1 withSize:(float)arg2 font:(id)arg3;
+- (void)prepareForReuse;
+- (void)applyLayoutAttributes:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 candidate:(id)arg2 text:(id)arg3 alternativeText:(id)arg4 groupHeader:(BOOL)arg5 visualStyle:(int)arg6;
 
 @end
 

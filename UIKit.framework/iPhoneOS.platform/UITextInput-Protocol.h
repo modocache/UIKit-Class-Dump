@@ -22,14 +22,14 @@
 - (NSArray *)selectionRectsForRange:(UITextRange *)arg1;
 - (struct CGRect)caretRectForPosition:(UITextPosition *)arg1;
 - (struct CGRect)firstRectForRange:(UITextRange *)arg1;
-- (void)setBaseWritingDirection:(int)arg1 forRange:(UITextRange *)arg2;
-- (int)baseWritingDirectionForPosition:(UITextPosition *)arg1 inDirection:(int)arg2;
-- (UITextRange *)characterRangeByExtendingPosition:(UITextPosition *)arg1 inDirection:(int)arg2;
-- (UITextPosition *)positionWithinRange:(UITextRange *)arg1 farthestInDirection:(int)arg2;
-- (int)offsetFromPosition:(UITextPosition *)arg1 toPosition:(UITextPosition *)arg2;
-- (int)comparePosition:(UITextPosition *)arg1 toPosition:(UITextPosition *)arg2;
-- (UITextPosition *)positionFromPosition:(UITextPosition *)arg1 inDirection:(int)arg2 offset:(int)arg3;
-- (UITextPosition *)positionFromPosition:(UITextPosition *)arg1 offset:(int)arg2;
+- (void)setBaseWritingDirection:(long long)arg1 forRange:(UITextRange *)arg2;
+- (long long)baseWritingDirectionForPosition:(UITextPosition *)arg1 inDirection:(long long)arg2;
+- (UITextRange *)characterRangeByExtendingPosition:(UITextPosition *)arg1 inDirection:(long long)arg2;
+- (UITextPosition *)positionWithinRange:(UITextRange *)arg1 farthestInDirection:(long long)arg2;
+- (long long)offsetFromPosition:(UITextPosition *)arg1 toPosition:(UITextPosition *)arg2;
+- (long long)comparePosition:(UITextPosition *)arg1 toPosition:(UITextPosition *)arg2;
+- (UITextPosition *)positionFromPosition:(UITextPosition *)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
+- (UITextPosition *)positionFromPosition:(UITextPosition *)arg1 offset:(long long)arg2;
 - (UITextRange *)textRangeFromPosition:(UITextPosition *)arg1 toPosition:(UITextPosition *)arg2;
 - (void)unmarkText;
 - (void)setMarkedText:(NSString *)arg1 selectedRange:(struct _NSRange)arg2;
@@ -37,17 +37,17 @@
 - (NSString *)textInRange:(UITextRange *)arg1;
 
 @optional
-@property(nonatomic) int selectionAffinity;
+@property(nonatomic) long long selectionAffinity;
 @property(readonly, nonatomic) UIView *textInputView;
-- (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
+- (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(_Bool)arg2;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (id)insertDictationResultPlaceholder;
 - (void)dictationRecognitionFailed;
 - (void)dictationRecordingDidEnd;
 - (void)insertDictationResult:(NSArray *)arg1;
-- (int)characterOffsetOfPosition:(UITextPosition *)arg1 withinRange:(UITextRange *)arg2;
-- (UITextPosition *)positionWithinRange:(UITextRange *)arg1 atCharacterOffset:(int)arg2;
-- (NSDictionary *)textStylingAtPosition:(UITextPosition *)arg1 inDirection:(int)arg2;
-- (BOOL)shouldChangeTextInRange:(UITextRange *)arg1 replacementText:(NSString *)arg2;
+- (long long)characterOffsetOfPosition:(UITextPosition *)arg1 withinRange:(UITextRange *)arg2;
+- (UITextPosition *)positionWithinRange:(UITextRange *)arg1 atCharacterOffset:(long long)arg2;
+- (NSDictionary *)textStylingAtPosition:(UITextPosition *)arg1 inDirection:(long long)arg2;
+- (_Bool)shouldChangeTextInRange:(UITextRange *)arg1 replacementText:(NSString *)arg2;
 @end
 

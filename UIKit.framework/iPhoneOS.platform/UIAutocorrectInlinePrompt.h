@@ -8,7 +8,7 @@
 
 #import "UIKeyboardCandidateList.h"
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString, TIKeyboardCandidateResultSet;
 
 __attribute__((visibility("hidden")))
 @interface UIAutocorrectInlinePrompt : UIView <UIKeyboardCandidateList>
@@ -22,32 +22,35 @@ __attribute__((visibility("hidden")))
     UIView *m_correctionAnimationView;
     UIView *m_typedTextAnimationView;
     UIView *m_correctionShadowView;
-    BOOL m_fits;
-    BOOL m_mouseDown;
+    _Bool m_fits;
+    _Bool m_mouseDown;
     id m_delegate;
-    int m_index;
+    long long m_index;
     int m_promptTextType;
-    float m_originalTypedTextRectCorrectionAmount;
+    double m_originalTypedTextRectCorrectionAmount;
+    double m_maxX;
+    _Bool _showHiddenCandidatesOnly;
+    unsigned int m_usageTrackingMask;
+    TIKeyboardCandidateResultSet *_candidateResultSet;
 }
 
-@property(retain, nonatomic) NSArray *usageTrackingTypes; // @synthesize usageTrackingTypes=m_usageTrackingTypes;
-- (BOOL)needsWebDocumentViewEventsDirectly;
-- (BOOL)prepareForAnimation:(struct CGRect)arg1;
+@property(nonatomic) _Bool showHiddenCandidatesOnly; // @synthesize showHiddenCandidatesOnly=_showHiddenCandidatesOnly;
+@property(retain, nonatomic) TIKeyboardCandidateResultSet *candidateResultSet; // @synthesize candidateResultSet=_candidateResultSet;
+@property(nonatomic) unsigned int usageTrackingMask; // @synthesize usageTrackingMask=m_usageTrackingMask;
+- (_Bool)prepareForAnimation:(struct CGRect)arg1;
 - (id)activeCandidateList;
-- (void)setSelectedItem:(unsigned int)arg1;
-- (unsigned int)numberOfShownItems;
-- (unsigned int)index;
+- (void)setSelectedItem:(unsigned long long)arg1;
+- (unsigned long long)numberOfShownItems;
+- (unsigned long long)index;
 - (void)_candidateSelected:(id)arg1;
-- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)mouseUp:(struct __GSEvent *)arg1;
-- (void)mouseDragged:(struct __GSEvent *)arg1;
-- (void)mouseDown:(struct __GSEvent *)arg1;
 - (void)dismiss;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (id)correctionShadowView;
 - (id)typedTextAnimationView;
 - (id)correctionAnimationView;
@@ -55,36 +58,43 @@ __attribute__((visibility("hidden")))
 - (id)typedTextView;
 - (id)typedText;
 - (id)correction;
-- (struct CGRect)correctionFrameFromDesiredFrame:(struct CGRect)arg1 textHeight:(int)arg2 withExtraGap:(float)arg3;
+- (struct CGRect)correctionFrameFromDesiredFrame:(struct CGRect)arg1 textHeight:(int)arg2 withExtraGap:(double)arg3;
 - (struct CGRect)horizontallySquishedCorrectionFrame:(struct CGRect)arg1;
-- (float)maximumCandidateWidth;
-- (BOOL)isAcceptableTextEffectsFrame:(struct CGRect)arg1 afterScrollBy:(float)arg2;
+- (double)maximumCandidateWidth;
+- (_Bool)isAcceptableTextEffectsFrame:(struct CGRect)arg1 afterScrollBy:(double)arg2;
 - (void)addTypedTextRect:(struct CGRect)arg1;
-- (void)setCandidateObject:(id)arg1 type:(int)arg2 typedText:(id)arg3 inRect:(struct CGRect)arg4 maxX:(float)arg5;
-- (void)setCorrection:(id)arg1 typedText:(id)arg2 inRect:(struct CGRect)arg3 maxX:(float)arg4;
-- (id)candidateAtIndex:(unsigned int)arg1;
+- (void)setCandidateObject:(id)arg1 candidateSet:(id)arg2 type:(int)arg3 typedText:(id)arg4 inRect:(struct CGRect)arg5 maxX:(double)arg6 showHiddenCandidatesOnly:(_Bool)arg7;
+- (void)setCandidateSet:(id)arg1 showHiddenCandidatesOnly:(_Bool)arg2;
+- (void)setCorrection:(id)arg1 typedText:(id)arg2 inRect:(struct CGRect)arg3 maxX:(double)arg4;
+- (void)revealHiddenCandidates;
+- (_Bool)isHiddenCandidatesList;
+- (id)inlineText;
+@property(readonly, nonatomic) TIKeyboardCandidateResultSet *candidates;
+- (_Bool)isExtendedList;
+- (void)showPreviousRow;
+- (void)showNextRow;
 - (void)showPreviousPage;
 - (void)showNextPage;
-- (void)showPageAtIndex:(unsigned int)arg1;
 - (id)currentCandidate;
 - (void)showPreviousCandidate;
 - (void)showNextCandidate;
-- (void)showCandidateAtIndex:(unsigned int)arg1;
+- (void)showCandidateAtIndex:(unsigned long long)arg1;
 - (void)showCandidate:(id)arg1;
-- (void)layout;
-- (void)configureKeyboard:(id)arg1;
-- (unsigned int)count;
-- (void)candidateAcceptedAtIndex:(unsigned int)arg1;
-- (unsigned int)currentIndex;
+- (unsigned long long)selectedSortIndex;
+- (id)statisticsIdentifier;
+- (id)keyboardBehaviors;
+- (_Bool)hasCandidates;
+- (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentIndex;
 - (void)candidatesDidChange;
-- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(float)arg5 layout:(BOOL)arg6;
-- (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(float)arg4 layout:(BOOL)arg5;
+- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(_Bool)arg6;
+- (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(_Bool)arg5;
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (struct CGRect)shadowFrameForFrame:(struct CGRect)arg1;
 - (void)removePromptSubviews;
 - (void)dealloc;
 - (int)textEffectsVisibilityLevel;
-- (int)textEffectsVisibilityLevelWhenKey;
+- (int)textEffectsVisibilityLevelInKeyboardWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

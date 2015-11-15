@@ -10,12 +10,12 @@
 
 @interface UIWebPDFLinkAction : NSObject
 {
-    NSString *title;
     int type;
+    NSString *title;
     CDUnknownBlockType handler;
 }
 
-@property(nonatomic) CDUnknownBlockType handler; // @synthesize handler;
+@property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler;
 @property(nonatomic) int type; // @synthesize type;
 @property(copy, nonatomic) NSString *title; // @synthesize title;
 - (void)dealloc;

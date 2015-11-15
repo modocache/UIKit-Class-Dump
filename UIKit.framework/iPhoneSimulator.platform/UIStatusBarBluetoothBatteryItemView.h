@@ -12,8 +12,9 @@ __attribute__((visibility("hidden")))
     int _capacity;
 }
 
-- (id)contentsImageForStyle:(int)arg1;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
+- (double)extraLeftPadding;
+- (id)contentsImage;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 
 @end
 

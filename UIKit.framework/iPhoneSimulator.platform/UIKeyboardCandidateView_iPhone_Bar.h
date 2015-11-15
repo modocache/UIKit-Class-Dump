@@ -11,8 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setCandidateBarExtended:(BOOL)arg1;
-- (unsigned int)_numberOfColumns:(BOOL)arg1;
+- (void)layoutSubviews;
+- (struct CGSize)_defaultSize;
+- (void)setCandidateViewExtended:(_Bool)arg1;
+- (unsigned long long)_numberOfColumns:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 

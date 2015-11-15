@@ -11,10 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface UIKeyboardDicationBackground : UIView
 {
-    UIKeyboardDicationBackgroundGradientView *_gradient;
     NSArray *_shadows;
+    UIKeyboardDicationBackgroundGradientView *_gradient;
 }
 
+@property(retain, nonatomic) UIKeyboardDicationBackgroundGradientView *gradient; // @synthesize gradient=_gradient;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

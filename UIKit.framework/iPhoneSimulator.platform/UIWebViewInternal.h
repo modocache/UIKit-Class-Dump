@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     unsigned int drawInWebThread:1;
     unsigned int inRotation:1;
     NSURLRequest *request;
-    int clickedAlertButtonIndex;
+    long long clickedAlertButtonIndex;
     UIWebViewWebViewDelegate *webViewDelegate;
     UIWebPDFViewHandler *pdfHandler;
 }

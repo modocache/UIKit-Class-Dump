@@ -11,21 +11,21 @@
 __attribute__((visibility("hidden")))
 @interface _UITransitionState : NSObject
 {
-    int _transitionDirection;
+    long long _transitionDirection;
     CDUnknownBlockType _completion;
     NSDate *_beginDate;
 }
 
 @property(readonly, nonatomic) NSDate *beginDate; // @synthesize beginDate=_beginDate;
-@property(readonly, nonatomic) int transitionDirection; // @synthesize transitionDirection=_transitionDirection;
+@property(readonly, nonatomic) long long transitionDirection; // @synthesize transitionDirection=_transitionDirection;
 - (id)description;
-- (BOOL)isCompatibleWithTransitionInDirection:(int)arg1;
-@property(readonly, nonatomic) int effectiveTransitionDirection;
-- (void)cleanupWithFinishedState:(BOOL)arg1 completedState:(BOOL)arg2;
+- (_Bool)isCompatibleWithTransitionInDirection:(long long)arg1;
+@property(readonly, nonatomic) long long effectiveTransitionDirection;
+- (void)cleanupWithFinishedState:(_Bool)arg1 completedState:(_Bool)arg2;
 - (void)markBeginDate;
-@property(readonly, nonatomic, getter=isActive) BOOL active;
+@property(readonly, nonatomic, getter=isActive) _Bool active;
 - (void)dealloc;
-- (id)initWithTransitionDirection:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)initWithTransitionDirection:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

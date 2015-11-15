@@ -10,11 +10,11 @@ __attribute__((visibility("hidden")))
 @interface UIPrintActivityWrapperNavigationController : UINavigationController
 {
     CDUnknownBlockType _completionHandler;
-    BOOL _presentedPrintInteractionController;
+    _Bool _presentedPrintInteractionController;
 }
 
-@property(nonatomic) BOOL presentedPrintInteractionController; // @synthesize presentedPrintInteractionController=_presentedPrintInteractionController;
-- (void)viewWillAppear:(BOOL)arg1;
+@property(nonatomic) _Bool presentedPrintInteractionController; // @synthesize presentedPrintInteractionController=_presentedPrintInteractionController;
+- (void)viewWillAppear:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithCompletion:(CDUnknownBlockType)arg1;
 

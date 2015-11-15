@@ -7,22 +7,22 @@
 #import <UIKit/UIViewController.h>
 
 #import "WebUIBrowserLoadingControllerDelegate.h"
-#import "XPCProxyTarget.h"
 #import "_UIServiceWebViewControllerProtocol.h"
 
 @class WebUIBrowserLoadingController, _UIServiceWebView;
 
 __attribute__((visibility("hidden")))
-@interface _UIServiceWebViewController : UIViewController <XPCProxyTarget, _UIServiceWebViewControllerProtocol, WebUIBrowserLoadingControllerDelegate>
+@interface _UIServiceWebViewController : UIViewController <_UIServiceWebViewControllerProtocol, WebUIBrowserLoadingControllerDelegate>
 {
     _UIServiceWebView *_uiWebView;
     WebUIBrowserLoadingController *_loadingController;
-    id <_UIRemoteWebViewControllerProtocol> _remoteViewControllerProxy;
 }
 
-- (void)didRotateFromInterfaceOrientation:(int)arg1;
-- (void)willRotateToInterfaceOrientation:(int)arg1 duration:(double)arg2;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
++ (id)_exportedInterface;
++ (id)_remoteViewControllerInterface;
+- (void)didRotateFromInterfaceOrientation:(long long)arg1;
+- (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)stopLoading;
 - (void)reload;
 - (void)goForward;
@@ -43,14 +43,13 @@ __attribute__((visibility("hidden")))
 - (void)configureWithEncodedSettings:(id)arg1;
 - (void)_remotelyDispatchDidDismissViewController;
 - (void)_remotelyDispatchWillPresentViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_remotelyDecidePolicyForRequest:(id)arg1 inMainFrame:(BOOL)arg2 navigationType:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
-- (void)setShouldDecidePolicyRemotely:(BOOL)arg1;
-- (void)willAppearInRemoteViewController:(id)arg1;
+- (void)_remotelyDecidePolicyForRequest:(id)arg1 inMainFrame:(_Bool)arg2 navigationType:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
+- (void)setShouldDecidePolicyRemotely:(_Bool)arg1;
+- (void)_willAppearInRemoteViewController;
 - (void)_setupRemoteInspectorDetailsForRequestingProcess;
 - (id)localizedApplicationNameForProcess:(int)arg1;
-- (BOOL)_isInternalInstall;
+- (_Bool)_isInternalInstall;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)proxy:(id)arg1 detailedSignatureForSelector:(SEL)arg2;
 
 @end
 

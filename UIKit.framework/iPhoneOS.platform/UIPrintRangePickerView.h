@@ -9,11 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface UIPrintRangePickerView : UIPickerView
 {
-    float _shift;
+    double _shift;
 }
 
-- (void)setFrame:(struct CGRect)arg1;
-- (float)_wheelShift;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)layoutSubviews;
+- (double)_wheelShift;
 
 @end
 

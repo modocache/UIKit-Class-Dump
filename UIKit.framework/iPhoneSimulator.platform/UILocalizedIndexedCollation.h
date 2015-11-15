@@ -24,8 +24,8 @@
 + (id)currentCollation;
 + (id)collationWithDictionary:(id)arg1;
 - (id)sortedArrayFromArray:(id)arg1 collationStringSelector:(SEL)arg2;
-- (int)sectionForObject:(id)arg1 collationStringSelector:(SEL)arg2;
-- (int)sectionForSectionIndexTitleAtIndex:(int)arg1;
+- (long long)sectionForObject:(id)arg1 collationStringSelector:(SEL)arg2;
+- (long long)sectionForSectionIndexTitleAtIndex:(long long)arg1;
 @property(readonly, nonatomic) NSArray *sectionIndexTitles;
 @property(readonly, nonatomic) NSArray *sectionTitles;
 - (void)dealloc;

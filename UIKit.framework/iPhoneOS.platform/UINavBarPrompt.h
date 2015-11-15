@@ -6,18 +6,20 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UINavigationBar;
+@class UILabel, UINavigationBar;
 
 __attribute__((visibility("hidden")))
 @interface UINavBarPrompt : UIView
 {
-    NSString *_prompt;
+    UILabel *_label;
     UINavigationBar *_navBar;
 }
 
-- (void)setFrame:(struct CGRect)arg1;
-- (void)drawRect:(struct CGRect)arg1;
+- (void)layoutSubviews;
+- (struct CGSize)_updateLabelTextColorAndFontReturningShadowOffset;
+- (struct CGSize)_updateLabelTextColorAndFontReturningShadowOffset_legacy;
 - (struct CGRect)promptBounds;
+- (struct CGRect)_labelFrame;
 - (id)prompt;
 - (void)setPrompt:(id)arg1;
 - (void)dealloc;

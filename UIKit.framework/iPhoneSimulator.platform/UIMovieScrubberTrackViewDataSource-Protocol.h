@@ -9,9 +9,8 @@
 @class NSArray, NSNumber, UIMovieScrubberTrackView;
 
 @protocol UIMovieScrubberTrackViewDataSource <NSObject>
-- (void)movieScrubberTrackView:(UIMovieScrubberTrackView *)arg1 requestThumbnailImageForTimestamp:(NSNumber *)arg2;
-- (float)movieScrubberTrackViewThumbnailAspectRatio:(UIMovieScrubberTrackView *)arg1;
-- (NSArray *)movieScrubberTrackView:(UIMovieScrubberTrackView *)arg1 timestampsStartingAt:(NSNumber *)arg2 endingAt:(NSNumber *)arg3 maxCount:(int)arg4;
+- (void)movieScrubberTrackView:(UIMovieScrubberTrackView *)arg1 requestThumbnailImageForTimestamp:(NSNumber *)arg2 isSummaryThumbnail:(_Bool)arg3;
+- (double)movieScrubberTrackViewThumbnailAspectRatio:(UIMovieScrubberTrackView *)arg1;
 - (NSArray *)movieScrubberTrackView:(UIMovieScrubberTrackView *)arg1 evenlySpacedTimestamps:(int)arg2 startingAt:(NSNumber *)arg3 endingAt:(NSNumber *)arg4;
 - (double)movieScrubberTrackViewDuration:(UIMovieScrubberTrackView *)arg1;
 @end

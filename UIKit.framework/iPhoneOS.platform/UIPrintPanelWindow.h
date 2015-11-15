@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)_affectsTintView;
+- (_Bool)_canAffectStatusBarAppearance;
 
 @end
 

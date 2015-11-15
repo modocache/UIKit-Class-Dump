@@ -4,55 +4,33 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
-
-#import "UITextMagnifier.h"
-
-@class UIResponder<UITextInput>, UITextMagnifierTimeWeightedPoint;
+#import <UIKit/UITextMagnifier.h>
 
 __attribute__((visibility("hidden")))
-@interface UITextMagnifierCaret : UIView <UITextMagnifier>
+@interface UITextMagnifierCaret : UITextMagnifier
 {
-    UIResponder<UITextInput> *_text;
-    UIView *_target;
-    struct CGPoint _magnificationPoint;
     struct CGPoint _offset;
-    UITextMagnifierTimeWeightedPoint *_weightedPoint;
     float _yOffset;
-    UIView *_magnifierRenderer;
-    UIView *_autoscrollRenderer;
-    int _autoscrollDirections;
 }
 
 + (id)sharedCaretMagnifier;
-@property(nonatomic) struct CGPoint animationPoint; // @synthesize animationPoint=_magnificationPoint;
 @property(nonatomic) float yOffset; // @synthesize yOffset=_yOffset;
 @property(nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
-@property(retain, nonatomic) UIView *target; // @synthesize target=_target;
-@property(retain, nonatomic) UIResponder<UITextInput> *text; // @synthesize text=_text;
-- (void)stopMagnifying:(BOOL)arg1;
-- (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
-- (void)windowWillRotate:(id)arg1;
-- (void)detectLostTouches:(id)arg1;
+- (void)stopMagnifying:(_Bool)arg1;
+- (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(_Bool)arg5;
 - (void)updateFrameAndOffset;
 - (void)remove;
 - (void)zoomDownAnimationDidStop:(id)arg1 finished:(id)arg2;
 - (void)zoomDownAnimation;
-- (void)setNeedsDisplay;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)zoomUpAnimationDidStop:(id)arg1 finished:(id)arg2;
 - (void)zoomUpAnimation;
-- (void)autoscrollWillNotStart;
 - (void)setAutoscrollDirections:(int)arg1;
-- (void)animateToMagnifierRenderer;
-- (void)setToMagnifierRenderer;
-- (void)animateToAutoscrollRenderer;
-- (void)postAutoscrollPoint:(struct CGPoint)arg1;
-@property(readonly, nonatomic) BOOL terminalPointPlacedCarefully;
-@property(readonly, nonatomic) struct CGPoint terminalPoint;
-@property(nonatomic) struct CGPoint magnificationPoint;
+- (_Bool)terminalPointPlacedCarefully;
+- (void)setMagnificationPoint:(struct CGPoint)arg1;
+- (void)setAnimationPoint:(struct CGPoint)arg1;
+- (struct CGPoint)animationPoint;
 - (void)dealloc;
-- (id)initWithDefaultFrame;
+- (id)initWithFrame;
 
 @end
 

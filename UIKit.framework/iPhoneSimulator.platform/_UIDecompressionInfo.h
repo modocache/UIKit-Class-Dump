@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
     struct CGSize maxSize;
     int renderingIntent;
     _UIAsyncInvocation *terminationInvocation;
-    BOOL decompressionComplete;
-    BOOL metadataComplete;
+    _Bool decompressionComplete;
+    _Bool metadataComplete;
 }
 
 - (void)dealloc;

@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 
 + (id)cacheKeyWithOriginalImage:(id)arg1 pretiledSize:(struct CGSize)arg2;
 - (id)description;
-- (BOOL)isEqual:(id)arg1;
-- (unsigned int)hash;
+- (_Bool)isEqual:(id)arg1;
+- (unsigned long long)hash;
 
 @end
 

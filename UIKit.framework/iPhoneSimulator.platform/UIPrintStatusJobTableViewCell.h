@@ -6,17 +6,16 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UIActivityIndicatorView, UIView;
+@class UIActivityIndicatorView;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintStatusJobTableViewCell : UITableViewCell
 {
     UIActivityIndicatorView *_activityIndicator;
-    UIView *_verticalSeparator;
 }
 
 - (void)layoutSubviews;
-@property(nonatomic) BOOL showActive;
+@property(nonatomic) _Bool showActive;
 - (void)dealloc;
 - (id)initWithReuseIdentifier:(id)arg1;
 

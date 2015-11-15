@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)layoutSubviews;
-- (float)labelWidthForBounds:(struct CGRect)arg1;
+- (double)labelWidthForBounds:(struct CGRect)arg1;
 - (id)initWithHTMLOptGroupNode:(id)arg1;
 
 @end

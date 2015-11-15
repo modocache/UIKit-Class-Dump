@@ -9,10 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIViewServiceImplicitAnimationEncodingProxy : _UITargetedProxy
 {
+    id _controlMessageTarget;
 }
 
-+ (id)proxyEncodingAnimationsForTarget:(id)arg1;
++ (id)proxyEncodingAnimationsForTarget:(id)arg1 controlMessageTarget:(id)arg2;
 - (void)forwardInvocation:(id)arg1;
+- (void)dealloc;
 
 @end
 

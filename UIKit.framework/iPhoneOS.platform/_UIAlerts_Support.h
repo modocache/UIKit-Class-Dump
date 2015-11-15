@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)dimmingView;
 + (void)hideAlertWindow;
 + (void)showAlertWindow;
 + (id *)destroyPressedImage;

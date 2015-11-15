@@ -11,8 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)imageWithCGImage:(struct CGImage *)arg1 scale:(float)arg2 orientation:(int)arg3;
-- (void)drawInRect:(struct CGRect)arg1 blendMode:(int)arg2 alpha:(float)arg3;
++ (id)imageWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
+- (void)drawInRect:(struct CGRect)arg1 blendMode:(int)arg2 alpha:(double)arg3;
 
 @end
 

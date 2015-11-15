@@ -9,6 +9,6 @@
 @class _UIHostedTextServiceSession;
 
 @protocol _UIHostedTextServiceSessionDelegate <NSObject>
-- (void)dismissHostedTextServiceSession:(_UIHostedTextServiceSession *)arg1 animated:(BOOL)arg2;
+- (void)dismissHostedTextServiceSession:(_UIHostedTextServiceSession *)arg1 animated:(_Bool)arg2;
 @end
 

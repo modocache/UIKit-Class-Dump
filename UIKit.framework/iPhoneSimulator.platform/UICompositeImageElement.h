@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     struct CGRect m_fromRect;
     struct CGRect m_toRect;
     int m_operation;
-    float m_fraction;
+    double m_fraction;
 }
 
-+ (id)elementWithImage:(id)arg1 toRect:(struct CGRect)arg2 fromRect:(struct CGRect)arg3 operation:(int)arg4 fraction:(float)arg5;
++ (id)elementWithImage:(id)arg1 toRect:(struct CGRect)arg2 fromRect:(struct CGRect)arg3 operation:(int)arg4 fraction:(double)arg5;
 - (void)draw;
 - (void)dealloc;
-- (id)initWithImage:(id)arg1 toRect:(struct CGRect)arg2 fromRect:(struct CGRect)arg3 operation:(int)arg4 fraction:(float)arg5;
+- (id)initWithImage:(id)arg1 toRect:(struct CGRect)arg2 fromRect:(struct CGRect)arg3 operation:(int)arg4 fraction:(double)arg5;
 
 @end
 

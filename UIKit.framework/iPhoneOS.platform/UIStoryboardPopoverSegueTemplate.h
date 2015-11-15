@@ -11,7 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface UIStoryboardPopoverSegueTemplate : UIStoryboardSegueTemplate
 {
-    unsigned int _permittedArrowDirections;
+    unsigned long long _permittedArrowDirections;
     NSArray *_passthroughViews;
     UIBarButtonItem *_anchorBarButtonItem;
     UIView *_anchorView;
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIView *anchorView; // @synthesize anchorView=_anchorView;
 @property(retain, nonatomic) UIBarButtonItem *anchorBarButtonItem; // @synthesize anchorBarButtonItem=_anchorBarButtonItem;
 @property(copy, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
-@property(nonatomic) unsigned int permittedArrowDirections; // @synthesize permittedArrowDirections=_permittedArrowDirections;
+@property(nonatomic) unsigned long long permittedArrowDirections; // @synthesize permittedArrowDirections=_permittedArrowDirections;
 - (id)segueWithDestinationViewController:(id)arg1;
 - (id)defaultSegueClassName;
 - (void)encodeWithCoder:(id)arg1;

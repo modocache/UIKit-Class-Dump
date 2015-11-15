@@ -17,16 +17,16 @@ __attribute__((visibility("hidden")))
     UIView *_pressIndicator;
 }
 
-+ (struct __CFDictionary *)emojiFontAttributes;
-@property UIKeyboardEmojiInputController *inputController; // @synthesize inputController=_inputController;
++ (id)emojiFontAttributes;
 @property(retain) UIView *pressIndicator; // @synthesize pressIndicator=_pressIndicator;
+@property UIKeyboardEmojiInputController *inputController; // @synthesize inputController=_inputController;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1;
 @property(retain) NSArray *characters;
 - (void)dealloc;
-- (id)initWithStyle:(int)arg1 reuseIdentifier:(id)arg2;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end
 

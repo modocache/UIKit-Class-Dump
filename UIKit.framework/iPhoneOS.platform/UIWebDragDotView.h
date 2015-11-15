@@ -15,18 +15,21 @@ __attribute__((visibility("hidden")))
     UIColor *m_selectionBarColor;
     UIImageView *m_dot;
     int m_orientation;
+    struct CGRect m_stickFrame;
+    struct CGRect m_dotFrame;
 }
 
-@property(nonatomic) BOOL showsBall;
+@property(nonatomic) _Bool showsBall;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)setFrame:(struct CGRect)arg1;
-- (BOOL)isPointedLeft;
-- (BOOL)isPointedRight;
-- (BOOL)isPointedUp;
-- (BOOL)isPointedDown;
-- (BOOL)isVertical;
+- (void)setEdge:(struct CGRect)arg1;
+- (struct CGRect)stickFrameForEdge:(struct CGRect)arg1 withOverlap:(double)arg2;
+- (_Bool)isPointedLeft;
+- (_Bool)isPointedRight;
+- (_Bool)isPointedUp;
+- (_Bool)isPointedDown;
+- (_Bool)isVertical;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 container:(id)arg2 orientation:(int)arg3;
+- (id)initWithEdge:(struct CGRect)arg1 container:(id)arg2 orientation:(int)arg3;
 
 @end
 

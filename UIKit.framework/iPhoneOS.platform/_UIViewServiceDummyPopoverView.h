@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)setUseToolbarShine:(BOOL)arg1;
+- (void)setUseToolbarShine:(_Bool)arg1;
 
 @end
 

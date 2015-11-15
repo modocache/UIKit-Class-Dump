@@ -11,15 +11,15 @@
 @protocol UIWebSelectionBlock <NSObject>
 - (DOMDocument *)enclosingDocument;
 - (DOMRange *)rangeOfContents;
-- (BOOL)canShrinkDirectlyToTextOnly;
-- (BOOL)containsRange:(DOMRange *)arg1;
+- (_Bool)canShrinkDirectlyToTextOnly;
+- (_Bool)containsRange:(DOMRange *)arg1;
 - (DOMRange *)asDomRange;
 - (DOMNode *)asDomNode;
-- (BOOL)selectable;
-- (BOOL)rendersAsBlock;
-- (BOOL)strictlyContainsBlock:(id <UIWebSelectionBlock>)arg1;
-- (BOOL)containsBlock:(id <UIWebSelectionBlock>)arg1;
-- (BOOL)isSameBlock:(id <UIWebSelectionBlock>)arg1;
+- (_Bool)selectable;
+- (_Bool)rendersAsBlock;
+- (_Bool)strictlyContainsBlock:(id <UIWebSelectionBlock>)arg1;
+- (_Bool)containsBlock:(id <UIWebSelectionBlock>)arg1;
+- (_Bool)isSameBlock:(id <UIWebSelectionBlock>)arg1;
 - (id <UIWebSelectionBlock>)largerParent;
 - (id <UIWebSelectionBlock>)parentBlock;
 - (struct CGRect)boundingRectAndInsideFixedPosition:(int *)arg1;

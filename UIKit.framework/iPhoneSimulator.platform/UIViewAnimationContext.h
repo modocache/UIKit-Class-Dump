@@ -12,12 +12,12 @@ __attribute__((visibility("hidden")))
 @interface UIViewAnimationContext : NSObject
 {
     NSArray *_viewAnimations;
-    int _animationCount;
+    long long _animationCount;
     id _completionHandler;
 }
 
 @property(readonly, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property(nonatomic) int animationCount; // @synthesize animationCount=_animationCount;
+@property(nonatomic) long long animationCount; // @synthesize animationCount=_animationCount;
 @property(retain, nonatomic) NSArray *viewAnimations; // @synthesize viewAnimations=_viewAnimations;
 - (void)dealloc;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;

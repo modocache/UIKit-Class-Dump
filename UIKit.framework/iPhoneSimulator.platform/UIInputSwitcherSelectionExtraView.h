@@ -6,13 +6,21 @@
 
 #import <UIKit/UIView.h>
 
+@class UIKeyboardMenuView;
+
 __attribute__((visibility("hidden")))
 @interface UIInputSwitcherSelectionExtraView : UIView
 {
-    float m_pointerOffset;
+    double m_pointerOffset;
+    int _roundedCorners;
+    UIKeyboardMenuView *_menu;
+    struct CGRect _keyRect;
 }
 
-@property(nonatomic) float pointerOffset; // @synthesize pointerOffset=m_pointerOffset;
+@property(nonatomic) UIKeyboardMenuView *menu; // @synthesize menu=_menu;
+@property(nonatomic) int roundedCorners; // @synthesize roundedCorners=_roundedCorners;
+@property(nonatomic) struct CGRect keyRect; // @synthesize keyRect=_keyRect;
+@property(nonatomic) double pointerOffset; // @synthesize pointerOffset=m_pointerOffset;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

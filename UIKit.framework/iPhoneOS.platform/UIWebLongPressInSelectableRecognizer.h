@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) UIWebDocumentView *documentView; // @synthesize documentView=_documentView;
-- (void)setState:(int)arg1;
+- (void)setState:(long long)arg1;
 
 @end
 

@@ -4,36 +4,48 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <UIKit/_UIBarAppearanceStorage.h>
 
-@class NSDictionary, NSMutableDictionary, NSNumber, UIImage, _UIBarButtonItemAppearanceStorage;
+@class NSDictionary, NSMutableDictionary, NSNumber, NSString, UIImage, _UIBarButtonItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationBarAppearanceStorage : NSObject
+@interface _UINavigationBarAppearanceStorage : _UIBarAppearanceStorage
 {
-    NSMutableDictionary *backgroundImagesForBarMetrics;
     NSDictionary *textAttributes;
-    NSNumber *titleVerticalAdjustment;
-    NSNumber *miniTitleVerticalAdjustment;
+    NSMutableDictionary *titleVerticalAdjustmentsForBarMetrics;
     UIImage *shadowImage;
-    BOOL hidesShadow;
-    BOOL reversesShadowOffset;
+    _Bool hidesShadow;
+    long long barMetrics;
+    UIImage *backIndicatorImage;
+    UIImage *backIndicatorTransitionMaskImage;
+    NSNumber *backIndicatorLeftMargin;
+    _Bool reversesShadowOffset;
     _UIBarButtonItemAppearanceStorage *buttonAppearanceStorage;
-    BOOL _deferShadowToSearchBar;
+    _Bool _deferShadowToSearchBar;
+    long long defaultBarMetrics;
+    long long activeBarMetrics;
+    NSString *_backdropViewGroupName;
 }
 
-@property(nonatomic) BOOL deferShadowToSearchBar; // @synthesize deferShadowToSearchBar=_deferShadowToSearchBar;
++ (long long)typicalBarPosition;
+@property(retain, nonatomic) NSString *backdropViewGroupName; // @synthesize backdropViewGroupName=_backdropViewGroupName;
+@property(nonatomic) _Bool deferShadowToSearchBar; // @synthesize deferShadowToSearchBar=_deferShadowToSearchBar;
+@property(retain, nonatomic) NSNumber *backIndicatorLeftMargin; // @synthesize backIndicatorLeftMargin;
+@property(retain, nonatomic) UIImage *backIndicatorTransitionMaskImage; // @synthesize backIndicatorTransitionMaskImage;
+@property(retain, nonatomic) UIImage *backIndicatorImage; // @synthesize backIndicatorImage;
+@property(nonatomic) long long activeBarMetrics; // @synthesize activeBarMetrics;
+@property(nonatomic) long long defaultBarMetrics; // @synthesize defaultBarMetrics;
 @property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage;
-@property(nonatomic) BOOL reversesShadowOffset; // @synthesize reversesShadowOffset;
-@property(retain, nonatomic) NSNumber *miniTitleVerticalAdjustment; // @synthesize miniTitleVerticalAdjustment;
-@property(retain, nonatomic) NSNumber *titleVerticalAdjustment; // @synthesize titleVerticalAdjustment;
+@property(nonatomic) _Bool reversesShadowOffset; // @synthesize reversesShadowOffset;
 @property(copy, nonatomic) NSDictionary *textAttributes; // @synthesize textAttributes;
-@property(nonatomic) BOOL hidesShadow; // @synthesize hidesShadow;
+@property(nonatomic) _Bool hidesShadow; // @synthesize hidesShadow;
+- (id)representativeImageForIdiom:(long long)arg1;
 - (void)dealloc;
 @property(readonly, nonatomic) _UIBarButtonItemAppearanceStorage *barButtonAppearanceStorage;
 @property(readonly, nonatomic) _UIBarButtonItemAppearanceStorage *_barButtonAppearanceStorage;
-- (id)backgroundImageForBarMetrics:(int)arg1;
-- (void)setBackgroundImage:(id)arg1 forBarMetrics:(int)arg2;
+- (double)titleVerticalAdjustmentForBarMetrics:(long long)arg1;
+- (void)setTitleVerticalAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
+@property(readonly, nonatomic) UIImage *cardBackgroundImage;
 @property(readonly, nonatomic) UIImage *miniPromptBackgroundImage;
 @property(readonly, nonatomic) UIImage *promptBackgroundImage;
 @property(readonly, nonatomic) UIImage *miniBackgroundImage;

@@ -4,12 +4,12 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIButton.h>
 
 @class CADisplayLink, CALayer, NSMutableArray, NSTimer, UIImageView;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationMeterView : UIView
+@interface UIDictationMeterView : UIButton
 {
     UIImageView *_background;
     UIImageView *_overlay;
@@ -24,9 +24,10 @@ __attribute__((visibility("hidden")))
     CADisplayLink *_displayLink;
     double _releaseStart;
     float _releaseLevel;
+    int _cachedViewMode;
 }
 
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;
 - (void)_startListening;
 - (void)_clearDisplayLink;
 - (void)_updateListeningAnimation:(id)arg1;
@@ -38,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)_decayKeyFrameAnimation;
 - (void)_startAttack;
 - (id)_attackKeyFrameAnimation;
-- (id)imageForMicLevel:(float)arg1;
+- (id)imageForMicLevel:(double)arg1;
 - (id)_keyframeAnimationForCGImages:(id)arg1 duration:(double)arg2;
 - (void)_removeAnimationsAndClearLayers;
 - (float)_adjustedDuration:(float)arg1;

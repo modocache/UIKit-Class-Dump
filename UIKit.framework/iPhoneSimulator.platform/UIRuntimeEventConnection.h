@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface UIRuntimeEventConnection : UIRuntimeConnection
 {
-    unsigned int eventMask;
+    unsigned long long eventMask;
 }
 
-@property unsigned int eventMask; // @synthesize eventMask;
+@property unsigned long long eventMask; // @synthesize eventMask;
 - (id)description;
 - (void)connectForSimulator;
 - (void)connect;

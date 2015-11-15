@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     id m_userInfo;
     double m_delay;
     NSTimer *m_timer;
-    BOOL m_canceled;
+    _Bool m_canceled;
     NSString *m_runLoopMode;
 }
 
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (double)delay;
 - (id)target;
 - (void)setTarget:(id)arg1;
-- (BOOL)scheduled;
+- (_Bool)scheduled;
 - (id)userInfo;
 - (void)unschedule;
 - (void)cancel;

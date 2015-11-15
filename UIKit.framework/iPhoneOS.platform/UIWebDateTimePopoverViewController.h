@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) id <UIWebFormControl> _innerWebDateTimeControl; // @synthesize _innerWebDateTimeControl;
 - (void)loadView;
 - (void)dealloc;
-- (id)initWithDOMHTMLInputElement:(id)arg1 datePickerMode:(int)arg2;
+- (id)initWithDOMHTMLInputElement:(id)arg1 datePickerMode:(long long)arg2;
 
 @end
 

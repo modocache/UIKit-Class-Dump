@@ -9,27 +9,29 @@
 __attribute__((visibility("hidden")))
 @interface UIDeviceWhiteColor : UIColor
 {
-    float whiteComponent;
-    float alphaComponent;
+    double whiteComponent;
+    double alphaComponent;
     struct CGColor *cachedColor;
+    long long cachedColorOnceToken;
 }
 
-- (BOOL)getWhite:(float *)arg1 alpha:(float *)arg2;
-- (float)alphaComponent;
+- (_Bool)_getRed:(double *)arg1 green:(double *)arg2 blue:(double *)arg3 alpha:(double *)arg4;
+- (_Bool)getWhite:(double *)arg1 alpha:(double *)arg2;
+- (double)alphaComponent;
 - (struct CGColor *)CGColor;
-- (unsigned int)hash;
-- (BOOL)isEqual:(id)arg1;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
 - (id)description;
 - (id)colorSpaceName;
 - (void)setStroke;
 - (void)setFill;
 - (void)set;
-- (id)colorWithAlphaComponent:(float)arg1;
-- (struct CGColor *)_createCGColorWithAlpha:(float)arg1;
+- (id)colorWithAlphaComponent:(double)arg1;
+- (struct CGColor *)_createCGColorWithAlpha:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithCGColor:(struct CGColor *)arg1;
-- (id)initWithWhite:(float)arg1 alpha:(float)arg2;
+- (id)initWithWhite:(double)arg1 alpha:(double)arg2;
 
 @end
 

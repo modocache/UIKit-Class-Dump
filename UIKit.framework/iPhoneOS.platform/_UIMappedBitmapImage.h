@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     NSData *_data;
 }
 
++ (_Bool)supportsSecureCoding;
 + (void)initialize;
 @property(retain, nonatomic) NSData *data; // @synthesize data=_data;
 - (id)_initWithOtherImage:(id)arg1;

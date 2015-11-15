@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSString, UITextRange;
+@class NSString, UITextRange;
 
 __attribute__((visibility("hidden")))
 @interface UITextReplacement : NSObject
@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     NSString *_originalText;
     NSString *_replacementText;
     NSString *_menuTitle;
-    NSArray *_usageTrackingTypes;
+    unsigned int _usageTrackingMask;
 }
 
 + (id)replacementWithRange:(id)arg1 original:(id)arg2 replacement:(id)arg3 menuTitle:(id)arg4;
-@property(retain, nonatomic) NSArray *usageTrackingTypes; // @synthesize usageTrackingTypes=_usageTrackingTypes;
+@property(nonatomic) unsigned int usageTrackingMask; // @synthesize usageTrackingMask=_usageTrackingMask;
 @property(readonly, nonatomic) NSString *menuTitle; // @synthesize menuTitle=_menuTitle;
 @property(readonly, nonatomic) NSString *replacementText; // @synthesize replacementText=_replacementText;
 @property(readonly, nonatomic) NSString *originalText; // @synthesize originalText=_originalText;

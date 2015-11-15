@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (Class)layerClass;
-- (void)setTextRotationAngle:(float)arg1;
+- (void)setTextRotationAngle:(double)arg1;
 - (void)setString:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)_updateContentsScale:(id)arg1;

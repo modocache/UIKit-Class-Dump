@@ -13,16 +13,16 @@
 __attribute__((visibility("hidden")))
 @interface UIDOMHTMLOptionSelectedItem : NSObject <UIWebSelectedItemPrivate>
 {
-    BOOL _selected;
+    _Bool _selected;
     DOMHTMLOptionElement *_node;
 }
 
 @property(retain, nonatomic) DOMHTMLOptionElement *_node; // @synthesize _node;
 - (void)dealloc;
 - (void)unselect;
-- (void)setSelected:(BOOL)arg1;
-- (BOOL)isGroup;
-- (BOOL)selected;
+- (void)setSelected:(_Bool)arg1;
+- (_Bool)isGroup;
+- (_Bool)selected;
 - (id)node;
 - (id)initWithHTMLOptionNode:(id)arg1;
 

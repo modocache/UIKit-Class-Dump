@@ -6,26 +6,30 @@
 
 #import <UIKit/UIKeyboardCandidateView.h>
 
-#import "UIScrollViewDelegate.h"
+#import "UICollectionViewDelegate.h"
+#import "UIKeyboardCandidateBarDelegate.h"
 
 @class UIKeyboardCandidatePageControl;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateView_iPad : UIKeyboardCandidateView <UIScrollViewDelegate>
+@interface UIKeyboardCandidateView_iPad : UIKeyboardCandidateView <UICollectionViewDelegate, UIKeyboardCandidateBarDelegate>
 {
     UIKeyboardCandidatePageControl *_pageControl;
 }
 
-+ (float)defaultExtendedControlHeight;
++ (double)defaultExtendedControlHeight;
 - (void)didEndSplitTransition;
+- (void)candidateBarDidScroll:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)updatePageControlStatus;
-- (float)_additionalClipHeight;
-- (void)setCandidateBarExtended:(BOOL)arg1;
+- (double)_additionalClipHeight;
+- (void)setCandidateViewExtended:(_Bool)arg1;
+- (int)_clipCornersOfView:(id)arg1;
 - (void)layoutSubviews;
-- (unsigned int)_numberOfColumns:(BOOL)arg1;
+- (unsigned long long)_numberOfColumns:(_Bool)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (double)rightButtonYOffset;
 
 @end
 

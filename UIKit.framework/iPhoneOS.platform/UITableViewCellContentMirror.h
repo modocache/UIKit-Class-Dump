@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (id)cell;
 - (id)initWithFrame:(struct CGRect)arg1;
-@property(nonatomic, getter=isSelected) BOOL selected;
+@property(nonatomic, getter=isSelected) _Bool selected;
 
 @end
 

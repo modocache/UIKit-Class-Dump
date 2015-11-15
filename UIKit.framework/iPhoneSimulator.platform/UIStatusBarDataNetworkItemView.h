@@ -12,17 +12,17 @@ __attribute__((visibility("hidden")))
     int _dataNetworkType;
     int _wifiStrengthRaw;
     int _wifiStrengthBars;
-    BOOL _enableRSSI;
-    BOOL _showRSSI;
+    _Bool _enableRSSI;
+    _Bool _showRSSI;
 }
 
 - (id)_stringForRSSI;
-- (id)_dataNetworkImageForStyle:(int)arg1;
+- (id)_dataNetworkImage;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
-- (id)contentsImageForStyle:(int)arg1;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
-- (float)maximumOverlap;
-- (float)extraLeftPadding;
+- (id)contentsImage;
+- (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
+- (double)maximumOverlap;
+- (double)extraLeftPadding;
 
 @end
 

@@ -12,11 +12,10 @@ __attribute__((visibility("hidden")))
 @interface UIAlertLabeledButton : UIAlertButton
 {
     UILabel *_typeLabel;
-    float _titleOffset;
+    double _titleOffset;
 }
 
-@property(nonatomic) float titleOffset; // @synthesize titleOffset=_titleOffset;
-- (void)setHighlighted:(BOOL)arg1;
+@property(nonatomic) double titleOffset; // @synthesize titleOffset=_titleOffset;
 - (void)dealloc;
 - (void)layoutSubviews;
 @property(readonly, nonatomic) UILabel *typeLabel;

@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     UIImage *images[8];
     UIView *rightEdgeView;
     UIView *leftEdgeView;
-    float position;
+    double position;
     UIColor *onButtonColor;
     CALayer *maskLayer;
     struct {
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
     } _switchFlags;
 }
 
-- (void)setMinimumTrackImage:(id)arg1 forStates:(unsigned int)arg2;
+- (void)setMinimumTrackImage:(id)arg1 forStates:(unsigned long long)arg2;
 - (void)dealloc;
 
 @end

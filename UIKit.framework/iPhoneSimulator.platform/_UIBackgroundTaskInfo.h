@@ -6,19 +6,21 @@
 
 #import "NSObject.h"
 
+@class BKSProcessAssertion;
+
 __attribute__((visibility("hidden")))
 @interface _UIBackgroundTaskInfo : NSObject
 {
-    unsigned int _taskId;
+    unsigned long long _taskId;
     CDUnknownBlockType _expireHandler;
-    struct SBSProcessAssertion *_processAssertion;
+    BKSProcessAssertion *_processAssertion;
     int _count;
 }
 
 - (void)invalidate;
 - (void)fireExpirationHandler;
 - (void)dealloc;
-- (id)initWithProcessAssertion:(struct SBSProcessAssertion *)arg1 expirationHandler:(CDUnknownBlockType)arg2;
+- (id)initWithProcessAssertion:(id)arg1 expirationHandler:(CDUnknownBlockType)arg2;
 
 @end
 

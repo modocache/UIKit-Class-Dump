@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 - (id)detailTextLabelForCell:(id)arg1;
 - (id)textLabelForCell:(id)arg1;
 - (id)imageViewForCell:(id)arg1;
-- (float)defaultDetailTextLabelFontSizeForCell:(id)arg1;
-- (float)defaultTextLabelFontSizeForCell:(id)arg1;
+- (double)defaultDetailTextLabelFontSizeForCell:(id)arg1;
+- (double)defaultTextLabelFontSizeForCell:(id)arg1;
 
 @end
 

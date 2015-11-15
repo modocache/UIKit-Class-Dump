@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)displacementInInterval:(double)arg1 priorTo:(double)arg2;
 - (struct CGSize)displacementInInterval:(double)arg1;
 - (float)distanceCoveredInInterval:(double)arg1;
-- (BOOL)historyCovers:(double)arg1;
+- (_Bool)historyCovers:(double)arg1;
 @property(readonly, nonatomic) struct CGPoint weightedPoint;
 - (void)addPoint:(struct CGPoint)arg1;
 - (void)clearHistory;

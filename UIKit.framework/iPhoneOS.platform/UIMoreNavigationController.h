@@ -16,14 +16,19 @@
 }
 
 + (Class)_moreListControllerClass;
-@property(nonatomic) BOOL moreViewControllersChanged;
-@property(nonatomic) BOOL allowsCustomizing;
+@property(readonly, nonatomic) UIViewController *moreListController; // @synthesize moreListController=_moreListController;
+@property(nonatomic) _Bool moreViewControllersChanged;
+@property(nonatomic) _Bool allowsCustomizing;
 @property(retain, nonatomic) NSArray *moreViewControllers;
+- (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (void)_redisplayMoreTableView;
-- (void)didShowViewController:(id)arg1 animated:(BOOL)arg2;
-- (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)didShowViewController:(id)arg1 animated:(_Bool)arg2;
+- (void)_ensureChildrenHaveParentViewController;
+- (id)_stateRestorationParentForChildViewController:(id)arg1 index:(unsigned long long *)arg2;
+- (void)pushViewController:(id)arg1 animated:(_Bool)arg2;
 @property(nonatomic) UIViewController *displayedViewController;
 - (void)_restoreOriginalNavigationController;
+- (void)restoreOriginalNavigationController:(id)arg1;
 - (id)_preparedViewController:(id)arg1;
 - (void)dealloc;
 - (id)init;

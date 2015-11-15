@@ -6,26 +6,31 @@
 
 #import <UIKit/UILabel.h>
 
-@class UITextRenderingAttributes, _UITabBarItemAppearanceStorage;
+@class UIColor, _UITabBarItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
 @interface UITabBarButtonLabel : UILabel
 {
-    float _boundsWidth;
-    UITextRenderingAttributes *_attributes;
+    double _boundsWidth;
     _UITabBarItemAppearanceStorage *_appearanceStorage;
-    BOOL _isSelected;
+    _Bool _isSelected;
+    Class _appearanceGuideClass;
+    UIColor *_unselectedTintColor;
 }
 
+@property(retain, nonatomic, getter=_unselectedTintColor, setter=_setUnselectedTintColor:) UIColor *unselectedTintColor; // @synthesize unselectedTintColor=_unselectedTintColor;
+@property(nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
 - (void)_applyTabBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
-- (id)_titleTextAttributesForState:(unsigned int)arg1;
-- (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned int)arg2;
-- (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned int)arg2;
+- (id)_titleTextAttributesForState:(unsigned long long)arg1;
+- (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (void)_setTitlePositionAdjustment:(struct UIOffset)arg1;
 - (void)_UIAppearance_setTitlePositionAdjustment:(struct UIOffset)arg1;
-- (void)setSelected:(BOOL)arg1;
+- (void)setSelected:(_Bool)arg1;
 - (void)updateTextColorsForSelection;
+- (void)tintColorDidChange;
 - (void)sizeToFitBounds:(struct CGRect)arg1;
-- (id)_attributes;
+- (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)dealloc;
 
 @end

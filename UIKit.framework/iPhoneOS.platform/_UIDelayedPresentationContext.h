@@ -11,8 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _UIDelayedPresentationContext : NSObject
 {
-    BOOL _enableUserInteraction;
-    int _reqcnt;
+    _Bool _enableUserInteraction;
+    long long _reqcnt;
     NSInvocation *_presentInvocation;
     CDUnknownBlockType _cancellationHandler;
     double _timeout;
@@ -23,10 +23,10 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType cancellationHandler; // @synthesize cancellationHandler=_cancellationHandler;
 - (void)finishDelayedPresentation:(id)arg1;
 - (void)beginDelayedPresentation;
-- (void)cancelDelayedPresentation:(BOOL)arg1;
-- (int)incrementRequestCount;
-- (int)decrementRequestCount;
-- (int)requestCount;
+- (void)cancelDelayedPresentation:(_Bool)arg1;
+- (long long)incrementRequestCount;
+- (long long)decrementRequestCount;
+- (long long)requestCount;
 - (id)delayingController;
 - (id)invocationTarget;
 - (void)dealloc;

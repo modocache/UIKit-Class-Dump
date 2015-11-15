@@ -12,14 +12,13 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_forceDealloc;
-- (void)finalize;
 - (void)dealloc;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)autorelease;
-- (BOOL)retainWeakReference;
-- (BOOL)allowsWeakReference;
-- (unsigned int)retainCount;
+- (_Bool)retainWeakReference;
+- (_Bool)allowsWeakReference;
+- (unsigned long long)retainCount;
 - (id)retain;
 - (oneway void)release;
 

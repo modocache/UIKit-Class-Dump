@@ -12,9 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)drawRect:(struct CGRect)arg1;
-- (BOOL)shouldCache;
+- (_Bool)shouldCache;
+- (id)cacheKeysForRenderFlags:(id)arg1;
 - (id)cacheKey;
-- (id)initWithFrame:(struct CGRect)arg1 keyboard:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2;
 
 @end
 

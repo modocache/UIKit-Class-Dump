@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (id)restrictedProxyForAlertView:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
-- (BOOL)respondsToSelector:(SEL)arg1;
+- (_Bool)respondsToSelector:(SEL)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)setDelegate:(id)arg1;
 - (id)delegate;

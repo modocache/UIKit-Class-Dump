@@ -17,18 +17,32 @@
     UICollectionView *_collectionView;
     struct {
         unsigned int clearsSelectionOnViewWillAppear:1;
+        unsigned int useLayoutToLayoutNavigationTransitions:1;
     } _collectionViewControllerFlags;
 }
 
+@property(nonatomic) _Bool useLayoutToLayoutNavigationTransitions;
+- (void)_setUseLayoutToLayoutNavigationTransitions:(_Bool)arg1 withCheck:(_Bool)arg2;
+- (_Bool)shouldCrossFadeBottomBars;
+- (_Bool)shouldCrossFadeNavigationBar;
+- (id)_animatorForOperation:(long long)arg1 fromViewController:(id)arg2 toViewController:(id)arg3;
 - (id)_newCollectionViewWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (int)collectionView:(id)arg1 numberOfItemsInSection:(int)arg2;
+- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (id)dataSource;
+- (id)delegate;
 @property(retain, nonatomic) UICollectionView *collectionView;
-- (void)viewWillAppear:(BOOL)arg1;
+- (id)contentScrollView;
+- (id)_uiCollectionView;
+- (void)__viewWillAppear:(_Bool)arg1;
 - (void)viewWillUnload;
+- (void)_clearSharedView;
+- (void)_setSharedCollectionView:(id)arg1;
+- (void)setView:(id)arg1;
 - (void)loadView;
 - (id)_wrappingView;
-@property(nonatomic) BOOL clearsSelectionOnViewWillAppear;
+@property(readonly, nonatomic) UICollectionViewLayout *collectionViewLayout;
+@property(nonatomic) _Bool clearsSelectionOnViewWillAppear;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

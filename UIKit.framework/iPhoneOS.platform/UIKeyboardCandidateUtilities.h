@@ -4,13 +4,15 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+#import "NSObject.h"
+
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateUtilities
+@interface UIKeyboardCandidateUtilities : NSObject
 {
 }
 
-+ (id)candidateScrollViewBackgroundWithHeight:(float)arg1;
-+ (id)candidateBarBackgroundWithHighlight:(BOOL)arg1;
++ (id)candidateScrollViewBackgroundWithHeight:(double)arg1;
++ (id)candidateBarBackgroundWithHighlight:(_Bool)arg1;
 
 @end
 

@@ -11,18 +11,18 @@
 @interface UIWebPDFSearchResult : NSObject
 {
     NSArray *rotationAngles;
-    unsigned int pageIndex;
+    unsigned long long pageIndex;
     NSArray *strings;
     NSString *string;
-    struct CGRect boundingBox;
     NSArray *rects;
+    struct CGRect boundingBox;
 }
 
 @property(retain, nonatomic) NSArray *rects; // @synthesize rects;
 @property(nonatomic) struct CGRect boundingBox; // @synthesize boundingBox;
 @property(retain, nonatomic) NSString *string; // @synthesize string;
 @property(retain, nonatomic) NSArray *strings; // @synthesize strings;
-@property(nonatomic) unsigned int pageIndex; // @synthesize pageIndex;
+@property(nonatomic) unsigned long long pageIndex; // @synthesize pageIndex;
 @property(retain, nonatomic) NSArray *rotationAngles; // @synthesize rotationAngles;
 - (id)description;
 

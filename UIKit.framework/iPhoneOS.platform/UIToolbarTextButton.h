@@ -16,12 +16,15 @@ __attribute__((visibility("hidden")))
     NSSet *_possibleTitles;
 }
 
-- (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned int)arg2;
-- (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned int)arg2;
+- (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
+- (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (id)_scriptingInfo;
-- (void)_setPressed:(BOOL)arg1;
+- (struct UIEdgeInsets)alignmentRectInsets;
+- (void)layoutSubviews;
+- (void)_setPressed:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithTitle:(id)arg1 pressedTitle:(id)arg2 withFont:(id)arg3 withBarStyle:(int)arg4 withStyle:(int)arg5 withTitleWidth:(float)arg6 possibleTitles:(id)arg7 withToolbarTintColor:(id)arg8;
+- (void)_setWantsLetterpressTitle;
+- (id)initWithTitle:(id)arg1 pressedTitle:(id)arg2 withFont:(id)arg3 withBarStyle:(long long)arg4 withStyle:(long long)arg5 withTitleWidth:(float)arg6 possibleTitles:(id)arg7 withToolbarTintColor:(id)arg8;
 
 @end
 

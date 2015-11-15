@@ -16,16 +16,16 @@ __attribute__((visibility("hidden")))
     UIImageView *_highlightedImageView;
     UIImageView *_backgroundGlow;
     NSArray *_passthroughViews;
-    BOOL _ignoresTouches;
-    BOOL _displayed;
-    BOOL _inPassthroughHitTest;
+    _Bool _ignoresTouches;
+    _Bool _displayed;
+    _Bool _inPassthroughHitTest;
     UIColor *_dimmingColor;
 }
 
 + (id)defaultDimmingColor;
 @property(retain, nonatomic) UIColor *dimmingColor; // @synthesize dimmingColor=_dimmingColor;
-@property(nonatomic) BOOL displayed; // @synthesize displayed=_displayed;
-@property(nonatomic) BOOL ignoresTouches; // @synthesize ignoresTouches=_ignoresTouches;
+@property(nonatomic) _Bool displayed; // @synthesize displayed=_displayed;
+@property(nonatomic) _Bool ignoresTouches; // @synthesize ignoresTouches=_ignoresTouches;
 @property(retain, nonatomic) NSArray *passthroughViews; // @synthesize passthroughViews=_passthroughViews;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
 - (void)_simulateTap;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)mouseUp:(struct __GSEvent *)arg1;
-- (void)display:(BOOL)arg1 withAnimationDuration:(float)arg2 afterDelay:(float)arg3;
+- (void)display:(_Bool)arg1 withAnimationDuration:(double)arg2 afterDelay:(double)arg3;
 @property(retain, nonatomic) UIBarButtonItem *highlightedBarButtonItem;
 - (void)dimmingRemovalAnimationDidStop;
 - (void)dealloc;

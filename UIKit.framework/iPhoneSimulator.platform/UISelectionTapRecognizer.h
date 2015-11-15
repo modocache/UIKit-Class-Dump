@@ -15,8 +15,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property UIResponder<UITextInput> *textView; // @synthesize textView=_textView;
-- (void)setState:(int)arg1;
-- (BOOL)isCloseToSelection;
+- (void)setState:(long long)arg1;
+- (_Bool)isCloseToSelection;
 
 @end
 

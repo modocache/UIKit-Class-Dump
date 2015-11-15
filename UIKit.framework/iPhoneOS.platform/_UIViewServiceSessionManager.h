@@ -6,21 +6,25 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray, _UIViewServiceXPCListener;
+#import "NSXPCListenerDelegate.h"
+
+@class NSMutableArray, NSXPCListener;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceSessionManager : NSObject
+@interface _UIViewServiceSessionManager : NSObject <NSXPCListenerDelegate>
 {
     int _lock;
+    NSXPCListener *_listener;
     NSMutableArray *_sessions;
-    _UIViewServiceXPCListener *_listener;
-    NSMutableArray *_incomingConnections;
     int _connectionNotificationToken;
 }
 
-+ (BOOL)hasActiveSessions;
++ (_Bool)hasActiveSessions;
 + (void)startViewServiceSessionManager;
-- (BOOL)hasActiveSessions;
++ (_Bool)_shouldUseXPCObjects;
+- (void)_startOrStopSystemsForBackgroundRunning;
+- (_Bool)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (_Bool)_hasActiveSessions;
 - (void)_registerSessionForDefaultDeputies:(id)arg1;
 - (void)_startListener;
 - (id)_init;

@@ -7,7 +7,9 @@
 @class XPCMachSendRight;
 
 @protocol _UIViewService_FencingControlInterface
+
+@optional
 - (void)__endFencingMessagesForSendRight:(XPCMachSendRight *)arg1;
-- (void)__beginFencingMessagesWithSendRight:(XPCMachSendRight *)arg1 connectionCount:(unsigned int)arg2;
+- (void)__beginFencingMessagesWithSendRight:(XPCMachSendRight *)arg1 connectionCount:(unsigned long long)arg2;
 @end
 

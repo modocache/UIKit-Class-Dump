@@ -6,12 +6,15 @@
 
 #import <UIKit/UIControl.h>
 
-@class UITableViewCell;
+@class UIImageView, UITableViewCell, _UITableViewCellEditControlMinusView;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellEditControl : UIControl
 {
     UITableViewCell *_cell;
+    UIImageView *_imageView;
+    _UITableViewCellEditControlMinusView *_minusView;
+    UIImageView *_shadowView;
     unsigned int _style:2;
     unsigned int _rotated:1;
     unsigned int _rotating:1;
@@ -20,28 +23,19 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGSize)defaultSize;
-+ (id)_multiSelectHighlightedImage;
-+ (id)_multiSelectSelectedImage;
-+ (id)_multiSelectNotSelectedImage;
-+ (id)_insertImage;
-+ (id)_deleteImage;
-+ (id)_deleteImageBackground;
-+ (struct CGRect)_minusRect;
 - (void)_multiselectColorChanged;
-@property(nonatomic, getter=isHiding) BOOL hiding;
-- (void)_toggleRotateAnimationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (BOOL)isRotating;
-@property(nonatomic, getter=isRotated) BOOL rotated;
-- (void)setRotated:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setSelected:(BOOL)arg1;
-- (void)setHighlighted:(BOOL)arg1;
+@property(nonatomic, getter=isHiding) _Bool hiding;
+- (void)_toggleRotateAnimationDidStop:(id)arg1 finished:(_Bool)arg2;
+- (_Bool)isRotating;
+@property(nonatomic, getter=isRotated) _Bool rotated;
+- (void)setRotated:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setSelected:(_Bool)arg1;
+- (void)setHighlighted:(_Bool)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (id)initWithTableViewCell:(id)arg1 editingStyle:(int)arg2;
-- (id)_currentImage;
-- (void)_toggleRotate;
-- (void)_updateImageView;
-- (id)_minusView;
+- (id)_shadowImage;
+- (void)dealloc;
+- (id)initWithTableViewCell:(id)arg1 editingStyle:(long long)arg2;
 
 @end
 

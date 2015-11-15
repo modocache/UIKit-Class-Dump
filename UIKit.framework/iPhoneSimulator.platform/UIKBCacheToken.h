@@ -14,29 +14,40 @@
 {
     NSMutableArray *_components;
     NSString *_name;
+    double _scale;
     int _emptyFields;
+    long long _renderFlags;
 }
 
 + (id)tokenTemplateFilledForKey:(id)arg1 style:(int)arg2 size:(struct CGSize)arg3;
 + (id)tokenTemplateForKey:(id)arg1 name:(id)arg2 style:(int)arg3 size:(struct CGSize)arg4;
 + (id)tokenTemplateForKey:(id)arg1 style:(int)arg2 size:(struct CGSize)arg3;
-+ (id)tokenForKey:(id)arg1 style:(int)arg2 state:(int)arg3 clipCorners:(int)arg4;
-+ (id)tokenForKey:(id)arg1 style:(int)arg2 state:(int)arg3;
++ (id)tokenForKeyMask:(id)arg1 style:(CDStruct_961fb75c)arg2 displayInsets:(struct UIEdgeInsets)arg3;
++ (id)tokenForKey:(id)arg1 style:(CDStruct_961fb75c)arg2 displayInsets:(struct UIEdgeInsets)arg3;
++ (id)tokenForKey:(id)arg1 style:(CDStruct_961fb75c)arg2;
 + (id)tokenForKeyplane:(id)arg1;
+@property(nonatomic) long long renderFlags; // @synthesize renderFlags=_renderFlags;
 @property(nonatomic) int emptyFields; // @synthesize emptyFields=_emptyFields;
 @property(retain, nonatomic) NSString *name; // @synthesize name=_name;
-- (id)stringForSplitState:(BOOL)arg1;
+- (id)stringForRenderFlags:(long long)arg1 lightKeyboard:(_Bool)arg2;
+- (id)stringForSplitState:(_Bool)arg1;
 - (id)stringForState:(int)arg1;
 - (id)stringForKey:(id)arg1 state:(int)arg2;
-@property(readonly, nonatomic) BOOL hasKey;
+@property(readonly, nonatomic) NSString *string;
+- (id)stringForComponentArray:(id)arg1 additionalValues:(CDUnknownBlockType)arg2;
+- (id)stringForConstruction:(CDUnknownBlockType)arg1;
+- (int)_writeArray:(id)arg1 toStr:(char *)arg2 maxLen:(int)arg3;
+- (int)_writeEdgeInsets:(struct UIEdgeInsets)arg1 toStr:(char *)arg2 maxLen:(int)arg3;
+- (int)_writeNumber:(float)arg1 toStr:(char *)arg2;
+- (int)_writeString:(id)arg1 toStr:(char *)arg2 maxLen:(int)arg3;
+@property(readonly, nonatomic) _Bool hasKey;
 @property(nonatomic) int displayHint;
 @property(nonatomic) int rowHint;
 @property(nonatomic) struct CGSize size;
-@property(readonly, nonatomic) NSString *string;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithComponents:(id)arg1 name:(id)arg2 emptyFields:(int)arg3;
 - (id)initWithComponents:(id)arg1 name:(id)arg2;
+- (id)initWithName:(id)arg1;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSMutableArray, NSMutableIndexSet, UICollectionViewData;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewData;
 
 __attribute__((visibility("hidden")))
 @interface UICollectionViewUpdate : NSObject
 {
+    UICollectionView *_collectionView;
     NSArray *_updateItems;
     UICollectionViewData *_oldModel;
     UICollectionViewData *_newModel;
@@ -18,12 +19,16 @@ __attribute__((visibility("hidden")))
     struct CGRect _newVisibleBounds;
     NSMutableIndexSet *_movedItems;
     NSMutableIndexSet *_movedSections;
-    NSMutableArray *_deletedSections;
-    NSMutableArray *_insertedSections;
-    int *_oldSectionMap;
-    int *_newSectionMap;
-    int *_oldGlobalItemMap;
-    int *_newGlobalItemMap;
+    NSMutableIndexSet *_deletedSections;
+    NSMutableIndexSet *_insertedSections;
+    long long *_oldSectionMap;
+    long long *_newSectionMap;
+    long long *_oldGlobalItemMap;
+    long long *_newGlobalItemMap;
+    NSMutableArray *_deletedSupplementaryIndexesSectionArray;
+    NSMutableArray *_insertedSupplementaryIndexesSectionArray;
+    NSMutableDictionary *_deletedSupplementaryTopLevelIndexesDict;
+    NSMutableDictionary *_insertedSupplementaryTopLevelIndexesDict;
     id *_animatedItems;
     id *_animatedHeaders;
     id *_animatedFooters;
@@ -31,11 +36,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_gaps;
 }
 
+- (id)oldIndexPathForSupplementaryElementOfKind:(id)arg1 newIndexPath:(id)arg2;
+- (id)newIndexPathForSupplementaryElementOfKind:(id)arg1 oldIndexPath:(id)arg2;
 - (void)_computeGaps;
+- (void)_computeSupplementaryUpdates;
 - (void)_computeItemUpdates;
 - (void)_computeSectionUpdates;
 - (void)dealloc;
-- (id)initWithUpdateItems:(id)arg1 oldModel:(id)arg2 newModel:(id)arg3 oldVisibleBounds:(struct CGRect)arg4 newVisibleBounds:(struct CGRect)arg5;
+- (id)initWithCollectionView:(id)arg1 updateItems:(id)arg2 oldModel:(id)arg3 newModel:(id)arg4 oldVisibleBounds:(struct CGRect)arg5 newVisibleBounds:(struct CGRect)arg6;
 
 @end
 

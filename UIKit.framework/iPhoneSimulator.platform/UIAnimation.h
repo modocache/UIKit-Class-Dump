@@ -28,8 +28,8 @@
 - (void)setAnimationCurve:(int)arg1;
 - (CDUnknownBlockType)completion;
 - (void)setCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)usesNSTimer;
-- (void)setUsesNSTimer:(BOOL)arg1;
+- (_Bool)usesNSTimer;
+- (void)setUsesNSTimer:(_Bool)arg1;
 - (SEL)action;
 - (void)setAction:(SEL)arg1;
 - (id)delegate;

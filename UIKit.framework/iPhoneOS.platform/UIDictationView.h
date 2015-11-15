@@ -6,31 +6,38 @@
 
 #import <UIKit/UIView.h>
 
-@class UIButton, UIDictationMeterView, UIKeyboardDicationBackground;
+#import "_UISiriWaveyViewDelegate.h"
+
+@class UIButton, UIDictationMeterView, UIKeyboardDicationBackground, _UISiriWaveyView;
 
 __attribute__((visibility("hidden")))
-@interface UIDictationView : UIView
+@interface UIDictationView : UIView <_UISiriWaveyViewDelegate>
 {
     UIKeyboardDicationBackground *_background;
-    UIDictationMeterView *_meterView;
     UIButton *_endpointButton;
     UIButton *_endpointButtonLandscape;
+    UIButton *_waveTapEndpointButton;
     int _state;
-    BOOL _keyboardInTransition;
-    BOOL _automaticAppearanceWasEnabled;
+    _Bool _keyboardInTransition;
+    _Bool _automaticAppearanceWasEnabled;
+    _UISiriWaveyView *_waveyView;
+    UIDictationMeterView *_meterView;
 }
 
 + (struct CGSize)layoutSize;
 + (id)activeInstance;
 + (id)sharedInstance;
++ (struct CGSize)viewSize;
 + (Class)dictationViewClass;
-- (BOOL)visible;
+- (float)audioLevelForWaveyView:(id)arg1;
+- (_Bool)visible;
 - (void)endpointButtonPressed;
 - (void)dealloc;
 - (void)layoutSubviews;
-- (BOOL)drawsOwnBackground;
+- (_Bool)drawsOwnBackground;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setState:(int)arg1;
+- (_Bool)isShowing;
 - (void)returnToKeyboard;
 - (void)finishReturnToKeyboard;
 - (void)prepareForReturnToKeyboard;
@@ -43,7 +50,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)currentScreenSize;
 - (id)createEndpointButtonWithRect:(struct CGRect)arg1 action:(SEL)arg2;
 - (id)endpointButton;
-- (id)endpointButtonImageWithRect:(struct CGRect)arg1 pressed:(BOOL)arg2;
+- (id)endpointButtonImageWithRect:(struct CGRect)arg1 pressed:(_Bool)arg2;
+- (void)applicationWillResignActive;
 
 @end
 

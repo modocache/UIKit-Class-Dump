@@ -8,40 +8,37 @@
 #import "UITextInputTokenizer.h"
 #import "UITextInputTraits_Private.h"
 
-@class DOMRange, NSArray, NSString, UIColor, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, WebEvent;
+@class NSArray, NSAttributedString, NSString, UIColor, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, WebEvent;
 
 @protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private>
 @property(readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
-- (BOOL)hasSelection;
-- (UIFont *)fontForCaretSelection;
-- (UIColor *)textColorForCaretSelection;
+- (_Bool)hasSelection;
 - (void)selectAll;
-- (BOOL)hasContent;
-- (void)setMarkedText:(NSString *)arg1;
-- (NSString *)markedText;
-- (DOMRange *)wordRangeContainingCaretSelection;
-- (NSString *)wordContainingCaretSelection;
-- (unsigned short)characterBeforeCaretSelection;
-- (void)moveForward:(unsigned int)arg1;
-- (void)moveBackward:(unsigned int)arg1;
-- (struct CGRect)rectContainingCaretSelection;
-- (void)replaceRangeWithTextWithoutClosingTyping:(UITextRange *)arg1 replacementText:(NSString *)arg2;
-- (void)setSelectedDOMRange:(DOMRange *)arg1 affinityDownstream:(BOOL)arg2;
-- (DOMRange *)selectedDOMRange;
-- (struct _NSRange)_markedTextNSRange;
-- (struct CGRect)rectForNSRange:(struct _NSRange)arg1;
+- (_Bool)hasContent;
 - (struct _NSRange)selectionRange;
 - (UITextInputTraits *)textInputTraits;
 
 @optional
-@property(nonatomic) int selectionGranularity;
-- (UITextPosition *)nextUnperturbedDictationResultBoundaryFromPosition:(UITextPosition *)arg1;
-- (UITextPosition *)previousUnperturbedDictationResultBoundaryFromPosition:(UITextPosition *)arg1;
++ (void)_preheatDictationIfNecessary;
+@property(nonatomic) long long selectionGranularity;
+- (void)_insertAttributedTextWithoutClosingTyping:(NSAttributedString *)arg1;
+- (UIFont *)fontForCaretSelection;
+- (UIColor *)textColorForCaretSelection;
+- (void)replaceRangeWithTextWithoutClosingTyping:(UITextRange *)arg1 replacementText:(NSString *)arg2;
+- (_Bool)_shouldRepeatInsertText:(NSString *)arg1;
+- (double)_delayUntilRepeatInsertText:(NSString *)arg1;
+- (_Bool)isAutoFillMode;
+- (void)acceptedAutoFillWord:(NSString *)arg1;
+- (NSString *)_dictationLanguage;
+- (void)_stopDictation;
+- (void)_startDictation;
+- (void)dictationRecordingDidBegin;
+- (UITextRange *)rangeWithTextAlternatives:(id *)arg1 atPosition:(UITextPosition *)arg2;
 - (NSArray *)metadataDictionariesForDictationResults;
 - (void)insertDictationResult:(NSArray *)arg1 withCorrectionIdentifier:(id)arg2;
 - (UIView *)automaticallySelectedOverlay;
-- (void)setBottomBufferHeight:(float)arg1;
+- (void)setBottomBufferHeight:(double)arg1;
 - (void)handleKeyWebEvent:(WebEvent *)arg1;
-- (BOOL)requiresKeyEvents;
+- (_Bool)requiresKeyEvents;
 @end
 

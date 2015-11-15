@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)_isWindowServerHostingManaged;
+- (_Bool)_isWindowServerHostingManaged;
 
 @end
 

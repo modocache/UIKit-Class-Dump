@@ -6,21 +6,21 @@
 
 #import <UIKit/UIBarItem.h>
 
-@class NSSet, NSString, UIImage, UIView;
+@class NSString, UIColor, UIImage, UIView;
 
 @interface UITabBarItem : UIBarItem
 {
     NSString *_title;
-    NSSet *_possibleTitles;
     SEL _action;
     id _target;
-    UIImage *_image;
+    UIImage *_templateImage;
+    UIImage *_selectedTemplateImage;
     UIImage *_selectedImage;
     UIImage *_unselectedImage;
     struct UIEdgeInsets _imageInsets;
     NSString *_badgeValue;
     UIView *_view;
-    int _tag;
+    long long _tag;
     id _appearanceStorage;
     struct {
         unsigned int enabled:1;
@@ -32,18 +32,25 @@
         unsigned int customSelectedImage:1;
         unsigned int customUnselectedImage:1;
     } _tabBarItemFlags;
+    long long _barMetrics;
+    long long _imageStyle;
+    UIColor *_tintColor;
 }
 
-+ (id)_appearanceProxyViewClasses;
-- (void)setTag:(int)arg1;
-- (int)tag;
++ (id)_appearanceBlindViewClasses;
+- (void)setTag:(long long)arg1;
+- (long long)tag;
+@property(retain, nonatomic, setter=_setTintColor:) UIColor *_tintColor; // @synthesize _tintColor;
+@property(nonatomic, setter=_setImageStyle:) long long _imageStyle; // @synthesize _imageStyle;
+@property(nonatomic, setter=_setBarMetrics:) long long _barMetrics; // @synthesize _barMetrics;
 - (struct UIOffset)titlePositionAdjustment;
 - (void)setTitlePositionAdjustment:(struct UIOffset)arg1;
-- (id)titleTextAttributesForState:(unsigned int)arg1;
-- (void)setTitleTextAttributes:(id)arg1 forState:(unsigned int)arg2;
+- (id)titleTextAttributesForState:(unsigned long long)arg1;
+- (void)setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (id)finishedUnselectedImage;
 - (id)finishedSelectedImage;
 - (void)setFinishedSelectedImage:(id)arg1 withFinishedUnselectedImage:(id)arg2;
+@property(retain, nonatomic) UIImage *selectedImage;
 @property(copy, nonatomic) NSString *badgeValue;
 - (struct UIEdgeInsets)imageInsets;
 - (void)setImageInsets:(struct UIEdgeInsets)arg1;
@@ -51,14 +58,19 @@
 - (void)setImage:(id)arg1;
 - (id)title;
 - (void)setTitle:(id)arg1;
-- (BOOL)isEnabled;
-- (void)setEnabled:(BOOL)arg1;
+- (_Bool)isEnabled;
+- (void)setEnabled:(_Bool)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTabBarSystemItem:(int)arg1 tag:(int)arg2;
-- (id)initWithTitle:(id)arg1 image:(id)arg2 tag:(int)arg3;
+- (id)initWithTabBarSystemItem:(long long)arg1 tag:(long long)arg2;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 selectedImage:(id)arg3;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 tag:(long long)arg3;
 - (id)init;
+- (void)_updateToMatchCurrentState;
+- (_Bool)_isSelected;
+- (void)_setSelected:(_Bool)arg1;
+- (id)_internalTemplateImages;
 - (id)_internalTemplateImage;
 - (void)_setInternalTemplateImage:(id)arg1;
 - (id)_internalTitle;
@@ -66,18 +78,20 @@
 @property(nonatomic) SEL action;
 @property(nonatomic) id target;
 @property(retain, nonatomic) UIImage *unselectedImage;
-@property(retain, nonatomic) UIImage *selectedImage;
-@property(nonatomic) BOOL animatedBadge;
-@property(nonatomic) BOOL viewIsCustom;
+@property(nonatomic) _Bool animatedBadge;
+@property(nonatomic) _Bool viewIsCustom;
 @property(retain, nonatomic) UIView *view;
-- (int)systemItem;
-- (BOOL)isSystemItem;
+- (long long)systemItem;
+- (_Bool)isSystemItem;
 - (void)_updateView;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(BOOL)arg2 withTint:(BOOL)arg3;
-- (id)_createViewForTabBar:(id)arg1 showingBadge:(BOOL)arg2;
-- (void)_setTitleTextAttributeValue:(id)arg1 forAttributeKey:(id)arg2 state:(unsigned int)arg3;
+- (void)_updateViewForIdiom:(long long)arg1;
+- (void)_updateViewForIdiom:(long long)arg1 positionItems:(_Bool)arg2;
+- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2 withTint:(_Bool)arg3 idiom:(long long)arg4;
+- (id)_createViewForTabBar:(id)arg1 showingBadge:(_Bool)arg2 idiom:(long long)arg3;
+- (void)_setTitleTextAttributeValue:(id)arg1 forAttributeKey:(id)arg2 state:(unsigned long long)arg3;
 - (id)nextResponder;
-- (id)_updateImageWithTintColor:(id)arg1 isSelected:(BOOL)arg2 getImageOffset:(struct UIOffset *)arg3;
+- (id)_updateImageWithTintColor:(id)arg1 isSelected:(_Bool)arg2 getImageOffset:(struct UIOffset *)arg3;
+- (void)_updateButtonForTintColor:(id)arg1 selected:(_Bool)arg2;
 
 @end
 

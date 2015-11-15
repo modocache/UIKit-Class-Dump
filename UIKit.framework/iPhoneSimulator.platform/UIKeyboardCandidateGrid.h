@@ -6,82 +6,87 @@
 
 #import <UIKit/UIView.h>
 
+#import "UIKeyboardCandidateGridCollectionViewControllerDelegate.h"
 #import "UIKeyboardCandidateList.h"
 #import "UIKeyboardCandidateListDelegate.h"
-#import "UIKeyboardCandidateScrollViewControllerDelegate.h"
 
-@class NSArray, NSMutableDictionary, NSString, UIImageView, UIKeyboardCandidateGridHeader, UIKeyboardCandidateScrollViewController, UIKeyboardCandidateSortControl;
+@class NSArray, NSMutableDictionary, NSString, TIKeyboardCandidateResultSet, UIImageView, UIKBBackdropView, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateGridHeader, UIKeyboardCandidateSortControl;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardCandidateGrid : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateScrollViewControllerDelegate>
+@interface UIKeyboardCandidateGrid : UIView <UIKeyboardCandidateList, UIKeyboardCandidateListDelegate, UIKeyboardCandidateGridCollectionViewControllerDelegate>
 {
     UIImageView *_backgroundView;
     UIView *_topBarShadow;
     UIView *_bottomBarShadow;
     UIKeyboardCandidateSortControl *_sortBar;
     UIKeyboardCandidateGridHeader *_gridHeader;
-    BOOL _drawTopShadow;
-    BOOL _drawBottomShadow;
+    _Bool _drawTopShadow;
+    _Bool _drawBottomShadow;
+    _Bool _showHiddenCandidatesOnly;
+    int _candidatesVisualStyle;
     id <UIKeyboardCandidateListDelegate> _candidateListDelegate;
-    NSArray *_candidates;
-    unsigned int _selectedCandidateIndex;
-    NSArray *_sorts;
-    NSMutableDictionary *_scrollViewControllers;
-    UIKeyboardCandidateScrollViewController *_scrollViewController;
-    unsigned int _numberOfColumns;
-    id <UIScrollViewDelegate> _scrollViewDelegate;
-    int _visualStyle;
+    TIKeyboardCandidateResultSet *_candidateSet;
+    NSMutableDictionary *_collectionViewControllers;
+    UIKeyboardCandidateGridCollectionViewController *_collectionViewController;
+    unsigned long long _numberOfColumns;
+    id <UICollectionViewDelegate> _scrollViewDelegate;
+    UIKBBackdropView *_backdropView;
     NSArray *_sortedCandidates;
     NSString *_inlineText;
 }
 
+@property(nonatomic) _Bool showHiddenCandidatesOnly; // @synthesize showHiddenCandidatesOnly=_showHiddenCandidatesOnly;
 @property(retain, nonatomic) NSString *inlineText; // @synthesize inlineText=_inlineText;
 @property(retain, nonatomic) NSArray *sortedCandidates; // @synthesize sortedCandidates=_sortedCandidates;
-@property(nonatomic) int visualStyle; // @synthesize visualStyle=_visualStyle;
-@property(nonatomic) id <UIScrollViewDelegate> scrollViewDelegate; // @synthesize scrollViewDelegate=_scrollViewDelegate;
-@property(nonatomic) unsigned int numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
+@property(retain, nonatomic) UIKBBackdropView *backdropView; // @synthesize backdropView=_backdropView;
+@property(nonatomic) int candidatesVisualStyle; // @synthesize candidatesVisualStyle=_candidatesVisualStyle;
+@property(nonatomic) id <UICollectionViewDelegate> scrollViewDelegate; // @synthesize scrollViewDelegate=_scrollViewDelegate;
+@property(nonatomic) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property(nonatomic) UIKeyboardCandidateGridHeader *gridHeader; // @synthesize gridHeader=_gridHeader;
 @property(nonatomic) UIKeyboardCandidateSortControl *sortBar; // @synthesize sortBar=_sortBar;
-@property(retain, nonatomic) UIKeyboardCandidateScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
-@property(retain, nonatomic) NSArray *sorts; // @synthesize sorts=_sorts;
-@property(retain, nonatomic) NSArray *candidates; // @synthesize candidates=_candidates;
+@property(retain, nonatomic) UIKeyboardCandidateGridCollectionViewController *collectionViewController; // @synthesize collectionViewController=_collectionViewController;
+@property(retain, nonatomic) TIKeyboardCandidateResultSet *candidateSet; // @synthesize candidateSet=_candidateSet;
 @property(nonatomic) id <UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
-@property(nonatomic) BOOL drawBottomShadow; // @synthesize drawBottomShadow=_drawBottomShadow;
-@property(nonatomic) BOOL drawTopShadow; // @synthesize drawTopShadow=_drawTopShadow;
-- (void)padInlineFloatingViewExpand:(id)arg1;
-- (BOOL)padInlineFloatingViewIsExpanded:(id)arg1;
-- (id)indexTitlesForGroupTitles:(id)arg1;
+@property(nonatomic) _Bool drawBottomShadow; // @synthesize drawBottomShadow=_drawBottomShadow;
+@property(nonatomic) _Bool drawTopShadow; // @synthesize drawTopShadow=_drawTopShadow;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
+- (_Bool)padInlineFloatingViewIsExpanded:(id)arg1;
+- (unsigned long long)gridCollectionViewNumberOfColumns:(id)arg1;
+- (unsigned long long)gridCollectionViewSelectedSortMethodIndex:(id)arg1;
 - (void)sortSelectionBarAction:(id)arg1;
-@property(readonly, nonatomic) NSMutableDictionary *scrollViewControllers; // @synthesize scrollViewControllers=_scrollViewControllers;
-- (BOOL)candidatesForSortIndexShowAlternativeText:(int)arg1;
-- (id)candidateGroupsForSortIndex:(int)arg1;
+@property(readonly, nonatomic) NSMutableDictionary *collectionViewControllers; // @synthesize collectionViewControllers=_collectionViewControllers;
+- (void)setCandidateSet:(id)arg1 showHiddenCandidatesOnly:(_Bool)arg2;
+- (void)revealHiddenCandidates;
 - (void)candidateListShouldBeDismissed:(id)arg1;
 - (void)candidateListSelectionDidChange:(id)arg1;
 - (void)candidateListAcceptCandidate:(id)arg1;
-- (BOOL)handleTabKeyWithShift:(BOOL)arg1;
-- (BOOL)handleNumberKey:(unsigned int)arg1;
-- (void)configureKeyboard:(id)arg1;
+- (_Bool)handleTabKeyWithShift:(_Bool)arg1;
+- (_Bool)handleNumberKey:(unsigned long long)arg1;
+- (unsigned long long)selectedSortIndex;
+- (id)statisticsIdentifier;
+- (id)keyboardBehaviors;
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
-- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(float)arg5 layout:(BOOL)arg6;
-- (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(float)arg4 layout:(BOOL)arg5;
+- (void)setCandidates:(id)arg1 type:(int)arg2 inlineText:(id)arg3 inlineRect:(struct CGRect)arg4 maxX:(double)arg5 layout:(_Bool)arg6;
+- (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(_Bool)arg5;
 - (void)candidatesDidChange;
-- (unsigned int)count;
-- (void)candidateAcceptedAtIndex:(unsigned int)arg1;
-- (id)candidateAtIndex:(unsigned int)arg1;
-- (unsigned int)currentIndex;
+- (_Bool)hasCandidates;
+- (void)candidateAcceptedAtIndex:(unsigned long long)arg1;
+- (unsigned long long)currentIndex;
 - (id)currentCandidate;
-- (BOOL)hasNextPage;
-- (BOOL)hasPreviousPage;
+- (_Bool)hasNextPage;
+- (_Bool)hasPreviousPage;
+- (void)showPreviousRow;
+- (void)showNextRow;
 - (void)showPreviousPage;
 - (void)showNextPage;
-- (void)showPageAtIndex:(unsigned int)arg1;
-@property(nonatomic) unsigned int selectedCandidateIndex; // @synthesize selectedCandidateIndex=_selectedCandidateIndex;
 - (void)showPreviousCandidate;
 - (void)showNextCandidate;
 - (void)showCandidate:(id)arg1;
-- (void)showCandidateAtIndex:(unsigned int)arg1;
-- (void)showArrowButton:(BOOL)arg1;
-- (void)selectCandidate:(id)arg1;
+- (void)showCandidateAtIndex:(unsigned long long)arg1;
+- (_Bool)isExtendedList;
+- (_Bool)isHiddenCandidatesList;
+- (void)showArrowButton:(_Bool)arg1;
 - (void)statusBarFrameWillChange:(id)arg1;
 - (void)layout;
 - (void)layoutSubviews;

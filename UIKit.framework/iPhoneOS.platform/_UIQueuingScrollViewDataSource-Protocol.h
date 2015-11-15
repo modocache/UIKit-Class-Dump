@@ -9,7 +9,7 @@
 @class UIView, _UIQueuingScrollView;
 
 @protocol _UIQueuingScrollViewDataSource <NSObject>
-- (void)queuingScrollView:(_UIQueuingScrollView *)arg1 didFlushView:(UIView *)arg2 animated:(BOOL)arg3;
+- (void)queuingScrollView:(_UIQueuingScrollView *)arg1 didFlushView:(UIView *)arg2 animated:(_Bool)arg3;
 - (id)queuingScrollView:(_UIQueuingScrollView *)arg1 viewAfterView:(UIView *)arg2;
 - (id)queuingScrollView:(_UIQueuingScrollView *)arg1 viewBeforeView:(UIView *)arg2;
 @end

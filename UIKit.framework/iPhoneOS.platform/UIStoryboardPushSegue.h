@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface UIStoryboardPushSegue : UIStoryboardSegue
 {
-    int _destinationContainmentContext;
-    int _splitViewControllerIndex;
+    long long _destinationContainmentContext;
+    long long _splitViewControllerIndex;
 }
 
-@property(nonatomic) int splitViewControllerIndex; // @synthesize splitViewControllerIndex=_splitViewControllerIndex;
-@property(nonatomic) int destinationContainmentContext; // @synthesize destinationContainmentContext=_destinationContainmentContext;
+@property(nonatomic) long long splitViewControllerIndex; // @synthesize splitViewControllerIndex=_splitViewControllerIndex;
+@property(nonatomic) long long destinationContainmentContext; // @synthesize destinationContainmentContext=_destinationContainmentContext;
 - (void)perform;
 
 @end

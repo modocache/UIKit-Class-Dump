@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct UIEdgeInsets)contentViewInsets;
-+ (void)useNormalContentViewInsets:(BOOL)arg1;
-- (float)_shadowOpacity;
++ (void)useNormalContentViewInsets:(_Bool)arg1;
+- (double)_shadowOpacity;
 
 @end
 

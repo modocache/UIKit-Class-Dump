@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)highlightView:(id)arg1;
-- (void)applyState:(unsigned int)arg1 toView:(id)arg2;
-- (void)cacheState:(unsigned int)arg1 forView:(id)arg2;
+- (void)applyState:(unsigned long long)arg1 toView:(id)arg2;
+- (void)cacheState:(unsigned long long)arg1 forView:(id)arg2;
 - (void)dealloc;
 - (id)initWithCell:(id)arg1;
 

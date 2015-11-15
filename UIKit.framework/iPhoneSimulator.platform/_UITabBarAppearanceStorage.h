@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSMutableDictionary, UIColor, UIImage, _UITabBarItemAppearanceStorage;
+@class NSDictionary, NSMutableDictionary, UIColor, UIImage, _UITabBarItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
 @interface _UITabBarAppearanceStorage : NSObject
@@ -15,19 +15,20 @@ __attribute__((visibility("hidden")))
     UIImage *backgroundImage;
     UIImage *shadowImage;
     UIImage *selectionIndicatorImage;
-    UIColor *tintColor;
+    UIColor *barTintColor;
     UIColor *selectedImageTintColor;
     _UITabBarItemAppearanceStorage *tabItemAppearanceStorage;
 }
 
 @property(retain, nonatomic) UIColor *selectedImageTintColor; // @synthesize selectedImageTintColor;
-@property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor;
+@property(retain, nonatomic) UIColor *barTintColor; // @synthesize barTintColor;
 @property(retain, nonatomic) UIImage *selectionIndicatorImage; // @synthesize selectionIndicatorImage;
 @property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage;
 @property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage;
 - (void)dealloc;
-- (id)_dividerImageForLeftButtonState:(unsigned int)arg1 rightButtonState:(unsigned int)arg2;
-- (void)_setDividerImage:(id)arg1 forLeftButtonState:(unsigned int)arg2 rightButtonState:(unsigned int)arg3;
+@property(readonly, nonatomic) NSDictionary *dividerImagesForCoding;
+- (id)_dividerImageForLeftButtonState:(unsigned long long)arg1 rightButtonState:(unsigned long long)arg2;
+- (void)_setDividerImage:(id)arg1 forLeftButtonState:(unsigned long long)arg2 rightButtonState:(unsigned long long)arg3;
 - (id)_tabItemAppearanceStorage;
 @property(retain, nonatomic) _UITabBarItemAppearanceStorage *tabItemAppearanceStorage;
 

@@ -12,8 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultFont;
-- (BOOL)_shouldDrawUnderlinesLikeWebKit;
-- (BOOL)_allowAscentRounding;
+- (_Bool)_shouldDrawUnderlinesLikeWebKit;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (void)_defaultDrawTextInRect:(struct CGRect)arg1;
 

@@ -8,53 +8,53 @@
 
 @class NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface UIWebTouchEventsGestureRecognizer : UIGestureRecognizer
 {
     id _touchTarget;
     SEL _touchAction;
+    id <UIWebTouchEventsGestureRecognizerDelegate> _webTouchDelegate;
     unsigned int _passedHitTest:1;
     unsigned int _defaultPrevented:1;
     unsigned int _inJavaScriptGesture:1;
-    float _originalGestureDistance;
-    float _originalGestureAngle;
-    int _type;
+    unsigned int _type:2;
+    double _originalGestureDistance;
+    double _originalGestureAngle;
     struct CGPoint _locationInWindow;
     NSMutableArray *_touchLocations;
     NSMutableArray *_touchIdentifiers;
     NSMutableArray *_touchPhases;
-    float _scale;
-    float _rotation;
+    double _scale;
+    double _rotation;
 }
 
-@property(readonly, nonatomic) float rotation; // @synthesize rotation=_rotation;
-@property(readonly, nonatomic) float scale; // @synthesize scale=_scale;
-@property(readonly, nonatomic) BOOL inJavaScriptGesture; // @synthesize inJavaScriptGesture=_inJavaScriptGesture;
+@property(readonly, nonatomic) double rotation; // @synthesize rotation=_rotation;
+@property(readonly, nonatomic) double scale; // @synthesize scale=_scale;
+@property(readonly, nonatomic) _Bool inJavaScriptGesture; // @synthesize inJavaScriptGesture=_inJavaScriptGesture;
 @property(retain, nonatomic) NSMutableArray *touchPhases; // @synthesize touchPhases=_touchPhases;
 @property(retain, nonatomic) NSMutableArray *touchIdentifiers; // @synthesize touchIdentifiers=_touchIdentifiers;
 @property(retain, nonatomic) NSMutableArray *touchLocations; // @synthesize touchLocations=_touchLocations;
 @property(readonly, nonatomic) struct CGPoint locationInWindow; // @synthesize locationInWindow=_locationInWindow;
 @property(readonly, nonatomic) int type; // @synthesize type=_type;
-@property(nonatomic, getter=isDefaultPrevented) BOOL defaultPrevented; // @synthesize defaultPrevented=_defaultPrevented;
+@property(nonatomic, getter=isDefaultPrevented) _Bool defaultPrevented; // @synthesize defaultPrevented=_defaultPrevented;
+- (id).cxx_construct;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
-- (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
+- (_Bool)canBePreventedByGestureRecognizer:(id)arg1;
 - (void)_processTouches:(id)arg1 withEvent:(id)arg2 type:(int)arg3;
 - (void)_recordTouches:(id)arg1 type:(int)arg2;
 - (unsigned int)_getNextTouchIdentifier;
-- (BOOL)_hitTestTouches:(id)arg1;
 - (void)_resetGestureRecognizer;
 - (void)_reset;
 - (id)description;
 - (id)_phasesDescription;
-- (id)_phaseDescription:(int)arg1;
+- (id)_phaseDescription:(long long)arg1;
 - (id)_identifiersDescription;
 - (id)_locationsDescription;
 - (id)_typeDescription;
 - (void)dealloc;
-- (id)initWithTarget:(id)arg1 action:(SEL)arg2;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2 touchDelegate:(id)arg3;
 
 @end
 

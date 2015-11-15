@@ -6,18 +6,21 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
+#import "NSSecureCoding.h"
 
-__attribute__((visibility("hidden")))
-@interface _UIViewAnimationAttributes : NSObject <NSCoding>
+@interface _UIViewAnimationAttributes : NSObject <NSSecureCoding>
 {
     double _duration;
     double _delay;
-    unsigned int _options;
+    unsigned long long _options;
+    long long _curve;
 }
 
++ (_Bool)supportsSecureCoding;
+@property(readonly, nonatomic, getter=_curve) long long curve; // @synthesize curve=_curve;
 @property(readonly, nonatomic, getter=_delay) double delay; // @synthesize delay=_delay;
 @property(readonly, nonatomic, getter=_duration) double duration; // @synthesize duration=_duration;
+- (long long)curve;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
