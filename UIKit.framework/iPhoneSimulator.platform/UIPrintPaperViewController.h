@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (int)numberOfSectionsInTableView:(id)arg1;
 - (void)loadView;
 - (void)adjustPopoverSize;
+- (unsigned int)supportedInterfaceOrientations;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
 - (void)dealloc;
 - (id)initWithPrintPanelViewController:(id)arg1;

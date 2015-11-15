@@ -4,11 +4,13 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSString, UIDocumentPasswordView, UITextField;
+
 @protocol UIDocumentPasswordViewDelegate
-- (void)userDidEnterPassword:(id)arg1 forPasswordView:(id)arg2;
+- (void)userDidEnterPassword:(NSString *)arg1 forPasswordView:(UIDocumentPasswordView *)arg2;
 
 @optional
-- (void)didEndEditingPassword:(id)arg1 inView:(id)arg2;
-- (void)didBeginEditingPassword:(id)arg1 inView:(id)arg2;
+- (void)didEndEditingPassword:(UITextField *)arg1 inView:(UIDocumentPasswordView *)arg2;
+- (void)didBeginEditingPassword:(UITextField *)arg1 inView:(UIDocumentPasswordView *)arg2;
 @end
 

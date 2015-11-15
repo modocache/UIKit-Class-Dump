@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)doneProgress;
 - (void)didRotateFromInterfaceOrientation:(int)arg1;
 - (void)willAnimateRotationToInterfaceOrientation:(int)arg1 duration:(double)arg2;
+- (unsigned int)supportedInterfaceOrientations;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
 - (void)dealloc;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 printingProgress:(id)arg3;

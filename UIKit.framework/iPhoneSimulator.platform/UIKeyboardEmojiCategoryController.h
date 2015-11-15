@@ -6,22 +6,14 @@
 
 #import "NSObject.h"
 
-@class NSDictionary, NSMutableDictionary;
-
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCategoryController : NSObject
 {
-    id <UIKeyboardEmojiController> emojiController;
-    NSMutableDictionary *categories;
-    NSMutableDictionary *_defaultsData;
 }
 
-@property(retain) NSDictionary *defaultsData;
-- (void)updateRecents;
-- (id)categoryForKey:(id)arg1;
-- (void)releaseCategories;
-- (void)dealloc;
-- (id)initWithController:(id)arg1;
++ (Class)classForCategoryControl;
+- (void)setCurrentCategory:(id)arg1;
+- (id)initWithCategoryControl:(id)arg1;
 
 @end
 

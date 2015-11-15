@@ -10,15 +10,16 @@
 @class UIColor, UIImage;
 
 @protocol UITextInputTraits_Private <NSObject, UITextInputTraits>
-- (void)takeTraitsFrom:(id)arg1;
+- (void)takeTraitsFrom:(id <UITextInputTraits>)arg1;
 
 @optional
+@property(nonatomic) BOOL deferBecomingResponder;
+@property(nonatomic) BOOL useInterfaceLanguageForLocalization;
 @property(nonatomic) BOOL forceEnableDictation;
 @property(nonatomic) BOOL suppressReturnKeyStyling;
 @property(nonatomic) int shortcutConversionType;
 @property(nonatomic) BOOL learnsCorrections;
 @property(nonatomic) BOOL displaySecureTextUsingPlainText;
-@property(nonatomic, getter=isRichText) BOOL richText;
 @property(nonatomic) BOOL acceptsSplitKeyboard;
 @property(nonatomic) BOOL acceptsFloatingKeyboard;
 @property(nonatomic) BOOL returnKeyGoesToNextResponder;

@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+@class NSDictionary, UICalloutBar;
+
 @protocol UICalloutBarDelegate <NSObject>
 
 @optional
-- (void)calloutBar:(id)arg1 didFinishAnimation:(id)arg2;
-- (void)calloutBar:(id)arg1 willStartAnimation:(id)arg2;
+- (void)calloutBar:(UICalloutBar *)arg1 didFinishAnimation:(NSDictionary *)arg2;
+- (void)calloutBar:(UICalloutBar *)arg1 willStartAnimation:(NSDictionary *)arg2;
 @end
 

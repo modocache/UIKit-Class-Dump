@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
 - (void)cancelSwitcherTimer;
 - (void)touchSwitcherTimer;
 - (void)showSwitcher;
+- (void)clearHideSwitcherTimer;
+- (void)touchHideSwitcherTimer;
 - (void)hideSwitcher;
 - (void)handleRotate:(id)arg1;
 - (void)setNewMode:(id)arg1;

@@ -8,7 +8,6 @@
 
 @class UIWindow;
 
-__attribute__((visibility("hidden")))
 @interface _UIFallbackPresentationViewController : UIViewController
 {
     UIWindow *_rotationDecider;
@@ -16,6 +15,8 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) UIWindow *rotationDecider; // @synthesize rotationDecider=_rotationDecider;
 - (void)_presentViewController:(id)arg1 sendingView:(id)arg2 animated:(BOOL)arg3;
+- (BOOL)shouldAutorotate;
+- (unsigned int)supportedInterfaceOrientations;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
 - (void)viewDidUnload;
 - (void)viewDidLoad;

@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSTimer *_timer;
     UITextRange *_range;
     id _placeholder;
+    BOOL _didHaveText;
     BOOL _willInsertResult;
     float _diameter;
     float _margin;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)errorAnimationDidFinish;
 - (void)stopLanding;
 - (void)startLanding;
+- (BOOL)delegateWasEmpty;
 - (void)updatePosition;
 - (void)placeDots;
 - (void)advanceLanding:(id)arg1;

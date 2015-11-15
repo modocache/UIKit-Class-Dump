@@ -6,12 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSString, UITableCell;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface UIRemoveControlTextButton : UIControl
 {
-    UITableCell *_tableCell;
     NSString *_label;
 }
 

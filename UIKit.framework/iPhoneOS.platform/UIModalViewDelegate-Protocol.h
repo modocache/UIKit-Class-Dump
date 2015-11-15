@@ -6,14 +6,16 @@
 
 #import "NSObject.h"
 
+@class UIModalView;
+
 @protocol UIModalViewDelegate <NSObject>
 
 @optional
-- (void)modalView:(id)arg1 didDismissWithButtonIndex:(int)arg2;
-- (void)modalView:(id)arg1 willDismissWithButtonIndex:(int)arg2;
-- (void)didPresentModalView:(id)arg1;
-- (void)willPresentModalView:(id)arg1;
-- (void)modalViewCancel:(id)arg1;
-- (void)modalView:(id)arg1 clickedButtonAtIndex:(int)arg2;
+- (void)modalView:(UIModalView *)arg1 didDismissWithButtonIndex:(int)arg2;
+- (void)modalView:(UIModalView *)arg1 willDismissWithButtonIndex:(int)arg2;
+- (void)didPresentModalView:(UIModalView *)arg1;
+- (void)willPresentModalView:(UIModalView *)arg1;
+- (void)modalViewCancel:(UIModalView *)arg1;
+- (void)modalView:(UIModalView *)arg1 clickedButtonAtIndex:(int)arg2;
 @end
 

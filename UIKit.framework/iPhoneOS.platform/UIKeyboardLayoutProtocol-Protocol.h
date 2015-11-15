@@ -6,13 +6,15 @@
 
 #import "NSObject.h"
 
+@class NSString, UIView;
+
 @protocol UIKeyboardLayoutProtocol <NSObject>
 - (void)phraseBoundaryDidChange;
 - (BOOL)shouldShowIndicator;
-- (id)activationIndicatorView;
+- (UIView *)activationIndicatorView;
 - (void)clearAllKeyDelegates;
 - (BOOL)updateKeysWithDelegates;
-- (void)setDelegate:(id)arg1 forKey:(id)arg2;
+- (void)setDelegate:(id <UIKeyboardKeyDelegate>)arg1 forKey:(NSString *)arg2;
 - (void)restoreDefaultsForAllKeys;
 - (void)restoreDefaultsForKey:(id)arg1;
 - (void)setLongPressAction:(SEL)arg1 forKey:(id)arg2;
@@ -20,7 +22,8 @@
 - (void)setTarget:(id)arg1 forKey:(id)arg2;
 - (void)setLabel:(id)arg1 forKey:(id)arg2;
 - (BOOL)hasCandidateKeys;
-- (id)candidateList;
+- (id <UIKeyboardCandidateList>)candidateList;
+- (BOOL)performSpaceAction;
 - (BOOL)performReturnAction;
 - (void)didClearInput;
 - (void)longPressAction;
@@ -30,13 +33,12 @@
 - (BOOL)ignoresShiftState;
 - (BOOL)usesAutoShift;
 - (void)updateLocalizedKeys:(BOOL)arg1;
-- (void)updateReturnKey;
 - (void)deactivateActiveKeys;
-- (void)clearUnusedObjects;
+- (void)clearUnusedObjects:(BOOL)arg1;
 - (void)showKeyboardType:(int)arg1 withAppearance:(int)arg2;
 
 @optional
-- (void)setReturnKeyEnabled:(BOOL)arg1 withDisplayName:(id)arg2 withType:(int)arg3;
+- (void)setReturnKeyEnabled:(BOOL)arg1 withDisplayName:(NSString *)arg2 withType:(int)arg3;
 - (void)deactivateActiveKeysClearingTouchInfo:(BOOL)arg1 clearingDimming:(BOOL)arg2;
 - (void)deactivateActiveKeysClearingTouchInfo:(BOOL)arg1;
 @end

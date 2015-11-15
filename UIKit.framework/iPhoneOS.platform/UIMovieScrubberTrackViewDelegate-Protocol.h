@@ -6,15 +6,17 @@
 
 #import "NSObject.h"
 
+@class UIMovieScrubberTrackView;
+
 @protocol UIMovieScrubberTrackViewDelegate <NSObject>
 
 @optional
-- (float)movieScrubberTrackViewZoomAnimationDelay:(id)arg1;
-- (float)movieScrubberTrackViewZoomAnimationDuration:(id)arg1;
-- (void)movieScrubberTrackViewDidFinishRequestingThumbnails:(id)arg1;
-- (void)movieScrubberTrackViewWillBeginRequestingThumbnails:(id)arg1;
-- (void)movieScrubberTrackViewDidCollapse:(id)arg1;
-- (void)movieScrubberTrackViewDidExpand:(id)arg1;
-- (void)movieScrubberTrackView:(id)arg1 clampedSizeWidthDelta:(float)arg2 actualSizeWidthDelta:(float)arg3 originXDelta:(float)arg4 minimumVisibleValue:(float)arg5 maximumVisibleValue:(float)arg6;
+- (double)movieScrubberTrackViewZoomAnimationDelay:(UIMovieScrubberTrackView *)arg1;
+- (double)movieScrubberTrackViewZoomAnimationDuration:(UIMovieScrubberTrackView *)arg1;
+- (void)movieScrubberTrackViewDidFinishRequestingThumbnails:(UIMovieScrubberTrackView *)arg1;
+- (void)movieScrubberTrackViewWillBeginRequestingThumbnails:(UIMovieScrubberTrackView *)arg1;
+- (void)movieScrubberTrackViewDidCollapse:(UIMovieScrubberTrackView *)arg1;
+- (void)movieScrubberTrackViewDidExpand:(UIMovieScrubberTrackView *)arg1;
+- (void)movieScrubberTrackView:(UIMovieScrubberTrackView *)arg1 clampedSizeWidthDelta:(float)arg2 actualSizeWidthDelta:(float)arg3 originXDelta:(float)arg4 minimumVisibleValue:(float)arg5 maximumVisibleValue:(float)arg6;
 @end
 

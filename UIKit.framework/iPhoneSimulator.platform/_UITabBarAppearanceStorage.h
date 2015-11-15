@@ -6,12 +6,14 @@
 
 #import "NSObject.h"
 
-@class UIColor, UIImage, _UITabBarItemAppearanceStorage;
+@class NSMutableDictionary, UIColor, UIImage, _UITabBarItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
 @interface _UITabBarAppearanceStorage : NSObject
 {
+    NSMutableDictionary *_dividerImages;
     UIImage *backgroundImage;
+    UIImage *shadowImage;
     UIImage *selectionIndicatorImage;
     UIColor *tintColor;
     UIColor *selectedImageTintColor;
@@ -21,8 +23,11 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIColor *selectedImageTintColor; // @synthesize selectedImageTintColor;
 @property(retain, nonatomic) UIColor *tintColor; // @synthesize tintColor;
 @property(retain, nonatomic) UIImage *selectionIndicatorImage; // @synthesize selectionIndicatorImage;
+@property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage;
 @property(retain, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage;
 - (void)dealloc;
+- (id)_dividerImageForLeftButtonState:(unsigned int)arg1 rightButtonState:(unsigned int)arg2;
+- (void)_setDividerImage:(id)arg1 forLeftButtonState:(unsigned int)arg2 rightButtonState:(unsigned int)arg3;
 - (id)_tabItemAppearanceStorage;
 @property(retain, nonatomic) _UITabBarItemAppearanceStorage *tabItemAppearanceStorage;
 

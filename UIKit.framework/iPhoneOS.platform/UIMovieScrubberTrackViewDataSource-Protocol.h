@@ -6,11 +6,13 @@
 
 #import "NSObject.h"
 
+@class NSArray, NSNumber, UIMovieScrubberTrackView;
+
 @protocol UIMovieScrubberTrackViewDataSource <NSObject>
-- (void)movieScrubberTrackView:(id)arg1 requestThumbnailImageForTimestamp:(id)arg2;
-- (float)movieScrubberTrackViewThumbnailAspectRatio:(id)arg1;
-- (id)movieScrubberTrackView:(id)arg1 timestampsStartingAt:(id)arg2 endingAt:(id)arg3 maxCount:(int)arg4;
-- (id)movieScrubberTrackView:(id)arg1 evenlySpacedTimestamps:(int)arg2 startingAt:(id)arg3 endingAt:(id)arg4;
-- (double)movieScrubberTrackViewDuration:(id)arg1;
+- (void)movieScrubberTrackView:(UIMovieScrubberTrackView *)arg1 requestThumbnailImageForTimestamp:(NSNumber *)arg2;
+- (float)movieScrubberTrackViewThumbnailAspectRatio:(UIMovieScrubberTrackView *)arg1;
+- (NSArray *)movieScrubberTrackView:(UIMovieScrubberTrackView *)arg1 timestampsStartingAt:(NSNumber *)arg2 endingAt:(NSNumber *)arg3 maxCount:(int)arg4;
+- (NSArray *)movieScrubberTrackView:(UIMovieScrubberTrackView *)arg1 evenlySpacedTimestamps:(int)arg2 startingAt:(NSNumber *)arg3 endingAt:(NSNumber *)arg4;
+- (double)movieScrubberTrackViewDuration:(UIMovieScrubberTrackView *)arg1;
 @end
 

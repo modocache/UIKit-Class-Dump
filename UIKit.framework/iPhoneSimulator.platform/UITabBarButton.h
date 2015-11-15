@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSValue, UIImage, UITabBarButtonBadge, UITabBarButtonLabel, UITabBarSelectionIndicatorView, UIView;
+@class NSValue, UIImage, UITabBarButtonLabel, UITabBarSelectionIndicatorView, UIView, _UIBadgeView;
 
 __attribute__((visibility("hidden")))
 @interface UITabBarButton : UIControl
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _hitRect;
     UIView *_info;
     UITabBarButtonLabel *_label;
-    UITabBarButtonBadge *_badge;
+    _UIBadgeView *_badge;
     UITabBarSelectionIndicatorView *_selectedIndicator;
     BOOL _selected;
     BOOL _barHeight;
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
     NSValue *_labelOffsetValue;
 }
 
-+ (id)_donePushButton;
 + (id)_defaultLabelColor;
 + (id)_defaultLabelFont;
 @property(readonly, nonatomic) UITabBarButtonLabel *tabBarButtonLabel; // @synthesize tabBarButtonLabel=_label;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_useBarHeight;
 - (void)_setBarHeight:(float)arg1;
 - (void)layoutSubviews;
+- (struct CGRect)_frameForSelectedIndicator;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (void)setEnabled:(BOOL)arg1;
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_positionBadge;
 - (void)_setInfoOffset:(struct UIOffset)arg1;
 - (void)_setSelectedInfoOffset:(struct UIOffset)arg1;
+- (BOOL)_isSelected;
 - (void)_setSelected:(BOOL)arg1;
 - (void)_updateInfoFrame;
 - (void)_showSelectedIndicator:(BOOL)arg1 changeSelection:(BOOL)arg2;
@@ -59,6 +60,8 @@ __attribute__((visibility("hidden")))
 - (void)setImage:(id)arg1;
 - (void)dealloc;
 - (id)initWithImage:(id)arg1 selectedImage:(id)arg2 label:(id)arg3 withInsets:(struct UIEdgeInsets)arg4;
+- (id)_selectedIndicatorView;
+- (id)_scriptingInfo;
 
 @end
 

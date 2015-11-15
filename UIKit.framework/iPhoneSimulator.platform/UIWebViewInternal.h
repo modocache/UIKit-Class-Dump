@@ -6,12 +6,10 @@
 
 #import "NSObject.h"
 
-#import "UIWebPDFViewHandlerDelegate.h"
-
 @class NSURLRequest, UICheckeredPatternView, UIScrollView, UIWebBrowserView, UIWebPDFViewHandler, UIWebViewWebViewDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UIWebViewInternal : NSObject <UIWebPDFViewHandlerDelegate>
+@interface UIWebViewInternal : NSObject
 {
     UIScrollView *scroller;
     UIWebBrowserView *browserView;
@@ -21,7 +19,6 @@ __attribute__((visibility("hidden")))
     unsigned int isLoading:1;
     unsigned int hasOverriddenOrientationChangeEventHandling:1;
     unsigned int drawsCheckeredPattern:1;
-    unsigned int usedGeolocation:1;
     unsigned int webSelectionEnabled:1;
     unsigned int drawInWebThread:1;
     unsigned int inRotation:1;
@@ -29,10 +26,7 @@ __attribute__((visibility("hidden")))
     int clickedAlertButtonIndex;
     UIWebViewWebViewDelegate *webViewDelegate;
     UIWebPDFViewHandler *pdfHandler;
-    int _retainCount;
 }
-
-- (void)pdfViewHandler:(id)arg1 linkClicked:(id)arg2;
 
 @end
 

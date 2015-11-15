@@ -17,6 +17,9 @@ __attribute__((visibility("hidden")))
 + (id)rectsWithWebRects:(id)arg1;
 + (id)rectWithWebRect:(id)arg1;
 @property(retain, nonatomic) WebSelectionRect *webRect; // @synthesize webRect;
+- (BOOL)isVertical;
+- (BOOL)containsEnd;
+- (BOOL)containsStart;
 - (id)range;
 - (int)writingDirection;
 - (struct CGRect)rect;

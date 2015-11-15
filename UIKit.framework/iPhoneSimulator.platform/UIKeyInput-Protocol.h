@@ -6,9 +6,11 @@
 
 #import "UITextInputTraits.h"
 
+@class NSString;
+
 @protocol UIKeyInput <UITextInputTraits>
 - (void)deleteBackward;
-- (void)insertText:(id)arg1;
+- (void)insertText:(NSString *)arg1;
 - (BOOL)hasText;
 @end
 

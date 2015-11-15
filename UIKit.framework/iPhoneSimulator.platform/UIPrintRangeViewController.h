@@ -11,7 +11,7 @@
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 
-@class UILabel, UIPrintPanelViewController, UIPrintRangePickerView, UITableView;
+@class UIPrintPanelViewController, UIPrintRangePickerView, UITableView;
 
 __attribute__((visibility("hidden")))
 @interface UIPrintRangeViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     struct _NSRange _pageRange;
     UIPrintRangePickerView *_fromPicker;
     UIPrintRangePickerView *_toPicker;
-    UILabel *_toLabel;
     UITableView *_tableView;
     float _pickerWidth;
 }
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (int)tableView:(id)arg1 numberOfRowsInSection:(int)arg2;
 - (int)numberOfSectionsInTableView:(id)arg1;
+- (unsigned int)supportedInterfaceOrientations;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

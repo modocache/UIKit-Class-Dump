@@ -6,10 +6,14 @@
 
 #import "NSObject.h"
 
+@class NSArray, UIKeyboardCandidateScrollViewController;
+
 @protocol UIKeyboardCandidateScrollViewControllerDelegate <NSObject>
 
 @optional
-- (void)padInlineFloatingViewExpand:(id)arg1;
-- (BOOL)padInlineFloatingViewIsExpanded:(id)arg1;
+- (void)padInlineFloatingViewExpand:(UIKeyboardCandidateScrollViewController *)arg1;
+- (BOOL)padInlineFloatingViewIsExpanded:(UIKeyboardCandidateScrollViewController *)arg1;
+- (NSArray *)indexTitlesForGroupTitles:(NSArray *)arg1;
+- (NSArray *)groupedCandidatesForUnsortedCandidates:(NSArray *)arg1;
 @end
 

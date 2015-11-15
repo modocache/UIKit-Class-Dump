@@ -6,12 +6,14 @@
 
 #import "NSObject.h"
 
+@class DOMElement, DOMHTMLInputElement, DOMHTMLTextAreaElement, NSDictionary, WebFrame;
+
 @protocol WebFormDelegate <NSObject>
-- (void)frame:(id)arg1 sourceFrame:(id)arg2 willSubmitForm:(id)arg3 withValues:(id)arg4 submissionListener:(id)arg5;
-- (BOOL)textField:(id)arg1 doCommandBySelector:(SEL)arg2 inFrame:(id)arg3;
-- (void)textDidChangeInTextArea:(id)arg1 inFrame:(id)arg2;
-- (void)textDidChangeInTextField:(id)arg1 inFrame:(id)arg2;
-- (void)textFieldDidEndEditing:(id)arg1 inFrame:(id)arg2;
-- (void)textFieldDidBeginEditing:(id)arg1 inFrame:(id)arg2;
+- (void)frame:(WebFrame *)arg1 sourceFrame:(WebFrame *)arg2 willSubmitForm:(DOMElement *)arg3 withValues:(NSDictionary *)arg4 submissionListener:(id <WebFormSubmissionListener>)arg5;
+- (BOOL)textField:(DOMHTMLInputElement *)arg1 doCommandBySelector:(SEL)arg2 inFrame:(WebFrame *)arg3;
+- (void)textDidChangeInTextArea:(DOMHTMLTextAreaElement *)arg1 inFrame:(WebFrame *)arg2;
+- (void)textDidChangeInTextField:(DOMHTMLInputElement *)arg1 inFrame:(WebFrame *)arg2;
+- (void)textFieldDidEndEditing:(DOMHTMLInputElement *)arg1 inFrame:(WebFrame *)arg2;
+- (void)textFieldDidBeginEditing:(DOMHTMLInputElement *)arg1 inFrame:(WebFrame *)arg2;
 @end
 

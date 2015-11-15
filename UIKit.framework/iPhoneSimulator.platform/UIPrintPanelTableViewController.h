@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (int)tableView:(id)arg1 numberOfRowsInSection:(int)arg2;
 - (int)numberOfSectionsInTableView:(id)arg1;
+- (unsigned int)supportedInterfaceOrientations;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
@@ -38,6 +39,9 @@ __attribute__((visibility("hidden")))
 - (void)showCancelButton;
 - (void)dealloc;
 - (id)initWithPrintPanelViewController:(id)arg1;
+- (void)_updateSize;
+- (void)_update:(BOOL)arg1;
+- (void)_setupPrintButtons;
 
 @end
 

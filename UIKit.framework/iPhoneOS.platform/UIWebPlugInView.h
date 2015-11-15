@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
     BOOL _parentedInLayer;
     BOOL _isQuickTimePlugIn;
     BOOL _isMapViewPlugIn;
+    BOOL _isiAdPlugIn;
 }
 
+@property(nonatomic) BOOL isiAdPlugIn; // @synthesize isiAdPlugIn=_isiAdPlugIn;
 @property(nonatomic) BOOL isMapViewPlugIn; // @synthesize isMapViewPlugIn=_isMapViewPlugIn;
 @property(nonatomic) BOOL isQuickTimePlugIn; // @synthesize isQuickTimePlugIn=_isQuickTimePlugIn;
 @property(nonatomic, getter=isParentedInLayer) BOOL parentedInLayer; // @synthesize parentedInLayer=_parentedInLayer;
@@ -54,6 +56,8 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)initWithWebView:(id)arg1 plugInView:(id)arg2;
+- (void)_viewDidMoveToWindowOnMainThread;
+- (void)_reshapeOnMainThread;
 
 @end
 

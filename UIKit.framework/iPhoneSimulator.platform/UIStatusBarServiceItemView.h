@@ -11,15 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface UIStatusBarServiceItemView : UIStatusBarItemView
 {
-    NSString *_pathToServiceImages[3];
+    NSString *_pathToServiceImages[2];
     NSString *_serviceString;
     NSString *_crossfadeString;
     unsigned int _crossfadeStep;
+    float _maxWidth;
     float _serviceWidth;
     float _crossfadeWidth;
     int _contentType;
     BOOL _loopingNecessaryForString;
-    char _usingStringForStyle[3];
+    char _usingStringForStyle[2];
     BOOL _loopNowIfNecessary;
     float _letterSpacing;
 }

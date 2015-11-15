@@ -20,6 +20,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (struct CGSize)defaultSize;
++ (id)_multiSelectHighlightedImage;
++ (id)_multiSelectSelectedImage;
++ (id)_multiSelectNotSelectedImage;
++ (id)_insertImage;
++ (id)_deleteImage;
++ (id)_deleteImageBackground;
++ (struct CGRect)_minusRect;
 - (void)_multiselectColorChanged;
 @property(nonatomic, getter=isHiding) BOOL hiding;
 - (void)_toggleRotateAnimationDidStop:(id)arg1 finished:(BOOL)arg2;
@@ -31,6 +38,10 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)initWithTableViewCell:(id)arg1 editingStyle:(int)arg2;
+- (id)_currentImage;
+- (void)_toggleRotate;
+- (void)_updateImageView;
+- (id)_minusView;
 
 @end
 

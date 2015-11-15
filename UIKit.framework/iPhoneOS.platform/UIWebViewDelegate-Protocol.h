@@ -6,12 +6,14 @@
 
 #import "NSObject.h"
 
+@class NSError, NSURLRequest, UIWebView;
+
 @protocol UIWebViewDelegate <NSObject>
 
 @optional
-- (void)webView:(id)arg1 didFailLoadWithError:(id)arg2;
-- (void)webViewDidFinishLoad:(id)arg1;
-- (void)webViewDidStartLoad:(id)arg1;
-- (BOOL)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(int)arg3;
+- (void)webView:(UIWebView *)arg1 didFailLoadWithError:(NSError *)arg2;
+- (void)webViewDidFinishLoad:(UIWebView *)arg1;
+- (void)webViewDidStartLoad:(UIWebView *)arg1;
+- (BOOL)webView:(UIWebView *)arg1 shouldStartLoadWithRequest:(NSURLRequest *)arg2 navigationType:(int)arg3;
 @end
 

@@ -6,21 +6,23 @@
 
 #import "NSObject.h"
 
+@class UIScrollView, UIView;
+
 @protocol UIScrollViewDelegate <NSObject>
 
 @optional
-- (void)scrollViewDidScrollToTop:(id)arg1;
-- (BOOL)scrollViewShouldScrollToTop:(id)arg1;
-- (void)scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(float)arg3;
-- (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
-- (id)viewForZoomingInScrollView:(id)arg1;
-- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
-- (void)scrollViewDidEndDecelerating:(id)arg1;
-- (void)scrollViewWillBeginDecelerating:(id)arg1;
-- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
-- (void)scrollViewWillBeginDragging:(id)arg1;
-- (void)scrollViewDidZoom:(id)arg1;
-- (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewDidScrollToTop:(UIScrollView *)arg1;
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)arg1;
+- (void)scrollViewDidEndZooming:(UIScrollView *)arg1 withView:(UIView *)arg2 atScale:(float)arg3;
+- (void)scrollViewWillBeginZooming:(UIScrollView *)arg1 withView:(UIView *)arg2;
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)arg1;
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)arg1;
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)arg1;
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)arg1;
+- (void)scrollViewDidEndDragging:(UIScrollView *)arg1 willDecelerate:(BOOL)arg2;
+- (void)scrollViewWillEndDragging:(UIScrollView *)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)scrollViewWillBeginDragging:(UIScrollView *)arg1;
+- (void)scrollViewDidZoom:(UIScrollView *)arg1;
+- (void)scrollViewDidScroll:(UIScrollView *)arg1;
 @end
 

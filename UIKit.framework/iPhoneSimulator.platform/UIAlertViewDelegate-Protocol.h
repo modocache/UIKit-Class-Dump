@@ -6,15 +6,17 @@
 
 #import "NSObject.h"
 
+@class UIAlertView;
+
 @protocol UIAlertViewDelegate <NSObject>
 
 @optional
-- (BOOL)alertViewShouldEnableFirstOtherButton:(id)arg1;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(int)arg2;
-- (void)alertView:(id)arg1 willDismissWithButtonIndex:(int)arg2;
-- (void)didPresentAlertView:(id)arg1;
-- (void)willPresentAlertView:(id)arg1;
-- (void)alertViewCancel:(id)arg1;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(int)arg2;
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)arg1;
+- (void)alertView:(UIAlertView *)arg1 didDismissWithButtonIndex:(int)arg2;
+- (void)alertView:(UIAlertView *)arg1 willDismissWithButtonIndex:(int)arg2;
+- (void)didPresentAlertView:(UIAlertView *)arg1;
+- (void)willPresentAlertView:(UIAlertView *)arg1;
+- (void)alertViewCancel:(UIAlertView *)arg1;
+- (void)alertView:(UIAlertView *)arg1 clickedButtonAtIndex:(int)arg2;
 @end
 

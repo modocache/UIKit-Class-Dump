@@ -11,5 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)_includeInDefaultImageSnapshot;
+- (BOOL)_affectsTintView;
+
 @end
 

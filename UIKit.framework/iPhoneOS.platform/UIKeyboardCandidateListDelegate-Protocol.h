@@ -9,8 +9,9 @@
 @protocol UIKeyboardCandidateListDelegate <NSObject>
 
 @optional
-- (void)candidateListShouldBeDismissed:(id)arg1;
-- (void)candidateListSelectionDidChange:(id)arg1;
-- (void)candidateListAcceptCandidate:(id)arg1;
+- (void)candidateListShouldBeDismissed:(id <UIKeyboardCandidateList>)arg1;
+- (void)candidateListSelectionDidChange:(id <UIKeyboardCandidateList>)arg1;
+- (void)candidateListAcceptCandidate:(id <UIKeyboardCandidateList>)arg1;
+- (void)setCandidateList:(id <UIKeyboardCandidateList>)arg1 updateCandidateView:(BOOL)arg2;
 @end
 

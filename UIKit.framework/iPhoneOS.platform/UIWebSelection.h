@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)boundingRectAndInsideFixedPosition:(int *)arg1;
 @property(readonly, nonatomic) struct CGRect boundingRect; // @dynamic boundingRect;
 @property(readonly, nonatomic) BOOL valid;
+- (void)setSelectionWithPoint:(struct CGPoint)arg1 ignoringLargeBlocks:(BOOL)arg2;
 - (void)setSelectionWithPoint:(struct CGPoint)arg1;
 - (void)dealloc;
 - (id)initWithDocumentView:(id)arg1;

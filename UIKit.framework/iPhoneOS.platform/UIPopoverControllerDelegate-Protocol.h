@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+@class UIPopoverController;
+
 @protocol UIPopoverControllerDelegate <NSObject>
 
 @optional
-- (void)popoverControllerDidDismissPopover:(id)arg1;
-- (BOOL)popoverControllerShouldDismissPopover:(id)arg1;
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)arg1;
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)arg1;
 @end
 

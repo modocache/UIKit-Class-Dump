@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class UIView;
+@class UIResponder<UITextInput>, UIView;
 
 @protocol UITextMagnifier <NSObject>
 @property(nonatomic) struct CGPoint animationPoint;
@@ -18,6 +18,6 @@
 - (void)setAutoscrollDirections:(int)arg1;
 - (void)postAutoscrollPoint:(struct CGPoint)arg1;
 - (void)stopMagnifying:(BOOL)arg1;
-- (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
+- (void)beginMagnifyingTarget:(UIView *)arg1 text:(UIResponder<UITextInput> *)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
 @end
 

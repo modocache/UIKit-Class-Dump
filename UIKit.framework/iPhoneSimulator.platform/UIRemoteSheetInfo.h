@@ -6,13 +6,13 @@
 
 #import "NSObject.h"
 
-@class UIRemoteView, UIView;
+@class UISpringBoardHostedView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIRemoteSheetInfo : NSObject
 {
     UIView *_sheetView;
-    UIRemoteView *_remoteView;
+    UISpringBoardHostedView *_remoteView;
     id _delegate;
     SEL _selector;
     void *_context;
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) void *context; // @synthesize context=_context;
 @property(nonatomic) SEL selector; // @synthesize selector=_selector;
 @property(nonatomic) id delegate; // @synthesize delegate=_delegate;
-@property(retain, nonatomic) UIRemoteView *remoteView; // @synthesize remoteView=_remoteView;
+@property(retain, nonatomic) UISpringBoardHostedView *remoteView; // @synthesize remoteView=_remoteView;
 @property(retain, nonatomic) UIView *sheetView; // @synthesize sheetView=_sheetView;
 - (void)dealloc;
 

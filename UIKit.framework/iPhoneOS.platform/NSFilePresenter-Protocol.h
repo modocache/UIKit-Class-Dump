@@ -6,28 +6,29 @@
 
 #import "NSObject.h"
 
-@class NSOperationQueue, NSURL;
+@class NSFileVersion, NSOperationQueue, NSURL;
 
 @protocol NSFilePresenter <NSObject>
 @property(readonly) NSOperationQueue *presentedItemOperationQueue;
 @property(readonly) NSURL *presentedItemURL;
 
 @optional
-- (void)presentedSubitemAtURL:(id)arg1 didResolveConflictVersion:(id)arg2;
-- (void)presentedSubitemAtURL:(id)arg1 didLoseVersion:(id)arg2;
-- (void)presentedSubitemAtURL:(id)arg1 didGainVersion:(id)arg2;
-- (void)presentedSubitemDidChangeAtURL:(id)arg1;
-- (void)presentedSubitemAtURL:(id)arg1 didMoveToURL:(id)arg2;
-- (void)presentedSubitemDidAppearAtURL:(id)arg1;
-- (void)accommodatePresentedSubitemDeletionAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)presentedItemDidResolveConflictVersion:(id)arg1;
-- (void)presentedItemDidLoseVersion:(id)arg1;
-- (void)presentedItemDidGainVersion:(id)arg1;
+@property(readonly) NSURL *primaryPresentedItemURL;
+- (void)presentedSubitemAtURL:(NSURL *)arg1 didResolveConflictVersion:(NSFileVersion *)arg2;
+- (void)presentedSubitemAtURL:(NSURL *)arg1 didLoseVersion:(NSFileVersion *)arg2;
+- (void)presentedSubitemAtURL:(NSURL *)arg1 didGainVersion:(NSFileVersion *)arg2;
+- (void)presentedSubitemDidChangeAtURL:(NSURL *)arg1;
+- (void)presentedSubitemAtURL:(NSURL *)arg1 didMoveToURL:(NSURL *)arg2;
+- (void)presentedSubitemDidAppearAtURL:(NSURL *)arg1;
+- (void)accommodatePresentedSubitemDeletionAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)presentedItemDidResolveConflictVersion:(NSFileVersion *)arg1;
+- (void)presentedItemDidLoseVersion:(NSFileVersion *)arg1;
+- (void)presentedItemDidGainVersion:(NSFileVersion *)arg1;
 - (void)presentedItemDidChange;
-- (void)presentedItemDidMoveToURL:(id)arg1;
-- (void)accommodatePresentedItemDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)savePresentedItemChangesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)relinquishPresentedItemToWriter:(CDUnknownBlockType)arg1;
-- (void)relinquishPresentedItemToReader:(CDUnknownBlockType)arg1;
+- (void)presentedItemDidMoveToURL:(NSURL *)arg1;
+- (void)accommodatePresentedItemDeletionWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)savePresentedItemChangesWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)relinquishPresentedItemToWriter:(void (^)(void (^)(void)))arg1;
+- (void)relinquishPresentedItemToReader:(void (^)(void (^)(void)))arg1;
 @end
 

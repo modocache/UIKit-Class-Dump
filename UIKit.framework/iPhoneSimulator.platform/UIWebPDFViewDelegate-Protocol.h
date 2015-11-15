@@ -4,13 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSString, UIWebPDFView;
+
 @protocol UIWebPDFViewDelegate
 
 @optional
-- (id)passwordForPDFView:(id)arg1;
-- (void)pdfView:(id)arg1 willClickAnnotation:(struct CGPDFDictionary *)arg2 inRect:(struct CGRect)arg3;
-- (void)shouldResetZoom:(id)arg1;
-- (void)pdfView:(id)arg1 shouldZoomToRect:(struct CGRect)arg2;
-- (void)didDetermineDocumentBounds:(id)arg1;
+- (NSString *)passwordForPDFView:(UIWebPDFView *)arg1;
+- (void)handleLongPressOnLink:(NSString *)arg1 atPoint:(struct CGPoint)arg2 inRect:(struct CGRect)arg3 contentRect:(struct CGRect)arg4;
+- (void)handleLinkClick:(NSString *)arg1 inRect:(struct CGRect)arg2;
+- (void)resetZoom:(UIWebPDFView *)arg1;
+- (void)pdfView:(UIWebPDFView *)arg1 zoomToRect:(struct CGRect)arg2 forPoint:(struct CGPoint)arg3 considerHeight:(BOOL)arg4;
+- (void)didDetermineDocumentBounds:(UIWebPDFView *)arg1;
 @end
 

@@ -87,9 +87,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)canFlip;
 - (void)considerFlipping;
 - (void)switchToTextModeForHandle:(id)arg1;
+- (BOOL)isHorizontalWritingMode;
 - (void)switchToBlockModeForHandle:(id)arg1;
 - (BOOL)shouldSwitchToBlockModeForHandle:(id)arg1;
 - (void)touchChanged:(id)arg1 forHandleInText:(id)arg2;
+- (void)setOrientationOfMagnifier:(id)arg1 forHandleInText:(id)arg2;
 - (void)touchChanged:(id)arg1 forHandle:(id)arg2;
 - (id)handles;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -107,10 +109,10 @@ __attribute__((visibility("hidden")))
 - (void)showControlsAfterRotation;
 - (void)didEndScrollingOverflow;
 - (void)willStartScrollingOverflow;
-- (void)didEndScrollingPage;
-- (void)willStartScrollingPage;
-- (void)onAfterScrollShowingSelection:(BOOL)arg1;
-- (void)onBeforeScrollHidingSelection:(BOOL)arg1;
+- (void)didEndScrollingOrZoomingPage;
+- (void)willStartScrollingOrZoomingPage;
+- (void)onAfterScrollOrZoomShowingSelection:(BOOL)arg1;
+- (void)onBeforeScrollOrZoomHidingSelection:(BOOL)arg1;
 - (void)calloutBar:(id)arg1 selectedCommand:(id)arg2;
 - (void)showCopyCalloutWithAnimation:(BOOL)arg1;
 - (BOOL)updateRectForCalloutBar:(id)arg1 inWindow:(id)arg2;

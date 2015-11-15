@@ -6,14 +6,16 @@
 
 #import <UIKit/UIControl.h>
 
+@class UITableViewCellDeleteConfirmationGestureRecognizer;
+
 __attribute__((visibility("hidden")))
 @interface UITableViewCellDeleteConfirmationControl : UIControl
 {
     BOOL _visible;
+    UITableViewCellDeleteConfirmationGestureRecognizer *_deleteConfirmationGesture;
 }
 
 + (struct CGSize)defaultSizeForTitle:(id)arg1;
-- (void)removeFromSuperview;
 - (void)layoutSubviews;
 @property(nonatomic, getter=isVisible) BOOL visible;
 - (void)setVisible:(BOOL)arg1 animated:(BOOL)arg2;
@@ -23,7 +25,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGSize)defaultSize;
+- (void)cancelDeleteConfirmationWithGesture:(id)arg1;
+- (void)touchUpOutside:(id)arg1;
+- (void)touchUpInside:(id)arg1;
+- (void)dealloc;
 - (id)initWithTitle:(id)arg1;
+- (void)_confirmationAnimationDidEnd;
 
 @end
 

@@ -6,11 +6,13 @@
 
 #import "NSObject.h"
 
+@class UIGestureRecognizer, UITouch;
+
 @protocol UIGestureRecognizerDelegate <NSObject>
 
 @optional
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)arg1 shouldReceiveTouch:(UITouch *)arg2;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)arg1;
 @end
 

@@ -21,6 +21,7 @@
 - (void)sortWithOptions:(unsigned int)arg1 usingComparator:(CDUnknownBlockType)arg2;
 - (void)sortUsingComparator:(CDUnknownBlockType)arg1;
 - (void)addCandidate:(id)arg1;
+- (BOOL)hasAlternativeText;
 - (id)mutableCandidates;
 - (unsigned int)hash;
 - (BOOL)isEqual:(id)arg1;

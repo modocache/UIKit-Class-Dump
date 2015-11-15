@@ -6,22 +6,24 @@
 
 #import "NSObject.h"
 
+@class DOMDocument, DOMNode, DOMRange, WebFrame;
+
 @protocol UIWebSelectionBlock <NSObject>
-- (id)enclosingDocument;
-- (id)rangeOfContents;
+- (DOMDocument *)enclosingDocument;
+- (DOMRange *)rangeOfContents;
 - (BOOL)canShrinkDirectlyToTextOnly;
-- (BOOL)containsRange:(id)arg1;
-- (id)asDomRange;
-- (id)asDomNode;
+- (BOOL)containsRange:(DOMRange *)arg1;
+- (DOMRange *)asDomRange;
+- (DOMNode *)asDomNode;
 - (BOOL)selectable;
 - (BOOL)rendersAsBlock;
-- (BOOL)strictlyContainsBlock:(id)arg1;
-- (BOOL)containsBlock:(id)arg1;
-- (BOOL)isSameBlock:(id)arg1;
-- (id)largerParent;
-- (id)parentBlock;
+- (BOOL)strictlyContainsBlock:(id <UIWebSelectionBlock>)arg1;
+- (BOOL)containsBlock:(id <UIWebSelectionBlock>)arg1;
+- (BOOL)isSameBlock:(id <UIWebSelectionBlock>)arg1;
+- (id <UIWebSelectionBlock>)largerParent;
+- (id <UIWebSelectionBlock>)parentBlock;
 - (struct CGRect)boundingRectAndInsideFixedPosition:(int *)arg1;
 - (struct CGRect)boundingRect;
-- (id)webFrame;
+- (WebFrame *)webFrame;
 @end
 

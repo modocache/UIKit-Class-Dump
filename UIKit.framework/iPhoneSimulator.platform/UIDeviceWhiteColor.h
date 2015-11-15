@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)set;
 - (id)colorWithAlphaComponent:(float)arg1;
 - (struct CGColor *)_createCGColorWithAlpha:(float)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)initWithCGColor:(struct CGColor *)arg1;
 - (id)initWithWhite:(float)arg1 alpha:(float)arg2;

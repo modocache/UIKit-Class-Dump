@@ -6,8 +6,10 @@
 
 #import "NSObject.h"
 
+@class NSArray, NSDictionary, NSString;
+
 @protocol UITextInputVariantSupport <NSObject>
-- (id)overrideForRepresentedString:(id)arg1;
-- (id)variantsForRepresentedString:(id)arg1;
+- (NSDictionary *)overrideForRepresentedString:(NSString *)arg1;
+- (NSArray *)variantsForRepresentedString:(NSString *)arg1;
 @end
 

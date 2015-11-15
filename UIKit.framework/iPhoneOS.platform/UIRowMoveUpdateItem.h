@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)newIndexPath;
+- (void)dealloc;
 - (id)initWithOldIndexPath:(id)arg1 newIndexPath:(id)arg2;
 
 @end

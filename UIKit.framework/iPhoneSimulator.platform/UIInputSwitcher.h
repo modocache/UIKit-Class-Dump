@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIInputSwitcher : NSObject
 {
     UIDelayedAction *m_switcherDelay;
+    UIDelayedAction *m_hideSwitcherDelay;
     int m_state;
     UIInputSwitcherView *m_switcherView;
     NSString *_newMode;
@@ -27,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (void)cancelSwitcherTimer;
 - (void)touchSwitcherTimer;
 - (void)showSwitcher;
+- (void)clearHideSwitcherTimer;
+- (void)touchHideSwitcherTimer;
 - (void)hideSwitcher;
 - (void)handleRotate:(id)arg1;
 - (void)setNewMode:(id)arg1;

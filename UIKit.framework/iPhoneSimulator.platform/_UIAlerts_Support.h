@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)hideAlertWindow;
++ (void)showAlertWindow;
 + (id *)destroyPressedImage;
 + (id *)destroyButtonImage;
 + (id *)pressedButtonImage;
@@ -28,10 +30,6 @@ __attribute__((visibility("hidden")))
 + (struct CGRect)popupButtonContentStretch;
 + (struct CGRect)compactButtonContentStretch;
 + (struct CGRect)buttonContentStretch;
-+ (CDStruct_75b8db5d)sheetButtonSlices;
-+ (CDStruct_75b8db5d)popupButtonSlices;
-+ (CDStruct_75b8db5d)compactButtonSlices;
-+ (CDStruct_75b8db5d)buttonSlices;
 
 @end
 

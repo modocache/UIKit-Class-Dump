@@ -6,14 +6,16 @@
 
 #import "NSObject.h"
 
+@class UIActionSheet;
+
 @protocol UIActionSheetDelegate <NSObject>
 
 @optional
-- (void)actionSheet:(id)arg1 didDismissWithButtonIndex:(int)arg2;
-- (void)actionSheet:(id)arg1 willDismissWithButtonIndex:(int)arg2;
-- (void)didPresentActionSheet:(id)arg1;
-- (void)willPresentActionSheet:(id)arg1;
-- (void)actionSheetCancel:(id)arg1;
-- (void)actionSheet:(id)arg1 clickedButtonAtIndex:(int)arg2;
+- (void)actionSheet:(UIActionSheet *)arg1 didDismissWithButtonIndex:(int)arg2;
+- (void)actionSheet:(UIActionSheet *)arg1 willDismissWithButtonIndex:(int)arg2;
+- (void)didPresentActionSheet:(UIActionSheet *)arg1;
+- (void)willPresentActionSheet:(UIActionSheet *)arg1;
+- (void)actionSheetCancel:(UIActionSheet *)arg1;
+- (void)actionSheet:(UIActionSheet *)arg1 clickedButtonAtIndex:(int)arg2;
 @end
 

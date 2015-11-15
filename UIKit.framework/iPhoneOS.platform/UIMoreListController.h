@@ -11,7 +11,6 @@
 
 @class NSArray, UIBarButtonItem, UIMoreListCellLayoutManager, UITableView;
 
-__attribute__((visibility("hidden")))
 @interface UIMoreListController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     UITableView *_table;

@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_appResumed:(id)arg1;
-- (void)_repopupIfNecessaryWithNotification:(id)arg1;
 - (void)_appSuspended:(id)arg1;
 - (void)dealloc;
 - (id)init;

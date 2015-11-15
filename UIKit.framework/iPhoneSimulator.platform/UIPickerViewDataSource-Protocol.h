@@ -6,8 +6,10 @@
 
 #import "NSObject.h"
 
+@class UIPickerView;
+
 @protocol UIPickerViewDataSource <NSObject>
-- (int)pickerView:(id)arg1 numberOfRowsInComponent:(int)arg2;
-- (int)numberOfComponentsInPickerView:(id)arg1;
+- (int)pickerView:(UIPickerView *)arg1 numberOfRowsInComponent:(int)arg2;
+- (int)numberOfComponentsInPickerView:(UIPickerView *)arg1;
 @end
 

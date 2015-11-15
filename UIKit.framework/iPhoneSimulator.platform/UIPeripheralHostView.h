@@ -6,16 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-@class UIPeripheralHostLayer;
+@class UIKeyboardCornerView, UIPeripheralHostLayer;
 
 __attribute__((visibility("hidden")))
 @interface UIPeripheralHostView : UIView
 {
     int _explicitLayoutCount;
+    UIKeyboardCornerView *_cornerViewLeft;
+    UIKeyboardCornerView *_cornerViewRight;
 }
 
 + (Class)layerClass;
+@property(readonly, nonatomic) UIKeyboardCornerView *cornerViewRight; // @synthesize cornerViewRight=_cornerViewRight;
+@property(readonly, nonatomic) UIKeyboardCornerView *cornerViewLeft; // @synthesize cornerViewLeft=_cornerViewLeft;
 - (void)removeFromSuperview;
+- (int)_clipCornersOfView:(id)arg1;
 - (void)resizeForKeyplaneSize:(struct CGSize)arg1;
 - (BOOL)_shouldUseKeyWindowStack;
 @property(readonly, nonatomic) UIPeripheralHostLayer *layer;

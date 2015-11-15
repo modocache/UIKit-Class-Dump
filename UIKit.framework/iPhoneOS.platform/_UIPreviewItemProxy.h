@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
     NSURL *_URL;
     NSURL *_previewURLOverride;
     NSString *_name;
-    NSURL *_URLToDeleteOnDealloc;
+    NSURL *_URLsToDeleteOnDealloc;
     NSString *_previewItemContentType;
+    NSURL *_URLToDeleteOnDealloc;
 }
 
 @property(copy, nonatomic) NSURL *URLToDeleteOnDealloc; // @synthesize URLToDeleteOnDealloc=_URLToDeleteOnDealloc;

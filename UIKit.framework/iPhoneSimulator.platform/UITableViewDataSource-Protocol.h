@@ -6,19 +6,21 @@
 
 #import "NSObject.h"
 
+@class NSArray, NSIndexPath, NSString, UITableView, UITableViewCell;
+
 @protocol UITableViewDataSource <NSObject>
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (int)tableView:(id)arg1 numberOfRowsInSection:(int)arg2;
+- (UITableViewCell *)tableView:(UITableView *)arg1 cellForRowAtIndexPath:(NSIndexPath *)arg2;
+- (int)tableView:(UITableView *)arg1 numberOfRowsInSection:(int)arg2;
 
 @optional
-- (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
-- (void)tableView:(id)arg1 commitEditingStyle:(int)arg2 forRowAtIndexPath:(id)arg3;
-- (int)tableView:(id)arg1 sectionForSectionIndexTitle:(id)arg2 atIndex:(int)arg3;
-- (id)sectionIndexTitlesForTableView:(id)arg1;
-- (BOOL)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;
-- (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 titleForFooterInSection:(int)arg2;
-- (id)tableView:(id)arg1 titleForHeaderInSection:(int)arg2;
-- (int)numberOfSectionsInTableView:(id)arg1;
+- (void)tableView:(UITableView *)arg1 moveRowAtIndexPath:(NSIndexPath *)arg2 toIndexPath:(NSIndexPath *)arg3;
+- (void)tableView:(UITableView *)arg1 commitEditingStyle:(int)arg2 forRowAtIndexPath:(NSIndexPath *)arg3;
+- (int)tableView:(UITableView *)arg1 sectionForSectionIndexTitle:(NSString *)arg2 atIndex:(int)arg3;
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)arg1;
+- (BOOL)tableView:(UITableView *)arg1 canMoveRowAtIndexPath:(NSIndexPath *)arg2;
+- (BOOL)tableView:(UITableView *)arg1 canEditRowAtIndexPath:(NSIndexPath *)arg2;
+- (NSString *)tableView:(UITableView *)arg1 titleForFooterInSection:(int)arg2;
+- (NSString *)tableView:(UITableView *)arg1 titleForHeaderInSection:(int)arg2;
+- (int)numberOfSectionsInTableView:(UITableView *)arg1;
 @end
 

@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property double dismissDelay; // @synthesize dismissDelay=_dismissDelay;
 @property(nonatomic) int mode; // @synthesize mode=m_mode;
 - (void)didSelectItemAtIndex:(int)arg1;
+- (id)subtitleForItemAtIndex:(int)arg1;
 - (id)titleForItemAtIndex:(int)arg1;
 - (struct CGSize)preferredSize;
 - (int)defaultSelectedIndex;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isVisible;
 - (void)setFrame:(struct CGRect)arg1;
 - (id)font;
+- (id)subtitleFont;
 - (void)applicationWillSuspend:(id)arg1;
 - (BOOL)centerPopUpOverKey;
 @property(readonly) BOOL usesTable;

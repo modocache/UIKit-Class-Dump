@@ -6,8 +6,10 @@
 
 #import "NSObject.h"
 
+@class WebView;
+
 @protocol UIBrowserDocumentController <NSObject>
-- (void)webViewFormEditedStatusHasChanged:(id)arg1;
+- (void)webViewFormEditedStatusHasChanged:(WebView *)arg1;
 - (BOOL)isAutoFilling;
 @end
 

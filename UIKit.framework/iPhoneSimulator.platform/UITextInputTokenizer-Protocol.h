@@ -6,10 +6,12 @@
 
 #import "NSObject.h"
 
+@class UITextPosition, UITextRange;
+
 @protocol UITextInputTokenizer <NSObject>
-- (BOOL)isPosition:(id)arg1 withinTextUnit:(int)arg2 inDirection:(int)arg3;
-- (id)positionFromPosition:(id)arg1 toBoundary:(int)arg2 inDirection:(int)arg3;
-- (BOOL)isPosition:(id)arg1 atBoundary:(int)arg2 inDirection:(int)arg3;
-- (id)rangeEnclosingPosition:(id)arg1 withGranularity:(int)arg2 inDirection:(int)arg3;
+- (BOOL)isPosition:(UITextPosition *)arg1 withinTextUnit:(int)arg2 inDirection:(int)arg3;
+- (UITextPosition *)positionFromPosition:(UITextPosition *)arg1 toBoundary:(int)arg2 inDirection:(int)arg3;
+- (BOOL)isPosition:(UITextPosition *)arg1 atBoundary:(int)arg2 inDirection:(int)arg3;
+- (UITextRange *)rangeEnclosingPosition:(UITextPosition *)arg1 withGranularity:(int)arg2 inDirection:(int)arg3;
 @end
 

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) float adjustmentForKeyboard; // @synthesize adjustmentForKeyboard=_adjustmentForKeyboard;
+- (void)_keyboardDidChangeFrame:(id)arg1;
 - (void)_keyboardDidHide:(id)arg1;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardDidShow:(id)arg1;

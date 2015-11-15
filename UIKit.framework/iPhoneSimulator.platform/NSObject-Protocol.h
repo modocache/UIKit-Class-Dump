@@ -4,15 +4,16 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+@class NSString, Protocol;
+
 @protocol NSObject
-- (id)debugDescription;
-- (id)description;
+- (NSString *)description;
 - (unsigned int)retainCount;
 - (id)autorelease;
 - (oneway void)release;
 - (id)retain;
 - (BOOL)respondsToSelector:(SEL)arg1;
-- (BOOL)conformsToProtocol:(id)arg1;
+- (BOOL)conformsToProtocol:(Protocol *)arg1;
 - (BOOL)isMemberOfClass:(Class)arg1;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (BOOL)isProxy;
@@ -25,5 +26,8 @@
 - (Class)superclass;
 - (unsigned int)hash;
 - (BOOL)isEqual:(id)arg1;
+
+@optional
+- (NSString *)debugDescription;
 @end
 

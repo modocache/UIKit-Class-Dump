@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UILabel;
+@class NSAttributedString, NSString, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface UIPickerTableViewTitledCell : UITableViewCell
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UILabel *_titleLabel;
 }
 
+@property(retain, nonatomic) NSAttributedString *attributedTitle;
 @property(retain, nonatomic) NSString *title;
 - (id)initWithStyle:(int)arg1 reuseIdentifier:(id)arg2;
 

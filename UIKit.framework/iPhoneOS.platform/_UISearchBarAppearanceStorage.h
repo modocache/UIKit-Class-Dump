@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSMutableDictionary, NSValue;
+@class NSMutableDictionary, NSValue, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface _UISearchBarAppearanceStorage : NSObject
@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *searchFieldBackgroundImages;
     NSValue *searchFieldPositionAdjustment;
     NSMutableDictionary *iconImages;
+    UIImage *separatorImage;
 }
 
+@property(retain, nonatomic) UIImage *separatorImage; // @synthesize separatorImage;
 @property(retain, nonatomic) NSValue *searchFieldPositionAdjustment; // @synthesize searchFieldPositionAdjustment;
 - (void)dealloc;
 - (id)imageForIcon:(int)arg1 state:(unsigned int)arg2;

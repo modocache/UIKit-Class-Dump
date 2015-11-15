@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class UIBezierPath, UIColor;
+@class UIBezierPath, UIColor, UIGroupTableViewCellBackground, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIRoundedRectButton : UIButton
@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     UIBezierPath *_fillPath;
     UIColor *_fillColor;
     UIColor *_tintColor;
+    UIGroupTableViewCellBackground *_tableViewStyleBackground;
+    UIView *_shadowView;
 }
 
 - (id)tintColor;
@@ -21,9 +23,18 @@ __attribute__((visibility("hidden")))
 - (void)setTintColor:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (int)buttonType;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)_invalidatePaths;
+- (void)_invalidateBackingViews;
+- (void)_updateState;
+- (id)_backgroundView;
+- (id)_setupBackgroundView;
+- (BOOL)_wantsTableViewStyleBackground;
+- (id)_contentBackgroundColor;
+- (BOOL)_canDrawContent;
+- (void)_populateArchivedSubviews:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 fillColor:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

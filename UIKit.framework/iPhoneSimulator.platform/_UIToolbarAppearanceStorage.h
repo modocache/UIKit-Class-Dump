@@ -15,8 +15,14 @@ __attribute__((visibility("hidden")))
     UIImage *miniBackgroundImage;
     UIImage *topBackgroundImage;
     UIImage *miniTopBackgroundImage;
+    UIImage *shadowImage;
+    UIImage *topShadowImage;
+    BOOL hidesShadow;
 }
 
+@property(nonatomic) BOOL hidesShadow; // @synthesize hidesShadow;
+@property(retain, nonatomic) UIImage *topShadowImage; // @synthesize topShadowImage;
+@property(retain, nonatomic) UIImage *shadowImage; // @synthesize shadowImage;
 @property(retain, nonatomic) UIImage *miniTopBackgroundImage; // @synthesize miniTopBackgroundImage;
 @property(retain, nonatomic) UIImage *topBackgroundImage; // @synthesize topBackgroundImage;
 @property(retain, nonatomic) UIImage *miniBackgroundImage; // @synthesize miniBackgroundImage;

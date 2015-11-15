@@ -7,41 +7,41 @@
 #import "UITextInput.h"
 #import "UITextInputTokenizer.h"
 #import "UITextInputTraits_Private.h"
-#import "UITextSelectingContainer.h"
 
-@protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private, UITextSelectingContainer>
+@class DOMRange, NSArray, NSString, UIColor, UIFont, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, WebEvent;
+
+@protocol UITextInputPrivate <UITextInput, UITextInputTokenizer, UITextInputTraits_Private>
+@property(readonly, nonatomic) UITextInteractionAssistant *interactionAssistant;
 - (BOOL)hasSelection;
-- (id)fontForCaretSelection;
-- (id)textColorForCaretSelection;
+- (UIFont *)fontForCaretSelection;
+- (UIColor *)textColorForCaretSelection;
 - (void)selectAll;
 - (BOOL)hasContent;
-- (void)setMarkedText:(id)arg1;
-- (id)markedText;
-- (id)wordRangeContainingCaretSelection;
-- (id)wordContainingCaretSelection;
+- (void)setMarkedText:(NSString *)arg1;
+- (NSString *)markedText;
+- (DOMRange *)wordRangeContainingCaretSelection;
+- (NSString *)wordContainingCaretSelection;
 - (unsigned short)characterBeforeCaretSelection;
 - (void)moveForward:(unsigned int)arg1;
 - (void)moveBackward:(unsigned int)arg1;
 - (struct CGRect)rectContainingCaretSelection;
-- (void)replaceRangeWithTextWithoutClosingTyping:(id)arg1 replacementText:(id)arg2;
-- (void)setSelectedDOMRange:(id)arg1 affinityDownstream:(BOOL)arg2;
-- (id)selectedDOMRange;
+- (void)replaceRangeWithTextWithoutClosingTyping:(UITextRange *)arg1 replacementText:(NSString *)arg2;
+- (void)setSelectedDOMRange:(DOMRange *)arg1 affinityDownstream:(BOOL)arg2;
+- (DOMRange *)selectedDOMRange;
 - (struct _NSRange)_markedTextNSRange;
 - (struct CGRect)rectForNSRange:(struct _NSRange)arg1;
 - (struct _NSRange)selectionRange;
-- (id)textInputTraits;
+- (UITextInputTraits *)textInputTraits;
 
 @optional
-- (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
-- (id)previousUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
-- (id)metadataDictionariesForDictationResults;
-- (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
-- (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
-- (id)insertDictationResultPlaceholder;
-- (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
-- (id)automaticallySelectedOverlay;
+@property(nonatomic) int selectionGranularity;
+- (UITextPosition *)nextUnperturbedDictationResultBoundaryFromPosition:(UITextPosition *)arg1;
+- (UITextPosition *)previousUnperturbedDictationResultBoundaryFromPosition:(UITextPosition *)arg1;
+- (NSArray *)metadataDictionariesForDictationResults;
+- (void)insertDictationResult:(NSArray *)arg1 withCorrectionIdentifier:(id)arg2;
+- (UIView *)automaticallySelectedOverlay;
 - (void)setBottomBufferHeight:(float)arg1;
-- (void)handleKeyWebEvent:(id)arg1;
+- (void)handleKeyWebEvent:(WebEvent *)arg1;
 - (BOOL)requiresKeyEvents;
 @end
 

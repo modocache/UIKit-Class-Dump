@@ -4,18 +4,17 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "NSObject.h"
+#import <UIKit/_UITransitionState.h>
 
-@class NSDate, UIView, _UIPageCurl;
+@class UIView, _UIPageCurl;
 
 __attribute__((visibility("hidden")))
-@interface _UIPageCurlState : NSObject
+@interface _UIPageCurlState : _UITransitionState
 {
     _UIPageCurl *_pageCurl;
     int _curlType;
     struct CGPoint _initialLocation;
     struct CGPoint _referenceLocation;
-    int _curlDirection;
     UIView *_frontPageView;
     UIView *_backPageView;
     UIView *_frontView;
@@ -24,26 +23,22 @@ __attribute__((visibility("hidden")))
     int _curlState;
     BOOL _finished;
     BOOL _willComplete;
-    CDUnknownBlockType _completion;
-    _UIPageCurlState *_previousState;
-    _UIPageCurlState *_nextState;
-    NSDate *_beginDate;
+    CDUnknownBlockType _finally;
 }
 
-@property(readonly, nonatomic) NSDate *beginDate; // @synthesize beginDate=_beginDate;
-@property(readonly, nonatomic) _UIPageCurlState *previousState; // @synthesize previousState=_previousState;
 @property(readonly, nonatomic) int curlState; // @synthesize curlState=_curlState;
 @property(readonly, nonatomic) UIView *backView; // @synthesize backView=_backView;
 @property(readonly, nonatomic) UIView *frontView; // @synthesize frontView=_frontView;
-@property(readonly, nonatomic) int curlDirection; // @synthesize curlDirection=_curlDirection;
 @property(readonly, nonatomic) struct CGPoint referenceLocation; // @synthesize referenceLocation=_referenceLocation;
 @property(readonly, nonatomic) struct CGPoint initialLocation; // @synthesize initialLocation=_initialLocation;
 @property(readonly, nonatomic) int curlType; // @synthesize curlType=_curlType;
 @property(readonly, nonatomic) _UIPageCurl *pageCurl; // @synthesize pageCurl=_pageCurl;
-- (void)markBeginDate;
+- (BOOL)isCompatibleWithCurlOfType:(int)arg1 inDirection:(int)arg2;
+- (int)_effectiveTransitionDirection;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)cleanup;
 - (void)cleanupWithFinishedState:(BOOL)arg1 completedState:(BOOL)arg2;
+- (void)finally;
 - (void)incrementCompletionCount;
 @property(readonly, nonatomic, getter=hasPendingAnimations) BOOL pendingAnimations;
 - (void)setCurlState:(int)arg1 willComplete:(BOOL)arg2;
@@ -52,10 +47,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIView *backPageView;
 @property(readonly, nonatomic) UIView *frontPageView;
 - (struct CGRect)_pageViewFrame;
-- (void)_detach;
-- (void)setNextState:(id)arg1;
+- (void)invalidatePageCurl;
 - (void)dealloc;
-- (id)initWithPageCurl:(id)arg1 andCurlType:(int)arg2 fromLocation:(struct CGPoint)arg3 withReferenceLocation:(struct CGPoint)arg4 inDirection:(int)arg5 withView:(id)arg6 revealingView:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (id)initWithPageCurl:(id)arg1 andCurlType:(int)arg2 fromLocation:(struct CGPoint)arg3 withReferenceLocation:(struct CGPoint)arg4 inDirection:(int)arg5 withView:(id)arg6 revealingView:(id)arg7 completion:(CDUnknownBlockType)arg8 finally:(CDUnknownBlockType)arg9;
 
 @end
 

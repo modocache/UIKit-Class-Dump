@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     PKPrinter *_lockedPrinter;
     BOOL _loaded;
     UIPrinterSearchingView *_searchingView;
-    double _displayTime;
     BOOL _clearCurrentPrinter;
 }
 
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (int)tableView:(id)arg1 numberOfRowsInSection:(int)arg2;
+- (unsigned int)supportedInterfaceOrientations;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(int)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     float _rowHeight;
     BOOL _grouped;
     float _groupBarWidth;
+    BOOL _hasIndex;
     CDUnknownBlockType _completion;
     BOOL _layoutFinished;
     unsigned int _currentGroupIndex;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned int currentGroupIndex; // @synthesize currentGroupIndex=_currentGroupIndex;
 @property(nonatomic) BOOL layoutFinished; // @synthesize layoutFinished=_layoutFinished;
 @property(copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property(nonatomic) BOOL hasIndex; // @synthesize hasIndex=_hasIndex;
 @property(nonatomic) float groupBarWidth; // @synthesize groupBarWidth=_groupBarWidth;
 @property(nonatomic) BOOL grouped; // @synthesize grouped=_grouped;
 @property(nonatomic) float rowHeight; // @synthesize rowHeight=_rowHeight;

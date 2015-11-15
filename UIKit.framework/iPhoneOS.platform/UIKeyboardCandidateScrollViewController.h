@@ -8,27 +8,28 @@
 
 #import "UIKeyboardCandidateList.h"
 
-@class NSArray, NSMutableDictionary, UIButton, UIKeyboardCandidatePadInlineFloatingBackgroundView, UIKeyboardCandidateScrollView, UIKeyboardCandidateScrollViewLayoutState;
+@class NSArray, UIButton, UIKeyboardCandidatePadInlineFloatingBackgroundView, UIKeyboardCandidateScrollView, UIKeyboardCandidateScrollViewLayoutState, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateScrollViewController : UIViewController <UIKeyboardCandidateList>
 {
     id <UIKeyboardCandidateScrollViewControllerDelegate> _delegate;
     id <UIKeyboardCandidateListDelegate> _candidateListDelegate;
-    NSArray *_candidates;
     unsigned int _selectedCandidateIndex;
-    NSArray *_sorts;
-    unsigned int _selectedSortIndex;
     unsigned int _numberOfColumns;
     float _rowHeight;
     int _visualStyle;
-    NSMutableDictionary *_sortsToCandidates;
+    BOOL _alwaysShowExtensionCandidates;
+    UIView *_headerView;
     NSArray *_allCells;
+    NSArray *_unsortedCandidates;
+    NSArray *_candidateGroups;
     NSArray *_candidateCells;
     NSArray *_groupHeaderCells;
     float _groupBarWidth;
     BOOL _showsExtensionCandidates;
     BOOL _supportsNumberKeySelection;
+    BOOL _isOKToFlashScrollIndicator;
     UIKeyboardCandidateScrollViewLayoutState *_layoutState;
     UIButton *_padInlineFloatingArrowButton;
     UIKeyboardCandidatePadInlineFloatingBackgroundView *_padInlineFloatingBackgroundView;
@@ -37,20 +38,21 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) float previousWidth; // @synthesize previousWidth=_previousWidth;
 @property(retain, nonatomic) UIKeyboardCandidateScrollViewLayoutState *layoutState; // @synthesize layoutState=_layoutState;
+@property(nonatomic) BOOL isOKToFlashScrollIndicator; // @synthesize isOKToFlashScrollIndicator=_isOKToFlashScrollIndicator;
 @property(nonatomic) BOOL supportsNumberKeySelection; // @synthesize supportsNumberKeySelection=_supportsNumberKeySelection;
 @property(nonatomic) BOOL showsExtensionCandidates; // @synthesize showsExtensionCandidates=_showsExtensionCandidates;
 @property(nonatomic) float groupBarWidth; // @synthesize groupBarWidth=_groupBarWidth;
 @property(retain, nonatomic) NSArray *groupHeaderCells; // @synthesize groupHeaderCells=_groupHeaderCells;
 @property(retain, nonatomic) NSArray *candidateCells; // @synthesize candidateCells=_candidateCells;
+@property(retain, nonatomic) NSArray *candidateGroups; // @synthesize candidateGroups=_candidateGroups;
+@property(retain, nonatomic) NSArray *unsortedCandidates; // @synthesize unsortedCandidates=_unsortedCandidates;
 @property(retain, nonatomic) NSArray *allCells; // @synthesize allCells=_allCells;
-@property(retain, nonatomic) NSMutableDictionary *sortsToCandidates; // @synthesize sortsToCandidates=_sortsToCandidates;
+@property(retain, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
+@property(nonatomic) BOOL alwaysShowExtensionCandidates; // @synthesize alwaysShowExtensionCandidates=_alwaysShowExtensionCandidates;
 @property(nonatomic) int visualStyle; // @synthesize visualStyle=_visualStyle;
 @property(nonatomic) float rowHeight; // @synthesize rowHeight=_rowHeight;
 @property(nonatomic) unsigned int numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
-@property(nonatomic) unsigned int selectedSortIndex; // @synthesize selectedSortIndex=_selectedSortIndex;
-@property(retain, nonatomic) NSArray *sorts; // @synthesize sorts=_sorts;
 @property(nonatomic) unsigned int selectedCandidateIndex; // @synthesize selectedCandidateIndex=_selectedCandidateIndex;
-@property(copy, nonatomic) NSArray *candidates; // @synthesize candidates=_candidates;
 @property(nonatomic) id <UIKeyboardCandidateListDelegate> candidateListDelegate; // @synthesize candidateListDelegate=_candidateListDelegate;
 @property(nonatomic) id <UIKeyboardCandidateScrollViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(readonly, nonatomic) UIKeyboardCandidatePadInlineFloatingBackgroundView *padInlineFloatingBackgroundView; // @synthesize padInlineFloatingBackgroundView=_padInlineFloatingBackgroundView;
@@ -66,22 +68,26 @@ __attribute__((visibility("hidden")))
 - (id)candidateAtIndex:(unsigned int)arg1;
 - (unsigned int)currentIndex;
 - (id)currentCandidate;
-- (void)showPreviousPage;
+- (BOOL)hasNextPage;
+- (BOOL)hasPreviousPage;
 - (void)showNextPage;
+- (void)showPreviousPage;
 - (void)stepOneLine:(BOOL)arg1;
 - (void)showPageAtIndex:(unsigned int)arg1;
 - (void)showPreviousCandidate;
 - (void)showNextCandidate;
 - (void)showCandidateAtIndex:(unsigned int)arg1;
-- (void)showMoreCandidatesCellAction;
+- (void)showCandidate:(id)arg1;
+- (void)scrollViewIndexChanged:(id)arg1;
 - (void)candidateCellAction:(id)arg1;
 - (void)layout;
 - (void)layoutAndScrollToTop:(BOOL)arg1 withAnimation:(BOOL)arg2;
 - (void)cancelIncrementalLayout;
 - (void)initiateIncrementalLayout;
 - (void)stepIncrementalLayout;
+- (void)scrollFlashTimeout;
 - (void)layoutRowsWithLimit:(unsigned int)arg1;
-- (void)layoutRowWithCells:(id)arg1 startingX:(float)arg2 currentY:(float)arg3 width:(float)arg4 isFirstRow:(BOOL)arg5 isLastRow:(BOOL)arg6 isGrouped:(BOOL)arg7;
+- (void)layoutRowWithCells:(id)arg1 startingX:(float)arg2 currentY:(float)arg3 width:(float)arg4 isFirstRow:(BOOL)arg5 isLastRow:(BOOL)arg6 isGrouped:(BOOL)arg7 hasIndex:(BOOL)arg8;
 - (void)padInlineFloatingExpand;
 - (BOOL)padInlineFloatingIsExpanded;
 - (void)padInlineFloatingUpdateHighlightedRow;
@@ -89,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)selectCandidate:(id)arg1;
 - (void)scrollToBottomWithAnimation:(BOOL)arg1;
 - (void)scrollToTopWithAnimation:(BOOL)arg1;
+- (void)scrollToTopWithAnimation:(BOOL)arg1 revealHeaderView:(BOOL)arg2;
 - (void)viewDidUnload;
 - (void)viewWillUnload;
 - (void)viewDidLoad;

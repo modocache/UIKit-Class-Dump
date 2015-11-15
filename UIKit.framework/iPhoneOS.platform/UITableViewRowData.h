@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) float tableBottomPadding; // @synthesize tableBottomPadding=_tableBottomPadding;
 @property(nonatomic) float tableTopPadding; // @synthesize tableTopPadding=_tableTopPadding;
 @property(nonatomic) float minimumRowHeight; // @synthesize minimumRowHeight=_minimumRowHeight;
+@property(readonly, nonatomic) float reorderedRowHeight; // @synthesize reorderedRowHeight=_reorderedRowHeight;
+@property(readonly, nonatomic) NSIndexPath *reorderGapIndexPath; // @synthesize reorderGapIndexPath=_gapIndexPath;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (float)maxFooterTitleWidthForSection:(int)arg1;
 - (float)maxHeaderTitleWidthForSection:(int)arg1;
@@ -84,13 +86,19 @@ __attribute__((visibility("hidden")))
 - (id)reorderedIndexPath;
 - (void)setReorderedIndexPath:(id)arg1;
 - (void)invalidateSection:(int)arg1;
+- (void)invalidateAllSectionOffsetsAndUpdatePadding;
 - (void)invalidateAllSections;
+- (void)_updateTopAndBottomPadding;
 - (void)ensureAllSectionsAreValid;
 - (void)dealloc;
 - (void)tableFooterHeightDidChangeToHeight:(float)arg1;
 - (void)tableHeaderHeightDidChangeToHeight:(float)arg1;
 - (void)tableViewWidthDidChangeToWidth:(float)arg1;
 - (id)initWithTableView:(id)arg1;
+- (int)_sectionRowForGlobalRow:(int)arg1 inSection:(int *)arg2;
+- (void)_ensureSectionOffsetIsValidForSection:(int)arg1;
+- (void)_updateSectionRowDataArrayForNumSections:(int)arg1;
+- (void)_updateNumSections;
 
 @end
 

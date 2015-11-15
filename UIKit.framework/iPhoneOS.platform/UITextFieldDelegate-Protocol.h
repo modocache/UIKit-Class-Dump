@@ -6,15 +6,17 @@
 
 #import "NSObject.h"
 
+@class NSString, UITextField;
+
 @protocol UITextFieldDelegate <NSObject>
 
 @optional
-- (BOOL)textFieldShouldReturn:(id)arg1;
-- (BOOL)textFieldShouldClear:(id)arg1;
-- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
-- (void)textFieldDidEndEditing:(id)arg1;
-- (BOOL)textFieldShouldEndEditing:(id)arg1;
-- (void)textFieldDidBeginEditing:(id)arg1;
-- (BOOL)textFieldShouldBeginEditing:(id)arg1;
+- (BOOL)textFieldShouldReturn:(UITextField *)arg1;
+- (BOOL)textFieldShouldClear:(UITextField *)arg1;
+- (BOOL)textField:(UITextField *)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(NSString *)arg3;
+- (void)textFieldDidEndEditing:(UITextField *)arg1;
+- (BOOL)textFieldShouldEndEditing:(UITextField *)arg1;
+- (void)textFieldDidBeginEditing:(UITextField *)arg1;
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)arg1;
 @end
 

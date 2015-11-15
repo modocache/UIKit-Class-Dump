@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSMutableArray, UISelectionGrabber, UITextSelectionView, UITouch, UIView<UITextSelectingContainer>;
+@class NSArray, NSMutableArray, UIResponder<UITextInput>, UISelectionGrabber, UITextSelectionView, UITouch;
 
 __attribute__((visibility("hidden")))
 @interface UITextRangeView : UIView
 {
     UITextSelectionView *m_selectionView;
-    UIView<UITextSelectingContainer> *m_container;
+    UIResponder<UITextInput> *m_container;
     int m_mode;
     NSArray *m_rects;
     NSMutableArray *m_rectViews;
@@ -65,7 +65,10 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)convertFromMagnifierPoint:(struct CGPoint)arg1;
 - (struct CGPoint)magnifierPoint;
 - (void)updateGrabbers;
+- (BOOL)_endIsHorizontal;
+- (BOOL)_startIsHorizontal;
 - (void)updateRectViews;
+- (struct CGRect)_selectionClipRect;
 - (void)updateBaseAndExtentPointsFromEdges;
 - (void)beginMagnifying;
 @property(readonly, nonatomic) BOOL autoscrolled;
@@ -92,16 +95,16 @@ __attribute__((visibility("hidden")))
 - (void)updateSelectionWithDocumentPoint:(struct CGPoint)arg1;
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 @property(retain, nonatomic) NSArray *rects; // @synthesize rects=m_rects;
-@property(readonly, nonatomic) UIView<UITextSelectingContainer> *container;
+@property(readonly, nonatomic) UIResponder<UITextInput> *container;
 @property(readonly, nonatomic) UITextSelectionView *selectionView;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (void)setMagnifierOrientation;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)removeFromSuperview;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 selectionView:(id)arg2;
 
 @end
