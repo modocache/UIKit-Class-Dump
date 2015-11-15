@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double cachedWidth;
 @property(readonly, nonatomic) _Bool cacheDeferable;
 - (void)displayLayer:(id)arg1;
+- (void)layoutSubviews;
 - (id)cacheKeysForRenderFlags:(id)arg1;
 @property(readonly, nonatomic) NSString *cacheKey;
 - (void)drawContentsOfRenderers:(id)arg1;

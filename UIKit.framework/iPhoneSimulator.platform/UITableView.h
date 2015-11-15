@@ -225,6 +225,7 @@
         unsigned int swipeToDeleteRowIsBeingDeleted:1;
         unsigned int drawsSeparatorAtTopOfSections:1;
         unsigned int separatorBackdropOverlayBlendMode:3;
+        unsigned int separatorsDrawInVibrantLightMode:1;
         unsigned int doneFirstLayout:1;
         unsigned int wrapCells:1;
     } _tableFlags;
@@ -246,7 +247,7 @@
 - (void)_setSeparatorBackdropOverlayBlendMode:(long long)arg1;
 - (_Bool)_separatorsDrawAsOverlay;
 - (void)_setSeparatorsDrawAsOverlay:(_Bool)arg1;
-- (void)_setSeparatorBackdropOverlayBlendModeForUIAppearance:(long long)arg1;
+- (void)_setSeparatorsDrawInVibrantLightModeUIAppearance:(id)arg1;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (_Bool)_pathIsHidden:(id)arg1;
 - (_Bool)_indexPathIsValid:(id)arg1;

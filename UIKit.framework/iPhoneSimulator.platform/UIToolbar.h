@@ -7,12 +7,13 @@
 #import <UIKit/UIView.h>
 
 #import "UIBarPositioning.h"
+#import "_UIBackdropViewGraphicsQualityChangeDelegate.h"
 #import "_UIBarPositioningInternal.h"
 #import "_UIShadowedView.h"
 
 @class NSArray, UIColor, UIImageView, _UIBackdropView;
 
-@interface UIToolbar : UIView <_UIShadowedView, _UIBarPositioningInternal, UIBarPositioning>
+@interface UIToolbar : UIView <_UIShadowedView, _UIBackdropViewGraphicsQualityChangeDelegate, _UIBarPositioningInternal, UIBarPositioning>
 {
     id _delegate;
     NSArray *_items;
@@ -78,6 +79,8 @@
 - (void)_finishSetItems:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_didFinishHidingRetainedOldItems:(id)arg1;
 - (void)_sendAction:(id)arg1 withEvent:(id)arg2;
+- (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
+- (id)backdropView:(id)arg1 willChangeToGraphicsQuality:(long long)arg2;
 @property(nonatomic, getter=isTranslucent) _Bool translucent;
 - (void)_effectiveBarTintColorDidChangeWithPreviousColor:(id)arg1;
 @property(retain, nonatomic) UIColor *tintColor; // @dynamic tintColor;

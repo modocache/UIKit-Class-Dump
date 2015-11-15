@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import "_UIBackdropViewGraphicsQualityChangeDelegate.h"
+
 @class UIColor, UIImageView, UINavigationBar, _UIBackdropView, _UINavigationControllerPalette;
 
 __attribute__((visibility("hidden")))
-@interface _UINavigationPaletteBackground : UIView
+@interface _UINavigationPaletteBackground : UIView <_UIBackdropViewGraphicsQualityChangeDelegate>
 {
     UIColor *_barTintColor;
     UIImageView *_shadowView;
@@ -25,6 +27,8 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic, getter=_shadowView, setter=_setShadowView:) UIView *shadowView; // @synthesize shadowView=_shadowView;
 - (void)didMoveToSuperview;
+- (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
+- (id)backdropView:(id)arg1 willChangeToGraphicsQuality:(long long)arg2;
 - (void)updateBackgroundView;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

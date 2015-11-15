@@ -35,6 +35,7 @@
 + (id)_viewControllerForReferenceWithString:(id)arg1 options:(unsigned long long)arg2;
 + (id)_popoverControllerForReferenceLibraryWithString:(id)arg1;
 + (_Bool)dictionaryHasDefinitionForTerm:(id)arg1;
++ (_Bool)_shouldShowDefineForTerm:(id)arg1;
 @property(copy, nonatomic) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
 @property(retain, nonatomic, setter=_setRotationDecider:) UIWindow *_rotationDecider; // @synthesize _rotationDecider;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;

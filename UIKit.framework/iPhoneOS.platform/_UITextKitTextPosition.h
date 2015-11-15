@@ -10,14 +10,12 @@ __attribute__((visibility("hidden")))
 @interface _UITextKitTextPosition : UITextPosition
 {
     long long _offset;
-    _Bool _caretAfterOffset;
-    long long _nextOffset;
+    long long _affinity;
 }
 
-+ (id)positionWithOffset:(long long)arg1 caretPositionedAfterOffset:(_Bool)arg2 nextOffset:(unsigned long long)arg3;
++ (id)positionWithOffset:(long long)arg1 affinity:(long long)arg2;
 + (id)positionWithOffset:(long long)arg1;
-@property long long nextOffset; // @synthesize nextOffset=_nextOffset;
-@property _Bool caretPositionAfterOffset; // @synthesize caretPositionAfterOffset=_caretAfterOffset;
+@property long long affinity; // @synthesize affinity=_affinity;
 @property long long offset; // @synthesize offset=_offset;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;

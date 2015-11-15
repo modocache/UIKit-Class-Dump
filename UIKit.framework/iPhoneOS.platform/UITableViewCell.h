@@ -92,6 +92,7 @@
         unsigned int drawsSeparatorAtTopOfSection:1;
         unsigned int drawsSeparatorAtBottomOfSection:1;
         unsigned int separatorBackdropOverlayBlendMode:3;
+        unsigned int separatorDrawsInVibrantLightMode:1;
         unsigned int separatorHidden:1;
     } _tableCellFlags;
     UIControl *_accessoryView;
@@ -137,6 +138,9 @@
 - (double)_indexBarWidth;
 - (long long)_separatorBackdropOverlayBlendMode;
 - (void)_setSeparatorBackdropOverlayBlendMode:(long long)arg1;
+- (_Bool)_separatorDrawsInVibrantLightMode;
+- (void)_setSeparatorDrawsInVibrantLightMode:(_Bool)arg1;
+- (void)_setSeparatorDrawsInVibrantLightModeUIAppearance:(id)arg1;
 @property(nonatomic) struct UIEdgeInsets separatorInset;
 - (_Bool)_isAnimating;
 - (void)_setAnimating:(_Bool)arg1;
@@ -171,6 +175,7 @@
 - (id)_indexPath;
 - (_Bool)_isUsingOldStyleMultiselection;
 - (_Bool)_shouldSaveOpaqueStateForView:(id)arg1;
+- (_Bool)_isMultiselecting;
 - (void)_setMultiselecting:(_Bool)arg1;
 - (void)_multiselectColorChanged;
 - (void)_startToEditTextField;

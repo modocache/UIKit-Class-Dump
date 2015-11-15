@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct UIOffset viewerOffset; // @synthesize viewerOffset=_viewerOffset;
 - (struct UIOffset)_acceleratedOutputForViewerOffset:(struct UIOffset)arg1 accelerationBoostFactor:(struct CGPoint)arg2;
 - (void)_setAcceleration:(struct CGPoint)arg1 fixingOutputForViewerOffset:(struct UIOffset)arg2;
+- (void)_reset;
 - (id)_acceleratedOutputRange;
 - (id)description;
 - (id)copyWithZone:(struct _NSZone *)arg1;

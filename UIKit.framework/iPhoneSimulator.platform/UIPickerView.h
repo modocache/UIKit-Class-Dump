@@ -134,6 +134,7 @@
 - (void)didMoveToWindow;
 - (void)setAlpha:(double)arg1;
 - (void)setHidden:(_Bool)arg1;
+- (void)_updateSelectedRows;
 - (void)_updateSound;
 - (void)setNeedsLayout;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

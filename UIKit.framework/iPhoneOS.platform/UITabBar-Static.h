@@ -6,7 +6,9 @@
 
 #import <UIKit/UITabBar.h>
 
-@interface UITabBar (Static)
+#import "_UIBackdropViewGraphicsQualityChangeDelegate.h"
+
+@interface UITabBar (Static) <_UIBackdropViewGraphicsQualityChangeDelegate>
 - (id)hitTest:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (void)_positionTabBarButtons:(id)arg1 ignoringItem:(id)arg2;
 - (void)_configureItems:(id)arg1;
@@ -22,6 +24,8 @@
 - (void)_buttonUp:(id)arg1;
 - (void)_buttonDownDelayed:(id)arg1;
 - (void)_buttonDown:(id)arg1;
+- (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
+- (id)backdropView:(id)arg1 willChangeToGraphicsQuality:(long long)arg2;
 - (void)_updateBackgroundImage;
 - (void)_setVisualAltitudeBias:(struct CGSize)arg1;
 - (void)_setVisualAltitude:(double)arg1;

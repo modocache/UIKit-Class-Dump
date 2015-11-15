@@ -32,7 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)drawContentsOfRenderers:(id)arg1;
 - (id)traitsForCurrentStyle;
 - (void)displayLayer:(id)arg1;
-- (id)_setupLayerIfNoLayer:(id)arg1 withContents:(id)arg2;
+- (void)_popuplateLayer:(id)arg1 withContents:(id)arg2;
+- (void)layoutSubviews;
 - (id)cacheKeysForRenderFlags:(id)arg1;
 @property(readonly, nonatomic) NSString *cacheKey;
 - (void)_setRenderConfig:(id)arg1;

@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_trackAnimation:(id)arg1 forProperty:(id)arg2 inLayer:(id)arg3;
 - (void)_addAnimationStateForTracking:(id)arg1;
 - (id)_trackedAnimations;
+- (void)_removeAnimationStateFromTrackingMap:(_Bool)arg1 disableTrackingIfNeeded:(_Bool)arg2;
 - (void)_removeAnimationStateFromTrackingMap:(_Bool)arg1;
 - (void)_acceptEarlyAnimationCutoff:(id)arg1;
 - (_Bool)_allowsUserInteractionToCutOffEndOfAnimation;

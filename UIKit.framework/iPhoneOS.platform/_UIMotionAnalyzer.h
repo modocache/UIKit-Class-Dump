@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateIdleStateForRawOffset:(struct UIOffset)arg1 timestamp:(double)arg2;
 - (double)_directionLockStrength;
 - (long long)_directionLockStatus;
+- (void)_resetDirectionalLockWithViewerOffset:(struct UIOffset)arg1;
 - (void)_shiftReferenceToYieldRelativeQuaternion:(union _GLKQuaternion)arg1;
 - (union _GLKQuaternion)_relativeQuaternion;
 - (float)_referenceShiftRadiansPerSecondForAngle:(float)arg1;

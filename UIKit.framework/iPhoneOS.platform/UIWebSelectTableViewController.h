@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
     DOMHTMLSelectElement *_selectionNode;
     NSArray *_cachedItems;
     NSArray *_groupsAndOptions;
-    unsigned int _singleSelectionIndex;
-    unsigned int _singleSelectionSection;
+    unsigned long long _singleSelectionIndex;
+    unsigned long long _singleSelectionSection;
     _Bool _allowsMultipleSelection;
     double _fontSize;
     double _maximumTextWidth;
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 - (double)heightForItems;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithDOMHTMLSelectNode:(id)arg1 cachedItems:(id)arg2 singleSelectionIndex:(unsigned int)arg3 multipleSelection:(_Bool)arg4;
+- (id)initWithDOMHTMLSelectNode:(id)arg1 cachedItems:(id)arg2 singleSelectionIndex:(unsigned long long)arg3 multipleSelection:(_Bool)arg4;
 - (void)_setupGroupsAndOptions;
 - (_Bool)_isEmpty;
 

@@ -9,12 +9,12 @@
 #import "UITextInput.h"
 #import "UITextInputAdditions.h"
 
-@class NSArray, NSDictionary, NSHashTable, NSLayoutManager, UITextChecker, UITextInputTraits, UITextPosition, UITextRange, UIView, UIView<UITextInput>, _UIDictationAttachment, _UITextInputControllerTokenizer, _UITextServiceSession, _UITextUndoManager, _UITextUndoOperationTyping;
+@class NSArray, NSDictionary, NSHashTable, NSLayoutManager, UITextChecker, UITextInputTraits, UITextPosition, UITextRange, UIView, UIView<UITextInput>, _UIDictationAttachment, _UITextInputControllerTokenizer, _UITextKitTextRange, _UITextServiceSession, _UITextUndoManager, _UITextUndoOperationTyping;
 
 @interface UITextInputController : NSObject <UITextInput, UITextInputAdditions>
 {
     id <UITextInputDelegate> _inputDelegate;
-    struct _NSRange _selectedRange;
+    _UITextKitTextRange *_selectedTextRange;
     _UITextInputControllerTokenizer *_tokenizer;
     NSLayoutManager *_layoutManager;
     NSHashTable *_observedScrollViews;
@@ -117,11 +117,9 @@
 - (id)characterRangeAtPoint:(struct CGPoint)arg1;
 - (id)closestPositionToPoint:(struct CGPoint)arg1 withinRange:(id)arg2;
 - (id)closestPositionToPoint:(struct CGPoint)arg1;
-- (id)selectionRectsForRange:(id)arg1;
-- (struct CGRect)_caretRectForOffset:(long long)arg1 caretAfterOffset:(_Bool)arg2;
-- (struct CGRect)_caretRectForOffset:(long long)arg1;
-@property(readonly, nonatomic, getter=_caretRect) struct CGRect caretRect;
 - (struct CGRect)caretRectForPosition:(id)arg1;
+@property(readonly, nonatomic, getter=_caretRect) struct CGRect caretRect;
+- (struct CGRect)_caretRectForOffset:(unsigned long long)arg1;
 - (struct CGRect)firstRectForRange:(id)arg1;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;
@@ -147,6 +145,7 @@
 - (void)_forceUnmarkTextDueToEditing;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 @property(readonly, nonatomic) UITextRange *markedTextRange;
+@property(nonatomic) long long selectionAffinity;
 @property(copy) UITextRange *selectedTextRange;
 - (void)replaceRangeWithTextWithoutClosingTyping:(id)arg1 replacementText:(id)arg2;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
@@ -154,10 +153,10 @@
 - (void)_ensureSelectionVisible;
 - (void)scrollRangeToVisible:(struct _NSRange)arg1;
 - (id)_parentScrollView;
-- (id)_validCaretPositionFromCharacterIndex:(unsigned long long)arg1 downstream:(_Bool)arg2;
+- (unsigned long long)_validCaretPositionFromCharacterIndex:(unsigned long long)arg1 downstream:(_Bool)arg2;
 - (id)_characterPositionForPoint:(struct CGPoint)arg1;
-- (id)_rectsForUITextRange:(id)arg1;
 - (id)_rectsForRange:(struct _NSRange)arg1;
+- (id)selectionRectsForRange:(id)arg1;
 - (id)selectionView;
 - (void)updateSelection;
 - (void)endSelectionChange;
@@ -192,6 +191,9 @@
 @property(nonatomic) struct _NSRange selectedRange;
 - (void)_coordinateSelectionChange:(CDUnknownBlockType)arg1;
 - (void)_ensureSelectionValid;
+- (void)_setSelectedTextRange:(id)arg1;
+- (struct _NSRange)_selectedRange;
+- (void)_setSelectedRange:(struct _NSRange)arg1;
 - (void)_selectionDidScroll:(id)arg1;
 - (id)interactionAssistant;
 - (id)_firstTextView;
@@ -221,7 +223,6 @@
 @property(nonatomic) long long keyboardType;
 @property(nonatomic) long long returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry;
-@property(nonatomic) long long selectionAffinity;
 @property(nonatomic) long long spellCheckingType;
 @property(readonly, nonatomic) UIView *textInputView;
 

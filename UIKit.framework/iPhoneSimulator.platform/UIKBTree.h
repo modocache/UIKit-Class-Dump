@@ -71,8 +71,8 @@
 - (int)displayRowHint;
 - (void)setTextAlignment:(long long)arg1;
 - (long long)textAlignment;
-- (void)setHighlightedVariantIndex:(int)arg1;
-- (int)highlightedVariantIndex;
+- (void)setHighlightedVariantIndex:(long long)arg1;
+- (long long)highlightedVariantIndex;
 - (void)setDisplayTypeHint:(int)arg1;
 - (int)displayTypeHint;
 - (void)setVariantType:(int)arg1;
@@ -167,7 +167,7 @@
 - (id)description;
 - (id)numberForProperty:(id)arg1;
 - (_Bool)boolForProperty:(id)arg1;
-- (int)intForProperty:(id)arg1;
+- (long long)intForProperty:(id)arg1;
 - (id)stringForProperty:(id)arg1;
 - (_Bool)setObject:(id)arg1 forProperty:(id)arg2;
 - (_Bool)isDuplicateOfTree:(id)arg1;

@@ -41,7 +41,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double cachedWidth;
 @property(readonly, nonatomic) _Bool cacheDeferable;
 - (void)displayLayer:(id)arg1;
-- (id)_setupLayerIfNoLayer:(id)arg1 withContents:(id)arg2;
+- (void)_popuplateLayer:(id)arg1 withContents:(id)arg2;
+- (void)layoutSubviews;
 - (_Bool)_shouldUpdateLayers;
 @property(readonly) long long cachedRenderFlags;
 - (id)cacheKeysForRenderFlags:(id)arg1;

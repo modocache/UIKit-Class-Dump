@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultRange;
++ (id)rangeWithRange:(struct _NSRange)arg1 affinity:(long long)arg2;
 + (id)rangeWithRange:(struct _NSRange)arg1;
 + (id)rangeWithStart:(id)arg1 end:(id)arg2;
 @property(retain, nonatomic) UITextPosition *end; // @synthesize end=_end;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)asRange;
 - (_Bool)isEmpty;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+@property(readonly, nonatomic) long long affinity;
 - (void)dealloc;
 - (id)init;
 

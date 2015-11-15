@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface UIActivityGroupListViewController : UIViewController
 {
+    _Bool _darkStyleOnLegacyApp;
     _Bool _embedded;
     _Bool _modal;
     UIActivityGroupCancelButton *_cancelButton;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIActivityGroupCancelButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property(nonatomic) _Bool modal; // @synthesize modal=_modal;
 @property(nonatomic) _Bool embedded; // @synthesize embedded=_embedded;
+@property(nonatomic) _Bool darkStyleOnLegacyApp; // @synthesize darkStyleOnLegacyApp=_darkStyleOnLegacyApp;
 - (void)cancel;
 - (void)showDone;
 - (void)viewWillDisappear:(_Bool)arg1;

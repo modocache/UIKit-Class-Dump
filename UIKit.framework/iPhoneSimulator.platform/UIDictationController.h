@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 + (void)logDictationString:(id)arg1;
 + (void)didBeginEditingInTextView:(id)arg1;
 + (id)streamingHypothesisForPhrases:(id)arg1;
++ (id)activeConnection;
 + (int)viewMode;
 + (_Bool)starkScreenExists;
 + (void)updateLandingView;
@@ -128,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (void)releaseConnectionAfterDictationRequest;
 - (void)releaseConnection;
 - (id)connection;
+- (id)_connection;
 - (void)startRecordingLimitTimer;
 - (void)cancelRecordingLimitTimer;
 - (void)dealloc;

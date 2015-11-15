@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)controlBeginEditing;
 - (id)controlView;
 - (void)dealloc;
-- (id)initWithDOMHTMLSelectElement:(id)arg1 cachedItems:(id)arg2 singleSelectionItem:(id)arg3 singleSelectionIndex:(unsigned int)arg4 multipleSelection:(_Bool)arg5;
+- (id)initWithDOMHTMLSelectElement:(id)arg1 cachedItems:(id)arg2 singleSelectionItem:(id)arg3 singleSelectionIndex:(unsigned long long)arg4 multipleSelection:(_Bool)arg5;
 
 @end
 

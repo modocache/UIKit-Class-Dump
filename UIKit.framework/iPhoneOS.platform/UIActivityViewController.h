@@ -99,6 +99,7 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (void)viewWillAppear:(_Bool)arg1;
 - (double)_displayHeight;
 - (void)viewDidLoad;
 - (void)_updateActivityItems:(id)arg1;

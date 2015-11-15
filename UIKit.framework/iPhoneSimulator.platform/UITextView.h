@@ -161,6 +161,7 @@
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 @property(copy, nonatomic) NSDictionary *markedTextStyle;
 @property(readonly, nonatomic) UITextRange *markedTextRange;
+@property(nonatomic) long long selectionAffinity;
 @property(copy) UITextRange *selectedTextRange;
 - (void)replaceRangeWithTextWithoutClosingTyping:(id)arg1 replacementText:(id)arg2;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
@@ -259,7 +260,6 @@
 @property(nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @dynamic secureTextEntry;
-@property(nonatomic) long long selectionAffinity;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
 
 @end

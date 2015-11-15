@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (void)_fadeLabelForCalendarUnit:(unsigned long long)arg1 toText:(id)arg2 animated:(_Bool)arg3;
 - (id)_makeNewAccessoryLabel;
+- (id)_contentViewForSizingLabelForPositioningInComponent:(long long)arg1;
 - (void)_positionLabel:(id)arg1 forCalendarUnit:(unsigned long long)arg2 relativeTo:(id)arg3 order:(long long)arg4;
 - (void)_setLabel:(id)arg1 forCalendarUnit:(unsigned long long)arg2 animated:(_Bool)arg3;
 - (id)_labelForCalendarUnit:(unsigned long long)arg1 createIfNecessary:(_Bool)arg2;

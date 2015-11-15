@@ -49,6 +49,7 @@
 - (void)dealloc;
 - (void)_animateToOn:(_Bool)arg1 withDuration:(double)arg2 sendAction:(_Bool)arg3;
 - (void)encodeWithCoder:(id)arg1;
+- (_Bool)_shouldAlterCodedFrame;
 - (void)_encodeFrameWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

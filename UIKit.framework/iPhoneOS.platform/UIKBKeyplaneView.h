@@ -64,9 +64,9 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double cachedWidth;
 @property(readonly, nonatomic) _Bool cacheDeferable;
 - (void)displayLayer:(id)arg1;
-- (id)_setupSplitImageViewIfNeeded:(id)arg1 withImage:(id)arg2;
 - (id)cacheKeysForRenderFlags:(id)arg1;
 @property(readonly, nonatomic) NSString *cacheKey;
+- (void)layoutSubviews;
 - (_Bool)validForKeyplane:(id)arg1 withVisualStyle:(int)arg2;
 - (void)dealloc;
 - (void)removeFromSuperview;

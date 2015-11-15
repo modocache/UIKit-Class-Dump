@@ -202,7 +202,6 @@
 - (id)_constraintsFromContentSize;
 - (_Bool)_supportsContentDimensionVariables;
 - (void)_accumulateViewConstraintsIntoArray:(id)arg1;
-- (void)_adjustContentOffsetIfNecessary;
 - (id)description;
 - (_Bool)_isAnimatingScroll;
 - (double)_defaultPagingFriction;

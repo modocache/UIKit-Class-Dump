@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import "_UIBackdropViewGraphicsQualityChangeDelegate.h"
 #import "_UIShadowedView.h"
 
 @class NSArray, NSMutableArray, UIColor, UIImage, UITabBarItem, _UIBackdropView, _UITabBarAppearanceStorage, _UITabBarBackgroundView;
 
-@interface UITabBar : UIView <_UIShadowedView>
+@interface UITabBar : UIView <_UIBackdropViewGraphicsQualityChangeDelegate, _UIShadowedView>
 {
     UIView *_customizeView;
     _UITabBarBackgroundView *_backgroundView;
@@ -159,6 +160,8 @@
 - (void)_buttonUp:(id)arg1;
 - (void)_buttonDownDelayed:(id)arg1;
 - (void)_buttonDown:(id)arg1;
+- (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
+- (id)backdropView:(id)arg1 willChangeToGraphicsQuality:(long long)arg2;
 - (void)_updateBackgroundImage;
 - (void)_setVisualAltitudeBias:(struct CGSize)arg1;
 - (void)_setVisualAltitude:(double)arg1;

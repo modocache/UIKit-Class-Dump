@@ -202,7 +202,6 @@
 - (id)_constraintsFromContentSize;
 - (_Bool)_supportsContentDimensionVariables;
 - (void)_accumulateViewConstraintsIntoArray:(id)arg1;
-- (void)_adjustContentOffsetIfNecessary;
 - (id)description;
 @property(readonly, nonatomic, getter=_isAnimatingScroll) _Bool isAnimatingScroll;
 - (double)_defaultPagingFriction;
@@ -337,6 +336,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (_Bool)_isScrollingEnabled;
+- (void)_adjustContentOffsetIfNecessary;
 - (_Bool)_shouldScrollOnGestureRecognizerFailed;
 - (struct CGRect)_rectForPageContainingView:(id)arg1;
 - (void)_pinContentOffsetToClosestPageBoundary;
@@ -381,6 +381,7 @@
 - (_Bool)_forwardsToParentScroller;
 - (void)_ensureViewsAreLoadedInRect:(struct CGRect)arg1;
 - (void)_forceDelegateScrollViewDidZoom:(_Bool)arg1;
+- (_Bool)_isAutomaticContentOffsetAdjustmentEnabled;
 - (void)_setAutomaticContentOffsetAdjustmentEnabled:(_Bool)arg1;
 - (void)_updateScrollAnimationForChangedTargetOffset:(struct CGPoint)arg1;
 - (void)_setContentOffset:(struct CGPoint)arg1 animated:(_Bool)arg2 animationCurve:(int)arg3 animationAdjustsForContentOffsetDelta:(_Bool)arg4;
