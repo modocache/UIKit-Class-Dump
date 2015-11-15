@@ -338,6 +338,7 @@
 - (void)insertText:(id)arg1;
 - (void)deleteBackward;
 - (void)disableClearsOnInsertion;
+- (void)deleteFromInputWithFlags:(unsigned long long)arg1;
 - (void)deleteFromInput;
 - (void)addInputString:(id)arg1;
 - (void)addInputString:(id)arg1 withFlags:(unsigned long long)arg2;

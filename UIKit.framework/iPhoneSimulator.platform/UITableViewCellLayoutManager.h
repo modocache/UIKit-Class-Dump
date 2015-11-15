@@ -16,8 +16,9 @@
 + (id)_externalTextColor;
 + (id)_alternateUISwitchableSelectorPairs;
 + (id)layoutManagerForTableViewCellStyle:(long long)arg1;
-- (struct CGSize)intrinsicContentSizeForCell:(id)arg1;
-- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3;
+- (struct CGSize)intrinsicContentSizeForCell:(id)arg1 rowWidth:(double)arg2;
+- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3 rowWidth:(double)arg4;
+- (struct CGRect)textRectForCell:(id)arg1 rowWidth:(double)arg2;
 - (struct CGRect)textRectForCell:(id)arg1;
 - (struct CGRect)contentEndingRectForCell:(id)arg1 forDisplayOfDeleteConfirmation:(_Bool)arg2;
 - (struct CGRect)contentStartingRectForCell:(id)arg1 forDisplayOfDeleteConfirmation:(_Bool)arg2;

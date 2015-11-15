@@ -51,8 +51,8 @@ __attribute__((visibility("hidden")))
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_UIAppearance_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (struct CGRect)_responderSelectionRectForWindow:(id)arg1;
-- (void)_focusStateDidChange;
-- (_Bool)_isFocusableElement;
+- (void)focusedViewDidChange;
+- (_Bool)canBecomeFocused;
 - (void)_setLabelHidden:(_Bool)arg1;
 - (void)_setCustomSelectedIndicatorImage:(id)arg1;
 - (_Bool)_useBarHeight;

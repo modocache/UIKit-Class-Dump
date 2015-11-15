@@ -8,14 +8,16 @@
 
 #import "UIKeyboardEmojiCategoryControl.h"
 
-@class NSString, UIKeyboardEmojiCategory, UIKeyboardEmojiCategoryController;
+@class NSString, UIColor, UIKeyboardEmojiCategoryController;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiSplitCategoryPicker : UIKeyboardEmojiSplit <UIKeyboardEmojiCategoryControl>
 {
     UIKeyboardEmojiCategoryController *_categoryController;
     _Bool _whiteText;
-    UIKeyboardEmojiCategory *_lastUsedCategory;
+    UIColor *_pressIndicatorColor;
+    int _currentSelected;
+    int _lastUsedCategory;
 }
 
 @property _Bool whiteText; // @synthesize whiteText=_whiteText;
@@ -25,10 +27,11 @@ __attribute__((visibility("hidden")))
 - (id)symbolForRow:(long long)arg1;
 - (id)titleForRow:(long long)arg1;
 - (void)updateCategorySelectedIndicator:(int)arg1;
-- (void)setCategory:(id)arg1;
+- (void)setCategory:(int)arg1;
+- (void)receiveNotifictaion:(id)arg1;
+- (void)didMoveToWindow;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
-- (id)categoryForCurrentRow;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

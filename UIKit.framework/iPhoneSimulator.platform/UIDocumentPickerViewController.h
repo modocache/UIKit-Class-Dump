@@ -39,8 +39,8 @@
 - (id)initWithURL:(id)arg1 inMode:(unsigned long long)arg2;
 - (id)initWithDocumentTypes:(id)arg1 inMode:(unsigned long long)arg2;
 - (void)addAuxiliaryOptionWithTitle:(id)arg1 image:(id)arg2 identifier:(id)arg3;
-- (void)_preferredContentSizeChanged:(struct CGSize)arg1;
 - (void)_stitchFileCreationAtURL:(id)arg1;
+- (void)_displayLocationsMenuFromRect:(struct CGRect)arg1;
 - (void)_dismissWithOption:(id)arg1;
 - (void)_didSelectPicker;
 - (void)_didSelectURL:(id)arg1;

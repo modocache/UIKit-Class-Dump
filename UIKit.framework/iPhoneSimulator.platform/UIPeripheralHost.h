@@ -39,6 +39,7 @@
     struct CGAffineTransform _initialTransform;
     struct CGPoint _velocity;
     NSMutableArray *_dropShadowViews;
+    double __transitionStartTime;
     int _shadowStyle;
     _Bool _wasBackgroundSplit;
     struct CGRect _previousShadowFrameLeft;
@@ -92,6 +93,7 @@
 + (id)activeInstance;
 + (id)sharedInstance;
 + (struct CGRect)screenBoundsInAppOrientation;
++ (id)endPlacementForInputViewSet:(id)arg1;
 + (id)passthroughViews;
 + (double)gridViewRubberBandValueForValue:(double)arg1 target:(double)arg2 timeInterval:(double)arg3 velocity:(double *)arg4;
 + (struct CGRect)visiblePeripheralFrame;
@@ -179,6 +181,8 @@
 - (id)retain;
 - (void)createHostViewIfNeeded;
 - (void)updateRenderConfigForCurrentResponder;
+- (void)inputModeChangedForRenderConfig:(id)arg1;
+- (id)_renderConfigForCurrentResponder;
 - (void)initializeTranslateGestureRecognizer;
 - (struct CGSize)sizeOfInputViewForInputViewSet:(id)arg1 withInterfaceOrientation:(long long)arg2;
 - (void)textEffectsWindowDidRotate:(id)arg1;
@@ -297,10 +301,10 @@
 - (void)_endIgnoringReloadInputViews;
 - (void)_beginIgnoringReloadInputViews;
 @property(nonatomic) _Bool automaticAppearanceInternalEnabled;
+@property(nonatomic) double _transitionStartTime;
 @property(readonly, nonatomic) NSMutableArray *dropShadowViews;
 @property(readonly, nonatomic) UIView *view;
 - (void)_inputModeChangedWhileContextTracked;
-- (void)_inputModeChanged:(id)arg1;
 - (void)_trackInputModeIfNecessary:(id)arg1;
 - (_Bool)_isTrackingResponder:(id)arg1;
 @property(nonatomic) _Bool ignoresPinning;

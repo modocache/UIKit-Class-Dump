@@ -25,6 +25,7 @@
 @property(nonatomic) unsigned long long pageIndex; // @synthesize pageIndex;
 @property(retain, nonatomic) NSArray *rotationAngles; // @synthesize rotationAngles;
 - (id)description;
+- (void)dealloc;
 
 @end
 

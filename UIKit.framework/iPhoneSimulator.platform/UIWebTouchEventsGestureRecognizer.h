@@ -15,12 +15,14 @@
     id <UIWebTouchEventsGestureRecognizerDelegate> _webTouchDelegate;
     _Bool _passedHitTest;
     _Bool _defaultPrevented;
+    _Bool _dispatchingTouchEvents;
     double _originalGestureDistance;
     double _originalGestureAngle;
     struct _UIWebTouchEvent _lastTouchEvent;
 }
 
 + (void)initialize;
+@property(readonly, nonatomic, getter=isDispatchingTouchEvents) _Bool dispatchingTouchEvents; // @synthesize dispatchingTouchEvents=_dispatchingTouchEvents;
 @property(nonatomic, getter=isDefaultPrevented) _Bool defaultPrevented; // @synthesize defaultPrevented=_defaultPrevented;
 @property(readonly, nonatomic) double rotation;
 @property(readonly, nonatomic) double scale;

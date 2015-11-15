@@ -16,7 +16,6 @@
 @property(readonly, nonatomic) double statusBarAdjustment;
 @property(readonly, nonatomic) _Bool shouldAccountForStatusBar;
 @property(readonly, retain, nonatomic) UIView *searchBarContainerView;
-- (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)setContentVisible:(_Bool)arg1;
 @end
 

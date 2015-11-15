@@ -80,6 +80,7 @@
 @property(readonly) unsigned int contextID;
 @property(nonatomic) _Bool useHostedInstance;
 - (void)applicationWindowRotated:(id)arg1;
+- (void)_createSystemGestureGateGestureRecognizerIfNeeded;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 @property(readonly) NSDictionary *_options;

@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSDictionary, NSMutableArray, UICollectionViewFlowLayout;
+@class NSArray, NSMutableArray, UICollectionViewFlowLayout;
 
 __attribute__((visibility("hidden")))
 @interface _UIFlowLayoutInfo : NSObject
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _layoutSize;
     double _dimension;
     _Bool _isValid;
-    NSDictionary *_rowAlignmentOptions;
+    CDStruct_2f5e8405 _rowAlignmentOptions;
     UICollectionViewFlowLayout *_layout;
     _Bool _usesFloatingHeaderFooter;
     _Bool _estimatesSizes;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool estimatesSizes; // @synthesize estimatesSizes=_estimatesSizes;
 @property(nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
 @property(readonly, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
-@property(retain, nonatomic) NSDictionary *rowAlignmentOptions; // @synthesize rowAlignmentOptions=_rowAlignmentOptions;
+@property(nonatomic) CDStruct_2f5e8405 rowAlignmentOptions; // @synthesize rowAlignmentOptions=_rowAlignmentOptions;
 @property(nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(nonatomic) _Bool leftToRight; // @synthesize leftToRight=_leftToRight;
 @property(nonatomic) _Bool horizontal; // @synthesize horizontal=_horizontal;

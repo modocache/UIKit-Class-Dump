@@ -16,7 +16,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
-@property(copy, nonatomic) NSString *category;
+@property(copy, nonatomic) NSString *category; // @dynamic category;
 
 @end
 

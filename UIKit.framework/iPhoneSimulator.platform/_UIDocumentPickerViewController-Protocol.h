@@ -6,9 +6,10 @@
 
 #import "NSObject.h"
 
-@class NSArray, _UIDocumentPickerNSURLWrapper;
+@class NSArray, UIColor, _UIDocumentPickerNSURLWrapper;
 
 @protocol _UIDocumentPickerViewController <NSObject>
+- (void)_setTintColor:(UIColor *)arg1;
 - (void)_documentPickerDidDismiss;
 - (void)_prepareForDisplayWithCompletion:(void (^)(struct CGSize))arg1;
 - (void)_showDefaultPicker;

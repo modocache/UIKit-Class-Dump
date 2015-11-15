@@ -53,10 +53,13 @@
     NSString *_deferredDisplayUUID;
     unsigned int _deferredContextID;
     NSArray *_allowedNotifications;
+    _Bool _isUpdatingSize;
     _Bool _serviceViewShouldShareTouchesWithHost;
     BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion;
 }
 
++ (_Bool)_shouldForwardViewWillTransitionToSize;
++ (_Bool)_shouldSendLegacyMethodsFromViewWillTransitionToSize;
 + (_Bool)__shouldAllowHostProcessToTakeFocus;
 + (_Bool)__shouldHostRemoteTextEffectsWindow;
 + (id)_requestViewController:(id)arg1 traitCollection:(id)arg2 fromServiceWithBundleIdentifier:(id)arg3 service:(id)arg4 connectionHandler:(CDUnknownBlockType)arg5;
@@ -68,6 +71,7 @@
 + (id)serviceViewControllerInterface;
 + (_Bool)shouldPropagateAppearanceCustomizations;
 @property(nonatomic) _Bool serviceViewShouldShareTouchesWithHost; // @synthesize serviceViewShouldShareTouchesWithHost=_serviceViewShouldShareTouchesWithHost;
+@property(nonatomic, setter=_setIsUpdatingSize:) _Bool _isUpdatingSize; // @synthesize _isUpdatingSize;
 @property(retain, nonatomic, setter=_setTouchDeliveryPolicyAssertion:) BKSTouchDeliveryPolicyAssertion *_touchDeliveryPolicyAssertion; // @synthesize _touchDeliveryPolicyAssertion;
 - (void)_snapshotAdjustedMediaTiming:(id)arg1;
 - (id)_cancelTouchesForCurrentEventInHostedContent;
@@ -93,6 +97,8 @@
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(_Bool)arg1;
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
+- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
+- (void)_traitCollectionDidChange:(id)arg1;
 - (void)__viewServiceDidUpdatePreferredStatusBarStyle:(long long)arg1 hidden:(_Bool)arg2;
 - (_Bool)prefersStatusBarHidden;
 - (long long)preferredStatusBarStyle;
@@ -111,6 +117,7 @@
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
+- (_Bool)_shouldDeferEventsForFocusOnScreen:(id)arg1;
 - (void)_setDeferred:(_Bool)arg1 forDisplayUUID:(id)arg2;
 - (id)_clientDeferralProperties;
 - (id)_hostDeferralProperties;
@@ -137,6 +144,7 @@
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_snapshotAndRemoveTextEffectsRemoteView;
 - (void)_restoreTextEffectsRemoteView;
+- (id)textEffectsWindowForServiceScreen;
 - (void)_applicationDidFinishSuspendSnapshot:(id)arg1;
 - (void)_hostDidEnterBackground:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;

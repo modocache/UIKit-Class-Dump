@@ -10,7 +10,6 @@
 
 @protocol _UIDocumentPickerViewControllerHost <NSObject>
 - (void)_stitchFileCreationAtURL:(NSURL *)arg1;
-- (void)_preferredContentSizeChanged:(struct CGSize)arg1;
 - (void)_dismissWithOption:(NSString *)arg1;
 - (void)_didSelectPicker;
 - (void)_dismissViewController;

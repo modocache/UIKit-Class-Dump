@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 @property(retain, nonatomic) UIAlertControllerDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (void)dealloc;
+- (double)sectionDelimitingSeparatorDimension;
 - (double)minimumActionHeight;
 - (id)defaultActionBackgroundColorWhenSeparate;
 - (id)defaultActionFont;

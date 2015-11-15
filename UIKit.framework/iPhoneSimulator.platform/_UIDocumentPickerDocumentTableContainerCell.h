@@ -6,19 +6,15 @@
 
 #import <UIKit/_UIDocumentPickerDocumentTableCell.h>
 
-@class UIImageView, _UIDocumentPickerContainerModel;
+@class UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerDocumentTableContainerCell : _UIDocumentPickerDocumentTableCell
 {
-    _UIDocumentPickerContainerModel *_model;
-    id _observerToken;
     UIImageView *_containerIconView;
 }
 
 @property(retain, nonatomic) UIImageView *containerIconView; // @synthesize containerIconView=_containerIconView;
-@property(retain, nonatomic) id observerToken; // @synthesize observerToken=_observerToken;
-@property(retain, nonatomic) _UIDocumentPickerContainerModel *model; // @synthesize model=_model;
 - (void)reloadItem:(_Bool)arg1;
 - (void)containersChangedWithSnapshot:(id)arg1 differences:(id)arg2;
 - (void)dealloc;

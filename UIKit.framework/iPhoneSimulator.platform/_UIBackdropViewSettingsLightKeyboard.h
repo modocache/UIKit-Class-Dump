@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)setDefaultValues;
+- (id)_defaultColorTintColorWithOpacity:(double)arg1;
+- (_Bool)_shouldUseDarkeningTintLayer;
 
 @end
 

@@ -6,27 +6,31 @@
 
 #import "NSObject.h"
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarForegroundStyleAttributes : NSObject
 {
     double _height;
     long long _legibilityStyle;
+    long long _idiom;
     NSMutableDictionary *_cachedFonts;
+    _Bool _isTintColorBlack;
+    _Bool _hasBusyBackground;
+    UIColor *_tintColor;
 }
 
-- (double)airplaneItemExtraMargin;
-- (void)setThermalColorShadow;
-- (int)legacyStyle;
+@property(readonly, retain, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+- (long long)idiom;
 - (_Bool)usesVerticalLayout;
 - (struct CGPoint)positionForMoonMaskInBounds:(struct CGRect)arg1;
 - (double)sizeForMoonMaskVisible:(_Bool)arg1;
 - (id)textForNetworkType:(int)arg1;
 - (double)bluetoothBatteryExtraPadding;
-- (id)tintColor;
 - (id)textColorForStyle:(long long)arg1;
+- (id)proportionalFontForFont:(id)arg1;
 - (id)makeTextFontForStyle:(long long)arg1;
+- (_Bool)_shouldUseBoldFontForStyle:(long long)arg1;
 - (id)textFontForStyle:(long long)arg1;
 - (id)expandedNameForImageName:(id)arg1;
 - (id)cachedImageWithText:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3 letterSpacing:(double)arg4 textAlignment:(long long)arg5 style:(long long)arg6 itemType:(int)arg7;
@@ -51,15 +55,20 @@ __attribute__((visibility("hidden")))
 - (void)_drawText:(id)arg1 inRect:(struct CGRect)arg2 withFont:(id)arg3 lineBreakMode:(long long)arg4 letterSpacing:(double)arg5 textAlignment:(long long)arg6;
 - (void)drawBluetoothBatteryInsidesWithSize:(struct CGSize)arg1 capacity:(double)arg2;
 - (id)bluetoothBatteryImageNameWithCapacity:(double)arg1;
+- (struct UIEdgeInsets)edgeInsetsForBluetoothBatteryInsides;
 - (void)drawBatteryInsidesWithSize:(struct CGSize)arg1 capacity:(double)arg2 charging:(_Bool)arg3;
+- (id)_batteryColorForCapacity:(double)arg1 lowCapacity:(double)arg2 charging:(_Bool)arg3;
 - (id)batteryImageNameWithCapacity:(double)arg1;
+- (struct UIEdgeInsets)edgeInsetsForBatteryInsides;
+- (double)_roundDimension:(double)arg1;
 - (double)batteryAccessoryMargin;
 - (long long)activityIndicatorStyleWithSyncActivity:(_Bool)arg1;
 - (long long)legibilityStyle;
 - (double)height;
 - (id)uniqueIdentifier;
 - (void)dealloc;
-- (id)initWithHeight:(double)arg1 legibilityStyle:(long long)arg2;
+- (id)initWithHeight:(double)arg1 legibilityStyle:(long long)arg2 tintColor:(id)arg3 hasBusyBackground:(_Bool)arg4;
+- (id)initWithHeight:(double)arg1 legibilityStyle:(long long)arg2 tintColor:(id)arg3 hasBusyBackground:(_Bool)arg4 idiom:(long long)arg5;
 
 @end
 

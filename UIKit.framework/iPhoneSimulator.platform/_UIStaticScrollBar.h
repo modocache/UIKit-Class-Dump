@@ -16,11 +16,15 @@ __attribute__((visibility("hidden")))
     UIView *_dividerLine;
     NSInvocation *_invocation;
     NSArray *_buttonConstraints;
+    NSArray *_dividerConstraints;
     _Bool _shouldInsetButtons;
+    _Bool _isOnLeftSide;
 }
 
+@property(nonatomic) _Bool isOnLeftSide; // @synthesize isOnLeftSide=_isOnLeftSide;
 @property(nonatomic) _Bool shouldInsetButtons; // @synthesize shouldInsetButtons=_shouldInsetButtons;
 - (struct CGRect)centeringBounds;
+- (void)_updateDividerConstraints;
 - (void)_updateButtonConstraints;
 - (void)buttonTapped:(id)arg1;
 - (void)setTarget:(id)arg1 forAction:(SEL)arg2;

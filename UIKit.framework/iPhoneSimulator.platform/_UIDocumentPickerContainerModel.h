@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *pickableTypes; // @synthesize pickableTypes=_pickableTypes;
 - (void)updateSortDescriptors;
 - (void)refreshItem:(id)arg1 thumbnailOnly:(_Bool)arg2;
+@property(readonly, nonatomic) _Bool afterInitialUpdate;
 - (id)displayTitle;
 - (void)stopMonitoringChanges;
 - (void)startMonitoringChanges;

@@ -75,7 +75,7 @@
 - (void)setEnabled:(_Bool)arg1;
 - (void)_updateAppearanceForEnabled:(_Bool)arg1;
 - (void)_layoutSubviewsForBoundsChange:(_Bool)arg1;
-- (void)_updateMaxTrackColor;
+- (void)_updateMaxTrackColorForInitialization:(_Bool)arg1;
 - (void)layoutSubviews;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _symbolFrame;
 }
 
++ (id)sortedGeometries:(id)arg1 leftToRight:(_Bool)arg2;
 + (id)geometryWithFrame:(struct CGRect)arg1 paddedFrame:(struct CGRect)arg2;
 + (id)geometryWithShape:(id)arg1;
 @property(retain, nonatomic) NSValue *splitRightRect; // @synthesize splitRightRect=_splitRightRect;
@@ -46,7 +47,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) struct UIEdgeInsets paddedInsets;
 @property(readonly, nonatomic) struct UIEdgeInsets displayInsets;
 - (id)similarShape;
-- (id)iPadVariantGeometries:(unsigned long long)arg1;
+- (id)iPadVariantGeometries:(unsigned long long)arg1 rowLimit:(long long)arg2;
 - (id)iPhoneVariantGeometries:(unsigned long long)arg1;
 - (void)applyShadowInsets:(struct UIEdgeInsets)arg1;
 - (void)applyInsets:(struct UIEdgeInsets)arg1;

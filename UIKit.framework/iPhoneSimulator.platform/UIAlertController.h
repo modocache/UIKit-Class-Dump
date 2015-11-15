@@ -10,28 +10,32 @@
 #import "UIAlertControllerVisualStyleProviding.h"
 #import "_UIAlertControllerTextFieldViewControllerContaining.h"
 
-@class NSArray, NSAttributedString, NSMutableArray, NSObject<UIAlertControllerVisualStyleProviding>, NSSet, NSString, UIAlertAction, UIGestureRecognizer, UIPopoverController, UIView, _UIAlertControllerTextFieldViewController;
+@class NSArray, NSAttributedString, NSMutableArray, NSObject<UIAlertControllerVisualStyleProviding>, NSSet, NSString, UIAlertAction, UIPopoverController, UITapGestureRecognizer, UIView, _UIAlertControllerTextFieldViewController;
 
 @interface UIAlertController : UIViewController <UIAlertControllerContaining, _UIAlertControllerTextFieldViewControllerContaining, UIAlertControllerVisualStyleProviding>
 {
     NSString *_message;
     NSAttributedString *_attributedTitle;
     NSAttributedString *_attributedMessage;
+    NSAttributedString *_attributedDetailMessage;
     NSMutableArray *_actions;
+    NSMutableArray *_actionDelimiterIndices;
     NSSet *_linkedAlertControllers;
     UIAlertAction *_cancelAction;
+    UIAlertAction *_defaultAction;
     long long _resolvedStyle;
     long long _preferredStyle;
     NSObject<UIAlertControllerVisualStyleProviding> *_styleProvider;
     UIViewController *_contentViewController;
     _UIAlertControllerTextFieldViewController *_textFieldViewController;
     _Bool _textFieldsHidden;
-    UIGestureRecognizer *_backButtonDismissGestureRecognizer;
+    UITapGestureRecognizer *_backButtonDismissGestureRecognizer;
     id _ownedTransitioningDelegate;
     _Bool _shouldEnsureContentControllerViewIsVisibleOnAppearance;
+    _Bool _hidden;
     _Bool __shouldAllowNilParameters;
+    _Bool _hasPreservedInputViews;
     _Bool __shouldFlipFrameForShimDismissal;
-    UIAlertAction *__defaultAlertAction;
     UIPopoverController *__compatibilityPopoverController;
 }
 
@@ -41,16 +45,24 @@
 + (void)_setShouldUsePresentationController:(_Bool)arg1;
 + (_Bool)_shouldUsePresentationController;
 @property _Bool _shouldFlipFrameForShimDismissal; // @synthesize _shouldFlipFrameForShimDismissal=__shouldFlipFrameForShimDismissal;
+@property(nonatomic, getter=_hasPreservedInputViews, setter=_setHasPreservedInputViews:) _Bool hasPreservedInputViews; // @synthesize hasPreservedInputViews=_hasPreservedInputViews;
 @property(nonatomic, setter=_setCompatibilityPopoverController:) UIPopoverController *_compatibilityPopoverController; // @synthesize _compatibilityPopoverController=__compatibilityPopoverController;
 @property(setter=_setShouldAllowNilParameters:) _Bool _shouldAllowNilParameters; // @synthesize _shouldAllowNilParameters=__shouldAllowNilParameters;
-@property(setter=_setDefaultAlertAction:) UIAlertAction *_defaultAlertAction; // @synthesize _defaultAlertAction=__defaultAlertAction;
+@property(nonatomic, getter=_isHidden, setter=_setHidden:) _Bool _hidden; // @synthesize _hidden;
 @property(readonly) long long _resolvedStyle; // @synthesize _resolvedStyle;
 @property(nonatomic, setter=_setShouldEnsureContentControllerViewIsVisibleOnAppearance:) _Bool _shouldEnsureContentControllerViewIsVisibleOnAppearance; // @synthesize _shouldEnsureContentControllerViewIsVisibleOnAppearance;
+@property(readonly) NSArray *_actionDelimiterIndices; // @synthesize _actionDelimiterIndices;
 @property(readonly) UIAlertAction *_cancelAction; // @synthesize _cancelAction;
 @property(readonly) NSMutableArray *_actions; // @synthesize _actions;
-- (void)viewDidDisappear;
+- (void)_becomeFirstResponderIfAppropriate;
+- (_Bool)_shouldBecomeFirstResponder;
+- (_Bool)canBecomeFirstResponder;
+- (void)_restoreInputViewsAnimated:(_Bool)arg1;
+- (void)_preserveInputViewsAnimated:(_Bool)arg1;
+- (_Bool)_shouldPreserveInputViews;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
-- (void)viewDidAppear;
+- (void)viewDidAppear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)_removeAllTextFields;
 - (id)_textFieldViewController;
@@ -63,16 +75,16 @@
 @property(readonly) UIView *_foregroundView;
 - (id)cancelAction;
 - (void)setCancelAction:(id)arg1;
+@property(copy, nonatomic, getter=_attributedDetailMessage, setter=_setAttributedDetailMessage:) NSAttributedString *attributedDetailMessage;
 @property(copy, nonatomic, getter=_attributedMessage, setter=_setAttributedMessage:) NSAttributedString *attributedMessage;
 @property(copy, nonatomic, getter=_attributedTitle, setter=_setAttributedTitle:) NSAttributedString *attributedTitle;
 @property(copy, nonatomic) NSString *message;
-@property(copy, nonatomic) NSString *title;
+@property(copy, nonatomic) NSString *title; // @dynamic title;
 - (_Bool)_shouldFitWidthToContentViewControllerWidth;
 - (_Bool)_shouldSizeToFillSuperview;
 - (id)_alertControllerContainer;
 - (_Bool)_viewControllerIsPresentedInPopover:(id)arg1;
 - (_Bool)_isPresentedAsPopover;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_flipFrameForShimDismissalIfNecessary;
 - (void)_updateViewFrameForLandscapePresentationInShimIfNecessary;
 - (long long)_modalPresentationStyleForResolvedStyle;
@@ -96,16 +108,20 @@
 - (void)_actionViewTapped:(id)arg1;
 - (void)_actionViewHighlightChanged:(id)arg1;
 - (id)visualStyleForAlertControllerStyle:(long long)arg1 traitCollection:(id)arg2 descriptor:(id)arg3;
+- (id)_visualStyle;
 @property(retain, nonatomic, getter=_styleProvider, setter=_setStyleProvider:) NSObject<UIAlertControllerVisualStyleProviding> *styleProvider;
 @property(readonly) _Bool _shouldProvideDimmingView;
 @property(nonatomic) long long preferredStyle;
 - (void)_uninstallBackGestureRecognizer;
 - (void)_installBackGestureRecognizer;
+- (long long)_buttonTypeForBackGestureForIdiom:(long long)arg1;
+- (_Bool)_idiomSupportsBackGesture:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)_resolvedStyleChanged;
 - (id)_currentDescriptor;
 - (void)_updateProvidedStyle;
 - (void)_reevaluateResolvedStyle;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (id)_requiredNotificationsForRemoteServices;
 - (void)viewDidLayoutSubviews;
 - (void)_recomputePreferredContentSize;
@@ -126,8 +142,11 @@
 - (void)_returnKeyPressedInLastTextField;
 @property(readonly, nonatomic) NSArray *textFields;
 - (void)addTextFieldWithConfigurationHandler:(CDUnknownBlockType)arg1;
-@property(readonly, nonatomic) NSArray *actions;
-- (void)_actionChanged:(id)arg1;
+@property(nonatomic) NSArray *actions;
+- (void)_handleReturn;
+- (void)_addSectionDelimiter;
+@property(nonatomic, setter=_setDefaultAlertAction:) UIAlertAction *_defaultAlertAction;
+- (void)_setActions:(id)arg1;
 - (void)_addActionWithTitle:(id)arg1 image:(id)arg2 style:(long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_addActionWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3 shouldDismissHandler:(CDUnknownBlockType)arg4;
 - (void)_addActionWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;

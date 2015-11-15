@@ -97,8 +97,7 @@
 - (id)_preferredAnimationControllerForDismissal;
 - (id)_preferredAnimationControllerForPresentation;
 - (_Bool)_forcesPreferredAnimationControllers;
-- (long long)adaptivePresentationStyle;
-- (long long)_defaultPresentationStyleForCompactWidth;
+- (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;
 - (_Bool)_shouldDisableInteractionDuringTransitions;
 - (_Bool)_shouldKeepCurrentFirstResponder;
 - (void)containerViewWillLayoutSubviews;
@@ -113,8 +112,11 @@
 - (void)dismissalTransitionWillBegin;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
 - (void)presentationTransitionWillBegin;
+- (long long)presentationStyle;
 - (id)_exceptionStringForNilSourceViewOrBarButtonItem;
 - (id)_popoverHostingWindow;
+- (_Bool)_shouldChangeStatusBarViewController;
+- (_Bool)_shouldOccludeDuringPresentation;
 - (id)_presentationView;
 - (struct UIEdgeInsets)_baseContentInsets;
 - (_Bool)shouldRemovePresentersView;
@@ -181,6 +183,7 @@
 - (Class)_popoverLayoutInfoForChromeClass:(Class)arg1;
 - (_Bool)_popoverBackgroundViewWantsDefaultContentAppearance;
 @property(copy, nonatomic) NSArray *passthroughViews;
+- (id)_passthroughViews;
 @property(copy, nonatomic) UIColor *backgroundColor;
 @property(readonly, nonatomic) unsigned long long arrowDirection;
 - (_Bool)isPopoverVisible;
@@ -194,7 +197,7 @@
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;
-@property(nonatomic) id <UIPopoverPresentationControllerDelegate> delegate;
+@property(nonatomic) id <UIPopoverPresentationControllerDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(readonly) unsigned long long hash;
 @property(readonly) Class superclass;

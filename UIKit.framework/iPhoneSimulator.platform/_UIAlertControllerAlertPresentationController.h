@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_presentationControllerForSizeClassPair:(CDStruct_d58201db)arg1;
+- (id)_presentationControllerForTraitCollection:(id)arg1;
 - (long long)attributeToAlignAlertControllerViewBy;
 
 @end

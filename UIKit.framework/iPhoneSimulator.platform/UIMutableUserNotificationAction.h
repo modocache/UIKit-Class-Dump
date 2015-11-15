@@ -15,11 +15,11 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 // Remaining properties
-@property(nonatomic) unsigned long long activationMode;
-@property(nonatomic, getter=isAuthenticationRequired) _Bool authenticationRequired;
-@property(nonatomic, getter=isDestructive) _Bool destructive;
-@property(copy, nonatomic) NSString *identifier;
-@property(copy, nonatomic) NSString *title;
+@property(nonatomic) unsigned long long activationMode; // @dynamic activationMode;
+@property(nonatomic, getter=isAuthenticationRequired) _Bool authenticationRequired; // @dynamic authenticationRequired;
+@property(nonatomic, getter=isDestructive) _Bool destructive; // @dynamic destructive;
+@property(copy, nonatomic) NSString *identifier; // @dynamic identifier;
+@property(copy, nonatomic) NSString *title; // @dynamic title;
 
 @end
 

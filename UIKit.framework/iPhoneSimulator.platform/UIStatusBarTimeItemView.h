@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
+- (double)extraRightPadding;
 - (long long)textStyle;
 - (id)contentsImage;
 - (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;

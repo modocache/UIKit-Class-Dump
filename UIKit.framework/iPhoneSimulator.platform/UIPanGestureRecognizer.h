@@ -26,6 +26,7 @@
     unsigned int _canPanVertically:1;
     unsigned int _ignoresStationaryTouches:1;
     NSMutableArray *_movingTouches;
+    struct CGPoint _digitizerLocation;
 }
 
 + (void)_setPanGestureRecognizersEnabled:(_Bool)arg1;
@@ -33,9 +34,12 @@
 @property(readonly, getter=_velocitySample) UIPanGestureVelocitySample *_velocitySample; // @synthesize _velocitySample;
 @property(nonatomic) unsigned long long maximumNumberOfTouches; // @synthesize maximumNumberOfTouches=_maximumNumberOfTouches;
 @property(nonatomic) unsigned long long minimumNumberOfTouches; // @synthesize minimumNumberOfTouches=_minimumNumberOfTouches;
+- (void)_updateDigitizerLocationWithEvent:(id)arg1;
+- (struct CGPoint)_digitizerLocation;
 - (struct CGPoint)locationOfTouch:(unsigned long long)arg1 inView:(id)arg2;
 - (unsigned long long)numberOfTouches;
 - (struct CGPoint)locationInView:(id)arg1;
+- (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_handleEndedTouches:(id)arg1 withFinalStateAdjustments:(CDUnknownBlockType)arg2;

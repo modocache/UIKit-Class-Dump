@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)_appearanceForClass:(Class)arg1 withContainerList:(id)arg2;
 + (void)_applyInvocationsTo:(id)arg1 window:(id)arg2;
 + (void)_applyInvocationsTo:(id)arg1 window:(id)arg2 matchingSelector:(SEL)arg3;
++ (void)_removeInvocationsForSource:(id)arg1;
 + (_Bool)_hasAnyCustomizations;
 + (id)_rootAppearancesNode;
 + (id)appearancesAtNode:(id)arg1 withObject:(id)arg2;
@@ -42,8 +43,10 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)_invalidateAppearanceInWindow:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
+- (id)_traitCollection;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)dealloc;
+- (void)_removeInvocationsForSource:(id)arg1;
 - (_Bool)_isValidAppearanceForCustomizableObject:(id)arg1;
 - (id)_appearanceInvocations;
 - (void)updateResettableSelectorsWithInvocation:(id)arg1 removeSelector:(_Bool)arg2;

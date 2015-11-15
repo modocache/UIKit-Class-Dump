@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface UIKBRenderConfig : NSObject <NSCopying>
 {
+    _Bool _useEmojiStyles;
     _Bool _lightKeyboard;
     double _blurRadius;
     double _blurSaturation;
@@ -19,8 +20,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)backdropStyleForStyle:(long long)arg1;
-+ (id)configForAppearance:(long long)arg1;
++ (id)configForAppearance:(long long)arg1 inputMode:(id)arg2;
 + (id)darkConfig;
++ (id)defaultEmojiConfig;
 + (id)defaultConfig;
 @property(nonatomic) _Bool lightKeyboard; // @synthesize lightKeyboard=_lightKeyboard;
 @property(nonatomic) double lightKeycapOpacity; // @synthesize lightKeycapOpacity=_lightKeycapOpacity;

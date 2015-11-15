@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     UILongPressGestureRecognizer *_pickableDiagnosticGestureRecognizer;
 }
 
++ (id)folderIconForTraits:(id)arg1;
 + (struct CGSize)thumbnailSizeForTraits:(id)arg1;
 + (struct CGSize)defaultSizeForTraits:(id)arg1;
 @property(retain, nonatomic) UILongPressGestureRecognizer *pickableDiagnosticGestureRecognizer; // @synthesize pickableDiagnosticGestureRecognizer=_pickableDiagnosticGestureRecognizer;

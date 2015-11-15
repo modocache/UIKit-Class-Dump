@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 + (id)remoteKeyboardWindowForScreen:(id)arg1 create:(_Bool)arg2 forViewService:(_Bool)arg3;
 @property(nonatomic) UIView *viewServiceHostView; // @synthesize viewServiceHostView=_viewServiceHostView;
+- (_Bool)_usesWindowServerHitTesting;
 - (void)_didRemoveSubview:(id)arg1;
 - (_Bool)_alwaysGetsContexts;
 - (_Bool)_isHostedInAnotherProcess;

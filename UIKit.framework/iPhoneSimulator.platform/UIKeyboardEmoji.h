@@ -12,16 +12,16 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardEmoji : NSObject
 {
     NSString *_emojiString;
-    _Bool _hasDingbat;
+    unsigned long long _variantMask;
 }
 
-+ (id)emojiWithString:(id)arg1 hasDingbat:(_Bool)arg2;
-@property _Bool hasDingbat; // @synthesize hasDingbat=_hasDingbat;
++ (id)emojiWithString:(id)arg1 withVariantMask:(unsigned long long)arg2;
+@property unsigned long long variantMask; // @synthesize variantMask=_variantMask;
 @property(retain, nonatomic) NSString *emojiString; // @synthesize emojiString=_emojiString;
 - (_Bool)isEqual:(id)arg1;
 - (id)key;
 - (void)dealloc;
-- (id)initWithString:(id)arg1 hasDingbat:(_Bool)arg2;
+- (id)initWithString:(id)arg1 withVariantMask:(unsigned long long)arg2;
 
 @end
 

@@ -14,15 +14,16 @@
 @interface UIKBShape : NSObject <NSCoding, NSCopying>
 {
     UIKBGeometry *m_geometry;
-    struct CGRect m_originalFrame;
     struct CGRect m_frame;
     struct CGRect m_paddedFrame;
     unsigned long long m_uid;
     _Bool m_scaled;
+    UIKBShape *m_originalShape;
 }
 
 + (id)shapeByCombining:(id)arg1 withShape:(id)arg2;
 + (id)shape;
+@property(retain, nonatomic) UIKBShape *originalShape; // @synthesize originalShape=m_originalShape;
 @property(nonatomic) _Bool scaled; // @synthesize scaled=m_scaled;
 @property(readonly, nonatomic) unsigned long long uid; // @synthesize uid=m_uid;
 @property(nonatomic) struct CGRect paddedFrame; // @synthesize paddedFrame=m_paddedFrame;
@@ -38,9 +39,6 @@
 - (id)description;
 - (_Bool)shouldUseGeometry;
 - (_Bool)isEmpty;
-@property(readonly, nonatomic) struct CGRect originalFrame;
-- (void)setFrameOnly:(struct CGRect)arg1;
-- (void)setFrame:(struct CGRect)arg1 resetOriginalFrame:(_Bool)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;

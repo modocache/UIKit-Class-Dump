@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property(retain, nonatomic) id line; // @synthesize line=_line;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
+- (id)description;
 - (void)dealloc;
 
 @end

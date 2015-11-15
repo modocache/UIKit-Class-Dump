@@ -32,9 +32,12 @@ __attribute__((visibility("hidden")))
 - (id)locateNavigationController;
 - (_Bool)shouldAccountForStatusBar;
 - (double)statusBarAdjustment;
+- (_Bool)_statusBarPreferredHiddenForInterfaceOrientation:(long long)arg1;
 - (_Bool)_statusBarPreferredHidden;
 - (id)dimmingView;
 - (struct CGSize)updateSearchBarContainerFrame;
+- (double)_statusBarHeightChangeDueToRotation;
+- (_Bool)_currentTransitionIsRotating;
 - (void)removeContainerViewFromSuperview;
 - (id)searchBarContainerView;
 - (id)_searchBarContainerSuperview;

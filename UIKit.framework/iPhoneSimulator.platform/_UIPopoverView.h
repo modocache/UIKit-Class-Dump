@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long arrowDirection;
 @property(nonatomic) double arrowOffset;
 - (_Bool)_allowsCustomizationOfContent;
+- (void)_setPopoverContentView:(id)arg1;
 - (struct CGRect)_snapshotBounds;
 - (id)toolbarShine;
 - (id)standardChromeView;

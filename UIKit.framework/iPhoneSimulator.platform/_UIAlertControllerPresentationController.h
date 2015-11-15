@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
     _UIKeyboardLayoutAlignmentView *keyboardLayoutAlignmentView;
     UIView *keyboardLayoutAlignmentAvailableSpaceView;
     _Bool constraintsPrepared;
+    _Bool _chromeHidden;
     _Bool __isCurrentContext;
     _Bool __shouldRespectNearestCurrentContextPresenter;
 }
 
 @property(setter=_setShouldRespectNearestCurrentContextPresenter:) _Bool _shouldRespectNearestCurrentContextPresenter; // @synthesize _shouldRespectNearestCurrentContextPresenter=__shouldRespectNearestCurrentContextPresenter;
 @property(setter=_setIsCurrentContext:) _Bool _isCurrentContext; // @synthesize _isCurrentContext=__isCurrentContext;
+@property(nonatomic, getter=_isChromeHidden, setter=_setChromeHidden:) _Bool _chromeHidden; // @synthesize _chromeHidden;
 @property(readonly) UIView *_dimmingView; // @synthesize _dimmingView;
 - (id)_presentedAlertController;
 - (id)presentationController:(id)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
@@ -30,10 +32,12 @@ __attribute__((visibility("hidden")))
 - (void)setDelegate:(id)arg1;
 - (double)constantForAligningAlertControllerToAvailableSpace;
 - (long long)attributeToAlignAlertControllerViewBy;
+- (void)_prepareDimmingViewIfNecessary;
 - (void)_prepareConstraintsIfNecessary;
 - (void)_occludePresentingWindow:(_Bool)arg1;
+- (void)_containerViewWillLayoutSubviews;
+- (_Bool)_shouldChangeStatusBarViewController;
 - (_Bool)_preserveResponderAcrossWindows;
-- (void)dismissalTransitionDidEnd:(_Bool)arg1;
 - (void)dismissalTransitionWillBegin;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
 - (void)presentationTransitionWillBegin;
@@ -42,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)shouldPresentInFullscreen;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (id)presentedView;
-- (void)containerViewDidLayoutSubviews;
 - (void)containerViewWillLayoutSubviews;
 - (long long)adaptivePresentationStyle;
 - (void)dealloc;

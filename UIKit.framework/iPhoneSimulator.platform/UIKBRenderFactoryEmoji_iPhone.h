@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
 
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)traitsHashStringForKey:(id)arg1 withGeometry:(id)arg2 controlOpacities:(_Bool)arg3;
+- (_Bool)shouldClearBaseDisplayStringForVariants:(id)arg1;
+- (struct CGPoint)emojiInternationalKeyOffset;
+- (double)emojiInternationalKeySize;
+- (struct CGPoint)emojiPopupTextOffset;
 
 @end
 

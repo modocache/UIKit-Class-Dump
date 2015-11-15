@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstanceForInlineView;
 + (id)sharedInstance;
 @property(retain, nonatomic) UIView<UIKeyboardCandidateList> *inlineView; // @synthesize inlineView=_inlineView;
+- (double)extendedViewAnimationDuration;
 - (void)setCandidatesToExtendedViewFromCollapsedView:(id)arg1;
 - (unsigned long long)_numberOfColumns:(_Bool)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;

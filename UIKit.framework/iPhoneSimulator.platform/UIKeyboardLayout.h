@@ -122,6 +122,7 @@
 - (_Bool)usesAutoShift;
 - (void)updateLocalizedKeys:(_Bool)arg1;
 - (void)deactivateActiveKeys;
+- (void)clearTransientState;
 - (void)clearUnusedObjects:(_Bool)arg1;
 - (unsigned long long)textEditingKeyMask;
 - (void)setTextEditingTraits:(id)arg1;

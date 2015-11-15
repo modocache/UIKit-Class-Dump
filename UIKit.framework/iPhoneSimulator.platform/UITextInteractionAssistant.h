@@ -102,7 +102,7 @@
 - (id)addPhraseBoundaryGestureRecognizerToView:(id)arg1;
 - (id)phraseBoundaryGestureRecognizer;
 - (id)addTapAndHoldOnLinkRecognizerToView:(id)arg1;
-- (id)addHighlightLinkRecognizerToView:(id)arg1;
+- (id)addHighlightLinkRecognizerToView:(id)arg1 withHighlightDelay:(_Bool)arg2;
 - (id)addTwoFingerRangedSelectRecognizerToView:(id)arg1;
 - (id)twoFingerRangedSelectRecognizer;
 - (id)addLoupeGestureRecognizer:(_Bool)arg1 toView:(id)arg2;

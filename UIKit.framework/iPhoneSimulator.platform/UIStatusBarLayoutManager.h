@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     UIStatusBarForegroundView *_foregroundView;
     int _region;
-    UIStatusBarItemView *_itemViews[30];
+    UIStatusBarItemView *_itemViews[31];
     _Bool _persistentAnimationsEnabled;
     _Bool _usesVerticalLayout;
 }

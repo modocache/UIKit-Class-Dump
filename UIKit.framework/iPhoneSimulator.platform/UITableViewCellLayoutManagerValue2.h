@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (struct CGSize)intrinsicContentSizeForCell:(id)arg1;
 - (void)layoutSubviewsOfCell:(id)arg1;
-- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3;
+- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3 rowWidth:(double)arg4;
 - (id)defaultDetailTextLabelFontForCell:(id)arg1;
 - (id)defaultTextLabelFontForCell:(id)arg1;
 - (id)detailTextLabelForCell:(id)arg1;

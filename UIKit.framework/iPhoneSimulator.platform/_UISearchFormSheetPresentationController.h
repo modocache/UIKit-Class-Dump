@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double statusBarAdjustment;
 @property(readonly, nonatomic) _Bool shouldAccountForStatusBar;
 @property(readonly, retain, nonatomic) UIView *searchBarContainerView;
-- (id)_presentationControllerForSizeClassPair:(CDStruct_d58201db)arg1;
-- (id)_presentedViewControllerForSizeClassPair:(CDStruct_d58201db)arg1;
+- (id)_presentationControllerForTraitCollection:(id)arg1;
+- (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (long long)adaptivePresentationStyle;
 - (void)_transitionToPresentationController:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_transitionFromDidEnd;

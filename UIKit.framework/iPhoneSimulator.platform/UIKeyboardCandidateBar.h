@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 + (double)defaultPagingDistanceThreshold;
 + (double)defaultPagingVelocityThreshold;
 + (double)defaultCandidateWidth;
++ (double)interRowOverlap;
 + (double)heightForInterfaceOrientation:(long long)arg1;
 + (double)height;
 + (double)heightForRowAtIndex:(unsigned long long)arg1 interfaceOrientation:(long long)arg2;

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     int _currentNumberOfTaps;
     struct CGPoint _location;
     struct CGPoint _startPoint;
+    struct CGPoint _digitizerLocation;
     double _allowableMovement;
     double _maximumSingleTapDuration;
     double _maximumIntervalBetweenSuccessiveTaps;
@@ -33,6 +34,8 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *touches; // @synthesize touches=_touches;
 @property(nonatomic) unsigned long long numberOfTouchesRequired; // @synthesize numberOfTouchesRequired=_numberOfTouchesRequired;
 @property(nonatomic) unsigned long long numberOfTapsRequired; // @synthesize numberOfTapsRequired=_numberOfTapsRequired;
+- (void)_updateDigitizerLocationForEvent:(id)arg1;
+- (struct CGPoint)_digitizerLocation;
 - (struct CGPoint)locationInView:(id)arg1;
 - (struct CGPoint)_locationInSceneReferenceSpace;
 @property(nonatomic) double maximumIntervalBetweenSuccessiveTaps;

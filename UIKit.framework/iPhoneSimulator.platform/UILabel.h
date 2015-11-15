@@ -18,7 +18,7 @@
     long long _numberOfLines;
     long long _measuredNumberOfLines;
     double _lastLineBaseline;
-    double _previousLastLineBaseline;
+    double _previousBaselineOffsetFromBottom;
     double _firstLineBaseline;
     double _previousFirstLineBaseline;
     double _minimumScaleFactor;

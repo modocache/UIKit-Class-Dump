@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)renderConfig;
 - (void)setDrawFrame:(struct CGRect)arg1;
 - (struct CGRect)drawFrame;
+- (id)contentsKeyView;
 - (id)key;
 - (id)keyplane;
 - (void)dimKeyCaps:(double)arg1 duration:(double)arg2;

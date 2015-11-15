@@ -6,9 +6,12 @@
 
 #import <UIKit/_UIDocumentPickerContainerItem.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerContainerContainerItem : _UIDocumentPickerContainerItem
 {
+    NSString *_cachedSubtitle;
 }
 
 - (id)sortDate;
@@ -16,8 +19,10 @@ __attribute__((visibility("hidden")))
 - (id)_defaultThumbnailWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (id)url;
 - (id)subtitle;
+- (void)_modelChanged;
 - (id)title;
 - (long long)type;
+- (void)dealloc;
 
 @end
 

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     UIView *_iconCenteringView;
 }
 
++ (double)estimatedHeight;
 + (struct CGSize)thumbnailSize;
 @property(retain, nonatomic) UIView *iconCenteringView; // @synthesize iconCenteringView=_iconCenteringView;
 @property(retain, nonatomic) id progressSubscriber; // @synthesize progressSubscriber=_progressSubscriber;

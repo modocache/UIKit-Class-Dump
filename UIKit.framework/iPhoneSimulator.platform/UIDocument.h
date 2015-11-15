@@ -144,12 +144,14 @@
 - (id)userActivity;
 - (void)setUserActivity:(id)arg1;
 - (void)_setUserActivity:(id)arg1;
-- (void)_clearActivityForCloudDocument;
-- (void)_saveActivityForCloudDocumentIfAppropriate;
-- (id)_activityTypeIdentifierForCloudDocument;
+- (void)_clearUserActivity;
+- (void)_manageUserActivity;
+- (void)_reallyManageUserActivity;
+- (id)_activityTypeIdentifierForCloudDocument:(_Bool *)arg1;
 - (void)_invalidateCurrentUserActivity;
 - (_Bool)_documentIsUbiquitous;
 - (id)_userActivityWithActivityType:(id)arg1;
+- (id)_titleForActivityContinuation;
 - (id)_userInfoForActivityContinuation;
 - (void)_unregisterAsFilePresenterIfNecessary;
 - (void)_registerAsFilePresenterIfNecessary;

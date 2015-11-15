@@ -20,9 +20,8 @@ __attribute__((visibility("hidden")))
     NSString *_displayStringImage;
     NSString *_secondaryDisplayStringImage;
     NSString *_secondaryDisplayString;
-    NSArray *_variantDisplayStrings;
-    NSArray *_variantDisplayImages;
-    long long _highlightedVariantIndex;
+    NSArray *_variantDisplayContents;
+    NSArray *_highlightedVariantsList;
     long long _displayPathType;
     UIKBKeyDisplayContents *_fallbackContents;
 }
@@ -33,9 +32,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool force1xImages; // @synthesize force1xImages=_force1xImages;
 @property(nonatomic) _Bool fillPath; // @synthesize fillPath=_fillPath;
 @property(nonatomic) long long displayPathType; // @synthesize displayPathType=_displayPathType;
-@property(nonatomic) long long highlightedVariantIndex; // @synthesize highlightedVariantIndex=_highlightedVariantIndex;
-@property(retain, nonatomic) NSArray *variantDisplayImages; // @synthesize variantDisplayImages=_variantDisplayImages;
-@property(retain, nonatomic) NSArray *variantDisplayStrings; // @synthesize variantDisplayStrings=_variantDisplayStrings;
+@property(retain, nonatomic) NSArray *highlightedVariantsList; // @synthesize highlightedVariantsList=_highlightedVariantsList;
+@property(retain, nonatomic) NSArray *variantDisplayContents; // @synthesize variantDisplayContents=_variantDisplayContents;
 @property(nonatomic) _Bool secondaryIsCustomGlyph; // @synthesize secondaryIsCustomGlyph=_secondaryIsCustomGlyph;
 @property(nonatomic) _Bool isCustomGlyph; // @synthesize isCustomGlyph=_isCustomGlyph;
 @property(retain, nonatomic) NSString *secondaryDisplayString; // @synthesize secondaryDisplayString=_secondaryDisplayString;

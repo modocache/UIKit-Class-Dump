@@ -22,9 +22,10 @@ __attribute__((visibility("hidden")))
 + (id)allTags;
 + (id)tagColorsByTag;
 @property(retain, nonatomic) _UIDocumentPickerDirectoryObserver *observer; // @synthesize observer=_observer;
-@property(retain, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
+@property(copy, nonatomic) NSString *displayTitle; // @synthesize displayTitle=_displayTitle;
 @property(retain, nonatomic) NSURL *url; // @synthesize url=_url;
 @property(retain, nonatomic) NSArray *modelObjects; // @synthesize modelObjects=_modelObjects;
+- (_Bool)afterInitialUpdate;
 - (id)description;
 - (void)callUpdateHandlerWithNewItems:(id)arg1 diff:(id)arg2;
 - (void)modelChangedWithSnapshot:(id)arg1 differences:(id)arg2;

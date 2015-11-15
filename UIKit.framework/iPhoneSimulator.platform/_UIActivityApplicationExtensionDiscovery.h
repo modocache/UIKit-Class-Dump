@@ -11,6 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _UIActivityApplicationExtensionDiscovery : NSObject
 {
+    _Bool _sourceIsManaged;
+    _Bool _matchesOnlyUserElectedExtensions;
     _Bool _performsInitialMatching;
     NSArray *_extensionPointIdentifiers;
     id _extensionMatchingContext;
@@ -18,9 +20,11 @@ __attribute__((visibility("hidden")))
 
 @property _Bool performsInitialMatching; // @synthesize performsInitialMatching=_performsInitialMatching;
 @property(retain) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
+@property(nonatomic) _Bool matchesOnlyUserElectedExtensions; // @synthesize matchesOnlyUserElectedExtensions=_matchesOnlyUserElectedExtensions;
+@property(nonatomic) _Bool sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property(copy, nonatomic) NSArray *extensionPointIdentifiers; // @synthesize extensionPointIdentifiers=_extensionPointIdentifiers;
 - (void)cancelUpdatesIfNeeded;
-- (id)activitiesMatchingInputItems:(id)arg1 sourceIsManaged:(_Bool)arg2 error:(id *)arg3 updateBlock:(CDUnknownBlockType)arg4;
+- (id)activitiesMatchingInputItems:(id)arg1 error:(id *)arg2 updateBlock:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithExtensionPointIdentifiers:(id)arg1;

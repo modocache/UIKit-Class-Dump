@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSURL *_cachedURL;
 }
 
+- (void)_modelChanged;
 - (id)sortDate;
 - (id)tags;
 - (id)url;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)title;
 - (long long)type;
 - (void)cacheValues;
+- (void)_valuesChanged;
 - (void)_removeCachedValues;
 - (void)dealloc;
 - (id)initWithItem:(id)arg1;

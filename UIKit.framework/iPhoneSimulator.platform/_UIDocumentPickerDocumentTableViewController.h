@@ -6,25 +6,30 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSURL, _UIDocumentPickerContainerModel, _UIDocumentPickerSortOrderView, _UIDocumentPickerViewServiceViewController;
+#import "_UIDocumentPickerContainedViewController.h"
+
+@class NSString, NSURL, UIActivityIndicatorView, _UIDocumentPickerContainerModel, _UIDocumentPickerSortOrderView, _UIDocumentPickerViewServiceViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerDocumentTableViewController : UITableViewController
+@interface _UIDocumentPickerDocumentTableViewController : UITableViewController <_UIDocumentPickerContainedViewController>
 {
+    _UIDocumentPickerViewServiceViewController *_weak_serviceViewController;
     _Bool _shouldHideSortBar;
-    _UIDocumentPickerViewServiceViewController *_serviceViewController;
+    _Bool _updatesMayAnimate;
     NSURL *_observedURL;
     _UIDocumentPickerContainerModel *_model;
     id _monitoringToken;
     _UIDocumentPickerSortOrderView *_sortView;
+    UIActivityIndicatorView *_initialActivityView;
 }
 
+@property(retain, nonatomic) UIActivityIndicatorView *initialActivityView; // @synthesize initialActivityView=_initialActivityView;
+@property(nonatomic) _Bool updatesMayAnimate; // @synthesize updatesMayAnimate=_updatesMayAnimate;
 @property(retain, nonatomic) _UIDocumentPickerSortOrderView *sortView; // @synthesize sortView=_sortView;
 @property(nonatomic) _Bool shouldHideSortBar; // @synthesize shouldHideSortBar=_shouldHideSortBar;
 @property(retain, nonatomic) id monitoringToken; // @synthesize monitoringToken=_monitoringToken;
 @property(retain, nonatomic) _UIDocumentPickerContainerModel *model; // @synthesize model=_model;
 @property(retain, nonatomic) NSURL *observedURL; // @synthesize observedURL=_observedURL;
-@property(nonatomic) _UIDocumentPickerViewServiceViewController *serviceViewController; // @synthesize serviceViewController=_serviceViewController;
 - (_Bool)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
@@ -32,15 +37,23 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)setMonitoring:(_Bool)arg1;
-- (void)didMoveToParentViewController:(id)arg1;
+@property(nonatomic) _UIDocumentPickerViewServiceViewController *serviceViewController;
 - (void)willMoveToParentViewController:(id)arg1;
+- (void)scrollSortViewToVisible;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)containersChangedWithSnapshot:(id)arg1 differences:(id)arg2;
-- (void)_sortViewChanged:(id)arg1;
+- (void)updateEstimatedRowHeight;
 - (void)_dynamicTypeSizeChanged:(id)arg1;
+- (void)_unlockAnimations;
 - (void)dealloc;
 - (id)initWithModel:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

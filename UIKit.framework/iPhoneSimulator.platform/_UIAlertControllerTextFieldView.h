@@ -6,12 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class UITextField, _UIAlertControllerTextField;
+@class UITextField, UIVisualEffectView, _UIAlertControllerTextField;
 
 __attribute__((visibility("hidden")))
 @interface _UIAlertControllerTextFieldView : UIView
 {
-    UIView *_borderContainerView;
+    UIVisualEffectView *_borderContainerView;
     UIView *_borderView;
     UIView *_innerContentView;
     _UIAlertControllerTextField *_textField;

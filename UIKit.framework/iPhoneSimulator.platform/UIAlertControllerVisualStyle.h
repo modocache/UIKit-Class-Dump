@@ -6,19 +6,32 @@
 
 #import "NSObject.h"
 
+@class UIAlertControllerDescriptor, UITraitCollection;
+
 __attribute__((visibility("hidden")))
 @interface UIAlertControllerVisualStyle : NSObject
 {
+    UIAlertControllerDescriptor *_descriptor;
+    UITraitCollection *_traitCollection;
 }
 
+@property(retain, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
+@property(retain, nonatomic) UIAlertControllerDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 - (double)_scaledMarginBelowLastLabelLastBaseline;
 - (double)_scaledMarginBelowMessageLabelLastBaseline;
 - (double)_scaledMarginAboveMessageLabelFirstBaseline;
 - (double)_scaledMarginBelowTitleLabelLastBaseline;
 - (double)_scaledMarginAboveTitleLabelFirstBaseline;
+- (_Bool)focusedActionAnimatesOnPresentationAndDismissal;
+- (struct CGAffineTransform)presentationAnimationStartTransform;
+- (id)dimmingView;
+- (struct CGSize)collectionViewOutsetSize;
+- (double)sectionDelimitingSeparatorDimension;
+- (_Bool)hideActionSeparators;
 - (double)minimumActionHeight;
 - (id)defaultActionBackgroundColorWhenSeparate;
 - (id)actionHighlightedBackgroundView;
+- (id)disabledActionContentColor;
 - (id)highlightedActionContentColor;
 - (id)defaultActionFont;
 - (id)regularActionFont;
@@ -27,11 +40,13 @@ __attribute__((visibility("hidden")))
 - (double)backgroundCornerRadius;
 - (double)verticalContentMargin;
 - (double)horizontalContentMargin;
+- (double)actionWidthForMinimumActionWidth:(double)arg1;
 - (double)maximumWidth;
 - (double)marginBelowLastLabelLastBaseline;
 - (long long)maximumNumberOfLinesInMessageLabel;
 - (double)marginBelowMessageLabelLastBaseline;
 - (double)marginAboveMessageLabelFirstBaseline;
+- (id)_detailMessageFont;
 - (id)messageLabelColor;
 - (id)messageLabelFont;
 - (long long)maximumNumberOfLinesInTitleLabel;

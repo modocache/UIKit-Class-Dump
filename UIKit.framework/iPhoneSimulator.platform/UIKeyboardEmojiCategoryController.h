@@ -9,10 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCategoryController : NSObject
 {
+    int _currentCategory;
 }
 
 + (Class)classForCategoryControl;
-- (void)setCurrentCategory:(id)arg1;
+- (long long)sectionWithOffsetPercentage:(double)arg1;
+- (void)setCurrentCategory:(int)arg1;
 - (id)initWithCategoryControl:(id)arg1;
 
 @end

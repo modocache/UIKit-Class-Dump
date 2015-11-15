@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_appearanceForTraitCollection:(id)arg1 forClass:(Class)arg2 withContainerList:(id)arg3;
-+ (id)appearancesAtNode:(id)arg1 withObject:(id)arg2;
 + (_Bool)_hasCustomizationsForTraitCollection:(id)arg1 class:(Class)arg2 guideClass:(Class)arg3;
++ (_Bool)_hasAnyCustomizations;
++ (void)_setHasAnyCustomizations;
+- (id)_traitCollection;
 - (void)_invalidateAppearanceInWindow:(id)arg1;
 - (_Bool)_isValidAppearanceForCustomizableObject:(id)arg1;
 - (void)dealloc;

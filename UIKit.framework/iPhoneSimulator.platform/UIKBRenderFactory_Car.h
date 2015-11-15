@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)activeKeyColor;
 - (id)enabledKeyColor;
 - (id)dividerColor;
+@property(readonly, nonatomic) double carScale;
 
 @end
 

@@ -8,30 +8,35 @@
 
 #import "NSCopying.h"
 
-@class NSString, UIAlertController, UIImage;
+@class NSString, UIAlertController, UIColor, UIImage, UIViewController;
 
 @interface UIAlertAction : NSObject <NSCopying>
 {
     NSString *_title;
+    long long _titleTextAlignment;
     _Bool _enabled;
     _Bool _checked;
-    _Bool __isDefault;
+    _Bool _isDefault;
+    UIColor *_imageTintColor;
+    UIColor *_titleTextColor;
     long long _style;
     CDUnknownBlockType _handler;
     CDUnknownBlockType _simpleHandler;
     UIImage *_image;
     CDUnknownBlockType _shouldDismissHandler;
     NSString *__descriptiveText;
+    UIViewController *_contentViewController;
     id <_UIAlertActionRepresenting> __representer;
     UIAlertController *__alertController;
 }
 
 + (id)actionWithTitle:(id)arg1 style:(long long)arg2 handler:(CDUnknownBlockType)arg3;
++ (id)_actionWithContentViewController:(id)arg1 style:(long long)arg2;
 + (id)_actionWithTitle:(id)arg1 image:(id)arg2 style:(long long)arg3 handler:(CDUnknownBlockType)arg4 shouldDismissHandler:(CDUnknownBlockType)arg5;
 + (id)_actionWithTitle:(id)arg1 descriptiveText:(id)arg2 image:(id)arg3 style:(long long)arg4 handler:(CDUnknownBlockType)arg5 shouldDismissHandler:(CDUnknownBlockType)arg6;
 @property(nonatomic, setter=_setAlertController:) UIAlertController *_alertController; // @synthesize _alertController=__alertController;
-@property(setter=_setIsDefault:) _Bool _isDefault; // @synthesize _isDefault=__isDefault;
 @property(setter=_setRepresenter:) id <_UIAlertActionRepresenting> _representer; // @synthesize _representer=__representer;
+@property(retain, nonatomic, getter=_contentViewController, setter=_setContentViewController:) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property(copy, nonatomic, setter=_setDescriptiveText:) NSString *_descriptiveText; // @synthesize _descriptiveText=__descriptiveText;
 @property(copy, nonatomic) CDUnknownBlockType shouldDismissHandler; // @synthesize shouldDismissHandler=_shouldDismissHandler;
 @property(retain, nonatomic) UIImage *image; // @synthesize image=_image;
@@ -39,9 +44,18 @@
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(copy, nonatomic) NSString *title; // @synthesize title=_title;
+- (void)_didAddContentViewController;
+- (void)_willAddContentViewController;
+- (id)_titleTextColor;
+- (void)_setTitleTextColor:(id)arg1;
+- (id)_imageTintColor;
+- (void)_setImageTintColor:(id)arg1;
+@property(setter=_setIsDefault:) _Bool _isDefault;
 - (_Bool)_isChecked;
 - (void)_setChecked:(_Bool)arg1;
 @property(nonatomic, getter=isEnabled) _Bool enabled;
+- (void)_setTitleTextAlignment:(long long)arg1;
+- (long long)_titleTextAlignment;
 - (id)description;
 - (void)dealloc;
 - (id)copyWithZone:(struct _NSZone *)arg1;

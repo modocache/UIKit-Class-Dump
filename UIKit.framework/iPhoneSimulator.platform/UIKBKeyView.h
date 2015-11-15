@@ -52,9 +52,14 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSString *cacheKey;
 @property(readonly, nonatomic) struct UIEdgeInsets displayInsets;
 - (void)dimKeyCaps:(double)arg1 duration:(double)arg2;
+- (void)willDisplayModalActionView:(id)arg1 withSubTreeKeyView:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (long long)didInputSubTree:(id)arg1;
+- (id)subTreeHitTest:(struct CGPoint)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)_applyAppearanceInvocations;
 - (_Bool)_viewShouldBeOpaque;
+@property(readonly, nonatomic) UIKBKeyView *contentsKeyView;
+@property(readonly, nonatomic) struct CGRect variantFrame;
 - (int)textEffectsVisibilityLevel;
 - (void)dealloc;
 - (void)updateForKeyplane:(id)arg1 key:(id)arg2;

@@ -11,9 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerDescriptor : NSObject
 {
+    _Bool _newlyAdded;
     NSExtension *_extension;
 }
 
++ (void)setOrderFromPickers:(id)arg1;
++ (id)pickerOrder;
 + (BOOL)cloudEnabledStatus;
 + (void)setCloudEnabledStatus:(BOOL)arg1;
 + (id)descriptorWithIdentifier:(id)arg1;
@@ -25,6 +28,8 @@ __attribute__((visibility("hidden")))
 + (id)hostBundleID;
 + (void)setHostBundleID:(id)arg1;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+@property(nonatomic, getter=isNewlyAdded) _Bool newlyAdded; // @synthesize newlyAdded=_newlyAdded;
+- (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 @property(nonatomic) _Bool enabled;

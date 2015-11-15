@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) UIKBCacheToken *cacheToken; // @synthesize cacheToken=_cacheToken;
 @property(retain, nonatomic) UIKBTree *defaultKeyplane; // @synthesize defaultKeyplane=_defaultKeyplane;
 @property(retain, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=_keyplane;
+- (void)purgeLayerContents;
 - (void)purgeSubviews;
 - (void)purgeKeyViews;
 - (void)activateKeys;
@@ -44,8 +45,10 @@ __attribute__((visibility("hidden")))
 - (void)deactivateAdaptiveKey:(id)arg1;
 - (id)viewForKey:(id)arg1 state:(int)arg2;
 - (id)viewForKey:(id)arg1;
+- (id)activeKeyViews;
 - (int)stateForKey:(id)arg1;
 - (void)setState:(int)arg1 forKey:(id)arg2;
+- (_Bool)_shouldAllowKey:(id)arg1;
 - (Class)classForKey:(id)arg1;
 - (id)containingViewForKey:(id)arg1 withState:(int)arg2;
 - (int)cornerMaskForKey:(id)arg1 recursive:(_Bool)arg2;
@@ -59,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawContentsOfRenderers:(id)arg1;
-- (_Bool)_shouldDrawLowResBackground;
 @property(readonly, nonatomic) _Bool keepNonPersistent;
 @property(readonly, nonatomic) double cachedWidth;
 @property(readonly, nonatomic) _Bool cacheDeferable;

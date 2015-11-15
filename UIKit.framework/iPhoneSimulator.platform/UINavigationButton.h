@@ -49,6 +49,9 @@
 @property(nonatomic) double minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property(nonatomic) long long barStyle; // @synthesize barStyle=_barStyle;
 @property(nonatomic) int style; // @synthesize style=_style;
+- (id)_externalUnfocusedBorderColor;
+- (_Bool)_isExternalRoundedRectButton;
+- (_Bool)canBecomeFocused;
 - (id)_appearanceStorage;
 - (void)_applyBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (void)_setBackButtonBackgroundVerticalPositionAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
@@ -131,7 +134,7 @@
 - (void)_prepareToAppearInNavigationItem:(id)arg1 onLeft:(_Bool)arg2;
 
 // Remaining properties
-@property(retain, nonatomic) UIColor *tintColor;
+@property(retain, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 
 @end
 

@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) int shakeState; // @synthesize shakeState=_shakeState;
+- (void)_enablePeakDetectionForScreenBlanked:(id)arg1;
 - (void)_enablePeakDetectionIfNecessary;
 - (int)_shakeState;
 - (float)_determineShakeLevelX:(float)arg1 y:(float)arg2 z:(float)arg3 currentState:(long long)arg4;

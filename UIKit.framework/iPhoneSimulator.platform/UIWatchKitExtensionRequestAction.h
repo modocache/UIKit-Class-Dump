@@ -6,20 +6,17 @@
 
 #import "BSAction.h"
 
-@class BKSProcessAssertion, NSDictionary;
+@class NSDictionary;
 
 @interface UIWatchKitExtensionRequestAction : BSAction
 {
-    BKSProcessAssertion *_replyAssertion;
 }
 
-@property(retain, nonatomic) BKSProcessAssertion *replyAssertion; // @synthesize replyAssertion=_replyAssertion;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (void)sendResponse:(id)arg1;
 - (long long)UIActionType;
 @property(readonly, retain, nonatomic) NSDictionary *request;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (void)dealloc;
 - (id)initWithRequest:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 
 @end

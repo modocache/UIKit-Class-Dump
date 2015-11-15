@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UITableView *_table;
 }
 
+- (void)reloadData;
 - (void)_setIndexColor:(id)arg1;
 - (void)_invalidateTable;
 - (void)_doneTapped;

@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableSet, _UIFlowLayoutInfo;
+@class NSArray, NSMutableArray, NSMutableSet, _UIFlowLayoutInfo;
 
 __attribute__((visibility("hidden")))
 @interface _UIFlowLayoutSection : NSObject
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _rectToKeepValid;
     struct _NSRange _validItemRange;
     NSMutableSet *_invalidatedIndexPaths;
-    NSDictionary *_rowAlignmentOptions;
+    CDStruct_2f5e8405 _rowAlignmentOptions;
     _Bool _fixedItemSize;
     struct CGSize _itemSize;
     double _otherMargin;
@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) double beginMargin; // @synthesize beginMargin=_beginMargin;
 @property(readonly, nonatomic) double otherMargin; // @synthesize otherMargin=_otherMargin;
 @property(nonatomic) _Bool fixedItemSize; // @synthesize fixedItemSize=_fixedItemSize;
-@property(retain, nonatomic) NSDictionary *rowAlignmentOptions; // @synthesize rowAlignmentOptions=_rowAlignmentOptions;
+@property(nonatomic) CDStruct_2f5e8405 rowAlignmentOptions; // @synthesize rowAlignmentOptions=_rowAlignmentOptions;
 @property(nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property(nonatomic) _UIFlowLayoutInfo *layoutInfo; // @synthesize layoutInfo=_layoutInfo;
 @property(nonatomic) struct CGRect footerFrame; // @synthesize footerFrame=_footerFrame;

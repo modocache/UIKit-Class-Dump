@@ -48,6 +48,10 @@
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
 @property(nonatomic, getter=_sublayoutType, setter=_setSublayoutType:) long long sublayoutType; // @synthesize sublayoutType=_sublayoutType;
+- (id)_invalidationContextForEndingReorderingItemToFinalIndexPaths:(id)arg1 previousIndexPaths:(id)arg2 reorderingCancelled:(_Bool)arg3;
+- (id)_invalidationContextForReorderingTargetPosition:(struct CGPoint)arg1 targetIndexPaths:(id)arg2 withPreviousPosition:(struct CGPoint)arg3 previousIndexPaths:(id)arg4;
+- (id)_layoutAttributesForReorderedItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
+- (id)_reorderingTargetItemIndexPathForPosition:(struct CGPoint)arg1 withPreviousIndexPath:(id)arg2;
 @property(nonatomic, getter=_isPrepared, setter=_setPrepared:) _Bool prepared;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayout:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toLayout:(id)arg2;

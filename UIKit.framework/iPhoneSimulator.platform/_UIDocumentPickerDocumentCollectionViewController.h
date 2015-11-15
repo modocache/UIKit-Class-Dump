@@ -8,27 +8,29 @@
 
 #import "UICollectionViewDataSource.h"
 #import "UICollectionViewDelegate.h"
+#import "_UIDocumentPickerContainedViewController.h"
 
-@class NSArray, NSString, _UIDocumentPickerContainerModel, _UIDocumentPickerSortOrderView, _UIDocumentPickerViewServiceViewController;
+@class NSArray, NSString, UIActivityIndicatorView, _UIDocumentPickerContainerModel, _UIDocumentPickerSortOrderView;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerDocumentCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface _UIDocumentPickerDocumentCollectionViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, _UIDocumentPickerContainedViewController>
 {
+    id <_UIDocumentPickerServiceViewController> _weak_serviceViewController;
     _Bool _shouldHideSortBar;
     _Bool _updatesMayAnimate;
     _UIDocumentPickerContainerModel *_model;
-    _UIDocumentPickerViewServiceViewController *_serviceViewController;
     id _monitoringToken;
     _UIDocumentPickerSortOrderView *_sortView;
     NSArray *_modelObjects;
+    UIActivityIndicatorView *_initialActivityView;
 }
 
+@property(retain, nonatomic) UIActivityIndicatorView *initialActivityView; // @synthesize initialActivityView=_initialActivityView;
 @property(nonatomic) _Bool updatesMayAnimate; // @synthesize updatesMayAnimate=_updatesMayAnimate;
 @property(copy, nonatomic) NSArray *modelObjects; // @synthesize modelObjects=_modelObjects;
 @property(retain, nonatomic) _UIDocumentPickerSortOrderView *sortView; // @synthesize sortView=_sortView;
 @property(nonatomic) _Bool shouldHideSortBar; // @synthesize shouldHideSortBar=_shouldHideSortBar;
 @property(retain, nonatomic) id monitoringToken; // @synthesize monitoringToken=_monitoringToken;
-@property(nonatomic) _UIDocumentPickerViewServiceViewController *serviceViewController; // @synthesize serviceViewController=_serviceViewController;
 @property(retain, nonatomic) _UIDocumentPickerContainerModel *model; // @synthesize model=_model;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -37,15 +39,16 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)setMonitoring:(_Bool)arg1;
-- (void)didMoveToParentViewController:(id)arg1;
+@property(nonatomic) __weak id <_UIDocumentPickerServiceViewController> serviceViewController;
+- (void)scrollSortViewToVisible;
 - (void)willMoveToParentViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillLayoutSubviews;
 - (void)viewDidAppear:(_Bool)arg1;
 - (void)containersChangedWithSnapshot:(id)arg1 differences:(id)arg2;
-- (void)_sortViewChanged:(id)arg1;
 - (void)dealloc;
 - (void)_dynamicTypeSizeChanged:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)_updateIconSpacing;
 - (void)_unlockAnimations;
 - (id)initWithModel:(id)arg1;
 

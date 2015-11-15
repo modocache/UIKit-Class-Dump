@@ -12,13 +12,12 @@
 {
     UIDimmingView *_dimmingView;
     UIDropShadowView *_dropShadowView;
-    struct CGSize _formSheetSize;
     _Bool _layoutStateShouldAvoidKeyboard;
 }
 
 - (_Bool)_presentationPotentiallyUnderlapsStatusBar;
-- (id)_presentationControllerForSizeClassPair:(CDStruct_d58201db)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;
+- (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)containerViewDidLayoutSubviews;
 - (void)containerViewWillLayoutSubviews;
 - (_Bool)shouldSubscribeToKeyboardNotifications;
@@ -34,6 +33,8 @@
 - (void)dismissalTransitionWillBegin;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
 - (void)presentationTransitionWillBegin;
+- (_Bool)_shouldChangeStatusBarViewController;
+- (_Bool)_shouldOccludeDuringPresentation;
 - (id)_presentationView;
 - (void)_transitionToDidEnd;
 - (void)_transitionToWillBegin;
@@ -42,7 +43,7 @@
 - (_Bool)shouldRemovePresentersView;
 - (_Bool)shouldPresentInFullscreen;
 - (unsigned long long)dropShadowAutoresizingMask;
-- (struct CGRect)_frameForViewController:(id)arg1 inWindow:(id)arg2 transitionView:(id)arg3 fromViewController:(id)arg4;
+- (long long)presentationStyle;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
 
 @end

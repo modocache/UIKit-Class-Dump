@@ -13,7 +13,7 @@
 
 @interface UITraitCollection : NSObject <NSCopying, NSSecureCoding>
 {
-    CDStruct_cf4bd6d1 _builtinTraits;
+    CDStruct_9a5fdf0b _builtinTraits;
     NSDictionary *_clientDefinedTraits;
 }
 
@@ -22,7 +22,7 @@
 + (id)traitCollectionWithVerticalSizeClass:(long long)arg1;
 + (id)traitCollectionWithHorizontalSizeClass:(long long)arg1;
 + (id)traitCollectionWithDisplayScale:(double)arg1;
-+ (id)traitCollectionWithInteractionModel:(long long)arg1;
++ (id)traitCollectionWithInteractionModel:(unsigned long long)arg1;
 + (id)traitCollectionWithTouchLevel:(long long)arg1;
 + (id)traitCollectionWithUserInterfaceIdiom:(long long)arg1;
 + (id)traitCollectionWithTraitsFromCollections:(id)arg1;
@@ -30,7 +30,7 @@
 @property(readonly, nonatomic) long long verticalSizeClass;
 @property(readonly, nonatomic) long long horizontalSizeClass;
 @property(readonly, nonatomic) double displayScale;
-- (long long)interactionModel;
+- (unsigned long long)interactionModel;
 - (long long)touchLevel;
 @property(readonly, nonatomic) long long userInterfaceIdiom;
 - (id)_valueForTraitNamed:(id)arg1;
@@ -40,11 +40,12 @@
 - (id)initWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)description;
+- (long long)_compare:(id)arg1;
 - (_Bool)isEqual:(id)arg1;
 - (unsigned long long)hash;
 - (void)dealloc;
 - (id)init;
-- (id)_initWithBuiltinTraitStorage:(CDStruct_cf4bd6d1 *)arg1 clientDefinedTraits:(id)arg2;
+- (id)_initWithBuiltinTraitStorage:(CDStruct_9a5fdf0b *)arg1 clientDefinedTraits:(id)arg2;
 - (id)_namedImageDescription;
 
 @end

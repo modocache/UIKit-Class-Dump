@@ -15,7 +15,7 @@
 #import "_UILayoutBaselineUpdating.h"
 #import "_UIMultilineTextContentSizing.h"
 
-@class NSAttributedString, NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextViewRestorableScrollPosition;
+@class NSAttributedString, NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UILabel, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextViewRestorableScrollPosition;
 
 @interface UITextView : UIScrollView <UITextLinkInteraction, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UITextInput>
 {
@@ -48,6 +48,7 @@
     struct CGPoint _scrollTargetOffset;
     unsigned long long _dataDetectorTypes;
     double _preferredMaxLayoutWidth;
+    UILabel *_placeholderLabel;
     UIView *_inputAccessoryView;
     _UISiriStreamingManager *_streamingManager;
     _UICharacterStreamingManager *_characterStreamingManager;
@@ -113,6 +114,8 @@
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancelAutoscroll;
 - (void)startAutoscroll:(struct CGPoint)arg1;
+- (id)_whitelistedTypingAttributes;
+- (void)_setWhitelistedTypingAttributes:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 @property(copy, nonatomic) NSDictionary *linkTextAttributes;
 - (double)lineHeight;
@@ -209,6 +212,10 @@
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
 - (_Bool)hasText;
+- (void)_updatePlaceholderVisibility;
+- (void)_layoutPlaceholder;
+- (id)attributedPlaceholder;
+- (void)setAttributedPlaceholder:(id)arg1;
 - (void)setShouldPresentSheetsInAWindowLayeredAboveTheKeyboard:(_Bool)arg1;
 - (_Bool)shouldPresentSheetsInAWindowLayeredAboveTheKeyboard;
 - (_Bool)_isInteractiveTextSelectionDisabled;
@@ -223,7 +230,9 @@
 - (_Bool)becomeFirstResponder;
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)_shouldScrollEnclosingScrollView;
+- (void)_keyboardDidShow:(id)arg1;
 - (void)_scrollSelectionToVisibleInContainingScrollView;
+- (void)_scrollSelectionToVisibleInContainingScrollView:(_Bool)arg1;
 - (void)_updateBaselineInformationDependentOnBounds;
 - (void)updateConstraints;
 - (void)_setInSecondConstraintsPass:(_Bool)arg1;
@@ -250,7 +259,6 @@
 - (void)layoutSubviews;
 - (void)_resyncContainerFrameForNonAutolayout;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(_Bool)arg2;
-- (void)_keyboardDidShow:(id)arg1;
 - (void)_observedTextViewDidChange:(id)arg1;
 - (unsigned long long)_totalNumberOfTextViewsInLayoutManager;
 - (void)_textStorageDidProcessEditing:(id)arg1;
@@ -298,7 +306,7 @@
 @property(nonatomic) _Bool contentsIsSingleValue;
 @property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
-@property(nonatomic) id <UITextViewDelegate> delegate;
+@property(nonatomic) id <UITextViewDelegate> delegate; // @dynamic delegate;
 @property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) _Bool displaySecureTextUsingPlainText;

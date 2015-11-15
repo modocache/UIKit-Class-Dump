@@ -18,6 +18,7 @@
 @property(readonly, nonatomic) double timestamp;
 @property(readonly, nonatomic) long long subtype;
 @property(readonly, nonatomic) long long type;
+- (struct CGPoint)_digitizerLocation;
 - (_Bool)_isKeyDown;
 - (long long)_modifierFlags;
 - (id)_unmodifiedInput;
@@ -27,6 +28,7 @@
 - (id)_physicalButtonsForResponder:(id)arg1;
 - (id)_physicalButtonsForWindow:(id)arg1;
 - (id)_allPhysicalButtons;
+- (unsigned long long)_focusHeading;
 - (long long)_moveDirection;
 - (int)_shakeState;
 - (id)_touchesForGestureRecognizer:(id)arg1;

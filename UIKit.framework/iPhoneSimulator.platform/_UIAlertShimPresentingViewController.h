@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)_isSupportedInterfaceOrientation:(long long)arg1;
 
 @end

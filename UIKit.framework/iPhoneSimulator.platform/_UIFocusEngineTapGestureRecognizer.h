@@ -4,14 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKit/UITapGestureRecognizer.h>
 
 __attribute__((visibility("hidden")))
-@interface UIFullScreenViewController : UIViewController
+@interface _UIFocusEngineTapGestureRecognizer : UITapGestureRecognizer
 {
 }
 
-- (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
 
 @end
 

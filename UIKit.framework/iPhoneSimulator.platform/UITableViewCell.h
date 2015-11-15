@@ -134,6 +134,10 @@
 + (id)_defaultTopShadowColor;
 + (void)_initializeForIdiom:(long long)arg1;
 + (void)initialize;
+- (_Bool)shouldChangeFocusedItem:(id)arg1 heading:(unsigned long long)arg2;
+- (void)_focusedViewDidChange:(id)arg1;
+- (void)focusedViewDidChange;
+- (_Bool)canBecomeFocused;
 - (void)_setAllowsReorderingWhenNotEditing:(_Bool)arg1;
 - (_Bool)_allowsReorderingWhenNotEditing;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
@@ -179,8 +183,6 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_tableViewDidUpdateMarginWidth;
 - (void)_updateSeparatorContent:(_Bool)arg1;
-- (void)_focusStateDidChange;
-- (_Bool)_isFocusableElement;
 - (void)_setIsPigglyWigglyCell:(_Bool)arg1;
 - (_Bool)_isPigglyWigglyCell;
 - (double)_defaultMarginWidth;

@@ -6,10 +6,15 @@
 
 #import "NSObject.h"
 
-@class UIAlertAction;
+@class NSString, UIAlertAction, UIColor;
 
 @protocol _UIAlertActionRepresenting <NSObject>
+- (void)_action:(UIAlertAction *)arg1 updatedTitleTextColor:(UIColor *)arg2;
+- (void)_action:(UIAlertAction *)arg1 updatedImageTintColor:(UIColor *)arg2;
+- (void)_action:(UIAlertAction *)arg1 changedToBeDefault:(_Bool)arg2;
 - (void)_action:(UIAlertAction *)arg1 changedToChecked:(_Bool)arg2;
 - (void)_action:(UIAlertAction *)arg1 changedToEnabled:(_Bool)arg2;
+- (void)_action:(UIAlertAction *)arg1 changedToTitleTextAlignment:(long long)arg2;
+- (void)_action:(UIAlertAction *)arg1 changedToTitle:(NSString *)arg2;
 @end
 

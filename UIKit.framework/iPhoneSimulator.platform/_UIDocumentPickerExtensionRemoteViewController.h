@@ -6,12 +6,25 @@
 
 #import <UIKit/_UIDocumentPickerRemoteViewController.h>
 
+#import "_UIDocumentPickerViewControllerExtensionHost.h"
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerExtensionRemoteViewController : _UIDocumentPickerRemoteViewController
+@interface _UIDocumentPickerExtensionRemoteViewController : _UIDocumentPickerRemoteViewController <_UIDocumentPickerViewControllerExtensionHost>
 {
 }
 
++ (id)exportedInterface;
 + (id)serviceViewControllerInterface;
+- (void)_doneButtonPressed;
+- (void)_displayLocationMenu:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

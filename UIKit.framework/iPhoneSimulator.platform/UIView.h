@@ -14,6 +14,7 @@
 #import "UIAppearanceContainer.h"
 #import "UICoordinateSpace.h"
 #import "UIDynamicItem.h"
+#import "UIFocusContainer.h"
 #import "UITextEffectsOrdering.h"
 #import "UITraitEnvironment.h"
 #import "_UIScrollNotification.h"
@@ -21,7 +22,7 @@
 
 @class CALayer, NSArray, NSISEngine, NSISVariable, NSMutableArray, NSString, UIColor, UIKBRenderConfig, UIPresentationController, UITraitCollection, UIViewController;
 
-@interface UIView : UIResponder <_UIScrollNotification, UITextEffectsOrdering, NSISVariableDelegate, NSLayoutItem, NSISEngineDelegate, _UITraitEnvironmentInternal, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace>
+@interface UIView : UIResponder <_UIScrollNotification, UITextEffectsOrdering, NSISVariableDelegate, NSLayoutItem, NSISEngineDelegate, _UITraitEnvironmentInternal, UIFocusContainer, NSCoding, UIAppearance, UIAppearanceContainer, UIDynamicItem, UITraitEnvironment, UICoordinateSpace>
 {
     CALayer *_layer;
     id _gestureInfo;
@@ -32,6 +33,7 @@
     UIViewController *_viewDelegate;
     NSString *_backgroundColorSystemColorName;
     unsigned long long _countOfMotionEffectsInSubtree;
+    unsigned long long _countOfTraitChangeRespondersInDirectSubtree;
     struct {
         unsigned int userInteractionDisabled:1;
         unsigned int implementsDrawRect:1;
@@ -104,7 +106,6 @@
         unsigned int backdropOverlayMode:2;
         unsigned int tintAdjustmentMode:2;
         unsigned int isReferenceView:1;
-        unsigned int focusState:2;
         unsigned int hasUserInterfaceIdiom:1;
         unsigned int userInterfaceIdiom:3;
         unsigned int ancestorDefinesTintColor:1;
@@ -112,9 +113,12 @@
         unsigned int needsTraitCollectionDidChange:1;
         unsigned int coloredViewBounds:1;
         unsigned int coloredAlignmentRects:1;
+        unsigned int coloredHighlightItems:1;
         unsigned int preservesSuperviewMargins:1;
         unsigned int hasGeometryObservers:1;
         unsigned int wantsGeometryChanges:1;
+        unsigned int hasTraitStorageList:1;
+        unsigned int dontUpdateInferredLayoutMargins:1;
     } _viewFlags;
     long long _retainCount;
     long long _tintAdjustmentDimmingCount;
@@ -129,8 +133,11 @@
     NSMutableArray *_internalConstraints;
     NSArray *_constraintsExceptingSubviewAutoresizingConstraints;
     UIPresentationController *__presentationControllerToNotifyOnLayoutSubviews;
+    struct UIEdgeInsets _rawLayoutMargins;
+    struct UIEdgeInsets _inferredLayoutMargins;
 }
 
++ (_Bool)_validateNewFocusCandidate:(id)arg1 fromCurrentFocusItem:(id)arg2 heading:(unsigned long long)arg3;
 + (void)_setShouldEnableUIKitParallaxEffects:(_Bool)arg1;
 + (_Bool)_shouldEnableUIKitDefaultParallaxEffects;
 + (void)_recenterMotionEffects;
@@ -145,7 +152,7 @@
 + (void)_setAnimatedPropertiesEnabled:(_Bool)arg1;
 + (Class)layerClass;
 + (_Bool)_preventsAppearanceProxyCustomization;
-+ (void)_performCustomizableAppearanceModifications:(CDUnknownBlockType)arg1;
++ (void)_performSystemAppearanceModifications:(CDUnknownBlockType)arg1;
 + (id)appearanceForTraitCollection:(id)arg1 whenContainedIn:(Class)arg2;
 + (id)appearanceForTraitCollection:(id)arg1;
 + (id)appearanceMatchingProperties:(id)arg1 whenContainedIn:(Class)arg2;
@@ -249,7 +256,10 @@
 + (void)_transitionFromView:(id)arg1 toView:(id)arg2 duration:(double)arg3 options:(unsigned long long)arg4 animations:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
 + (_Bool)_invalidatesViewUponCreation;
 + (void)_setInvalidatesViewUponCreation:(_Bool)arg1;
++ (id)_focusDescriptionOverview;
 + (id)_tintColorForStyle:(int)arg1;
++ (void)_enableToolsDebugFocusItems:(_Bool)arg1;
++ (_Bool)_toolsDebugFocusItems;
 + (id)_viewWithLayoutConstraints;
 + (_Bool)_retroactivelyRequiresConstraintBasedLayout;
 + (_Bool)requiresConstraintBasedLayout;
@@ -270,7 +280,30 @@
 @property(readonly, retain, nonatomic) NSISVariable *_boundsWidthVariable; // @synthesize _boundsWidthVariable;
 @property(readonly, retain, nonatomic) NSISVariable *_minYVariable; // @synthesize _minYVariable;
 @property(readonly, retain, nonatomic) NSISVariable *_minXVariable; // @synthesize _minXVariable;
+@property(nonatomic, setter=_setInferredLayoutMargins:) struct UIEdgeInsets _inferredLayoutMargins; // @synthesize _inferredLayoutMargins;
+@property(nonatomic, setter=_setRawLayoutMargins:) struct UIEdgeInsets _rawLayoutMargins; // @synthesize _rawLayoutMargins;
 @property(retain, nonatomic, setter=_setInteractionTintColor:) UIColor *_interactionTintColor; // @synthesize _interactionTintColor;
+- (id)_deepestPreferredFocusView;
+- (void)_addPossibleFocusableElementsToArray:(id)arg1;
+- (_Bool)_isFocusableElement;
+- (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
+- (_Bool)_transparentFocusContainer;
+- (_Bool)_isEligibleForFocus;
+- (id)_firstCommonAncestorToView:(id)arg1;
+- (void)focusedViewDidChange;
+- (void)_focusedViewDidChange:(id)arg1;
+- (void)focusedViewWillChange;
+- (void)_focusedViewWillChange:(id)arg1;
+- (_Bool)_isFocusedOrAncestorOfFocusedView;
+@property(readonly, nonatomic, getter=isFocused) _Bool focused;
+- (_Bool)canBecomeFocused;
+- (void)setNeedsPreferredFocusedItemUpdate;
+- (_Bool)isAncestorOfItem:(id)arg1;
+@property(readonly, nonatomic) UIView *focusedView;
+@property(readonly, nonatomic) id <UIFocusContainer> preferredFocusedItem;
+- (_Bool)shouldChangeFocusedItem:(id)arg1 heading:(unsigned long long)arg2;
+- (_Bool)_shouldChangeFocusedItem:(id)arg1 heading:(unsigned long long)arg2;
+- (id)_window;
 - (id)resizableSnapshotViewFromRect:(struct CGRect)arg1 withCapInsets:(struct UIEdgeInsets)arg2;
 - (id)snapshotView;
 - (_Bool)drawViewHierarchyInRect:(struct CGRect)arg1;
@@ -281,14 +314,18 @@
 - (_Bool)_imageSnapshotCapturedAllContent;
 - (id)resizableSnapshotViewFromRect:(struct CGRect)arg1 afterScreenUpdates:(_Bool)arg2 withCapInsets:(struct UIEdgeInsets)arg3;
 - (id)snapshotViewAfterScreenUpdates:(_Bool)arg1;
-- (void)_geometryChanged:(unsigned long long)arg1 forAncestor:(id)arg2;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
+- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 - (void)_unregisterForGeometryChanges;
 - (void)_registerForGeometryChanges;
-- (void)_notifyGeometryObserversOfOriginChange:(_Bool)arg1 sizeChanged:(_Bool)arg2;
+- (void)_notifyGeometryObserversWithChangeInfo:(id)arg1;
+- (_Bool)_shouldNotifyGeometryObservers;
 - (void)_addParentGeometryObservers;
 - (void)_removeParentGeometryObservers;
 - (void)_removeGeometryChangeObserver:(id)arg1;
 - (void)_addGeometryChangeObserver:(id)arg1;
+@property(readonly, nonatomic) _Bool _wantsGeometryChangeNotification;
+- (_Bool)_disableGeometryObserverNotification;
 - (struct CGRect)_visualAltitudeSensitiveBoundsWithVisualAltitude:(double)arg1 edges:(unsigned long long)arg2;
 - (double)_touchSloppinessFactor;
 @property(nonatomic) struct CGAffineTransform transform;
@@ -328,6 +365,7 @@
 - (void)_addMotionEffect:(id)arg1;
 - (void)addMotionEffect:(id)arg1;
 - (void)_dispatchMotionEffectsVisitorWithDelta:(long long)arg1;
+- (_Bool)_isInHierarchyAllowingMotionEffects;
 - (_Bool)_isInVisibleHierarchy;
 - (void)_updateBackdropMaskViewsInScrollView:(id)arg1;
 - (void)_updateBackdropMaskFrames;
@@ -367,10 +405,6 @@
 - (double)_imageButtonMargin;
 - (double)_textButtonMargin;
 - (double)_contentMargin;
-- (void)_focusStateDidChange;
-- (void)_setFocusState:(long long)arg1;
-- (long long)_focusState;
-- (_Bool)_isFocusableElement;
 @property(nonatomic, getter=_ancestorDefinesTintAdjustmentMode, setter=_setAncestorDefinesTintAdjustmentMode:) _Bool _ancestorDefinesTintAdjustmentMode;
 @property(nonatomic, getter=_ancestorDefinesTintColor, setter=_setAncestorDefinesTintColor:) _Bool _ancestorDefinesTintColor;
 - (void)_endOcclusion:(id)arg1;
@@ -391,9 +425,9 @@
 - (id)_tintColorArchivingKey;
 - (void)_dispatchTintColorVisitorWithReasons:(unsigned long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)_processTraitsDidChangeRecursively:(id)arg1 forceNotification:(_Bool)arg2;
-- (void)_wrappedProcessTraitsDidChangeRecursively:(id)arg1 forceNotification:(_Bool)arg2;
-- (void)_traitCollectionDidChange:(id)arg1;
+- (void)_processDidChangeRecursivelyFromOldTraits:(id)arg1 toCurrentTraits:(id)arg2 forceNotification:(_Bool)arg3;
+- (void)_wrappedProcessDidChangeRecursivelyFromOldTraits:(id)arg1 toCurrentTraits:(id)arg2 scaleDidChange:(_Bool)arg3 forceNotification:(_Bool)arg4;
+- (void)_traitCollectionDidChangeFromOldCollection:(id)arg1 toNewCollection:(id)arg2 scaleDidChange:(_Bool)arg3;
 - (void)_noteTraitsDidChangeRecursively;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 @property(readonly, nonatomic) UITraitCollection *traitCollection;
@@ -406,10 +440,10 @@
 - (void)setPreservesSuperviewLayoutMargins:(_Bool)arg1;
 - (_Bool)preservesSuperviewLayoutMargins;
 - (void)layoutMarginsDidChange;
+- (void)_updateInferredLayoutMargins;
+- (struct UIEdgeInsets)layoutMargins;
 - (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
 - (void)_layoutMarginsDidChange;
-- (struct UIEdgeInsets)layoutMargins;
-- (struct UIEdgeInsets)_defaultLayoutMargins;
 - (struct CGColor *)_backgroundCGColor;
 @property(retain, nonatomic, getter=_backgroundColorSystemColorName, setter=_setBackgroundColorSystemColorName:) NSString *backgroundColorSystemColorName;
 - (_Bool)_hasOpaqueBackground;
@@ -464,6 +498,8 @@
 - (id)_contentWidthVariable;
 @property(nonatomic, getter=_isUnsatisfiableConstraintsLoggingSuspended, setter=_setUnsatisfiableConstraintsLoggingSuspended:) _Bool unsatisfiableConstraintsLoggingSuspended;
 - (_Bool)_canBeReusedInPickerView;
+@property(nonatomic) struct CGPoint focusDirection;
+@property(nonatomic, setter=_setMayRemainFocused:) _Bool _mayRemainFocused;
 - (void)setOrigin:(struct CGPoint)arg1;
 - (struct CGPoint)origin;
 - (void)setPosition:(struct CGPoint)arg1;
@@ -551,9 +587,9 @@
 - (void)exchangeSubviewAtIndex:(long long)arg1 withSubviewAtIndex:(long long)arg2;
 - (void)insertSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)removeFromSuperview;
+- (void)_setTraitStorageList:(id)arg1;
 - (void)_willRemoveSubviewWantingAutolayout:(id)arg1;
 - (void)_removeFirstResponderFromSubtree;
-- (id)_window;
 - (id)window;
 - (id)subviews;
 - (id)superview;
@@ -721,6 +757,7 @@
 - (_Bool)_wantsReapplicationOfAutoLayout;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
+- (id)_recursiveFocusDescription;
 - (id)recursiveDescription;
 - (id)_superDescription;
 @property(readonly, copy) NSString *description;
@@ -737,7 +774,6 @@
 - (void)restoreUserActivityState:(id)arg1;
 - (void)updateUserActivityState:(id)arg1;
 - (void)_prepareToAppearInNavigationItem:(id)arg1 onLeft:(_Bool)arg2;
-- (id)_window;
 - (void)gestureEnded:(struct __GSEvent *)arg1;
 - (void)gestureChanged:(struct __GSEvent *)arg1;
 - (void)gestureStarted:(struct __GSEvent *)arg1;
@@ -793,6 +829,9 @@
 - (void)_gestureEnded:(struct __GSEvent *)arg1;
 - (id)_gestureInfo;
 - (void)reduceWidth:(double)arg1;
+- (void)_removeFocusItemOverlayViews;
+- (void)_updateFocusItemOverlayViews;
+- (id)_focusItemsOverlayCreateIfNecessary:(_Bool)arg1;
 - (id)_syntheticUIEventWithGSEvent:(struct __GSEvent *)arg1 touchPhase:(long long)arg2;
 - (id)_syntheticTouch;
 - (long long)compareTextEffectsOrdering:(id)arg1;

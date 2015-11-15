@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 + (id)font;
 + (id)reuseIdentifier;
 - (void)drawRect:(struct CGRect)arg1;
-- (void)updateLabels;
 
 @end
 

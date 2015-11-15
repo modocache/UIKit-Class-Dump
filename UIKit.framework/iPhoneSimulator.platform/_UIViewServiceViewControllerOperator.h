@@ -12,7 +12,7 @@
 #import "_UIViewServiceDummyPopoverControllerDelegate.h"
 #import "_UIViewServiceViewControllerOperator_RemoteViewControllerInterface.h"
 
-@class NSArray, NSMutableArray, NSString, UIActionSheet, UIPopoverController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIViewServiceDummyPopoverController;
+@class NSArray, NSMutableArray, NSString, UIActionSheet, UIPopoverController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
 
 __attribute__((visibility("hidden")))
 @interface _UIViewServiceViewControllerOperator : UIViewController <_UIViewServiceViewControllerOperator_RemoteViewControllerInterface, _UIHostedTextServiceSessionDelegate, _UIViewServiceDummyPopoverControllerDelegate, _UIViewServiceDeputy, _UIViewServiceDeputyRotationSource>
@@ -44,12 +44,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _supportedOrientations;
     _Bool _canShowTextServices;
     struct UIEdgeInsets _localViewControllerRequestedInsets;
+    _UIViewControllerOneToOneTransitionContext *_viewControllerTransitioningContext;
     id <_UIViewServiceViewControllerOperatorDelegate> _delegate;
 }
 
 + (id)XPCInterface;
 + (id)operatorWithRemoteViewControllerProxy:(id)arg1 hostPID:(int)arg2 hostBundleID:(id)arg3 hostAuditToken:(CDStruct_4c969caf)arg4;
 @property(nonatomic) id <_UIViewServiceViewControllerOperatorDelegate> delegate; // @synthesize delegate=_delegate;
+- (id)preferredFocusedItem;
 - (void)__restoreStateForSession:(id)arg1 restorationAnchor:(id)arg2;
 - (void)__saveStateForSession:(id)arg1 restorationAnchor:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_validateSessionIdentifier:(id)arg1 restorationAnchor:(id)arg2 functionName:(const char *)arg3;
@@ -68,12 +70,14 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidPromoteFirstResponder;
 - (void)__setContentSize:(struct CGSize)arg1;
 - (void)__exchangeAccessibilityPortInformation:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
-- (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 legacyAppearance:(_Bool)arg5 hostAccessibilityServerPort:(id)arg6 canShowTextServices:(_Bool)arg7 replyHandler:(CDUnknownBlockType)arg8;
+- (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 legacyAppearance:(_Bool)arg5 traitCollection:(id)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(id)arg8 canShowTextServices:(_Bool)arg9 replyHandler:(CDUnknownBlockType)arg10;
 - (void)__createViewController:(id)arg1 withAppearanceSerializedRepresentations:(id)arg2 legacyAppearance:(_Bool)arg3 hostAccessibilityServerPort:(id)arg4 canShowTextServices:(_Bool)arg5 replyHandler:(CDUnknownBlockType)arg6;
 - (id)_supportedInterfaceOrientationsForViewController:(id)arg1;
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(_Bool)arg2;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
 - (void)__hostWillRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 statusBarHeight:(double)arg3 whenDone:(CDUnknownBlockType)arg4;
+- (_Bool)_shouldForwardLegacyRotationOnly;
 - (id)_viewControllersForRotationCallbacks;
 - (void)__hostDidChangeStatusBarHeight:(double)arg1;
 - (void)__hostDidChangeStatusBarOrientationToInterfaceOrientation:(long long)arg1;
@@ -84,7 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)__hostViewDidDisappear:(_Bool)arg1;
 - (void)__hostViewWillDisappear:(_Bool)arg1;
 - (void)__hostViewDidAppear:(_Bool)arg1;
-- (void)__hostViewWillAppear:(_Bool)arg1 inInterfaceOrientation:(long long)arg2 statusBarHeight:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)__hostViewWillAppear:(_Bool)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(id)arg3 statusBarHeight:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
 - (id)invalidate;
 - (void)dummyPopoverController:(id)arg1 popoverViewDidSetUseToolbarShine:(_Bool)arg2;
@@ -113,6 +117,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)_presentActionSheet:(id)arg1 inView:(id)arg2 fromYCoordinate:(double)arg3;
 - (void)_firstResponderDidChange:(id)arg1;
 - (_Bool)becomeFirstResponder;
+- (void)__hostWillTransitionToTraitCollection:(id)arg1 withContextDescription:(id)arg2 deferIfAnimated:(_Bool)arg3;
+- (void)__setHostTraitCollection:(id)arg1;
 - (void)__setHostTintColor:(id)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__hostDidUpdateAppearanceWithSerializedRepresentations:(id)arg1 originalSource:(id)arg2 legacyAppearance:(_Bool)arg3;
 - (id)_appearanceSource;

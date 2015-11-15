@@ -76,6 +76,7 @@
         unsigned int pendingPresentMasterViewController:1;
         unsigned int pendingUpdateTargetDisplayMode:1;
         unsigned int collapsingClockwise:1;
+        unsigned int firstResponderChangedFromPostTransitionResponder:1;
     } _splitViewControllerFlags;
     _Bool _resizeForKeyboard;
     NSString *_displayModeButtonItemTitle;
@@ -97,7 +98,7 @@
 + (_Bool)_forcePresentsInSlidingPopover;
 @property(copy, nonatomic, setter=_setClearPreventRotationHook:) CDUnknownBlockType _clearPreventRotationHook; // @synthesize _clearPreventRotationHook=__clearPreventRotationHook;
 @property(copy, nonatomic, getter=_didChangeBoundsBlock, setter=_setDidChangeBoundsBlock:) CDUnknownBlockType _didChangeBoundsBlock; // @synthesize _didChangeBoundsBlock=__didChangeBoundsBlock;
-@property(retain, nonatomic, getter=_preservedDetailController, setter=_setPreservedDetailController:) UIViewController *_preservedDetailController; // @synthesize _preservedDetailController=__preservedDetailController;
+@property(retain, nonatomic, setter=_setPreservedDetailController:) UIViewController *_preservedDetailController; // @synthesize _preservedDetailController=__preservedDetailController;
 @property(nonatomic) _Bool resizeForKeyboard; // @synthesize resizeForKeyboard=_resizeForKeyboard;
 @property(nonatomic) double maximumPrimaryColumnWidth; // @synthesize maximumPrimaryColumnWidth=_maximumPrimaryColumnWidth;
 @property(nonatomic) double minimumPrimaryColumnWidth; // @synthesize minimumPrimaryColumnWidth=_minimumPrimaryColumnWidth;
@@ -177,11 +178,12 @@
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)_removeCollapsingSnapshotViews;
 - (_Bool)_disableAutomaticKeyboardBehavior;
+- (void)_didChangeToFirstResponder:(id)arg1;
 - (void)_didTransitionTraitCollection;
 - (void)_transitionFromTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_invokeDidChangeBoundsBlock;
 - (void)_willTransitionToWindowSize:(struct CGSize)arg1 oldWidthClass:(long long)arg2 newWidthClass:(long long)arg3;
-- (void)_prepareForInitialCompactLayout;
+- (void)_prepareForCompactLayout;
 - (void)showDetailViewController:(id)arg1 sender:(id)arg2;
 - (void)showViewController:(id)arg1 sender:(id)arg2;
 - (id)_primaryContentResponder;

@@ -18,6 +18,7 @@
 
 @property(nonatomic, setter=_setButtonType:) long long _buttonType; // @synthesize _buttonType;
 - (_Bool)canPreventGestureRecognizer:(id)arg1;
+- (struct CGPoint)_digitizerLocation;
 - (struct CGPoint)locationOfTouch:(unsigned long long)arg1 inView:(id)arg2;
 - (unsigned long long)numberOfTouches;
 - (struct CGPoint)locationInView:(id)arg1;

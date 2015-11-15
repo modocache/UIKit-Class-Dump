@@ -6,12 +6,12 @@
 
 #import <UIKit/UIScrollView.h>
 
-@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UICollectionReusableView, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UITouch, UIView, _UIDynamicAnimationGroup;
+@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UITouch, UIView, _UIDynamicAnimationGroup;
 
 @interface UICollectionView : UIScrollView
 {
     UICollectionViewLayout *_layout;
-    id <UICollectionViewDataSource> _dataSource;
+    id <UICollectionViewDataSource_Private> _dataSource;
     UIView *_backgroundView;
     NSMutableSet *_indexPathsForSelectedItems;
     NSMutableDictionary *_cellReuseQueues;
@@ -73,6 +73,10 @@
     NSMutableDictionary *_invalidatedSupplementaryIndexPaths;
     NSMutableDictionary *_invalidatedDecorationIndexPaths;
     CDUnknownBlockType _invalidationBlock;
+    NSMutableArray *_reorderedItems;
+    struct CGPoint _reorderingTargetPosition;
+    NSTimer *_autoscrollTimer;
+    long long _focusedViewType;
     struct {
         unsigned int delegateShouldHighlightItemAtIndexPath:1;
         unsigned int delegateDidHighlightItemAtIndexPath:1;
@@ -89,8 +93,18 @@
         unsigned int delegateIndexForReferenceItemDuringLayoutTransition:1;
         unsigned int delegateOverrideForTransitionOffsetSize:1;
         unsigned int delegateTargetContentOffsetForProposedContentOffset:1;
+        unsigned int delegateTargetIndexPathForMove:1;
+        unsigned int delegateCanFocusItemAtIndexPath_deprecated:1;
+        unsigned int delegateDidFocusItemAtIndexPath_deprecated:1;
+        unsigned int delegateCanFocusItemAtIndexPath:1;
+        unsigned int delegateDidFocusItemAtIndexPath:1;
+        unsigned int delegateDidUnfocusItemAtIndexPath:1;
+        unsigned int delegateShouldChangeFocusedItem:1;
+        unsigned int delegateIndexPathForPreferredFocusedItem:1;
         unsigned int dataSourceNumberOfSections:1;
         unsigned int dataSourceViewForSupplementaryElement:1;
+        unsigned int dataSourceCanMoveItemAtIndexPath:1;
+        unsigned int dataSourceMoveItemAtIndexPath:1;
         unsigned int reloadSkippedDuringSuspension:1;
         unsigned int scheduledUpdateVisibleCells:1;
         unsigned int scheduledUpdateVisibleCellLayoutAttributes:1;
@@ -107,19 +121,42 @@
         unsigned int updating:1;
         unsigned int updatingVisibleCells:1;
         unsigned int preRotationBoundsSet:1;
+        unsigned int updateFocusAfterItemAnimations:1;
+        unsigned int remembersPreviouslyFocusedItem:1;
+        unsigned int performingLayout:1;
     } _collectionViewFlags;
     struct CGPoint _lastLayoutOffset;
-    _Bool _usesLegacyExternalInputSupport;
     CDUnknownBlockType _navigationCompletion;
+    NSIndexPath *_focusedCellIndexPath;
 }
 
 + (id)_reuseKeyForSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2;
-@property(nonatomic, getter=_usesLegacyExternalInputSupport, setter=_setUsesLegacyExternalInputSupport:) _Bool usesLegacyExternalInputSupport; // @synthesize usesLegacyExternalInputSupport=_usesLegacyExternalInputSupport;
+@property(copy, nonatomic, getter=_focusedCellIndexPath, setter=_setFocusedCellIndexPath:) NSIndexPath *focusedCellIndexPath; // @synthesize focusedCellIndexPath=_focusedCellIndexPath;
 @property(copy, nonatomic, getter=_navigationCompletion, setter=_setNavigationCompletion:) CDUnknownBlockType navigationCompletion; // @synthesize navigationCompletion=_navigationCompletion;
 @property(retain, nonatomic, getter=_currentTouch, setter=_setCurrentTouch:) UITouch *currentTouch; // @synthesize currentTouch=_currentTouch;
 @property(retain, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property(nonatomic) id <UICollectionViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(retain, nonatomic) UICollectionViewLayout *collectionViewLayout; // @synthesize collectionViewLayout=_layout;
+- (_Bool)_focusedCellContainedInRowsAtIndexPaths:(id)arg1;
+- (_Bool)_focusedCellContainedInSections:(id)arg1;
+- (void)_focusedViewWillChange:(id)arg1;
+- (_Bool)_cell:(id)arg1 shouldChangeFocusedItem:(id)arg2;
+- (void)_cellDidBecomeUnfocused:(id)arg1;
+- (void)_cellDidBecomeFocused:(id)arg1;
+- (void)_getOriginalReorderingIndexPaths:(id *)arg1 targetIndexPaths:(id *)arg2;
+- (void)_cancelReordering;
+- (void)_endReordering;
+- (void)_stopAutoscrollTimer;
+- (void)_autoscrollForReordering:(id)arg1;
+- (void)_updateReorderingTargetPosition:(struct CGPoint)arg1 forced:(_Bool)arg2;
+- (void)_updateReorderingTargetPosition:(struct CGPoint)arg1;
+- (_Bool)_beginReorderingItemAtIndexPath:(id)arg1;
+- (void)_cellBecameFocused:(id)arg1;
+- (_Bool)_cellCanBecomeFocused:(id)arg1;
+- (id)preferredFocusedItem;
+- (_Bool)canBecomeFocused;
+- (_Bool)_remembersPreviouslyFocusedItem;
+- (void)_setRemembersPreviouslyFocusedItem:(_Bool)arg1;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (_Bool)_indexPathIsValid:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
@@ -134,7 +171,6 @@
 - (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_unhighlightAllItemsAndHighlightGlobalItem:(long long)arg1;
 - (void)_highlightFirstVisibleItemIfAppropriate;
-- (void)_moveWithEvent:(id)arg1;
 - (_Bool)canBecomeFirstResponder;
 - (void)_cellMenuDismissed;
 - (void)_performAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
@@ -154,14 +190,18 @@
 - (void)_unhighlightAllItems;
 - (void)_invalidateLayoutWithContext:(id)arg1;
 - (void)_invalidateWithBlock:(CDUnknownBlockType)arg1;
+- (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 invalidationContext:(id)arg3 tentativelyForReordering:(_Bool)arg4;
+- (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 invalidationContext:(id)arg3;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_endUpdates;
+- (void)_endUpdatesWithInvalidationContext:(id)arg1 tentativelyForReordering:(_Bool)arg2;
 - (void)_beginUpdates;
 - (void)_updateAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
-- (void)_updateWithItems:(id)arg1;
+- (void)_updateWithItems:(id)arg1 tentativelyForReordering:(_Bool)arg2;
 - (id)_viewAnimationsForCurrentUpdate;
 - (void)_prepareLayoutForUpdates;
-- (void)_endItemAnimations;
+- (void)_updateFocusedCellIndexPathIfNecessaryWithLastFocusedRect:(struct CGRect)arg1;
+- (void)_endItemAnimationsWithInvalidationContext:(id)arg1 tentativelyForReordering:(_Bool)arg2;
+- (void)_endItemAnimationsWithInvalidationContext:(id)arg1;
 - (void)_setupCellAnimations;
 - (void)moveItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)reloadItemsAtIndexPaths:(id)arg1;
@@ -230,11 +270,17 @@
 - (id)_doubleSidedAnimationsForView:(id)arg1 withStartingLayoutAttributes:(id)arg2 startingLayout:(id)arg3 endingLayoutAttributes:(id)arg4 endingLayout:(id)arg5 withAnimationSetup:(CDUnknownBlockType)arg6 animationCompletion:(CDUnknownBlockType)arg7 enableCustomAnimations:(_Bool)arg8 customAnimationsType:(unsigned long long)arg9;
 - (void)_ensureViewsAreLoadedInRect:(struct CGRect)arg1;
 - (void)_updateVisibleCellsNow:(_Bool)arg1;
+@property(readonly, nonatomic, getter=_reorderingTargetPosition) struct CGPoint reorderingTargetPosition;
+@property(readonly, nonatomic, getter=_reorderedItems) NSArray *reorderedItems;
+- (id)_reorderedItemForView:(id)arg1;
+- (_Bool)_viewIsReorderedCell:(id)arg1;
+- (_Bool)_itemIndexPathIsReordered:(id)arg1;
 - (_Bool)_shouldFadeCellsForBoundChangeWhileRotating;
 - (void)_applyLayoutAttributes:(id)arg1 toView:(id)arg2;
 - (void)setContentSize:(struct CGSize)arg1;
 - (id)_createPreparedSupplementaryViewForElementOfKind:(id)arg1 atIndexPath:(id)arg2 withLayoutAttributes:(id)arg3 applyAttributes:(_Bool)arg4;
 - (id)_createPreparedCellForItemAtIndexPath:(id)arg1 withLayoutAttributes:(id)arg2 applyAttributes:(_Bool)arg3;
+- (void)_checkForPreferredAttributesInView:(id)arg1 originalAttributes:(id)arg2;
 - (struct CGRect)_visibleBounds;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
@@ -249,6 +295,7 @@
 - (_Bool)_highlightItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(unsigned long long)arg3;
 - (_Bool)_highlightItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 scrollPosition:(long long)arg3 notifyDelegate:(_Bool)arg4;
 - (void)_unhighlightItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 notifyDelegate:(_Bool)arg3;
+- (void)_unhighlightItemAtIndexPath:(id)arg1 animated:(_Bool)arg2;
 @property(nonatomic) _Bool allowsSelection;
 - (void)deselectItemAtIndexPath:(id)arg1 animated:(_Bool)arg2;
 - (void)_deselectItemAtIndexPath:(id)arg1 animated:(_Bool)arg2 notifyDelegate:(_Bool)arg3;
@@ -275,6 +322,8 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)_selectionTrackerContentSize;
+- (void)_getResponderRectsForXAxisMinRect:(struct CGRect *)arg1 yMinRect:(struct CGRect *)arg2 xMaxRect:(struct CGRect *)arg3 yMaxRect:(struct CGRect *)arg4;
 
 @end
 

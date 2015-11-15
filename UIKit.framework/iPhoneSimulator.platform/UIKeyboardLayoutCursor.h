@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UIKBTree *_indirectKeyboard;
     UIView *_selectionView;
     long long _selectedKeyIndex;
+    long long _savedSelectedKeyIndex;
     _Bool _useGridSelection;
     _Bool _suppressOperations;
 }
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (int)enabledStateForKey:(id)arg1;
 - (int)activeStateForKey:(id)arg1;
 - (void)updateStatesForGridSelection;
+- (_Bool)shouldMergeKey:(id)arg1;
 - (unsigned long long)targetEdgesForScreenGestureRecognition;
 - (_Bool)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
 - (_Bool)shouldPreventInputManagerHitTestingForKey:(id)arg1;

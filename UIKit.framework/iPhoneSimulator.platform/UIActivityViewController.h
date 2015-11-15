@@ -7,20 +7,21 @@
 #import <UIKit/UIViewController.h>
 
 #import "SFAirDropActivityViewControllerDelegate.h"
+#import "UIActivityGroupViewControllerDataSource.h"
 #import "UIActivityGroupViewControllerDelegate.h"
 #import "UIAlertControllerContaining.h"
 #import "UIViewControllerRestoration.h"
 
-@class NSArray, NSOperationQueue, NSString, SFAirDropActivityViewController, UIActivity, UIAlertController, _UIActivityApplicationExtensionDiscovery, _UIActivityGroupListViewController, _UIAlertControllerShimPresenter;
+@class NSArray, NSOperationQueue, NSString, SFAirDropActivityViewController, UIActivity, UIAlertAction, UIAlertController, _UIActivityApplicationExtensionDiscovery, _UIActivityGroupListViewController, _UIAlertControllerShimPresenter;
 
-@interface UIActivityViewController : UIViewController <UIViewControllerRestoration, UIAlertControllerContaining, UIActivityGroupViewControllerDelegate, SFAirDropActivityViewControllerDelegate>
+@interface UIActivityViewController : UIViewController <UIViewControllerRestoration, UIAlertControllerContaining, UIActivityGroupViewControllerDelegate, UIActivityGroupViewControllerDataSource, SFAirDropActivityViewControllerDelegate>
 {
     _Bool _useBlackPopoverStyle;
     _Bool _showKeyboardAutomatically;
     _Bool _allowsEmbedding;
-    _Bool _airdropped;
     _Bool _willDismissActivityViewController;
     _Bool _performActivityForStateRestoration;
+    _Bool _shouldMatchOnlyUserElectedExtensions;
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _completionWithItemsHandler;
     NSArray *_excludedActivityTypes;
@@ -37,6 +38,7 @@
     UIAlertController *_activityAlertController;
     _UIAlertControllerShimPresenter *_activityAlertControllerShimPresenter;
     _UIActivityGroupListViewController *_activityGroupListViewController;
+    UIAlertAction *_activityAlertCancelAction;
     NSOperationQueue *_activityItemProviderOperationQueue;
     long long _totalProviderCount;
     long long _completedProviderCount;
@@ -59,11 +61,11 @@
 + (void)_clearActivityItems:(id)arg1;
 + (void)_addActivityItem:(id)arg1 activityViewController:(id)arg2 originalActivityItem:(id)arg3;
 + (void)_reloadImageForActivity:(id)arg1;
+@property(nonatomic) _Bool shouldMatchOnlyUserElectedExtensions; // @synthesize shouldMatchOnlyUserElectedExtensions=_shouldMatchOnlyUserElectedExtensions;
 @property(nonatomic) _Bool performActivityForStateRestoration; // @synthesize performActivityForStateRestoration=_performActivityForStateRestoration;
 @property(retain, nonatomic) _UIActivityApplicationExtensionDiscovery *applicationExtensionDiscovery; // @synthesize applicationExtensionDiscovery=_applicationExtensionDiscovery;
 @property(nonatomic) _Bool willDismissActivityViewController; // @synthesize willDismissActivityViewController=_willDismissActivityViewController;
 @property(copy, nonatomic) CDUnknownBlockType _popoverDismissalAction; // @synthesize _popoverDismissalAction=__popoverDismissalAction;
-@property(nonatomic) _Bool airdropped; // @synthesize airdropped=_airdropped;
 @property(retain, nonatomic) SFAirDropActivityViewController *airDropViewController; // @synthesize airDropViewController=_airDropViewController;
 @property(copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property(nonatomic) Class originalPopoverBackgroundViewClass; // @synthesize originalPopoverBackgroundViewClass=_originalPopoverBackgroundViewClass;
@@ -72,6 +74,7 @@
 @property(nonatomic) long long completedProviderCount; // @synthesize completedProviderCount=_completedProviderCount;
 @property(nonatomic) long long totalProviderCount; // @synthesize totalProviderCount=_totalProviderCount;
 @property(retain, nonatomic) NSOperationQueue *activityItemProviderOperationQueue; // @synthesize activityItemProviderOperationQueue=_activityItemProviderOperationQueue;
+@property(retain, nonatomic) UIAlertAction *activityAlertCancelAction; // @synthesize activityAlertCancelAction=_activityAlertCancelAction;
 @property(retain, nonatomic) _UIActivityGroupListViewController *activityGroupListViewController; // @synthesize activityGroupListViewController=_activityGroupListViewController;
 @property(retain, nonatomic) _UIAlertControllerShimPresenter *activityAlertControllerShimPresenter; // @synthesize activityAlertControllerShimPresenter=_activityAlertControllerShimPresenter;
 @property(retain, nonatomic) UIAlertController *activityAlertController; // @synthesize activityAlertController=_activityAlertController;
@@ -94,8 +97,10 @@
 - (void)airDropActivityDidSuccessfullyCompleteTransfer;
 - (void)airDropActivityDidSuccessfullyStartTransfer;
 - (void)airDropActivityRequestingSharedItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_changeActionButtonToDone;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
+- (id)activityGroupViewController:(id)arg1 availableActivitiesInCategory:(long long)arg2;
 - (void)activityGroupViewController:(id)arg1 didSelectActivity:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_cancel;
@@ -120,7 +125,11 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidLayoutSubviews;
+- (void)setModalPresentationStyle:(long long)arg1;
+- (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (void)_updatePreferredContentSizes;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;

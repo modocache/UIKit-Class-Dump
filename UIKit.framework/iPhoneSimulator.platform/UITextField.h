@@ -391,6 +391,7 @@
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)_resignFirstResponder;
 - (void)_windowBecameKey;
+- (void)_finishResignFirstResponder;
 - (_Bool)resignFirstResponder;
 - (void)_becomeFirstResponder;
 - (void)_updatePlaceholderPosition;

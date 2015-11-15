@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)_alertController;
 - (id)_exceptionStringForNilSourceViewOrBarButtonItem;
 - (void)dimmingViewWasTapped:(id)arg1;
-- (id)_presentationControllerForSizeClassPair:(CDStruct_d58201db)arg1;
+- (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_compactPresentationController;
 
 @end

@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+#import "_UIRemoteViewFocusProxy.h"
 #import "_UIScrollToTopView.h"
 
-@class _UIRemoteViewController;
+@class NSString, _UIRemoteViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UISizeTrackingView : UIView <_UIScrollToTopView>
+@interface _UISizeTrackingView : UIView <_UIScrollToTopView, _UIRemoteViewFocusProxy>
 {
     _UIRemoteViewController *_remoteViewController;
     id _viewControllerOperatorProxy;
@@ -21,14 +22,21 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)viewWithRemoteViewController:(id)arg1 viewControllerOperatorProxy:(id)arg2 textEffectsOperatorProxy:(id)arg3;
+@property(readonly, nonatomic) _UIRemoteViewController *remoteViewController;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (_Bool)isScrollEnabled;
-- (void)_geometryChanged:(unsigned long long)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
 - (void)_updateTextEffectsGeometries:(struct CGRect)arg1;
 - (void)updateIntrinsicContentSize:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)dealloc;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

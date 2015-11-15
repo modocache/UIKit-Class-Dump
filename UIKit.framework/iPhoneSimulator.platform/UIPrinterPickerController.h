@@ -10,7 +10,6 @@
 
 @interface UIPrinterPickerController : NSObject
 {
-    unsigned long long _backgroundTaskIdentifier;
     CDUnknownBlockType _completionHandler;
     id _state;
     UIPrinter *_selectedPrinter;

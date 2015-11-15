@@ -36,6 +36,7 @@
 - (void)prepareForDocumentSelectionInMode:(unsigned long long)arg1;
 - (void)_setUploadURL:(id)arg1;
 - (void)_setUploadURLWrapper:(id)arg1;
+- (void)_setTintColor:(id)arg1;
 - (void)dealloc;
 - (void)dismissGrantingAccessToURL:(id)arg1;
 

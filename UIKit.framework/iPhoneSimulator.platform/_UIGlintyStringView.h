@@ -38,6 +38,8 @@
     UIView *_highlightView;
     UIView *_effectView;
     UIView *_blurView;
+    UIView *_shimmerImageView;
+    UIView *_reflectionImageView;
     double _blurAlpha;
     NSMutableSet *_blurHiddenRequesters;
     struct CGSize _labelSize;
@@ -46,6 +48,8 @@
 
 @property(retain, nonatomic) NSMutableSet *blurHiddenRequesters; // @synthesize blurHiddenRequesters=_blurHiddenRequesters;
 @property(nonatomic) double blurAlpha; // @synthesize blurAlpha=_blurAlpha;
+@property(retain, nonatomic) UIView *reflectionImageView; // @synthesize reflectionImageView=_reflectionImageView;
+@property(retain, nonatomic) UIView *shimmerImageView; // @synthesize shimmerImageView=_shimmerImageView;
 @property(retain, nonatomic) UIView *blurView; // @synthesize blurView=_blurView;
 @property(retain, nonatomic) UIView *effectView; // @synthesize effectView=_effectView;
 @property(nonatomic) _Bool showing; // @synthesize showing=_showing;
@@ -91,6 +95,10 @@
 - (id)_highlightColor;
 - (id)_highlightCompositingFilter;
 - (id)shapeViewForCharactersInString:(id)arg1 withFont:(id)arg2 centeredInFrame:(struct CGRect)arg3;
+- (void)addReflectionAnimationToLayer:(id)arg1;
+- (void)addShimmerAnimationToLayer:(id)arg1;
+- (void)addGlintyAnimations;
+- (void)removeGlintyAnimations;
 - (void)updateTextWithBounds:(struct CGRect)arg1;
 - (void)updateText;
 - (void)_updateLabelWithFrame:(struct CGRect)arg1;

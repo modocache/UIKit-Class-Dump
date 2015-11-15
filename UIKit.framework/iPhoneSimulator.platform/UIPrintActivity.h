@@ -17,7 +17,6 @@
 - (id)printInteractionControllerParentViewController:(id)arg1;
 - (void)activityDidFinish:(_Bool)arg1;
 - (id)printInteractionController;
-- (void)_cleanup;
 - (void)cancelPrintOptions;
 - (void)performActivity;
 - (id)_embeddedActivityViewController;

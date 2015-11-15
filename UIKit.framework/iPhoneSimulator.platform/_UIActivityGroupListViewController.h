@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) NSArray *visibleActivityGroupViewControllers; // @synthesize visibleActivityGroupViewControllers=_visibleActivityGroupViewControllers;
 @property(nonatomic) _Bool darkStyleOnLegacyApp; // @synthesize darkStyleOnLegacyApp=_darkStyleOnLegacyApp;
 @property(copy, nonatomic) NSArray *activityGroupViewControllers; // @synthesize activityGroupViewControllers=_activityGroupViewControllers;
+- (_Bool)isAirdropViewController:(id)arg1;
 - (_Bool)shouldShowNoActionsPlaceholder;
 - (double)preferredContentHeightForViewController:(id)arg1;
 - (id)viewControllerForItemAtIndexPath:(id)arg1;
@@ -33,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (void)viewWillLayoutSubviews;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)viewDidLoad;
 - (double)displayHeight;
 - (void)updateVisibleActivityGroupViewControllers;

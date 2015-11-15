@@ -12,8 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2;
+- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
 - (double)skinnyKeyThreshold;
+- (id)biuKeyImageName;
 - (id)boldKeyImageName;
 - (id)undoKeyImageName;
 - (id)pasteKeyImageName;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)more123KeyOffset;
 - (double)moreABCKeyFontSize;
 - (double)_row4ControlSegmentWidth;
+- (double)emojiPopupDividerKeyOffset;
 - (_Bool)isTallPopup;
 - (double)popupFontSize;
 - (struct CGPoint)popupSymbolTextOffset;

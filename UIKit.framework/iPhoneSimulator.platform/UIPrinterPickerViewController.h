@@ -33,10 +33,10 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) PKPrinter *printer; // @synthesize printer=_printer;
 - (_Bool)shouldShowPrinter:(id)arg1;
 - (_Bool)filtersPrinters;
-- (void)controllerDidDisappear;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (void)printerBrowserViewDidDisappear;
 - (void)dismissAnimated:(_Bool)arg1;
 - (void)cancelPrinting;
 - (void)dismissPrinterPickerAnimated:(_Bool)arg1;

@@ -209,10 +209,10 @@
 @property(nonatomic, getter=isTranslucent) _Bool translucent;
 @property(nonatomic) long long barStyle;
 - (void)_removeMarginsIfNecessary;
-- (void)movedToSuperview:(id)arg1;
+- (void)didMoveToSuperview;
 - (void)willMoveToSuperview:(id)arg1;
 - (void)_identifyBarContainer;
-- (void)didMoveToWindow:(id)arg1;
+- (void)didMoveToWindow;
 - (void)willMoveToWindow:(id)arg1;
 - (id)_scopeBar;
 @property(readonly, nonatomic, getter=_searchBarTextField) UISearchBarTextField *searchBarTextField;

@@ -10,6 +10,7 @@
 #import "NSExtensionRequestHandling.h"
 #import "UIAppearanceContainer.h"
 #import "UIContentContainer.h"
+#import "UIFocusContainer.h"
 #import "UITraitEnvironment.h"
 #import "UIViewControllerPresenting.h"
 #import "_UIContentContainerInternal.h"
@@ -18,7 +19,7 @@
 
 @class NSArray, NSBundle, NSDictionary, NSExtensionContext, NSLayoutConstraint, NSMapTable, NSMutableArray, NSString, UIBarButtonItem, UIDropShadowView, UINavigationController, UINavigationItem, UIPopoverController, UIPresentationController, UIScrollView, UISearchDisplayController, UISplitViewController, UIStoryboard, UITabBarController, UITabBarItem, UITraitCollection, UITransitionView, UIView, UIWindow, _UILayoutGuide;
 
-@interface UIViewController : UIResponder <_UIViewServiceDeputy, NSExtensionRequestHandling, UIViewControllerPresenting, _UITraitEnvironmentInternal, _UIContentContainerInternal, NSCoding, UIAppearanceContainer, UITraitEnvironment, UIContentContainer>
+@interface UIViewController : UIResponder <_UIViewServiceDeputy, NSExtensionRequestHandling, UIViewControllerPresenting, _UITraitEnvironmentInternal, _UIContentContainerInternal, UIFocusContainer, NSCoding, UIAppearanceContainer, UITraitEnvironment, UIContentContainer>
 {
     UIView *_view;
     UITabBarItem *_tabBarItem;
@@ -145,6 +146,7 @@
 
 + (id)_currentStatusBarHiddenViewController;
 + (id)_currentStatusBarStyleViewController;
++ (_Bool)_allViewControllersInArray:(id)arg1 allowAutorotationToInterfaceOrientation:(long long)arg2 predicate:(CDUnknownBlockType)arg3;
 + (void)attemptRotationToDeviceOrientation;
 + (_Bool)_doesOverrideLegacyShouldAutorotateMethod;
 + (_Bool)_shouldForwardViewWillTransitionToSize;
@@ -232,6 +234,13 @@
 @property(nonatomic) double customNavigationInteractiveTransitionPercentComplete; // @synthesize customNavigationInteractiveTransitionPercentComplete=_customNavigationInteractiveTransitionPercentComplete;
 @property(nonatomic) double customNavigationInteractiveTransitionDuration; // @synthesize customNavigationInteractiveTransitionDuration=_customNavigationInteractiveTransitionDuration;
 @property(nonatomic) NSMutableArray *mutableChildViewControllers; // @synthesize mutableChildViewControllers=_childViewControllers;
+- (void)focusedViewDidChange;
+- (void)focusedViewWillChange;
+- (void)setNeedsPreferredFocusedItemUpdate;
+- (_Bool)isAncestorOfItem:(id)arg1;
+@property(readonly, nonatomic) UIView *focusedView;
+@property(readonly, nonatomic) id <UIFocusContainer> preferredFocusedItem;
+- (_Bool)shouldChangeFocusedItem:(id)arg1 heading:(unsigned long long)arg2;
 @property(readonly, nonatomic) CDStruct_d58201db __sizeClassPair;
 - (_Bool)_isMemberOfViewControllerHierarchy:(id)arg1;
 @property(readonly, nonatomic) long long _verticalSizeClass;
@@ -316,6 +325,7 @@
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (_Bool)_isSupportedInterfaceOrientation:(long long)arg1;
 - (_Bool)__withSupportedInterfaceOrientation:(long long)arg1 apply:(CDUnknownBlockType)arg2;
+- (id)_viewControllersWhoseOrientationsMustCoincide;
 - (unsigned long long)__supportedInterfaceOrientations;
 - (void)_updateSupportedInterfaceOrientationsIfNecessary;
 - (long long)_preferredInterfaceOrientationForPresentationInWindow:(id)arg1 fromInterfaceOrientation:(long long)arg2;
@@ -336,8 +346,9 @@
 - (id)_viewControllersForRotationCallbacks;
 - (id)_viewControllerForRotation;
 - (id)_viewControllerForRotationWithDismissCheck:(_Bool)arg1;
-- (_Bool)_isPresentedDescendantOfViewController:(id)arg1;
 - (id)_nearestFullScreenAncestorViewController;
+- (id)_primaryViewControllerForAutorotation;
+- (id)_windowForAutorotation;
 - (_Bool)_checkIfViewControllerIsBeingDismissed:(id)arg1;
 - (id)viewControllerForRotation;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
@@ -757,7 +768,6 @@
 - (void)setTransitioningDelegate:(id)arg1;
 - (id)transitioningDelegate;
 - (void)_window:(id)arg1 viewWillTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id)arg3;
-- (void)window:(id)arg1 didTransitionToWindowSize:(struct CGSize)arg2;
 - (void)_preferredContentSizeDidChangeForChildViewController:(id)arg1;
 - (long long)_rotatingToInterfaceOrientation;
 - (long long)_rotatingFromInterfaceOrientation;

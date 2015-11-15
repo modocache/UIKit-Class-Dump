@@ -11,7 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface UIWheelEvent : UIInternalEvent
 {
-    NSMutableArray *_recentScrollTimestamps;
+    long long _recentScrollDistance;
+    NSMutableArray *_recentScrollEvents;
+    long long lastSubtype;
 }
 
 - (double)_wheelVelocity;

@@ -9,7 +9,7 @@
 #import "UIGestureRecognizerDelegate.h"
 #import "_UIActivityGroupViewDelegateFlowLayout.h"
 
-@class NSArray, NSDictionary, NSIndexPath, NSString, UILongPressGestureRecognizer, _UIActivityUserDefaults, _UIUserDefaultsActivity;
+@class NSArray, NSDictionary, NSIndexPath, NSMutableDictionary, NSString, UILongPressGestureRecognizer, _UIActivityGroupActivityCell, _UIActivityUserDefaults, _UIUserDefaultsActivity;
 
 @interface UIActivityGroupViewController : UICollectionViewController <_UIActivityGroupViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 {
@@ -23,23 +23,29 @@
     long long _activityCategory;
     NSDictionary *_customActivityTitles;
     NSArray *_activities;
+    id <UIActivityGroupViewControllerDataSource> _dataSource;
     NSArray *_visibleActivities;
     _UIActivityUserDefaults *_userDefaults;
     _UIUserDefaultsActivity *_userDefaultsActivity;
+    _UIActivityGroupActivityCell *_prototypeActivityCell;
     UILongPressGestureRecognizer *_editingGestureRecognizer;
     NSIndexPath *_indexPathForMenuActivity;
+    NSMutableDictionary *_cachedPreferredItemSizesByString;
     struct CGPoint _initialDraggingLocation;
 }
 
+@property(retain, nonatomic) NSMutableDictionary *cachedPreferredItemSizesByString; // @synthesize cachedPreferredItemSizesByString=_cachedPreferredItemSizesByString;
 @property(nonatomic) _Bool allowsUserCustomization; // @synthesize allowsUserCustomization=_allowsUserCustomization;
 @property(copy, nonatomic) NSIndexPath *indexPathForMenuActivity; // @synthesize indexPathForMenuActivity=_indexPathForMenuActivity;
 @property(nonatomic) _Bool activityIndexDidChangeWhileDragging; // @synthesize activityIndexDidChangeWhileDragging=_activityIndexDidChangeWhileDragging;
 @property(nonatomic) struct CGPoint initialDraggingLocation; // @synthesize initialDraggingLocation=_initialDraggingLocation;
 @property(retain, nonatomic) UILongPressGestureRecognizer *editingGestureRecognizer; // @synthesize editingGestureRecognizer=_editingGestureRecognizer;
+@property(retain, nonatomic) _UIActivityGroupActivityCell *prototypeActivityCell; // @synthesize prototypeActivityCell=_prototypeActivityCell;
 @property(retain, nonatomic) _UIUserDefaultsActivity *userDefaultsActivity; // @synthesize userDefaultsActivity=_userDefaultsActivity;
 @property(retain, nonatomic) _UIActivityUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property(copy, nonatomic) NSArray *visibleActivities; // @synthesize visibleActivities=_visibleActivities;
 @property(nonatomic) _Bool hasActivities; // @synthesize hasActivities=_hasActivities;
+@property(nonatomic) id <UIActivityGroupViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property(nonatomic, getter=isPicker) _Bool picker; // @synthesize picker=_picker;
 @property(nonatomic, getter=isEmbedded) _Bool embedded; // @synthesize embedded=_embedded;
 @property(nonatomic) _Bool darkStyleOnLegacyApp; // @synthesize darkStyleOnLegacyApp=_darkStyleOnLegacyApp;
@@ -53,26 +59,25 @@
 - (void)registerForActivityUserDefaultsChanges;
 - (void)hideItemAtIndexPath:(id)arg1;
 - (id)activityGroupViewLayout;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 preferredSizeForItemAtIndexPath:(id)arg3;
+- (struct CGSize)_cachedPreferredItemSizeForString:(id)arg1;
 - (id)collectionView:(id)arg1 layout:(id)arg2 needsContainerViewForDraggingItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 layout:(id)arg2 moveItemAtIndexPath:(id)arg3 toIndexPath:(id)arg4;
 - (id)targetIndexPathForMoveFromRowAtIndexPath:(id)arg1 toProposedIndexPath:(id)arg2;
 - (void)handleEditingGesture:(id)arg1;
 - (_Bool)gestureRecognizerShouldBegin:(id)arg1;
-- (struct UIEdgeInsets)_preferredSectionInset;
-- (struct CGSize)_preferredCellSize;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
-- (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidLayoutSubviews;
+- (void)_updateItemSizeIfNeeded;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (_Bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (id)_titleTextForActivity:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)reloadItemForActivityOfTypeIfNeeded:(id)arg1;
 - (id)activityForItemAtIndexPath:(id)arg1;
-- (void)renameActivity:(id)arg1;
 - (void)hideActivity:(id)arg1;
 - (void)setEditing:(_Bool)arg1 animated:(_Bool)arg2;
 - (_Bool)canBecomeFirstResponder;
@@ -80,7 +85,6 @@
 - (void)_updateVisibleActivitiesAnimated:(_Bool)arg1;
 - (void)_setActivities:(id)arg1 animated:(_Bool)arg2;
 - (void)setActivities:(id)arg1 animated:(_Bool)arg2;
-- (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithActivityCategory:(long long)arg1 userDefaults:(id)arg2 userDefaultsIdentifier:(id)arg3;

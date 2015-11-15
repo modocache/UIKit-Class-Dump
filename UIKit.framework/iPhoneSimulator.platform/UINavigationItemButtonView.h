@@ -6,10 +6,12 @@
 
 #import <UIKit/UINavigationItemView.h>
 
-@class UIColor, UIImageView, _UIBarButtonItemAppearanceStorage;
+#import "UIGestureRecognizerDelegate.h"
+
+@class NSString, UIColor, UIImageView, _UIBarButtonItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
-@interface UINavigationItemButtonView : UINavigationItemView
+@interface UINavigationItemButtonView : UINavigationItemView <UIGestureRecognizerDelegate>
 {
     long long _style;
     _Bool _pressed;
@@ -23,6 +25,15 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic, setter=_setWantsBlendModeForAccessibilityBackgrounds:) _Bool _wantsBlendModeForAccessibilityBackgrounds; // @synthesize _wantsBlendModeForAccessibilityBackgrounds;
 @property(nonatomic, setter=_setAbbreviatedTitleIndex:) unsigned long long _abbreviatedTitleIndex; // @synthesize _abbreviatedTitleIndex;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (void)_backSelectGestureChanged:(id)arg1;
+- (void)_uninstallBackSelectGestureRecognizer;
+- (void)_installBackSelectGestureRecognizer;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)_focusedViewDidChange:(id)arg1;
+- (void)_focusedViewWillChange:(id)arg1;
+- (_Bool)canBecomeFocused;
 - (Class)_appearanceGuideClass;
 - (void)_applyBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
 - (struct UIOffset)_backButtonTitlePositionAdjustmentForBarMetrics:(long long)arg1;
@@ -85,6 +96,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)_suppressesBackIndicatorView;
 - (_Bool)_wantsAccessibilityButtonShapes;
 - (_Bool)_showsAccessibilityBackgroundWhenEnabled;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

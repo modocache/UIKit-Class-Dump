@@ -6,11 +6,12 @@
 
 #import "NSObject.h"
 
-@class NSArray, NSDictionary, _UIDocumentPickerNSURLWrapper;
+@class NSArray, NSDictionary, UIColor, _UIDocumentPickerNSURLWrapper;
 
 @protocol _UIDocumentPickerExtensionViewController <NSObject>
+- (void)_setTintColor:(UIColor *)arg1;
 - (void)_documentPickerDidDismiss;
-- (void)_prepareWithExtensionInfo:(NSDictionary *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)_prepareWithExtensionInfo:(NSDictionary *)arg1 completionHandler:(void (^)(unsigned int))arg2;
 - (void)_setUploadURLWrapper:(_UIDocumentPickerNSURLWrapper *)arg1;
 - (void)_setPickerMode:(unsigned long long)arg1;
 - (void)_setPickableTypes:(NSArray *)arg1;

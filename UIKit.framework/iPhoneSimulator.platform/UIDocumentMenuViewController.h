@@ -33,15 +33,16 @@
 - (id)_containedAlertController;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (_Bool)_requiresCustomPresentationController;
-- (void)_preferredContentSizeChanged:(struct CGSize)arg1;
 - (void)_dismissWithOption:(id)arg1;
 - (void)_dismissViewController;
+- (void)_displayLocationsMenuFromRect:(struct CGRect)arg1;
 - (void)_stitchFileCreationAtURL:(id)arg1;
 - (void)_didSelectURL:(id)arg1;
 - (void)_didSelectPicker;
 @property(nonatomic) __weak id <UIDocumentMenuDelegate> delegate;
 - (void)addOptionWithTitle:(id)arg1 image:(id)arg2 order:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)viewWillAppear:(_Bool)arg1;
+- (void)loadView;
 - (void)dealloc;
 - (void)_commonInitWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithURL:(id)arg1 inMode:(unsigned long long)arg2;

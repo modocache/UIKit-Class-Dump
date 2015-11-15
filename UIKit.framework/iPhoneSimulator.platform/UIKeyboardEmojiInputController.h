@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray, NSMutableDictionary, UIKeyboardEmojiCategory;
+@class NSMutableArray, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiInputController : NSObject
@@ -14,18 +14,20 @@ __attribute__((visibility("hidden")))
     int _currentSequence;
     NSMutableDictionary *_usageHistory;
     NSMutableArray *_recents;
-    UIKeyboardEmojiCategory *_lastCategory;
+    NSMutableDictionary *_skinToneBaseKeyPreferences;
+    int _lastViewedCategory;
 }
 
 + (void)writeEmojiDefaultsAndReleaseActiveInputView;
 + (void)writeEmojiDefaults;
 + (id)activeInputView;
 + (Class)classForInputView;
-@property(retain, nonatomic) UIKeyboardEmojiCategory *lastViewedCategory; // @synthesize lastViewedCategory=_lastCategory;
 - (id)defaultsDictionary;
 - (void)clearAncientHistory;
-- (id)lastCategory;
+@property int lastViewedCategory; // @synthesize lastViewedCategory=_lastViewedCategory;
+- (id)skinToneBaseKeyPreferences;
 - (id)recents;
+- (void)updateSkinToneBaseKey:(id)arg1 variantUsed:(id)arg2;
 - (void)emojiUsed:(id)arg1;
 - (double)scoreForEmoji:(id)arg1;
 - (double)scoreForSequence:(int)arg1;

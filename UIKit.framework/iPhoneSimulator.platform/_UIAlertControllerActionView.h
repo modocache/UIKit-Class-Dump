@@ -9,23 +9,26 @@
 #import "UIGestureRecognizerDelegate.h"
 #import "_UIAlertActionRepresenting.h"
 
-@class NSLayoutConstraint, NSMutableArray, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIImageView, UILabel;
+@class NSLayoutConstraint, NSMutableArray, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIImageView, UILabel, UITapGestureRecognizer, UIView<UIAlertControllerBackgroundView>;
 
 __attribute__((visibility("hidden")))
 @interface _UIAlertControllerActionView : UIView <UIGestureRecognizerDelegate, _UIAlertActionRepresenting>
 {
     NSLayoutConstraint *_minimumHeightConstraint;
     UIView *labelContainerView;
+    NSLayoutConstraint *_labelContainerLeadingConstraint;
+    NSLayoutConstraint *_labelContainerTrailingConstraint;
     UILabel *label;
     UILabel *descriptiveLabel;
     UIImageView *imageView;
     UIImageView *checkView;
-    UIView *highlightedBackgroundContainerView;
+    UIView<UIAlertControllerBackgroundView> *highlightedBackgroundContainerView;
     NSMutableArray *highlightedBackgroundConstraints;
-    unsigned long long _roundedCorners;
     NSMutableArray *havingDescriptiveLabelConstraints;
     NSMutableArray *notHavingDescriptiveLabelConstraints;
     NSLayoutConstraint *_descriptiveLabelWidthConstraint;
+    NSMutableArray *_contentViewControllerConstraints;
+    UIView *_contentViewControllerContainerView;
     UIAlertAction *_action;
     UIAlertControllerVisualStyle *_visualStyle;
     id selectedTarget;
@@ -33,29 +36,41 @@ __attribute__((visibility("hidden")))
     id highlightTarget;
     SEL highlightAction;
     _Bool _hasDescriptiveText;
-    UIGestureRecognizer *_selectGestureRecognizer;
+    UITapGestureRecognizer *_selectGestureRecognizer;
     _Bool _discrete;
+    _Bool _highlighted;
 }
 
+@property(nonatomic, getter=isHighlighted) _Bool highlighted; // @synthesize highlighted=_highlighted;
 @property _Bool discrete; // @synthesize discrete=_discrete;
+- (void)_action:(id)arg1 updatedTitleTextColor:(id)arg2;
+- (void)_action:(id)arg1 updatedImageTintColor:(id)arg2;
+- (void)_action:(id)arg1 changedToBeDefault:(_Bool)arg2;
 - (void)_action:(id)arg1 changedToChecked:(_Bool)arg2;
 - (void)_action:(id)arg1 changedToEnabled:(_Bool)arg2;
-- (void)_focusStateDidChange;
-- (_Bool)_isFocusableElement;
+- (void)_action:(id)arg1 changedToTitleTextAlignment:(long long)arg2;
+- (void)_action:(id)arg1 changedToTitle:(id)arg2;
+- (void)focusedViewDidChange;
+- (_Bool)canBecomeFocused;
+- (long long)_physicalButtonTypeForBackGesture;
+- (long long)_physicalButtonTypeForSelectGesture;
 - (void)_selectGestureChanged:(id)arg1;
 - (void)_uninstallSelectGestureRecognizer;
 - (void)_installSelectGestureRecognizer;
 - (void)traitCollectionDidChange:(id)arg1;
+- (_Bool)_idiomSupportsSelectGesture:(long long)arg1;
 - (id)_titleFont;
 - (double)_minimumLabelScaleFactor;
 - (void)_contentSizeChanged;
 @property(readonly, copy) NSString *description;
+- (id)_computedTintColor;
 - (id)tintColor;
 - (void)tintColorDidChange;
 @property(copy, nonatomic) UIAlertAction *action;
 - (void)_updateStyle;
 @property UIAlertControllerVisualStyle *visualStyle;
-- (void)_updateTextAlignmentForDescriptiveText:(_Bool)arg1;
+- (void)_updateLabelContainerConstraints;
+- (void)_updateTextAlignmentForDescriptiveText:(_Bool)arg1 titleTextAlignment:(long long)arg2;
 - (void)_updateBackgroundView;
 - (void)_updateMinimumHeight;
 - (void)_updateFontSize;
@@ -67,7 +82,11 @@ __attribute__((visibility("hidden")))
 @property(readonly) double currentDescriptiveLabelTextWidth;
 @property double alignedDescriptiveLabelTextWidth;
 - (void)_triggerSelect;
-@property(nonatomic, getter=isHighlighted) _Bool highlighted;
+- (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)_physicalButtonsEnded:(id)arg1 withEvent:(id)arg2;
+- (void)_physicalButtonsBegan:(id)arg1 withEvent:(id)arg2;
+- (_Bool)_buttonsShouldShowPressedState:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

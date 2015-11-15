@@ -48,10 +48,11 @@
 - (void)removeAllLayoutSegments;
 - (void)addLayoutSegment:(id)arg1;
 - (_Bool)useBlueThemingForKey:(id)arg1;
-- (_Bool)shouldClearBaseDisplayStringForVariants;
+- (_Bool)shouldClearBaseDisplayStringForVariants:(id)arg1;
 - (id)displayContentsForKey:(id)arg1;
 - (id)keyImageNameWithSkinnyVariation:(id)arg1;
 - (double)skinnyKeyThreshold;
+- (id)biuKeyImageName;
 - (id)boldKeyImageName;
 - (id)undoKeyImageName;
 - (id)pasteKeyImageName;
@@ -82,7 +83,9 @@
 - (double)RivenFactor:(double)arg1;
 - (id)initWithRenderConfig:(id)arg1 skipLayoutSegments:(_Bool)arg2;
 - (void)dealloc;
+- (void)modifyTraitsForDividerVariant:(id)arg1 withKey:(id)arg2;
 - (void)modifyTraitsForDetachedInputSwitcher:(id)arg1 withKey:(id)arg2;
+- (double)emojiPopupDividerKeyOffset;
 - (double)keyCornerRadius;
 - (id)extraPasscodePaddleTraits;
 - (id)passcodeShiftedControlKeyTraits;

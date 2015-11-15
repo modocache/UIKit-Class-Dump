@@ -11,14 +11,13 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)_emojiSkinToneDividerColor;
 - (id)_emojiBorderColor;
 - (id)_emojiCategoryControlKeyActiveTraits;
-- (id)_emojiCategoryControlKeyTraits;
 - (id)_emojiSpaceKeyBackgroundColorGradient;
 - (id)_emojiSpaceKeyActiveBackgroundColorGradient;
 - (id)_emojiDefaultControlKeyBackgroundColorGradient;
 - (id)_emojiDefaultControlKeyActiveBackgroundColorGradient;
-- (id)_emojiInputViewKeyBackgroundColorGradient;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
 - (id)controlKeyBackgroundColorName;
 - (id)defaultKeyBackgroundColorName;

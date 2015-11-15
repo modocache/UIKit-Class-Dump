@@ -6,20 +6,30 @@
 
 #import <UIKit/UIView.h>
 
-@class _UIBackdropView;
+#import "UIAlertControllerBackgroundView.h"
+
+@class NSString, _UIBackdropView;
 
 __attribute__((visibility("hidden")))
-@interface _UIDimmingKnockoutBackdropView : UIView
+@interface _UIDimmingKnockoutBackdropView : UIView <UIAlertControllerBackgroundView>
 {
     _UIBackdropView *backdropView;
     UIView *dimmingKnockoutView;
 }
 
 - (void)dealloc;
+- (void)setPressed:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 @property double cornerRadius;
 - (id)_dimmingKnockoutBackgroundColorForBackdropStyle:(long long)arg1;
 - (id)_filterForBackdropStyle:(long long)arg1;
 - (id)initWithStyle:(long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

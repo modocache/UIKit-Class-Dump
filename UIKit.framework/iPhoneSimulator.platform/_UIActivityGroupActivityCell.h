@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)initHighlightedImageViewIfNeeded;
 - (void)updateHighlightedImageViewIfNeeded;
 - (void)setHighlighted:(_Bool)arg1;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

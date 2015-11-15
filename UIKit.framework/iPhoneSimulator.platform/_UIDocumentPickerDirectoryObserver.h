@@ -14,8 +14,9 @@ __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerDirectoryObserver : NSObject <NSMetadataQueryDelegate>
 {
     NSArray *_sortDescriptors;
-    NSArray *_staticItems;
+    NSOrderedSet *_staticItems;
     id _weak_updateHandlerWeakSelf;
+    _Bool _afterInitialUpdate;
     NSMetadataQuery *_query;
     NSArray *_scopes;
     CDUnknownBlockType _handler;
@@ -34,15 +35,17 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(retain, nonatomic) NSArray *scopes; // @synthesize scopes=_scopes;
 @property(retain, nonatomic) NSMetadataQuery *query; // @synthesize query=_query;
+@property(nonatomic) _Bool afterInitialUpdate; // @synthesize afterInitialUpdate=_afterInitialUpdate;
 - (void)_processResults:(id)arg1 changedItems:(id)arg2 reloadAll:(_Bool)arg3;
 - (id)_computeUpdatesFromOld:(id)arg1 toNew:(id)arg2 changedItems:(id)arg3;
-@property(retain, nonatomic) NSArray *staticItems;
+@property(retain, nonatomic) NSOrderedSet *staticItems;
 - (void)_updateObservers:(id)arg1 reloadAll:(_Bool)arg2;
 - (id)_queryResults;
 - (void)_queryUpdated:(id)arg1;
 - (void)_initialGatherFinished:(id)arg1;
 @property(retain, nonatomic) NSPredicate *predicate;
 @property(retain, nonatomic) NSArray *sortDescriptors;
+- (void)invalidate;
 - (void)dealloc;
 - (id)metadataQuery:(id)arg1 replacementObjectForResultObject:(id)arg2;
 @property(nonatomic) __weak id updateHandlerWeakSelf;

@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     _Bool _dismissed;
     _Bool _animated;
     _Bool _observingRotation;
-    _Bool _parentHasNoPopover;
 }
 
 @property(retain, nonatomic) PKPrinter *printer; // @synthesize printer=_printer;
@@ -43,7 +42,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct _NSRange pageRange;
 @property(readonly, nonatomic) long long pageCount;
 @property(nonatomic) _Bool duplex;
-- (void)controllerDidDisappear;
+- (void)printRangeViewDidDisappear;
+- (void)printPaperViewDidDisappear;
+- (void)printerBrowserViewDidDisappear;
+- (void)printPanelDidDisappear;
 - (void)cancelPrinting;
 - (void)startPrinting;
 - (void)popoverControllerDidDismissPopover:(id)arg1;

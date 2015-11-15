@@ -9,12 +9,12 @@
 #import "_UIDocumentPickerServiceInvalidating.h"
 #import "_UIDocumentPickerViewControllerHost.h"
 
-@class NSExtension, NSString;
+@class NSExtension, NSString, UIViewController<_UIDocumentPickerRemoteViewControllerContaining>;
 
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerRemoteViewController : _UIRemoteViewController <_UIDocumentPickerViewControllerHost, _UIDocumentPickerServiceInvalidating>
 {
-    id <_UIDocumentPickerRemoteViewControllerContaining> _publicController;
+    UIViewController<_UIDocumentPickerRemoteViewControllerContaining> *_publicController;
     NSString *_identifier;
     NSExtension *_extension;
     id <NSCopying><NSObject> _extensionRequestIdentifier;
@@ -25,14 +25,16 @@ __attribute__((visibility("hidden")))
 @property(copy, nonatomic) id <NSCopying><NSObject> extensionRequestIdentifier; // @synthesize extensionRequestIdentifier=_extensionRequestIdentifier;
 @property(retain, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property(retain, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property(nonatomic) id <_UIDocumentPickerRemoteViewControllerContaining> publicController; // @synthesize publicController=_publicController;
+@property(nonatomic) UIViewController<_UIDocumentPickerRemoteViewControllerContaining> *publicController; // @synthesize publicController=_publicController;
+- (void)_tintColorDidChangeToColor:(id)arg1;
 - (void)_stitchFileCreationAtURL:(id)arg1;
+- (void)setPreferredContentSize:(struct CGSize)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
-- (void)_preferredContentSizeChanged:(struct CGSize)arg1;
 - (void)_dismissWithOption:(id)arg1;
 - (void)_didSelectPicker;
 - (void)_dismissViewController;
 - (void)_didSelectURLWrapper:(id)arg1;
+- (void)viewDidLoad;
 - (void)invalidate;
 
 // Remaining properties

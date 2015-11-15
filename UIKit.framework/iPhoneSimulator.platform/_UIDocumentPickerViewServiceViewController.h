@@ -8,16 +8,17 @@
 
 #import "_UIDocumentPickerOverviewDelegate.h"
 #import "_UIDocumentPickerRemoteViewControllerContaining.h"
+#import "_UIDocumentPickerServiceViewController.h"
 #import "_UIDocumentPickerViewController.h"
 
 @class NSArray, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerViewServiceViewController : UINavigationController <_UIDocumentPickerRemoteViewControllerContaining, _UIDocumentPickerOverviewDelegate, _UIDocumentPickerViewController>
+@interface _UIDocumentPickerViewServiceViewController : UINavigationController <_UIDocumentPickerRemoteViewControllerContaining, _UIDocumentPickerOverviewDelegate, _UIDocumentPickerViewController, _UIDocumentPickerServiceViewController>
 {
     _Bool _displayedAsMenu;
     _Bool _hasBeenDismissed;
-    long long _displayMode;
+    _Bool _showingSpinner;
     NSArray *_pickableTypes;
     unsigned long long _pickerMode;
     NSURL *_uploadURL;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 + (id)_remoteViewControllerInterface;
 + (id)_exportedInterface;
+@property(nonatomic) _Bool showingSpinner; // @synthesize showingSpinner=_showingSpinner;
 @property(nonatomic) _Bool hasBeenDismissed; // @synthesize hasBeenDismissed=_hasBeenDismissed;
 @property(nonatomic) _Bool displayedAsMenu; // @synthesize displayedAsMenu=_displayedAsMenu;
 @property(retain, nonatomic) NSString *currentPickerIdentifier; // @synthesize currentPickerIdentifier=_currentPickerIdentifier;
@@ -36,9 +38,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long pickerMode; // @synthesize pickerMode=_pickerMode;
 - (void)_setPickableTypes:(id)arg1;
 @property(copy, nonatomic) NSArray *pickableTypes; // @synthesize pickableTypes=_pickableTypes;
-@property(nonatomic) long long displayMode; // @synthesize displayMode=_displayMode;
+- (void)_checkFileStatus;
+- (_Bool)_appIsSharingAware;
+- (void)setNavigationItemSpinner:(_Bool)arg1;
+@property(nonatomic) long long displayMode;
 @property(nonatomic) int sortOrder;
-- (void)_preferredContentSizeChanged:(struct CGSize)arg1;
 - (void)_didSelectPicker;
 - (void)_stitchFileCreationAtURL:(id)arg1;
 - (void)_dismissWithOption:(id)arg1;
@@ -47,15 +51,21 @@ __attribute__((visibility("hidden")))
 - (void)_dismissViewController;
 - (void)overviewController:(id)arg1 selectedAuxiliaryOptionWithIdentifier:(id)arg2;
 - (void)overviewController:(id)arg1 selectedDocumentPickerWithIdentifier:(id)arg2;
+- (void)_showLocationPopupFromBarButtonItem:(id)arg1 rect:(struct CGRect)arg2;
 - (void)_showLocationPopup:(id)arg1;
+- (void)_displayLocationsMenuFromRect:(struct CGRect)arg1;
+- (void)_presentError:(id)arg1 forThirdPartyPickerWithDescription:(id)arg2;
+- (void)_didInstantiateThirdPartyPickerWithDescription:(id)arg1 viewController:(id)arg2;
 - (void)_showPicker:(id)arg1;
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;
+- (_Bool)shouldShowSearch;
 - (void)setupNavigationItemForPicker:(id)arg1 isRoot:(_Bool)arg2;
 - (void)_showTopLevelViewController;
 - (void)_willAppearInRemoteViewController;
 - (void)_prepareForDisplayWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_setUploadURLWrapper:(id)arg1;
 - (void)_showDefaultPicker;
+- (void)_setTintColor:(id)arg1;
 - (void)_documentPickerDidDismiss;
 - (void)dismissWithURL:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)_dismissWithImportURL:(id)arg1;

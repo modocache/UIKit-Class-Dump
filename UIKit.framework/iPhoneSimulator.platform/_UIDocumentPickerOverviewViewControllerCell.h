@@ -12,10 +12,15 @@ __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerOverviewViewControllerCell : UITableViewCell
 {
     UIImageView *_iconView;
+    UIImageView *_newlyAddedView;
 }
 
+@property(retain, nonatomic) UIImageView *newlyAddedView; // @synthesize newlyAddedView=_newlyAddedView;
 @property(retain, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
 - (void)layoutSubviews;
+@property(nonatomic) _Bool showNewlyAdded;
+- (id)_dotImage;
+- (void)prepareForReuse;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 

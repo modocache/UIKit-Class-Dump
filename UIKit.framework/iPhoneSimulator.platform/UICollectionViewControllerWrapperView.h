@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)preferredFocusedItem;
 - (void)didMoveToSuperview;
 - (id)_collectionViewController;
 - (id)_viewControllerToNotifyOnLayoutSubviews;

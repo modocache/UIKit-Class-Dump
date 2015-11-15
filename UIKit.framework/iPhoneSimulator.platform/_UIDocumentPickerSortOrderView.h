@@ -6,20 +6,31 @@
 
 #import <UIKit/UIControl.h>
 
-@class UISegmentedControl, _UIDocumentPickerViewServiceViewController;
+@class NSArray, UIButton, UISegmentedControl;
 
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerSortOrderView : UIControl
 {
-    _UIDocumentPickerViewServiceViewController *_serviceViewController;
+    id <_UIDocumentPickerViewServiceViewController> _serviceViewController;
+    long long _listMode;
     UISegmentedControl *_sortOrder;
+    UIButton *_listModeToggle;
+    NSArray *_compactConstraints;
+    NSArray *_regularConstraints;
 }
 
+@property(copy, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
+@property(copy, nonatomic) NSArray *compactConstraints; // @synthesize compactConstraints=_compactConstraints;
+@property(retain, nonatomic) UIButton *listModeToggle; // @synthesize listModeToggle=_listModeToggle;
 @property(retain, nonatomic) UISegmentedControl *sortOrder; // @synthesize sortOrder=_sortOrder;
-@property(nonatomic) _UIDocumentPickerViewServiceViewController *serviceViewController; // @synthesize serviceViewController=_serviceViewController;
+@property(nonatomic) long long listMode; // @synthesize listMode=_listMode;
+@property(nonatomic) id <_UIDocumentPickerViewServiceViewController> serviceViewController; // @synthesize serviceViewController=_serviceViewController;
+- (void)_toggleListMode:(id)arg1;
 - (void)valueChanged:(id)arg1;
 @property(nonatomic) int value;
 - (void)dealloc;
+- (void)updateForListMode;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

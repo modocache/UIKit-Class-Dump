@@ -59,7 +59,6 @@
         unsigned int cancelledTransition:1;
         unsigned int animationCount:4;
         unsigned int backgroundLayoutNeedsUpdate:1;
-        unsigned int backgroundImageNeedsUpdate:1;
     } _navbarFlags;
     UISwipeGestureRecognizer *_popSwipeGestureRecognizer;
     UIImageView *_backIndicatorView;
@@ -93,6 +92,10 @@
 @property(nonatomic, setter=_setRequestedMaxBackButtonWidth:) double _requestedMaxBackButtonWidth; // @synthesize _requestedMaxBackButtonWidth;
 @property(nonatomic, setter=_setNeedsUpdateBackIndicatorImage:) _Bool _needsUpdateBackIndicatorImage; // @synthesize _needsUpdateBackIndicatorImage;
 @property(readonly, nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
+- (id)preferredFocusedItem;
+- (_Bool)canBecomeFocused;
+- (id)_focusableViews;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (long long)_backgroundBackdropStyle;
 - (void)_handlePopSwipe:(id)arg1;
 - (_Bool)_gestureRecognizerShouldBegin:(id)arg1;
@@ -140,6 +143,7 @@
 - (long long)_barPosition;
 - (void)_setBarPosition:(long long)arg1;
 - (void)setAutoresizingMask:(unsigned long long)arg1;
+- (void)_updateBackIndicatorViewTintColor;
 - (void)_updateBackIndicatorImage;
 - (id)_effectiveBackIndicatorTransitionMaskImage;
 - (id)_effectiveBackIndicatorImage;

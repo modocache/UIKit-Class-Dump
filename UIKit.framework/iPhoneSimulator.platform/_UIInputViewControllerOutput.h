@@ -9,30 +9,38 @@
 #import "NSCopying.h"
 #import "NSSecureCoding.h"
 
-@class NSString, TIKeyboardOutput;
+@class NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UIInputViewControllerOutput : NSObject <NSCopying, NSSecureCoding>
 {
     _Bool _shouldDismiss;
     _Bool _shouldAdvanceInputMode;
-    TIKeyboardOutput *_keyboardOutput;
-    long long _positionOffset;
+    _Bool _requiresInputManagerSync;
+    _Bool _shouldAdvanceResponder;
+    _Bool _shouldPostReturnKeyNotification;
+    NSArray *_keyboardOutputs;
     NSString *_primaryLanguage;
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic) _Bool shouldPostReturnKeyNotification; // @synthesize shouldPostReturnKeyNotification=_shouldPostReturnKeyNotification;
+@property(nonatomic) _Bool shouldAdvanceResponder; // @synthesize shouldAdvanceResponder=_shouldAdvanceResponder;
+@property(nonatomic) _Bool requiresInputManagerSync; // @synthesize requiresInputManagerSync=_requiresInputManagerSync;
 @property(copy, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
 @property(nonatomic) _Bool shouldAdvanceInputMode; // @synthesize shouldAdvanceInputMode=_shouldAdvanceInputMode;
 @property(nonatomic) _Bool shouldDismiss; // @synthesize shouldDismiss=_shouldDismiss;
-@property(nonatomic) long long positionOffset; // @synthesize positionOffset=_positionOffset;
-@property(retain, nonatomic) TIKeyboardOutput *keyboardOutput; // @synthesize keyboardOutput=_keyboardOutput;
+@property(retain, nonatomic) NSArray *keyboardOutputs; // @synthesize keyboardOutputs=_keyboardOutputs;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)createKeyboardOutputIfNecessary;
+- (void)adjustTextPositionByCharacterOffset:(long long)arg1;
+- (void)deleteBackward;
+- (void)insertText:(id)arg1;
+- (id)_currentKeyboardOutput;
+- (void)_pushNewKeyboardOutput;
 - (void)dealloc;
 
 @end

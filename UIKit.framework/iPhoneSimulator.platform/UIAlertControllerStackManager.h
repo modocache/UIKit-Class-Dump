@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_alertControllerWillAppear:(id)arg1;
 - (void)dealloc;
 - (id)autorelease;
-- (void)release;
+- (oneway void)release;
 - (id)retain;
 - (id)init;
 

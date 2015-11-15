@@ -8,34 +8,35 @@
 
 #import "_UIDocumentPickerServiceInvalidating.h"
 
-@class NSString, _UIDocumentPickerContainerModel, _UIDocumentPickerViewServiceViewController, _UINavigationControllerPalette;
+@class NSString, UIViewController<_UIDocumentPickerContainedViewController>, _UIDocumentPickerContainerModel, _UIDocumentPickerViewServiceViewController, _UINavigationControllerPalette;
 
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerContainerViewController : UIViewController <_UIDocumentPickerServiceInvalidating>
 {
+    _UIDocumentPickerViewServiceViewController *_weak_serviceViewController;
     _Bool _rootContainer;
-    UIViewController *_childViewController;
     _UIDocumentPickerContainerModel *_model;
-    _UIDocumentPickerViewServiceViewController *_serviceViewController;
+    UIViewController<_UIDocumentPickerContainedViewController> *_childViewController;
     _UINavigationControllerPalette *_searchPalette;
 }
 
 @property(nonatomic, getter=isRootContainer) _Bool rootContainer; // @synthesize rootContainer=_rootContainer;
 @property(retain, nonatomic) _UINavigationControllerPalette *searchPalette; // @synthesize searchPalette=_searchPalette;
-@property(nonatomic) _UIDocumentPickerViewServiceViewController *serviceViewController; // @synthesize serviceViewController=_serviceViewController;
+@property(retain, nonatomic) UIViewController<_UIDocumentPickerContainedViewController> *childViewController; // @synthesize childViewController=_childViewController;
 @property(retain, nonatomic) _UIDocumentPickerContainerModel *model; // @synthesize model=_model;
-@property(retain, nonatomic) UIViewController *childViewController; // @synthesize childViewController=_childViewController;
 - (void)_tryExportingFile:(id)arg1 toLocation:(id)arg2;
 - (id)_mangledFilenameForURL:(id)arg1;
 - (void)_pickCurrentLocationForUpload:(id)arg1;
-- (void)_doneButtonPressed;
 - (void)_updateForServiceView;
 - (void)invalidate;
 - (void)teardownPalettes;
 - (void)setupPalettes;
 - (void)didMoveToParentViewController:(id)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
-- (void)displayModeChanged;
+@property(nonatomic) __weak id <_UIDocumentPickerServiceViewController> serviceViewController;
+- (void)_sortOrderViewChanged:(id)arg1;
+- (void)viewDidLayoutSubviews;
+- (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewWillAppear:(_Bool)arg1;
 - (void)setChildViewController:(id)arg1 animated:(_Bool)arg2;
 - (void)ensureChildViewController;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     UIKeyboardCandidateGridHeader *_header;
 }
 
++ (double)defaultExtendedControlHeight;
 - (void)_handleKeyboardShowOrHide:(id)arg1;
 - (void)handleTap;
 - (void)scrollViewWillBeginDragging:(id)arg1;
@@ -26,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)_setupKeyboardInteraction;
 - (void)dealloc;
 - (void)layoutSubviews;
-- (double)barHeight;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

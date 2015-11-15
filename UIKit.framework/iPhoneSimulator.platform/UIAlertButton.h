@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double imageOffset; // @synthesize imageOffset=_imageOffset;
 - (void)dealloc;
 - (void)setEnabled:(_Bool)arg1;
-- (void)_focusStateDidChange;
-- (_Bool)_isFocusableElement;
+- (void)focusedViewDidChange;
+- (_Bool)canBecomeFocused;
 - (void)_transitionHighlightViewToHighlighted:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 - (void)layoutSubviews;

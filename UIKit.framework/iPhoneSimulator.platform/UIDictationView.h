@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (_Bool)visible;
 - (void)endpointButtonPressed;
 - (void)dealloc;
-- (void)layoutSubviews;
 - (_Bool)drawsOwnBackground;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setState:(int)arg1;
@@ -48,9 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)show;
 - (void)applicationEnteredBackground;
 - (struct CGSize)currentScreenSize;
-- (id)createEndpointButtonWithRect:(struct CGRect)arg1 action:(SEL)arg2;
 - (id)endpointButton;
-- (id)endpointButtonImageWithRect:(struct CGRect)arg1 pressed:(_Bool)arg2;
 - (void)highlightEndpointButton;
 - (void)applicationWillResignActive;
 

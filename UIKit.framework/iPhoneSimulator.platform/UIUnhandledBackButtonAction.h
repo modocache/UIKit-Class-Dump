@@ -4,9 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
-#import "PKPrinter.h"
+#import "BSAction.h"
 
-@interface PKPrinter (UIPrinterBrowserViewController)
-- (_Bool)isEqual:(id)arg1;
+@interface UIUnhandledBackButtonAction : BSAction
+{
+}
+
+- (long long)UIActionType;
+- (id)init;
+
 @end
 

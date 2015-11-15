@@ -8,13 +8,14 @@
 
 #import "UIInputViewAnimationController.h"
 
-@class NSString;
+@class NSString, UIInputViewSetPlacement;
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewAnimationControllerViewController : NSObject <UIInputViewAnimationController>
 {
     id <UIViewControllerContextTransitioning> _context;
     id <UIViewControllerAnimatedTransitioning_Keyboard> _animator;
+    UIInputViewSetPlacement *_endPlacement;
 }
 
 + (id)controllerWithContext:(id)arg1;

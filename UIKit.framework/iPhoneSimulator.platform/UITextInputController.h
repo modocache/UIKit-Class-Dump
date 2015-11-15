@@ -10,7 +10,7 @@
 #import "UITextInputAdditions.h"
 #import "UITextInput_Internal.h"
 
-@class NSArray, NSDictionary, NSHashTable, NSLayoutManager, NSString, UIResponder<UITextInput>, UITextChecker, UITextInputTraits, UITextPosition, UITextRange, UIView, UIView<UITextInput>, UIView<UITextInputPrivate>, _UIDictationAttachment, _UITextInputControllerTokenizer, _UITextKitTextRange, _UITextServiceSession, _UITextUndoManager, _UITextUndoOperationTyping;
+@class NSArray, NSDictionary, NSHashTable, NSLayoutManager, NSSet, NSString, UIResponder<UITextInput>, UITextChecker, UITextInputTraits, UITextPosition, UITextRange, UIView, UIView<UITextInput>, UIView<UITextInputPrivate>, _UIDictationAttachment, _UITextInputControllerTokenizer, _UITextKitTextRange, _UITextServiceSession, _UITextUndoManager, _UITextUndoOperationTyping;
 
 @interface UITextInputController : NSObject <UITextInput_Internal, UITextInput, UITextInputAdditions>
 {
@@ -45,6 +45,7 @@
     _UITextUndoManager *_undoManager;
     _UITextUndoOperationTyping *_undoOperationForCoalescing;
     UITextChecker *_textChecker;
+    NSSet *_whitelistedTypingAttributes;
     _UIDictationAttachment *_dictationPlaceholder;
     _Bool _allowsEditingTextAttributes;
     _Bool _continuousSpellCheckingEnabled;
@@ -134,7 +135,7 @@
 - (id)_attributesForReplacementInRange:(struct _NSRange)arg1;
 - (id)_newAttributedStringForInsertionOfText:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)_fixupTypingAttributeForAttributes:(id)arg1;
-- (id)_whitelistedTypingAttributes;
+@property(copy, nonatomic, getter=_whitelistedTypingAttributes, setter=_setWhitelistedTypingAttributes:) NSSet *_whitelistedTypingAttributes;
 @property(nonatomic) id <UITextInputDelegate> inputDelegate;
 - (id)characterRangeByExtendingPosition:(id)arg1 inDirection:(long long)arg2;
 - (id)positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;

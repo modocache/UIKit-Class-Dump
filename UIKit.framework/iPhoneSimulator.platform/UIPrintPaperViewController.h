@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)adjustPopoverSize;
 - (unsigned long long)supportedInterfaceOrientations;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
+- (void)viewDidDisappear:(_Bool)arg1;
 - (id)initWithPrintPanelViewController:(id)arg1;
 
 @end

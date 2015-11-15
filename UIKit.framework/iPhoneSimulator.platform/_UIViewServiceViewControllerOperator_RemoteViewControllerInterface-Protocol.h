@@ -7,7 +7,7 @@
 #import "_UIViewServiceDeputy_UIViewServiceInterface.h"
 #import "_UIViewServiceUIBehaviorInterface.h"
 
-@class NSArray, NSString, NSUUID, UIColor, _UIViewServiceXPCMachSendRight;
+@class NSArray, NSString, NSUUID, UIColor, UITraitCollection, _UIViewControllerTransitionCoordinatorContextDescription, _UIViewServiceXPCMachSendRight;
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
 - (void)__restoreStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2;
@@ -15,6 +15,8 @@
 - (void)__exchangeAccessibilityPortInformation:(_UIViewServiceXPCMachSendRight *)arg1 replyHandler:(void (^)(_UIViewServiceXPCMachSendRight *, NSError *))arg2;
 - (void)__dimmingViewWasTapped;
 - (void)__textServiceDidDismiss;
+- (void)__hostWillTransitionToTraitCollection:(UITraitCollection *)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 deferIfAnimated:(_Bool)arg3;
+- (void)__setHostTraitCollection:(UITraitCollection *)arg1;
 - (void)__setHostTintColor:(UIColor *)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__hostDidUpdateAppearanceWithSerializedRepresentations:(NSArray *)arg1 originalSource:(id)arg2 legacyAppearance:(_Bool)arg3;
 - (void)__scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(void (^)(_Bool, NSError *))arg2;
@@ -28,6 +30,7 @@
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(_Bool)arg2;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
 - (void)__hostWillRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(_Bool)arg3;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 statusBarHeight:(double)arg3 whenDone:(void (^)(struct CGSize))arg4;
 - (void)__hostDidChangeStatusBarHeight:(double)arg1;
 - (void)__hostDidChangeStatusBarOrientationToInterfaceOrientation:(long long)arg1;
 - (void)__hostDidEnterBackground;
@@ -38,9 +41,9 @@
 - (void)__hostViewDidDisappear:(_Bool)arg1;
 - (void)__hostViewWillDisappear:(_Bool)arg1;
 - (void)__hostViewDidAppear:(_Bool)arg1;
-- (void)__hostViewWillAppear:(_Bool)arg1 inInterfaceOrientation:(long long)arg2 statusBarHeight:(double)arg3 completionHandler:(void (^)(struct CGSize))arg4;
+- (void)__hostViewWillAppear:(_Bool)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(UITraitCollection *)arg3 statusBarHeight:(double)arg4 completionHandler:(void (^)(struct CGSize))arg5;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
-- (void)__createViewController:(NSString *)arg1 withContextToken:(NSUUID *)arg2 fbsDisplays:(NSArray *)arg3 appearanceSerializedRepresentations:(NSArray *)arg4 legacyAppearance:(_Bool)arg5 hostAccessibilityServerPort:(_UIViewServiceXPCMachSendRight *)arg6 canShowTextServices:(_Bool)arg7 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, _Bool, _UIViewServiceXPCMachSendRight *, NSError *))arg8;
+- (void)__createViewController:(NSString *)arg1 withContextToken:(NSUUID *)arg2 fbsDisplays:(NSArray *)arg3 appearanceSerializedRepresentations:(NSArray *)arg4 legacyAppearance:(_Bool)arg5 traitCollection:(UITraitCollection *)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(_UIViewServiceXPCMachSendRight *)arg8 canShowTextServices:(_Bool)arg9 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, _Bool, _UIViewServiceXPCMachSendRight *, NSError *))arg10;
 - (void)__createViewController:(NSString *)arg1 withAppearanceSerializedRepresentations:(NSArray *)arg2 legacyAppearance:(_Bool)arg3 hostAccessibilityServerPort:(_UIViewServiceXPCMachSendRight *)arg4 canShowTextServices:(_Bool)arg5 replyHandler:(void (^)(_UIHostedWindowHostingHandle *, NSArray *, long long, _Bool, _UIViewServiceXPCMachSendRight *, NSError *))arg6;
 @end
 

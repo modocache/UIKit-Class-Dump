@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CADisplayLink, EAGLContext;
+@class CADisplayLink, EAGLContext, UIScreen;
 
 @interface _UISiriWaveyView : UIView
 {
@@ -41,6 +41,7 @@
     _Bool _isInitialized;
     _Bool _justStarted;
     int _state;
+    UIScreen *_screen;
     int _mode;
     id <_UISiriWaveyViewDelegate> _delegate;
 }
@@ -70,6 +71,7 @@
 - (void)setHidden:(_Bool)arg1;
 - (void)didMoveToSuperview;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1 screen:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

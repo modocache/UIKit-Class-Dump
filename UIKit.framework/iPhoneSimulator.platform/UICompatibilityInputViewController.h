@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     UIKeyboard *_deferredSystemView;
     UIKeyboardInputMode *_incomingExtensionInputMode;
     _Bool _shouldRegenerateSizingConstraints;
+    _Bool _shouldSuppressRemoteInputController;
     UIViewController *_inputController;
     UIView *_inputControllerSnapshot;
 }
@@ -36,12 +37,14 @@ __attribute__((visibility("hidden")))
 - (id)_keyboard;
 - (id)childCompatibilityController;
 - (void)setInputMode:(id)arg1;
+- (void)shouldUpdateInputMode:(id)arg1;
 - (void)tearDownInputController;
 - (void)removeSnapshotView;
 - (void)snapshotCurrentDisplay;
 - (void)rebuildChildConstraints;
 - (void)generateCompatibleSizeConstraintsIfNecessary;
 - (void)didMoveToParentViewController:(id)arg1;
+- (void)willResume:(id)arg1;
 - (void)didSuspend:(id)arg1;
 - (id)_compatView;
 - (id)_compatibilityController;

@@ -6,8 +6,12 @@
 
 #import <UIKit/UIView.h>
 
+#import "UIAlertControllerBackgroundView.h"
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UIBlendingHighlightView : UIView
+@interface _UIBlendingHighlightView : UIView <UIAlertControllerBackgroundView>
 {
     UIView *_colorBurnView;
     UIView *_plusDView;
@@ -16,8 +20,16 @@ __attribute__((visibility("hidden")))
 + (id)_blendingPressedView;
 + (id)_blendingSeparatorView;
 - (void)dealloc;
+- (void)setPressed:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 @property double cornerRadius;
 - (id)initWithFrame:(struct CGRect)arg1 colorBurnColor:(id)arg2 plusDColor:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

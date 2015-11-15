@@ -11,6 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)finalLayoutAttributesForDisappearingSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (id)initialLayoutAttributesForAppearingSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
+- (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (void)adjustLayoutAttributesIfNeeded:(id)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;

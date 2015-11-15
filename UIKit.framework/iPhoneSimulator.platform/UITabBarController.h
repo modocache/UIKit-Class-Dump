@@ -38,6 +38,7 @@
         unsigned int reselectTab:1;
         unsigned int delegateSupportedInterfaceOrientations:1;
         unsigned int delegatePreferredInterfaceOrientationForPresentation:1;
+        unsigned int preferTabBarFocused:1;
     } _tabBarControllerFlags;
     NSMutableArray *_moreChildViewControllers;
     UIView *_accessoryView;
@@ -134,10 +135,12 @@
 - (_Bool)_allowSelectionWithinMoreList;
 - (id)_selectedViewControllerInTabBar;
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;
+- (void)_setViewControllers:(id)arg1 animated:(_Bool)arg2;
 - (void)_rebuildTabBarItemsAnimated:(_Bool)arg1;
 - (void)_rebuildTabBarItemsIfNeeded;
 @property(copy, nonatomic) NSArray *viewControllers;
 - (void)_configureTargetActionForTabBarItem:(id)arg1;
+- (id)preferredFocusedItem;
 - (_Bool)_isTabBarFocused;
 - (id)_responderSelectionContainerViewForResponder:(id)arg1;
 - (void)_performSelectGesture:(id)arg1;
@@ -149,6 +152,7 @@
 - (void)updateTabBarItemForViewController:(id)arg1;
 - (void)_setSelectedTabBarItem:(id)arg1;
 - (void)purgeMemoryForReason:(int)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;

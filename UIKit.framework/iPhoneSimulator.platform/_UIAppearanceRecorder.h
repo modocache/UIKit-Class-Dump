@@ -26,7 +26,7 @@
 @property(readonly, nonatomic) NSData *_serializedRepresentation;
 - (void)_applyCustomizations;
 - (void)forwardInvocation:(id)arg1;
-- (void)_recordInvocation:(id)arg1 withClassName:(id)arg2 containerClassNames:(id)arg3 selectorString:(id)arg4 forRemoteProcess:(_Bool)arg5;
+- (void)_recordInvocation:(id)arg1 withClassName:(id)arg2 containerClassNames:(id)arg3 traitCollection:(id)arg4 selectorString:(id)arg5 forRemoteProcess:(_Bool)arg6;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)dealloc;
 - (id)init;

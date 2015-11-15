@@ -15,6 +15,7 @@
 - (_Bool)_shouldHideBottomCorner;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (unsigned long long)dropShadowAutoresizingMask;
+- (long long)presentationStyle;
 
 @end
 

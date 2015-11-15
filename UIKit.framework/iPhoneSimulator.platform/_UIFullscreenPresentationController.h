@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     UIView *_counterRotatedView;
     double _counterRotatedAngle;
     struct CGRect _counterRotatedOriginalBounds;
+    long long _originalOrientation;
+    long long _computedOrientation;
 }
 
 - (void)_setPresentedViewController:(id)arg1;
@@ -21,13 +23,15 @@ __attribute__((visibility("hidden")))
 - (void)transitionDidFinish:(_Bool)arg1;
 - (void)presentationTransitionDidEnd:(_Bool)arg1;
 - (void)_removeCounterRotation;
+- (void)_placeCounterRotationViewWithView:(id)arg1 inWindow:(id)arg2 fromOrientation:(long long)arg3 toOrientation:(long long)arg4 force:(_Bool)arg5;
 - (void)_adjustOrientationIfNecessaryInWindow:(id)arg1 forViewController:(id)arg2 preservingViewController:(id)arg3;
-- (_Bool)_shouldChangeStatusBarViewController;
+- (_Bool)_invokesDelegatesOnOrientationChange;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (_Bool)_shouldRespectDefinesPresentationContext;
 - (_Bool)shouldRemovePresentersView;
 - (_Bool)shouldPresentInFullscreen;
 - (void)dealloc;
+- (long long)presentationStyle;
 
 @end
 

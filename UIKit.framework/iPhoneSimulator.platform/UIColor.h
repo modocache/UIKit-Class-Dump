@@ -116,6 +116,8 @@
 + (id)_alternateBackgroundColor2;
 + (id)_alternateBackgroundColor;
 + (id)_webContentBackgroundColor;
++ (id)_vibrantLightSectionDelimiterDividerDarkeningColor;
++ (id)_vibrantLightSectionDelimiterDividerBurnColor;
 + (id)_vibrantDarkFillDodgeColor;
 + (id)_vibrantLightFillDarkeningColor;
 + (id)_vibrantLightFillBurnColor;

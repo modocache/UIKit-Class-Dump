@@ -8,28 +8,32 @@
 
 #import "UIKeyboardEmojiCategoryControl.h"
 
-@class NSMutableArray, NSString, UIImage, UIKeyboardEmojiCategoryController;
+@class NSString, UIKeyboardEmojiCategoryController, UIKeyboardEmojiGraphicsTraits, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCategoryBar : UIKBKeyView <UIKeyboardEmojiCategoryControl>
 {
     UIKeyboardEmojiCategoryController *_categoryController;
     int _selected;
-    int _total;
-    int _dividerTotal;
-    UIImage *_darkDivider;
-    UIImage *_plainDivider;
-    UIImage *_selectedDivider;
-    NSMutableArray *_segmentViews;
-    NSMutableArray *_dividerViews;
+    UIView *_scrubView;
+    UIKeyboardEmojiGraphicsTraits *_emojiGraphicsTraits;
+    _Bool _isScrubbing;
+    double _scrubStartXLocation;
 }
 
+@property(retain, nonatomic) UIKeyboardEmojiGraphicsTraits *emojiGraphicsTraits; // @synthesize emojiGraphicsTraits=_emojiGraphicsTraits;
+@property(retain, nonatomic) UIView *scrubView; // @synthesize scrubView=_scrubView;
+- (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
+- (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+- (struct CGRect)categorySelectedCircleRect:(long long)arg1;
+- (void)animateScrubberToRect:(struct CGRect)arg1;
 - (struct CGRect)frameForDivider:(int)arg1;
-- (void)sendActionsForControlEvents:(unsigned long long)arg1;
-- (void)setCategory:(id)arg1;
+- (void)updateCategory;
+- (void)setCategory:(int)arg1;
 @property long long selectedIndex; // @dynamic selectedIndex;
-- (void)releaseImagesAndViews;
+- (void)receiveNotifictaion:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
 

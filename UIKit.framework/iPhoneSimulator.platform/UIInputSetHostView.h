@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_notifyOnExplicitLayout;
++ (_Bool)_shouldHitTestInputViewFirst;
 + (_Bool)_retroactivelyRequiresConstraintBasedLayout;
 - (void)layoutIfNeeded;
 - (int)_clipCornersOfView:(id)arg1;

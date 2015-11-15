@@ -20,6 +20,8 @@
 
 @optional
 @property(nonatomic) long long selectionGranularity;
+- (void)_didHideCorrections;
+- (void)_willShowCorrections;
 - (void)_insertAttributedTextWithoutClosingTyping:(NSAttributedString *)arg1;
 - (UIFont *)fontForCaretSelection;
 - (UIColor *)textColorForCaretSelection;

@@ -130,6 +130,7 @@
         unsigned int adjustsTargetsOnContentOffsetChanges:1;
         unsigned int forwardsTouchesUpResponderChain:1;
         unsigned int firstResponderKeyboardAvoidanceDisabled:1;
+        unsigned int interruptingDeceleration:1;
     } _scrollViewFlags;
     _Bool _useContentDimensionVariablesForConstraintLowering;
     id _scrollTestParameters;
@@ -220,6 +221,7 @@
 @property(nonatomic) _Bool delaysContentTouches;
 @property(nonatomic) _Bool canCancelContentTouches;
 @property(nonatomic) _Bool bouncesZoom;
+- (_Bool)_isInterruptingDeceleration;
 @property(readonly, nonatomic, getter=isDecelerating) _Bool decelerating;
 @property(readonly, nonatomic, getter=isDragging) _Bool dragging;
 @property(readonly, nonatomic, getter=isTracking) _Bool tracking;
@@ -373,7 +375,6 @@
 - (_Bool)_canScrollY;
 - (_Bool)_canScrollX;
 - (void)_adjustForAutomaticKeyboardInfo:(id)arg1 animated:(_Bool)arg2 lastAdjustment:(double *)arg3;
-- (struct CGPoint)_adjustedContentOffsetPinnedToScrollableBounds:(struct CGPoint)arg1;
 - (void)_setShowsHorizontalScrollIndicator:(_Bool)arg1;
 - (void)_setShowsVerticalScrollIndicator:(_Bool)arg1;
 - (void)_setAlwaysBounceVertical:(_Bool)arg1;
@@ -450,6 +451,10 @@
 - (void)_didAddDependentConstraint:(id)arg1;
 - (_Bool)_constraintAffectsContentSize:(id)arg1;
 - (void)_adjustCrossingConstraintsIfNecessaryForOldContentInset:(struct UIEdgeInsets)arg1;
+- (struct CGSize)_selectionTrackerContentSize;
+- (void)_setScrollEdgeLimit:(double)arg1;
+- (double)_scrollEdgeLimit;
+- (void)_getResponderRectsForXAxisMinRect:(struct CGRect *)arg1 yMinRect:(struct CGRect *)arg2 xMaxRect:(struct CGRect *)arg3 yMaxRect:(struct CGRect *)arg4;
 
 @end
 

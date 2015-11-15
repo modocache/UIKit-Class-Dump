@@ -6,9 +6,10 @@
 
 #import "NSObject.h"
 
-@class UIKeyboardEmojiCategory;
-
 @protocol UIKeyboardEmojiInput <NSObject>
-- (void)reloadForCategory:(UIKeyboardEmojiCategory *)arg1;
+- (void)reloadForCategory:(int)arg1;
+
+@optional
+- (long long)reloadSectionForOffsetPercentage:(double)arg1;
 @end
 

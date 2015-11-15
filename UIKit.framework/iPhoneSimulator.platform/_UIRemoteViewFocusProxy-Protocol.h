@@ -6,10 +6,9 @@
 
 #import "NSObject.h"
 
-@protocol UIKeyboardEmojiPressIndicationDelegate <NSObject>
+@class _UIRemoteViewController;
 
-@optional
-- (void)removePressIndicator;
-- (void)installPressIndicatorAtPoint:(struct CGPoint)arg1;
+@protocol _UIRemoteViewFocusProxy <NSObject>
+@property(readonly, nonatomic) _UIRemoteViewController *remoteViewController;
 @end
 

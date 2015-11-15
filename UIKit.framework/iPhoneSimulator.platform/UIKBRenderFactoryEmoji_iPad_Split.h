@@ -14,9 +14,13 @@ __attribute__((visibility("hidden")))
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)backgroundTraitsForKeyplane:(id)arg1;
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderConfig:(id)arg3 keycapsFontName:(id)arg4;
+- (struct CGPoint)emojiInternationalKeyOffset;
+- (double)emojiInternationalKeySize;
+- (struct CGPoint)emojiPopupTextOffset;
 - (double)keyCornerRadius;
 - (id)thinKeycapsFontName;
 - (id)lightKeycapsFontName;
+- (_Bool)shouldClearBaseDisplayStringForVariants:(id)arg1;
 
 @end
 

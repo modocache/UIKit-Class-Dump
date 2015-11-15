@@ -16,6 +16,7 @@
     NSArray *_allowedExtensions;
     _Bool _skipExtensionInputModes;
     _Bool _cacheNeedsRefresh;
+    _Bool _shouldRunContinuousDiscovery;
     NSArray *keyboardInputModes;
     NSArray *keyboardInputModeIdentifiers;
     NSArray *enabledInputModes;
@@ -29,12 +30,15 @@
     id <UIKeyboardInputModeControllerDelegate> _delegate;
     UIKeyboardInputMode *_nextInputModeToUse;
     UIKeyboardInputMode *_currentUsedInputMode;
+    id _extensionMatchingContext;
 }
 
 + (id)sharedInputModeController;
+@property(retain, nonatomic) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
 @property(retain, nonatomic) UIKeyboardInputMode *currentUsedInputMode; // @synthesize currentUsedInputMode=_currentUsedInputMode;
 @property(retain, nonatomic) UIKeyboardInputMode *nextInputModeToUse; // @synthesize nextInputModeToUse=_nextInputModeToUse;
 @property(nonatomic) id <UIKeyboardInputModeControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(nonatomic) _Bool shouldRunContinuousDiscovery; // @synthesize shouldRunContinuousDiscovery=_shouldRunContinuousDiscovery;
 @property(copy, nonatomic) NSString *inputModeContextIdentifier; // @synthesize inputModeContextIdentifier=_inputModeContextIdentifier;
 @property(retain, nonatomic) UIKeyboardInputMode *lastUsedInputMode; // @synthesize lastUsedInputMode=_lastUsedInputMode;
 @property(readonly, nonatomic) NSArray *allowedExtensions; // @synthesize allowedExtensions=_allowedExtensions;
@@ -55,13 +59,17 @@
 - (void)updateLastUsedInputMode:(id)arg1;
 - (id)nextInputModeInPreferenceListForTraits:(id)arg1;
 - (id)nextInputModeToUseForTraits:(id)arg1;
+- (void)_setCurrentAndNextInputModePreference;
 - (id)nextInputModeFromList:(id)arg1 withFilter:(unsigned long long)arg2 withTraits:(id)arg3;
 - (id)extensionInputModes;
 - (_Bool)verifyKeyboardExtensionsWithApp;
 - (_Bool)deviceStateIsLocked;
 - (id)_MCFilteredExtensionIdentifiers;
+- (void)_removeExtensions:(id)arg1;
+- (void)_beginContinuousDiscoveryIfNeeded;
 - (void)_clearAllExtensionIfNeeded;
 - (void)didEnterBackground:(id)arg1;
+- (void)willEnterForeground:(id)arg1;
 - (id)suggestedInputModesForPreferredLanguages;
 - (id)preferredLanguages;
 - (id)suggestedInputModesForCurrentLocale;

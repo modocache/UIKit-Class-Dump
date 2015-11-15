@@ -8,5 +8,7 @@
 
 @protocol UIAlertControllerBackgroundView <NSObject>
 @property double cornerRadius;
+- (void)setPressed:(_Bool)arg1 animated:(_Bool)arg2;
+- (void)setHighlighted:(_Bool)arg1 animated:(_Bool)arg2;
 @end
 

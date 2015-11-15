@@ -15,12 +15,13 @@ __attribute__((visibility("hidden")))
     _Bool _vertical;
 }
 
-+ (id)selectionRectWithRect:(struct CGRect)arg1;
++ (id)selectionRectWithRect:(struct CGRect)arg1 fromView:(id)arg2;
 @property(nonatomic, getter=isVertical) _Bool vertical; // @synthesize vertical=_vertical;
 @property(nonatomic) _Bool containsStart; // @synthesize containsStart=_containsStart;
 @property(nonatomic) _Bool containsEnd; // @synthesize containsEnd=_containsEnd;
-@property(nonatomic) struct CGRect rect; // @synthesize rect=_rect;
+@property(readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 - (id)description;
+- (void)setRect:(struct CGRect)arg1 fromView:(id)arg2;
 - (long long)writingDirection;
 
 @end

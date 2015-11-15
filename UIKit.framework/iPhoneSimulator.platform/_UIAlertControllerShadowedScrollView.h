@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 @property(nonatomic) _Bool shouldPinToBottomOnResize; // @synthesize shouldPinToBottomOnResize=_shouldPinToBottomOnResize;
 - (void)_updateScrollabilityAndShadow;
+- (void)setContentSize:(struct CGSize)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (struct CGRect)_boundsForPinningToBottomWithNewBounds:(struct CGRect)arg1;
 - (void)dealloc;

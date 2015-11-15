@@ -7,8 +7,8 @@
 @class NSString, NSURL;
 
 @protocol _UIDocumentPickerRemoteViewControllerContaining
+- (void)_displayLocationsMenuFromRect:(struct CGRect)arg1;
 - (void)_stitchFileCreationAtURL:(NSURL *)arg1;
-- (void)_preferredContentSizeChanged:(struct CGSize)arg1;
 - (void)_dismissWithOption:(NSString *)arg1;
 - (void)_didSelectPicker;
 - (void)_dismissViewController;

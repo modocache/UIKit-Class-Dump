@@ -19,7 +19,8 @@ __attribute__((visibility("hidden")))
 - (id)controlKeyTraits;
 - (double)_row4ControlSegmentWidth;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2;
+- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
+- (long long)rowLimitForKey:(id)arg1;
 - (_Bool)_popupMenuStyleForKey:(id)arg1;
 - (_Bool)_popupStyleForKey:(id)arg1;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;

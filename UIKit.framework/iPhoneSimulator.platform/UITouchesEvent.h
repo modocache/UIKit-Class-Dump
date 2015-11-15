@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)touchesForWindow:(id)arg1;
 - (id)_allTouches;
 - (id)allTouches;
+- (struct CGPoint)_digitizerLocation;
 - (void)dealloc;
 - (id)_initWithEvent:(struct __GSEvent *)arg1 touches:(id)arg2;
 - (id)_init;

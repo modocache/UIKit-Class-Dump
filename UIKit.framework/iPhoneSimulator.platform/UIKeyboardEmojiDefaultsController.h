@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
 - (void)setDefaultsValue:(id)arg1 forKey:(id)arg2;
 - (long long)currentSequenceKey;
 - (void)setCurrentSequenceKey:(long long)arg1;
+- (id)skinToneBaseKeyPreferencesKey;
+- (void)setSkinToneBaseKeyPreferencesKey:(id)arg1;
 - (id)usageHistoryKey;
 - (void)setUsageHistoryKey:(id)arg1;
 - (id)recentsKey;

@@ -25,11 +25,13 @@ __attribute__((visibility("hidden")))
     double _bottomPadding;
     double _verticalTextHeightEstimate;
     NSArray *_entries;
+    long long _idiom;
 }
 
 @property(readonly, nonatomic) _Bool pastBottom; // @synthesize pastBottom=_pastBottom;
 @property(readonly, nonatomic) _Bool pastTop; // @synthesize pastTop=_pastTop;
 @property(readonly, nonatomic) long long selectedSection; // @synthesize selectedSection=_selectedSection;
+- (_Bool)canBecomeFocused;
 - (id)_externalDotImage;
 - (id)_dotImage;
 - (void)tintColorDidChange;
@@ -56,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (double)_minLineSpacingForIdiom:(long long)arg1;
 - (id)_fontForIdiom:(long long)arg1;
+- (void)_setIdiom:(long long)arg1;
 - (long long)_idiom;
 
 @end

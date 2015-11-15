@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class UIAlertAction, _UIAlertControllerActionView;
+@class _UIAlertControllerActionView;
 
 __attribute__((visibility("hidden")))
 @interface _UIAlertControllerCollectionViewCell : UICollectionViewCell
@@ -14,10 +14,9 @@ __attribute__((visibility("hidden")))
     _UIAlertControllerActionView *_actionView;
 }
 
-@property(readonly) _UIAlertControllerActionView *actionView; // @synthesize actionView=_actionView;
+@property(retain, nonatomic) _UIAlertControllerActionView *actionView; // @synthesize actionView=_actionView;
+- (id)focusedView;
 - (void)applyLayoutAttributes:(id)arg1;
-- (void)prepareForReuse;
-@property(copy, nonatomic) UIAlertAction *action;
 - (void)dealloc;
 - (void)setHighlighted:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

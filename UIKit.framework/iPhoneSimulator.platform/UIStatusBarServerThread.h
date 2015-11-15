@@ -13,9 +13,9 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_clientPorts;
     NSMutableArray *_publishers;
-    CDStruct_0e61b686 _statusBarData;
-    CDStruct_0e61b686 _composedStatusBarData;
-    CDStruct_9dad2be2 _overrides;
+    CDStruct_bf99eeea _statusBarData;
+    CDStruct_bf99eeea _composedStatusBarData;
+    CDStruct_bbcaef27 _overrides;
     struct __CFDictionary *_doubleHeightStatusStrings;
     struct __CFDictionary *_glowAnimationStates;
     NSMutableDictionary *_glowAnimationEndTimes;
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeStatusBarItem:(int)arg1 forPublisher:(id)arg2;
 - (void)_addStatusBarItem:(int)arg1 forPublisher:(id)arg2;
 - (_Bool)_permanentizeStatusBarOverrideData;
-- (void)_postStatusBarOverrideData:(CDStruct_9dad2be2 *)arg1;
+- (void)_postStatusBarOverrideData:(CDStruct_bbcaef27 *)arg1;
 - (void)_postDoubleHeightStatus:(char *)arg1 forStyle:(long long)arg2;
 - (id)_doubleHeightStatusStringForStyle:(long long)arg1;
 - (void)_postGlowAnimationState:(_Bool)arg1 forStyle:(long long)arg2;
@@ -37,10 +37,10 @@ __attribute__((visibility("hidden")))
 - (void)_addStyleOverrides:(int)arg1 forPublisher:(id)arg2;
 - (void)_broadcastStyleOverrides;
 - (int)_styleOverrides;
-- (void)_postStatusBarData:(CDStruct_0e61b686 *)arg1 actions:(int)arg2;
+- (void)_postStatusBarData:(CDStruct_bf99eeea *)arg1 actions:(int)arg2;
 - (void)_broadcastStatusBarDataWithActions:(int)arg1;
-- (CDStruct_9dad2be2 *)_statusBarOverrideData;
-- (CDStruct_0e61b686 *)_statusBarData;
+- (CDStruct_bbcaef27 *)_statusBarOverrideData;
+- (CDStruct_bf99eeea *)_statusBarData;
 - (void)_removePublisher:(struct __CFMachPort *)arg1;
 - (id)_publisherForPort:(unsigned int)arg1;
 - (void)_removeClient:(struct __CFMachPort *)arg1;

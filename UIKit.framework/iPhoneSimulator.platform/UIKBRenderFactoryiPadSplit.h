@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
-- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2;
+- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderConfig:(id)arg3 keycapsFontName:(id)arg4;
 - (double)keyInsetBottom;

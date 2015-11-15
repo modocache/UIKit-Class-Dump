@@ -25,6 +25,9 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)_currentHighlightedImage;
 - (id)_currentImage;
+- (id)_adaptiveImageForImage:(id)arg1 assignedImage:(id)arg2 currentImage:(id)arg3 hasAdapted:(_Bool *)arg4;
+- (id)_checkHighlightedImageForAdaptation:(id)arg1 hadAdapted:(_Bool *)arg2;
+- (id)_checkImageForAdaptation:(id)arg1 hasAdapted:(_Bool *)arg2;
 - (id)_decompressingImageForType:(unsigned long long)arg1;
 - (void)_setDecompressingImage:(id)arg1 forType:(unsigned long long)arg2;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;

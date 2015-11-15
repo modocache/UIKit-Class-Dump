@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
     double _translationVelocity;
     UIPanGestureRecognizer *_translateRecognizer;
     CDUnknownBlockType _bounceCompletionBlock;
+    _Bool _prevInputViewIsOnScreen;
     SEL _interactiveTransitionCleanupSelector;
     UIScrollView *_scrollViewForTransition;
     _Bool _scrollViewTransitionFinishing;
@@ -102,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareKeyboardHeightChangeWithDelta:(double)arg1 duration:(double)arg2;
 - (void)extendKeyboardBackdropHeight:(double)arg1 withDuration:(double)arg2;
 - (void)animateAccessoryViewVisibility:(_Bool)arg1 withDuration:(double)arg2;
+- (_Bool)isSplitting;
 - (_Bool)isTranslating;
 - (_Bool)isChangingPlacement;
 - (_Bool)isRotating;
@@ -125,12 +127,12 @@ __attribute__((visibility("hidden")))
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (_Bool)_useLiveRotation;
 - (_Bool)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (_Bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (id)_viewControllerForAutorotation;
-- (id)windowForAutorotation;
 - (void)clearInteractiveTransitionStateIfNecessary;
 - (void)setInputViewsHidden:(_Bool)arg1;
 - (void)updateToPlacement:(id)arg1 withNormalAnimationsAndNotifications:(_Bool)arg2;
@@ -173,6 +175,7 @@ __attribute__((visibility("hidden")))
 - (void)registerPowerLogEvent:(_Bool)arg1;
 - (void)viewDidLoad;
 - (void)loadView;
+- (id)containerView;
 - (void)didReceiveMemoryWarning;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -187,6 +190,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBackdropViews;
 - (void)transitionDidFinish:(_Bool)arg1;
 - (void)finishTransitionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)postTransitionEndNotification;
 - (void)updateProgress:(double)arg1 startHeight:(double)arg2 endHeight:(double)arg3;
 - (void)prepareForTransition;
 - (void)setAccessoryViewVisible:(_Bool)arg1 delay:(double)arg2;

@@ -13,10 +13,8 @@
 @interface UIScreenEdgePanGestureRecognizer : UIPanGestureRecognizer <_UIScreenEdgePanRecognizerDelegate>
 {
     _UIScreenEdgePanRecognizer *_recognizer;
-    unsigned long long _edges;
 }
 
-@property(nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 - (double)_edgeRegionSize;
 - (_Bool)isRequiringLongPress;
 - (void)screenEdgePanRecognizerStateDidChange:(id)arg1;
@@ -24,6 +22,7 @@
 - (_Bool)_shouldTryToBeginWithEvent:(id)arg1;
 - (void)reset;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
+@property(nonatomic) unsigned long long edges;
 - (void)dealloc;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 

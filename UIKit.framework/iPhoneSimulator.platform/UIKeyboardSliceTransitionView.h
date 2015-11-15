@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 
 - (_Bool)canDisplayTransition;
 - (void)updateWithProgress:(double)arg1;
-- (void)rebuildControlKeys:(int)arg1;
+- (void)rebuildControlKeys:(unsigned long long)arg1;
 - (void)rebuildFromKeyplane:(id)arg1 toKeyplane:(id)arg2 keyboardType:(long long)arg3 orientation:(long long)arg4;
 - (void)updateTransition;
 - (void)_delayedUpdateTransition;

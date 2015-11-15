@@ -16,11 +16,17 @@
     long long _updateAnimationCount;
     struct {
         unsigned int wasDequeued:1;
+        unsigned int preferredAttributesValid:1;
+        unsigned int generatingPreferredAttributes:1;
     } _reusableViewFlags;
+    _Bool _preferredAttributesValid;
 }
 
+@property(nonatomic, getter=_arePreferredAttributesValid) _Bool preferredAttributesValid; // @synthesize preferredAttributesValid=_preferredAttributesValid;
 @property(copy, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
+- (void)_invalidatePreferredAttributes;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
+- (id)_preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (_Bool)_disableRasterizeInAnimations;
 - (_Bool)_wasDequeued;
 - (void)_markAsDequeued;

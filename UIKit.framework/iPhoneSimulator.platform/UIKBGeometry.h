@@ -25,6 +25,7 @@
     _Bool m_explicitlySpecified;
 }
 
++ (void)performOperations:(CDUnknownBlockType)arg1 withScale:(double)arg2;
 + (id)codeStringForValue:(CDStruct_73524d89)arg1;
 + (id)geometryWithOriginValue:(CDStruct_73524d89)arg1 sizeValue:(CDStruct_73524d89)arg2;
 + (id)geometryWithRect:(struct CGRect)arg1;

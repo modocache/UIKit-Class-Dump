@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)hasCandidates;
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(_Bool)arg5;
+- (_Bool)isDeleteCandidate:(id)arg1;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;

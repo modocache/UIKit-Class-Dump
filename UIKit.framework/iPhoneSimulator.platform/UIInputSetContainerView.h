@@ -12,9 +12,13 @@ __attribute__((visibility("hidden")))
 @interface UIInputSetContainerView : UIInputSetHostView
 {
     UIKBRenderConfig *_renderConfig;
+    _Bool _disableGeometryObserverNotifications;
 }
 
 + (_Bool)_notifyOnExplicitLayout;
++ (_Bool)_shouldHitTestInputViewFirst;
+- (_Bool)_disableGeometryObserverNotification;
+- (void)performWithoutGeometryObserverNotifications:(CDUnknownBlockType)arg1;
 - (void)_setAccessoryViewFrame:(struct CGRect)arg1;
 - (struct CGRect)_accessoryViewFrame;
 - (id)_inputWindowController;

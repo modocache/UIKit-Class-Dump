@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) NSArray *clonedDecorationAttributes; // @synthesize clonedDecorationAttributes=_clonedDecorationAttributes;
 @property(readonly, nonatomic) NSArray *clonedSupplementaryAttributes; // @synthesize clonedSupplementaryAttributes=_clonedSupplementaryAttributes;
 @property(readonly, nonatomic) NSArray *clonedCellAttributes; // @synthesize clonedCellAttributes=_clonedCellAttributes;
+- (void)shimMoveForItemAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
 @property(nonatomic, getter=isLayoutLocked) _Bool layoutLocked;
 @property(readonly, nonatomic) _Bool layoutIsPrepared;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;

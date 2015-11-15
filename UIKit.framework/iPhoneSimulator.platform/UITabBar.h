@@ -71,6 +71,7 @@
 @property(nonatomic, setter=_setDividerImagesChangeWithSelection:) _Bool _dividerImagesChangeWithSelection; // @synthesize _dividerImagesChangeWithSelection;
 @property(nonatomic, setter=_setNextSelectionSlideDuration:) double _nextSelectionSlideDuration; // @synthesize _nextSelectionSlideDuration;
 @property(nonatomic) id <UITabBarDelegate> delegate; // @synthesize delegate=_delegate;
+- (_Bool)canBecomeFocused;
 @property(nonatomic, setter=_setImageStyle:) long long _imageStyle; // @synthesize _imageStyle;
 - (id)_dividerImageForLeftButtonState:(unsigned long long)arg1 rightButtonState:(unsigned long long)arg2;
 - (void)_setDividerImage:(id)arg1 forLeftButtonState:(unsigned long long)arg2 rightButtonState:(unsigned long long)arg3;
@@ -85,6 +86,7 @@
 @property(retain, nonatomic) UIImage *selectionIndicatorImage;
 @property(retain, nonatomic) UIImage *shadowImage;
 @property(retain, nonatomic) UIImage *backgroundImage;
+- (id)preferredFocusedItem;
 - (void)_makeCurrentButtonFirstResponder;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(_Bool)arg3;
 - (_Bool)isCustomizing;

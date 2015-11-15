@@ -79,7 +79,7 @@
 @property(nonatomic) long long scrollDirection;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)_layoutAttributesForItemsInRect:(struct CGRect)arg1;
-- (_Bool)_estimatesSizes;
+@property(readonly, nonatomic, getter=_estimatesSizes) _Bool estimatesSizes;
 - (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (_Bool)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;

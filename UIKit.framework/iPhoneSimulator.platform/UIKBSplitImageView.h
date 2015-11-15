@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property(nonatomic) NSString *filterType; // @synthesize filterType=_currentFilterType;
+- (void)clearImages;
 - (void)setImage:(id)arg1 cachedWidth:(double)arg2 keyplane:(id)arg3;
 - (void)setImage:(id)arg1 splitLeft:(id)arg2 splitRight:(id)arg3 keyplane:(id)arg4;
 - (void)insertSubviewAtBottom:(id)arg1;

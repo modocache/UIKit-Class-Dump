@@ -6,12 +6,14 @@
 
 #import "NSObject.h"
 
-@class UIPresentationController, UIViewController;
+@class UIPresentationController, UITraitCollection, UIViewController;
 
 @protocol UIAdaptivePresentationControllerDelegate <NSObject>
 
 @optional
+- (void)presentationController:(UIPresentationController *)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id <UIViewControllerTransitionCoordinator>)arg3;
 - (UIViewController *)presentationController:(UIPresentationController *)arg1 viewControllerForAdaptivePresentationStyle:(long long)arg2;
+- (long long)adaptivePresentationStyleForPresentationController:(UIPresentationController *)arg1 traitCollection:(UITraitCollection *)arg2;
 - (long long)adaptivePresentationStyleForPresentationController:(UIPresentationController *)arg1;
 @end
 

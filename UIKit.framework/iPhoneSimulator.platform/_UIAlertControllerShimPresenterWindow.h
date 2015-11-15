@@ -15,10 +15,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)_isSystemWindow;
+- (_Bool)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
 @property(readonly, retain, nonatomic) UIAlertController *alertController;
 - (void)presentAlertController:(id)arg1 animated:(_Bool)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)_presentationViewController;
-- (void)dealloc;
 - (id)init;
 
 @end

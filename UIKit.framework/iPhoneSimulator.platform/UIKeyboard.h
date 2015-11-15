@@ -64,7 +64,10 @@
 - (_Bool)disableInteraction;
 - (void)setCursorLocation:(long long)arg1;
 - (long long)cursorLocation;
-- (void)_moveWithEvent:(id)arg1;
+- (_Bool)shouldChangeFocusedItem:(id)arg1 heading:(unsigned long long)arg2;
+- (_Bool)allowExternalChangeForFocusHeading:(unsigned long long)arg1 cursorLocation:(long long)arg2;
+- (_Bool)_mayRemainFocused;
+- (_Bool)canBecomeFocused;
 - (void)_wheelChangedWithEvent:(id)arg1;
 - (void)remoteControlReceivedWithEvent:(id)arg1;
 - (void)_physicalButtonsCancelled:(id)arg1 withEvent:(id)arg2;

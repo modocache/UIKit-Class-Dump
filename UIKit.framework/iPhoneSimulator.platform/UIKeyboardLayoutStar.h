@@ -6,10 +6,12 @@
 
 #import <UIKit/UIKeyboardLayout.h>
 
+#import "UIKBEmojiHitTestResponder.h"
+
 @class CADisplayLink, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIDelayedAction, UIKBBackgroundView, UIKBKeyplaneView, UIKBRenderConfig, UIKBTree, UIKeyboardKeyplaneTransition, UIKeyboardSplitTransitionView, UISwipeGestureRecognizer, UIView, _UIKeyboardTypingSpeedLogger;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardLayoutStar : UIKeyboardLayout
+@interface UIKeyboardLayoutStar : UIKeyboardLayout <UIKBEmojiHitTestResponder>
 {
     UIKBTree *_keyboard;
     UIKBTree *_keyplane;
@@ -17,11 +19,12 @@ __attribute__((visibility("hidden")))
     NSString *_keyplaneName;
     long long _appearance;
     UIKBTree *_activeKey;
+    UIKBTree *_inactiveLanguageIndicator;
     UIKBKeyplaneView *_keyplaneView;
     UIKBBackgroundView *_backgroundView;
     double _prevTouchUpTime;
     double _prevTouchDownTime;
-    int _prevUpActions;
+    unsigned long long _prevUpActions;
     NSMutableDictionary *_keyboards;
     NSMutableDictionary *_allKeyplaneViews;
     NSMutableSet *_allKeyplaneKeycaps;
@@ -94,6 +97,7 @@ __attribute__((visibility("hidden")))
     _UIKeyboardTypingSpeedLogger *_typingSpeedLogger;
     int playKeyClickSoundOn;
     UIKBRenderConfig *_renderConfig;
+    UIView *_modalDisplayView;
 }
 
 + (id)sharedRivenKeyplaneGenerator;
@@ -102,6 +106,7 @@ __attribute__((visibility("hidden")))
 + (id)keyboardFromFactoryWithName:(id)arg1 screen:(id)arg2;
 + (void)accessibilitySensitivityChanged;
 + (Class)_subclassForScreenTraits:(id)arg1;
+@property(retain, nonatomic) UIView *modalDisplayView; // @synthesize modalDisplayView=_modalDisplayView;
 @property(retain, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property(copy, nonatomic) NSString *preTouchKeyplaneName; // @synthesize preTouchKeyplaneName=_preTouchKeyplaneName;
 @property(nonatomic) int playKeyClickSoundOn; // @synthesize playKeyClickSoundOn;
@@ -142,8 +147,8 @@ __attribute__((visibility("hidden")))
 - (_Bool)usesAutoShift;
 - (void)upActionShift;
 - (void)downActionShiftWithKey:(id)arg1;
-- (unsigned int)upActionFlagsForKey:(id)arg1;
-- (unsigned int)downActionFlagsForKey:(id)arg1;
+- (unsigned long long)upActionFlagsForKey:(id)arg1;
+- (unsigned long long)downActionFlagsForKey:(id)arg1;
 - (_Bool)keyHasAccentedVariants:(id)arg1;
 - (id)activeTouchForInteraction:(int)arg1;
 - (id)touchForKey:(id)arg1;
@@ -173,6 +178,8 @@ __attribute__((visibility("hidden")))
 - (void)refreshGhostKeyState;
 - (_Bool)performSpaceAction;
 - (_Bool)performReturnAction;
+- (void)updateSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2 withPoint:(struct CGPoint)arg3;
+- (long long)defaultSelectedVariantIndexForKey:(id)arg1 withActions:(unsigned long long)arg2;
 - (void)completeHitTestForTouchDragged:(id)arg1 hitKey:(id)arg2;
 - (void)touchDragged:(id)arg1 executionContext:(id)arg2;
 - (_Bool)touchPassesDragThreshold:(id)arg1;
@@ -192,6 +199,7 @@ __attribute__((visibility("hidden")))
 - (void)completeHitTestForTouchDown:(id)arg1 executionContext:(id)arg2;
 - (void)touchDown:(id)arg1 executionContext:(id)arg2;
 - (_Bool)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
+- (_Bool)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (double)hitBuffer;
 - (void)setSplit:(_Bool)arg1 animated:(_Bool)arg2;
 - (void)_autoSplit:(id)arg1;
@@ -254,7 +262,9 @@ __attribute__((visibility("hidden")))
 - (id)keyHitTestWithoutCharging:(struct CGPoint)arg1;
 - (id)keyHitTestClosestToPoint:(struct CGPoint)arg1;
 - (id)keyHitTestContainingPoint:(struct CGPoint)arg1;
+- (id)keyViewHitTestForPoint:(struct CGPoint)arg1;
 - (_Bool)shouldHitTestKey:(id)arg1;
+- (void)deactivateActiveKey;
 - (void)deactivateActiveKeys;
 - (void)deactivateActiveKeysClearingTouchInfo:(_Bool)arg1 clearingDimming:(_Bool)arg2;
 - (id)initialKeyplaneNameWithKBStarName:(id)arg1;
@@ -271,6 +281,7 @@ __attribute__((visibility("hidden")))
 - (void)setTextEditingTraits:(id)arg1;
 - (unsigned long long)textEditingKeyMask;
 - (int)stateForManipulationKey:(id)arg1;
+- (id)highlightedVariantListForStylingKey:(id)arg1;
 - (int)stateForStylingKey:(id)arg1;
 - (_Bool)supportStylingWithKey:(id)arg1;
 - (int)stateForDictationKey:(id)arg1;
@@ -279,7 +290,7 @@ __attribute__((visibility("hidden")))
 - (int)displayTypeHintForMoreKey;
 - (void)setCurrencyKeysForCurrentLocaleOnKeyplane:(id)arg1;
 - (void)setReturnKeyEnabled:(_Bool)arg1 withDisplayName:(id)arg2 withType:(int)arg3;
-- (void)updateTransitionWithFlags:(int)arg1;
+- (void)updateTransitionWithFlags:(unsigned long long)arg1;
 - (_Bool)useScaledGeometrySet;
 - (void)updateGlobeKeyDisplayString;
 - (_Bool)canReuseKeyplaneView;
@@ -295,6 +306,8 @@ __attribute__((visibility("hidden")))
 - (void)rebuildSplitTransitionView;
 - (void)updateLocalizedKeys:(_Bool)arg1;
 - (void)updateLocalizedKeysOnKeyplane:(id)arg1;
+- (void)nextToUseInputModeDidChange:(id)arg1;
+- (void)updateLocalizedDisplayStringOnEmojiInternationalWithKeyplane:(id)arg1 withInputMode:(id)arg2;
 - (_Bool)canProduceString:(id)arg1;
 - (double)lastTouchUpTimestamp;
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
@@ -313,6 +326,7 @@ __attribute__((visibility("hidden")))
 - (SEL)handlerForNotification:(id)arg1;
 - (void)flushKeyCache:(id)arg1;
 - (void)removeFromSuperview;
+- (void)clearTransientState;
 - (void)clearUnusedObjects:(_Bool)arg1;
 - (void)willMoveToWindow:(id)arg1;
 - (void)accessibilitySensitivityChanged;
@@ -325,7 +339,6 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)frameForKeyWithRepresentedString:(id)arg1;
 - (id)keyWithRepresentedString:(id)arg1;
 - (void)_resizeForKeyplaneSize:(struct CGSize)arg1 splitWidthsChanged:(_Bool)arg2;
-- (void)activateCompositeKey:(id)arg1 direction:(int)arg2 flickString:(id)arg3 popupInfo:(id)arg4;
 - (void)showPopupView:(int)arg1 withKey:(id)arg2 popupInfo:(id)arg3 force:(_Bool)arg4;
 - (void)setKeyboardDim:(_Bool)arg1;
 - (void)setDisableInteraction:(_Bool)arg1;
@@ -334,16 +347,17 @@ __attribute__((visibility("hidden")))
 - (void)handleDismissFlickView:(id)arg1;
 - (void)handlePopupView;
 - (void)handlePopupView:(id)arg1;
-- (id)overlayCharacterImageForKey:(id)arg1 direction:(int)arg2 rect:(struct CGRect)arg3 flickString:(id)arg4 popupInfo:(id)arg5;
-- (id)getFlickCompositeImageForKey:(id)arg1 direction:(int)arg2 rect:(struct CGRect)arg3;
-- (id)getPopupBackgroundImageForKey:(id)arg1 direction:(int)arg2 popupInfo:(id)arg3 rect:(struct CGRect)arg4;
-- (id)compositeImageForKey:(id)arg1;
-- (void)setCompositeImage:(id)arg1 forKey:(id)arg2;
 - (void)showFlickView:(int)arg1 withKey:(id)arg2 flickString:(id)arg3;
 - (void)handleFlick:(id)arg1;
 - (void)populateFlickPopupsForKey:(id)arg1;
 - (id)flickStringForInputKey:(id)arg1 direction:(int)arg2;
 - (id)flickPopupStringForKey:(id)arg1 withString:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

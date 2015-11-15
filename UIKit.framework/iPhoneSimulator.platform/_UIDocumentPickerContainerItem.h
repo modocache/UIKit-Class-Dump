@@ -6,12 +6,19 @@
 
 #import "NSObject.h"
 
-@class NSDate, NSMapTable, NSString, NSURL, _UIDocumentPickerContainerModel;
+#import "_UIDocumentPickerDirectoryObserverItem.h"
+
+@class NSDate, NSMapTable, NSString, NSURL, _UIDocumentPickerContainerModel, _UIDocumentPickerURLContainerModel;
 
 __attribute__((visibility("hidden")))
-@interface _UIDocumentPickerContainerItem : NSObject
+@interface _UIDocumentPickerContainerItem : NSObject <_UIDocumentPickerDirectoryObserverItem>
 {
     _UIDocumentPickerContainerModel *_weak_parentModel;
+    _UIDocumentPickerURLContainerModel *_model;
+    _UIDocumentPickerURLContainerModel *_weak_model;
+    long long _modelDisplayCount;
+    id _observer;
+    id _resourceIdentifier;
     _Bool _pickable;
     id _item;
     long long _type;
@@ -27,14 +34,23 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool pickable; // @synthesize pickable=_pickable;
 @property(readonly, nonatomic) long long type; // @synthesize type=_type;
 @property(retain, nonatomic) id item; // @synthesize item=_item;
-- (id)description;
+- (void)_valuesChanged;
+- (void)_modelChanged;
+- (id)_formattedSubtitleForNumberOfItems:(unsigned long long)arg1;
+- (void)decrementModelDisplayCount;
+- (void)_ensureModelPresent;
+- (void)incrementModelDisplayCount;
+@property(readonly, copy) NSString *description;
 - (id)sortTag;
+- (id)modificationDate;
 @property(readonly, nonatomic) NSDate *sortDate;
 - (id)_blipWithTags:(id)arg1 height:(double)arg2 scale:(double)arg3;
 - (id)tagBlipsWithHeight:(double)arg1 scale:(double)arg2;
 - (id)tags;
-- (unsigned long long)hash;
+@property(readonly) unsigned long long hash;
 - (_Bool)isEqual:(id)arg1;
+@property(readonly, retain, nonatomic) _UIDocumentPickerContainerModel *model;
+- (id)_resourceIdentifier;
 @property(readonly, retain, nonatomic) NSURL *url;
 @property(readonly, retain, nonatomic) NSString *subtitle2;
 @property(readonly, retain, nonatomic) NSString *subtitle;
@@ -46,6 +62,10 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) __weak _UIDocumentPickerContainerModel *parentModel;
 - (void)dealloc;
 - (id)initWithItem:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) Class superclass;
 
 @end
 

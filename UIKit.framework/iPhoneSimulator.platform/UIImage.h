@@ -29,8 +29,6 @@
     struct UIEdgeInsets _alignmentRectInsets;
 }
 
-+ (void)_dropResourceReferencesForURL:(id)arg1;
-+ (void)_clearAssetCaches;
 + (id)animatedImageWithImages:(id)arg1 duration:(double)arg2;
 + (id)_animatedResizableImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3 capInsets:(struct UIEdgeInsets)arg4 resizingMode:(long long)arg5 duration:(double)arg6;
 + (id)animatedResizableImageNamed:(id)arg1 capInsets:(struct UIEdgeInsets)arg2 resizingMode:(long long)arg3 duration:(double)arg4;
@@ -76,6 +74,7 @@
 + (struct CGSize)_legibilityImageSizeForSize:(struct CGSize)arg1 style:(long long)arg2;
 @property(retain, nonatomic) UIImageAsset *imageAsset; // @synthesize imageAsset=_imageAsset;
 @property(copy, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
+- (id)description;
 - (unsigned long long)hash;
 - (_Bool)isEqual:(id)arg1;
 - (id)_primitiveImageAsset;

@@ -21,6 +21,7 @@
     } _collectionViewControllerFlags;
 }
 
+- (id)preferredFocusedItem;
 @property(nonatomic) _Bool useLayoutToLayoutNavigationTransitions;
 - (void)_setUseLayoutToLayoutNavigationTransitions:(_Bool)arg1 withCheck:(_Bool)arg2;
 - (_Bool)shouldCrossFadeBottomBars;

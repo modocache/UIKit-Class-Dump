@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
 - (id)messageLabelColor;
 - (id)messageLabelFont;
 - (long long)maximumNumberOfLinesInTitleLabel;
+- (double)marginBelowLastLabelLastBaseline;
+- (double)marginAboveTitleLabelFirstBaseline;
 - (id)titleLabelColor;
 - (id)titleLabelFont;
 

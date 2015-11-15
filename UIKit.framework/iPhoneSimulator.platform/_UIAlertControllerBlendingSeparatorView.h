@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     _UIBlendingHighlightView *_blendingHighlightView;
 }
 
+- (id)_newBlendingHighlightView;
+- (void)applyLayoutAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

@@ -42,6 +42,7 @@
 - (_Bool)hasLayoutTag:(id)arg1;
 - (id)variantDisplayString;
 - (void)orderVariantKeys:(_Bool)arg1;
+- (_Bool)containsDividerVariant;
 - (_Bool)disablesEdgeSwipe;
 - (_Bool)behavesAsShiftKey;
 - (_Bool)avoidAutoDeactivation;
@@ -52,6 +53,8 @@
 - (_Bool)avoidsLanguageIndicator;
 - (_Bool)isExemptFromInputManagerHitTesting;
 - (_Bool)isExemptFromInputManagerLayout;
+- (void)setParentKey:(id)arg1;
+- (id)parentKey;
 - (void)setForceMultitap:(_Bool)arg1;
 - (_Bool)forceMultitap;
 - (void)setClipCorners:(int)arg1;
@@ -76,8 +79,9 @@
 - (int)displayRowHint;
 - (void)setTextAlignment:(long long)arg1;
 - (long long)textAlignment;
-- (void)setHighlightedVariantIndex:(long long)arg1;
+- (void)setSelectedVariantIndex:(long long)arg1;
 - (long long)highlightedVariantIndex;
+- (long long)selectedVariantIndex;
 - (void)setDisplayTypeHint:(int)arg1;
 - (int)displayTypeHint;
 - (void)setVariantType:(int)arg1;
@@ -87,6 +91,8 @@
 - (void)setDisplayType:(int)arg1;
 - (int)displayType;
 - (id)localizationKey;
+- (void)setHighlightedVariantsList:(id)arg1;
+- (id)highlightedVariantsList;
 - (void)setDisplayString:(id)arg1;
 - (id)displayString;
 - (id)fullRepresentedString;
@@ -160,7 +166,6 @@
 - (CDStruct_961fb75c)stylingFromVisualStyle;
 - (void)setVisualStyle:(int)arg1;
 - (int)visualStyle;
-- (void)setFrameOnly:(struct CGRect)arg1;
 - (void)setPaddedFrame:(struct CGRect)arg1;
 - (struct CGRect)paddedFrame;
 - (void)setFrame:(struct CGRect)arg1;
@@ -189,6 +194,7 @@
 - (_Bool)boolForProperty:(id)arg1;
 - (long long)intForProperty:(id)arg1;
 - (id)stringForProperty:(id)arg1;
+- (id)objectForProperty:(id)arg1;
 - (_Bool)setObject:(id)arg1 forProperty:(id)arg2;
 - (_Bool)isDuplicateOfTree:(id)arg1;
 - (_Bool)isEqualToTree:(id)arg1;

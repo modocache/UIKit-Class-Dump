@@ -6,9 +6,7 @@
 
 #import "NSObject.h"
 
-@class UIKeyboardEmojiCategory;
-
 @protocol UIKeyboardEmojiCategoryControl <NSObject>
-- (void)setCategory:(UIKeyboardEmojiCategory *)arg1;
+- (void)setCategory:(int)arg1;
 @end
 

@@ -144,6 +144,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)needsTrailingSpaceForPhrases:(id)arg1;
 - (id)dictationPhraseArrayFromDictationResult:(id)arg1;
 - (void)restartDictationForTypeAndTalk;
+- (_Bool)dictationIsModifyingText;
 - (void)performIgnoringDocumentChanges:(CDUnknownBlockType)arg1;
 - (_Bool)isIgnoringDocumentChanges;
 - (void)stopDictation;

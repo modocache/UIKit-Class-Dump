@@ -18,6 +18,7 @@
 @property(retain, nonatomic) SLComposeViewController *socialComposeViewController; // @synthesize socialComposeViewController=_socialComposeViewController;
 @property(copy, nonatomic) NSString *builtinActivityType; // @synthesize builtinActivityType=_builtinActivityType;
 - (void)_cleanup;
+- (struct CGSize)_thumbnailSize;
 - (_Bool)_dismissActivityFromViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (_Bool)_presentActivityOnViewController:(id)arg1 animated:(_Bool)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)activityViewController;

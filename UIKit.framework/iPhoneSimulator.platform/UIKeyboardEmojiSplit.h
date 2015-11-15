@@ -6,28 +6,23 @@
 
 #import <UIKit/UIKBKeyView.h>
 
-#import "UIKeyboardEmojiPressIndicationDelegate.h"
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 
-@class NSString, UITableView, UIView;
+@class NSString, UITableView;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardEmojiSplit : UIKBKeyView <UITableViewDelegate, UITableViewDataSource, UIKeyboardEmojiPressIndicationDelegate>
+@interface UIKeyboardEmojiSplit : UIKBKeyView <UITableViewDelegate, UITableViewDataSource>
 {
     UITableView *_picker;
-    UIView *_pressIndicator;
 }
 
-@property(retain, nonatomic) UIView *pressIndicator; // @synthesize pressIndicator=_pressIndicator;
 @property(readonly) UITableView *picker; // @synthesize picker=_picker;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)removePressIndicator;
-- (void)installPressIndicatorAtPoint:(struct CGPoint)arg1;
 - (_Bool)shouldCache;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

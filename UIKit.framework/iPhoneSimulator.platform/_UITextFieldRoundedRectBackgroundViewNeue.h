@@ -31,8 +31,6 @@
 - (id)_initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2 lineWidth:(double)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (double)_pixelAlignment;
-- (double)_pathInset;
 
 @end
 

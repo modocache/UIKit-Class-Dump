@@ -43,6 +43,7 @@
 @property(nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 @property(copy, nonatomic) NSString *reuseIdentifier; // @synthesize reuseIdentifier=_reuseIdentifier;
 @property(readonly, retain, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+- (_Bool)_transparentFocusContainer;
 @property(nonatomic, getter=_isTopHeader, setter=_setTopHeader:) _Bool topHeader;
 @property(nonatomic, getter=_stripPadding, setter=_setStripPadding:) _Bool stripPadding;
 - (void)_tableViewDidUpdateMarginWidth;

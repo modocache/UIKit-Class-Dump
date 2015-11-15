@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)addInkPoint:(struct CGPoint)arg1;
-- (void)drawRect:(struct CGRect)arg1;
 - (void)send;
 - (void)deleteStrokesAtIndexes:(id)arg1;
 - (void)clearAndNotify:(_Bool)arg1;

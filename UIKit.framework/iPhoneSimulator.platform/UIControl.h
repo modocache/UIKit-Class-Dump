@@ -32,6 +32,7 @@
     } _controlFlags;
 }
 
+- (_Bool)canBecomeFocused;
 - (void)_sendDelayedActions:(_Bool)arg1;
 - (void)_unhighlight;
 - (void)setTracking:(_Bool)arg1;

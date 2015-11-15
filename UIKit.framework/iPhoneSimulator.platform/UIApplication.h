@@ -147,6 +147,7 @@
     NSString *_currentActivityType;
     UIApplicationSceneSettingsDiffInspector *_sceneSettingsDiffInspector;
     _Bool _saveStateRestorationArchiveWithFileProtectionCompleteUntilFirstUserAuthentication;
+    int _simulatorShakeNotificationToken;
     double _lastTimestampWhenFirstTouchCameDown;
     double _lastTimestampWhenAllTouchesLifted;
     long long _virtualHorizontalSizeClass;
@@ -224,6 +225,7 @@
 - (void)_endShowingNetworkActivityIndicator;
 - (void)_beginShowingNetworkActivityIndicator;
 - (void)_hideNetworkActivityIndicator;
+- (void)_openURL:(id)arg1 originatingView:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)_taskSuspendingUnsupported;
 - (_Bool)_fakingRequiresHighResolution;
 - (_Bool)_requiresHighResolution;
@@ -276,7 +278,10 @@
 - (void)setHardwareKeyboardLayoutName:(id)arg1;
 - (_Bool)becomeFirstResponder;
 - (id)textInputMode;
-- (void)_sendMoveEventWithDirection:(long long)arg1 fromEvent:(id)arg2;
+- (void)_sendPhysicalButtonEventWithKeyboardEvent:(id)arg1;
+- (long long)_physicalButtonTypeForKeyCode:(long long)arg1;
+- (void)_sendMoveEventWithPhysicalButtonsEvent:(id)arg1;
+- (void)_sendMoveEventWithDirection:(long long)arg1 heading:(unsigned long long)arg2 fromEvent:(id)arg3;
 - (void)_wheelChangedWithEvent:(id)arg1;
 - (void)handleKeyEvent:(struct __GSEvent *)arg1;
 - (void)_handleKeyEvent:(struct __GSEvent *)arg1;
@@ -485,7 +490,9 @@
 - (void)updateSuspendedSettings:(id)arg1;
 - (void)_destroyContextsAndNotifySpringBoard;
 - (void)_setCompatibilityModeOnSettings:(id)arg1;
+- (void)_mainSceneCompatibilityModeZoomDidChange;
 - (void)_handleApplicationDectivationWithScene:(id)arg1 shouldForceExit:(_Bool)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_applicationDidEnterBackground;
 - (void)applicationSuspend;
 - (void)terminateWithSuccess;
 - (void)_terminateWithStatus:(int)arg1;

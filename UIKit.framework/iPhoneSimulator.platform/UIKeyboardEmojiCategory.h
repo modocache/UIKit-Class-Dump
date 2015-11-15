@@ -14,21 +14,21 @@ __attribute__((visibility("hidden")))
     int _categoryType;
     NSArray *_emoji;
     long long _lastVisibleFirstEmojiIndex;
+    NSString *_displaySymbol;
 }
 
++ (id)displayName:(int)arg1;
 + (id)localizedStringForKey:(id)arg1;
 + (id)categoryForType:(int)arg1;
 + (id)emojiRecentsFromPreferences;
-+ (_Bool)hasVariantsForEmoji:(id)arg1;
++ (unsigned long long)hasVariantsForEmoji:(id)arg1;
++ (_Bool)emojiString:(id)arg1 inGroup:(unsigned int *)arg2 withGroupCount:(int)arg3;
 + (id)categories;
 + (long long)numberOfCategories;
+@property(readonly, getter=displaySymbol) NSString *displaySymbol; // @synthesize displaySymbol=_displaySymbol;
 @property(nonatomic) long long lastVisibleFirstEmojiIndex; // @synthesize lastVisibleFirstEmojiIndex=_lastVisibleFirstEmojiIndex;
 @property(retain) NSArray *emoji; // @synthesize emoji=_emoji;
 @property int categoryType; // @synthesize categoryType=_categoryType;
-- (id)description;
-@property(readonly, getter=recentDescription) NSString *recentDescription;
-@property(readonly, getter=displaySymbol) NSString *displaySymbol;
-@property(readonly, getter=displayName) NSString *displayName;
 @property(readonly, nonatomic, getter=name) NSString *name;
 - (void)dealloc;
 - (void)releaseCategories;

@@ -10,8 +10,10 @@ __attribute__((visibility("hidden")))
 @interface UIMoveEvent : UIInternalEvent
 {
     long long _moveDirection;
+    unsigned long long _focusHeading;
 }
 
+@property(nonatomic, setter=_setFocusHeading:) unsigned long long _focusHeading; // @synthesize _focusHeading;
 @property(nonatomic, setter=_setMoveDirection:) long long _moveDirection; // @synthesize _moveDirection;
 - (void)_sendEventToResponder:(id)arg1;
 - (long long)type;

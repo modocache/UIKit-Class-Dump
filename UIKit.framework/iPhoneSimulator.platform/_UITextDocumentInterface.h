@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     id <_UITextDocumentInterfaceDelegate> _delegate;
     _UIInputViewControllerState *_controllerState;
     _UIInputViewControllerOutput *_controllerOutput;
+    TIKeyboardOutput *_keyboardOutput;
 }
 
+@property(readonly, nonatomic, getter=_keyboardOutput) TIKeyboardOutput *keyboardOutput; // @synthesize keyboardOutput=_keyboardOutput;
 @property(retain, nonatomic, getter=_controllerOutput) _UIInputViewControllerOutput *controllerOutput; // @synthesize controllerOutput=_controllerOutput;
 @property(retain, nonatomic, getter=_controllerState) _UIInputViewControllerState *controllerState; // @synthesize controllerState=_controllerState;
 @property(nonatomic, getter=_delegate) id <_UITextDocumentInterfaceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -41,7 +43,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) long long spellCheckingType;
 @property(nonatomic) long long autocorrectionType;
 @property(nonatomic) long long autocapitalizationType;
-@property(readonly, nonatomic, getter=_keyboardOutput) TIKeyboardOutput *keyboardOutput;
 @property(readonly, nonatomic, getter=_textInputTraits) TITextInputTraits *textInputTraits;
 @property(readonly, nonatomic, getter=_documentState) TIDocumentState *documentState;
 - (void)_createControllerOutputIfNecessary;

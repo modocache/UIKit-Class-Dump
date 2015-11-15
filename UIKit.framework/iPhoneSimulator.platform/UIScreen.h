@@ -7,12 +7,13 @@
 #import "NSObject.h"
 
 #import "UICoordinateSpace.h"
+#import "UIFocusContainer.h"
 #import "UITraitEnvironment.h"
 #import "_UITraitEnvironmentInternal.h"
 
-@class FBSDisplay, NSArray, NSDictionary, NSMutableArray, NSString, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIWindow, _UIScreenFixedCoordinateSpace, _UIScreenTransparentHitTestWindow;
+@class FBSDisplay, NSArray, NSDictionary, NSMutableArray, NSString, UIScreenMode, UISoftwareDimmingWindow, UITraitCollection, UIView, UIWindow, UIWindow<UIFocusContainer>, _UIScreenFixedCoordinateSpace, _UIScreenTransparentHitTestWindow;
 
-@interface UIScreen : NSObject <UICoordinateSpace, _UITraitEnvironmentInternal, UITraitEnvironment>
+@interface UIScreen : NSObject <UICoordinateSpace, _UITraitEnvironmentInternal, UIFocusContainer, UITraitEnvironment>
 {
     id _display;
     struct CGRect _bounds;
@@ -33,6 +34,7 @@
     NSArray *_availableDisplayModes;
     double _pointsPerInch;
     _UIScreenFixedCoordinateSpace *_fixedCoordinateSpace;
+    id <UIFocusContainer> _focusedItem;
     struct {
         unsigned int bitsPerComponent:4;
         unsigned int initialized:1;
@@ -42,6 +44,7 @@
         unsigned int wantsWideContentMargins:1;
         unsigned int queriedDeviceContentMargins:1;
         unsigned int hasCalculatedPointsPerInch:1;
+        unsigned int screenCreatedFBSDisplay:1;
     } _screenFlags;
     _Bool _wantsSoftwareDimming;
     _Bool _jailUsesHitTestWindow;
@@ -53,6 +56,7 @@
     long long _lastNotifiedBacklightLevel;
     double _jailScale;
     long long _jailOrientation;
+    UIWindow<UIFocusContainer> *__focusedWindow;
     struct CGSize _jailSize;
     struct CGPoint _jailOffset;
     struct UIEdgeInsets _jailTouchInsets;
@@ -86,7 +90,10 @@
 + (id)mainScreen;
 + (void)_videoOutSettingsChanged;
 + (id)__createPlugInScreenForFBSDisplay:(id)arg1;
++ (id)__availableScenes;
++ (id)__sceneTrackingQueue;
 + (void)initialize;
+@property(nonatomic, setter=_setFocusedWindow:) UIWindow<UIFocusContainer> *_focusedWindow; // @synthesize _focusedWindow=__focusedWindow;
 @property(nonatomic, getter=_jailUsesHitTestWindow, setter=_setJailUsesHitTestWindow:) _Bool jailUsesHitTestWindow; // @synthesize jailUsesHitTestWindow=_jailUsesHitTestWindow;
 @property(nonatomic, getter=_jailTouchInsets, setter=_setJailTouchInsets:) struct UIEdgeInsets jailTouchInsets; // @synthesize jailTouchInsets=_jailTouchInsets;
 @property(nonatomic, getter=_jailOrientation, setter=_setJailOrientation:) long long jailOrientation; // @synthesize jailOrientation=_jailOrientation;
@@ -103,6 +110,16 @@
 @property(nonatomic, getter=_defaultTraitCollection, setter=_setDefaultTraitCollection:) UITraitCollection *defaultTraitCollection; // @synthesize defaultTraitCollection=_defaultTraitCollection;
 @property(nonatomic, getter=_jailSize, setter=_setJailSize:) struct CGSize jailSize; // @synthesize jailSize=_jailSize;
 @property(readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+- (void)focusedViewDidChange;
+- (void)focusedViewWillChange;
+@property(readonly, nonatomic) UIView *focusedView;
+@property(readonly, nonatomic) _Bool supportsFocus;
+- (void)_setFocusedItem:(id)arg1;
+@property(readonly, nonatomic) id <UIFocusContainer> focusedItem;
+- (void)setNeedsPreferredFocusedItemUpdate;
+- (_Bool)isAncestorOfItem:(id)arg1;
+@property(readonly, nonatomic) id <UIFocusContainer> preferredFocusedItem;
+- (_Bool)shouldChangeFocusedItem:(id)arg1 heading:(unsigned long long)arg2;
 @property(readonly, nonatomic) double nativeScale;
 @property(readonly, nonatomic) struct CGRect nativeBounds;
 - (struct CGRect)_nativeDisplayBounds;
@@ -116,14 +133,15 @@
 - (float)rawBrightnessForBacklightLevel:(float)arg1;
 - (id)_lazySoftwareDimmingWindow;
 - (id)_display;
+- (_Bool)_isRightHandDrive;
 - (_Bool)_areMusicListsLimited;
 - (_Bool)_areListsLimited;
 - (_Bool)_isUIElementLimited:(id)arg1;
-- (_Bool)_canFocusViews;
 - (_Bool)_isDisplayPointWithinExtendedJailBounds:(struct CGPoint)arg1;
 - (long long)_workspaceCapableScreenType;
 - (_Bool)_isWorkspaceCapable;
 - (id)_displayID;
+- (void)_setExternalDeviceShouldInputText:(_Bool)arg1;
 - (void)_setCapability:(id)arg1 forKey:(id)arg2;
 - (id)_capabilityForKey:(id)arg1;
 - (id)_capabilities;

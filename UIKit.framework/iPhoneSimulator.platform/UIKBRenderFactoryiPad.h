@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
 - (void)setupLayoutSegments;
 - (double)_row4ControlSegmentWidth;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
-- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2;
+- (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3;
+- (long long)rowLimitForKey:(id)arg1;
 - (double)defaultVariantSizeThreshold;
 - (struct CGSize)defaultVariantGeometrySize;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;
-- (_Bool)shouldClearBaseDisplayStringForVariants;
+- (_Bool)shouldClearBaseDisplayStringForVariants:(id)arg1;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (struct CGPoint)dismissKeyOffset;
 - (struct CGPoint)dualStringKeyOffset;

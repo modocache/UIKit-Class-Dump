@@ -9,7 +9,7 @@
 #import "UIKeyboardCandidateListDelegate.h"
 #import "_UIIVCResponseDelegateImpl.h"
 
-@class NSDictionary, NSMutableArray, NSMutableDictionary, NSObject<UIKeyboardRecording><UIApplicationEventRecording>, NSString, TIKeyboardCandidateResultSet, TIKeyboardInputManagerState, TIKeyboardInputManagerStub, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, UIAlertView, UIAutocorrectInlinePrompt, UIDelayedAction, UIKeyboardAutocorrectionController, UIKeyboardLayout, UIKeyboardScheduledTask, UIKeyboardTaskQueue, UIPhysicalKeyboardEvent, UIResponder, UIResponder<UIKeyInput>, UIResponder<UITextInput>, UIResponder<UITextInputPrivate>, UIResponder<UIWKInteractionViewProtocol>, UITextInputArrowKeyHistory, UITextInputTraits, _UIActionWhenIdle;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSObject<UIKeyboardRecording><UIApplicationEventRecording>, NSString, TIKeyboardCandidateResultSet, TIKeyboardInputManagerState, TIKeyboardInputManagerStub, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent, UIAlertView, UIAutocorrectInlinePrompt, UIDelayedAction, UIKeyboardAutocorrectionController, UIKeyboardLayout, UIKeyboardScheduledTask, UIKeyboardTaskQueue, UIPhysicalKeyboardEvent, UIResponder, UIResponder<UIKeyInput>, UIResponder<UITextInput>, UIResponder<UITextInputPrivate>, UIResponder<UIWKInteractionViewProtocol>, UITextInputArrowKeyHistory, UITextInputTraits, WebEvent, _UIActionWhenIdle;
 
 @interface UIKeyboardImpl : UIView <_UIIVCResponseDelegateImpl, UIKeyboardCandidateListDelegate>
 {
@@ -116,6 +116,7 @@
     _Bool m_usesCandidateSelection;
     _Bool m_UsedCandidateSelection;
     CDUnknownBlockType m_keyInputCompletionHandler;
+    WebEvent *m_lastWebEvent;
     _Bool m_updatingLayout;
     _Bool m_showsCandidateBar;
     _Bool m_showsCandidateInline;
@@ -177,6 +178,7 @@
 + (void)setParentTestForProfiling:(id)arg1;
 + (void)_clearHardwareKeyboardMinimizationPreference;
 + (id)keyboardScreen;
++ (id)keyboardWindow;
 @property(nonatomic) _Bool handlingKeyCommandFromHardwareKeyboard; // @synthesize handlingKeyCommandFromHardwareKeyboard=_handlingKeyCommandFromHardwareKeyboard;
 @property(retain, nonatomic) UIKeyboardScheduledTask *autocorrectPromptTask; // @synthesize autocorrectPromptTask=_autocorrectPromptTask;
 @property(retain, nonatomic) NSDictionary *candidateRequestInfo; // @synthesize candidateRequestInfo=_candidateRequestInfo;
@@ -285,6 +287,8 @@
 - (id)_rangeForAutocorrectionText:(id)arg1;
 - (void)clearAutocorrectPromptTimer;
 - (void)touchAutocorrectPromptTimer;
+- (void)sendCallbacksForPostCorrectionsRemoval;
+- (void)sendCallbacksForPreCorrectionsDisplay;
 - (struct CGRect)convertRectToAutocorrectRect:(struct CGRect)arg1 delegateView:(id)arg2 container:(id)arg3;
 - (void)updateTextCandidateView;
 - (id)inputOverlayContainer;
@@ -356,8 +360,10 @@
 - (void)acceptAutocorrection;
 - (void)willReplaceTextInRangedSelectionWithKeyboardInput;
 - (void)completeDeleteFromInput;
-- (void)deleteFromInputWithExecutionContext:(id)arg1;
+- (void)deleteFromInputWithFlags:(unsigned long long)arg1 executionContext:(id)arg2;
+- (void)deleteFromInputWithFlags:(unsigned long long)arg1;
 - (void)deleteFromInput;
+- (void)didHandleWebKeyEvent:(id)arg1;
 - (void)didHandleWebKeyEvent;
 - (void)completeDeleteOnceFromInputWithCharacterBefore:(unsigned int)arg1;
 - (void)scheduleReplacementsAfterDeletionToEndOfWord;
@@ -378,6 +384,7 @@
 - (void)didApplyAutocorrection:(id)arg1 autocorrectPromptFrame:(struct CGRect)arg2;
 - (_Bool)shouldApplyAcceptedAutocorrection:(id)arg1;
 - (void)acceptAutocorrection:(id)arg1 executionContextPassingTIKeyboardCandidate:(id)arg2;
+- (void)setDocumentStateForAutocorrection:(id)arg1;
 - (void)syncInputManagerToAcceptedAutocorrection:(id)arg1 forInput:(id)arg2;
 - (void)didAcceptAutocorrection:(id)arg1 wordTerminator:(id)arg2;
 - (id)inputWordForTerminatorAtSelection;
@@ -441,7 +448,7 @@
 - (void)notifyShiftState;
 - (void)updateInputManagerAutocapitalizationType;
 - (void)recomputeActiveInputModesWithExtensions:(_Bool)arg1;
-- (id)desirableInputModesFromList:(id)arg1 forTraits:(id)arg2;
+- (id)desirableInputModesWithExtensions:(_Bool)arg1;
 - (_Bool)shouldSwitchInputMode:(id)arg1;
 - (_Bool)shouldForceASCIICapable;
 - (void)releaseInputManagerIfInactive;
@@ -493,6 +500,7 @@
 - (int)_clipCornersOfView:(id)arg1;
 - (void)_resizeForKeyplaneSize:(struct CGSize)arg1 splitWidthsChanged:(_Bool)arg2;
 - (void)didMoveToSuperview;
+- (void)willMoveToWindow:(id)arg1;
 - (long long)interfaceOrientation;
 - (void)updateLayout;
 - (void)finishLayoutChangeWithArguments:(id)arg1;
@@ -514,10 +522,13 @@
 - (void)callChangedSelection;
 - (_Bool)callShouldDeleteWithWordCountForRapidDelete:(int)arg1 characterCountForRapidDelete:(int)arg2;
 - (_Bool)usesAutoDeleteWord;
-- (_Bool)callShouldReplaceExtendedRange:(unsigned long long)arg1 withText:(id)arg2 includeMarkedText:(_Bool)arg3;
+- (_Bool)callShouldReplaceExtendedRange:(long long)arg1 withText:(id)arg2 includeMarkedText:(_Bool)arg3;
 - (_Bool)callShouldInsertText:(id)arg1;
 - (void)_requestInputManagerSync;
 - (void)_performInputViewControllerOutput:(id)arg1;
+- (void)_completePerformInputViewControllerOutput:(id)arg1 executionContext:(id)arg2;
+- (void)_processInputViewControllerKeyboardOutput:(id)arg1 executionContext:(id)arg2;
+- (void)_updateInputViewControllerOutput:(id)arg1 forKeyboardOutput:(id)arg2;
 - (_Bool)_shouldRequestInputManagerSyncForKeyboardOutputCallbacks:(id)arg1;
 - (void)enable;
 - (id)textInputTraits;
@@ -587,6 +598,7 @@
 - (_Bool)checkSpellingPreferenceForTraits;
 - (_Bool)checkSpellingPreference;
 - (_Bool)autocapitalizationPreference;
+- (_Bool)candidateSelectionPredictionForTraits;
 - (_Bool)predictionPreferenceForTraits;
 - (_Bool)predictionForTraits;
 - (_Bool)autocorrectionPreferenceForTraits;
@@ -612,6 +624,8 @@
 - (void)clearLayouts;
 @property(retain, nonatomic) TIKeyboardLayout *layoutForKeyHitTest;
 - (void)refreshKeyboardState;
+- (void)updateInputManagerMode;
+- (_Bool)shouldSwitchFromInputManagerMode:(id)arg1 toInputMode:(id)arg2;
 - (id)layoutState;
 - (void)dealloc;
 - (void)detach;

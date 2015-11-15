@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _Bool _isTransitioning;
     double _transitionGap;
     double _transitionLeftOffset;
+    long long _style;
     _Bool _hasStartRect;
     _Bool _hasEndRect;
     struct CGRect _savedStartRect;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutInputBackdropToFullWithRect:(struct CGRect)arg1;
 - (void)layoutInputBackdropToSplitWithLeftViewRect:(struct CGRect)arg1 andRightViewRect:(struct CGRect)arg2 innerCorners:(int)arg3;
 - (void)transitionToStyle:(long long)arg1 isSplit:(_Bool)arg2;
+- (void)_setRenderConfig:(id)arg1;
 - (int)textEffectsVisibilityLevel;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 primaryBackdrop:(_Bool)arg2;

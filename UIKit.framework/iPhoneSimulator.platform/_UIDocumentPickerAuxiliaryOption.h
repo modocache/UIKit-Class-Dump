@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerAuxiliaryOption : NSObject <NSSecureCoding>
 {
+    _Bool _newlyAdded;
     NSString *_title;
     UIImage *_image;
     NSString *_identifier;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+@property(nonatomic, getter=isNewlyAdded) _Bool newlyAdded; // @synthesize newlyAdded=_newlyAdded;
 @property(nonatomic) unsigned long long order; // @synthesize order=_order;
 @property(copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property(copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

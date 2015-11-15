@@ -6,14 +6,13 @@
 
 #import <UIKit/_UIDocumentPickerCell.h>
 
-@class NSLayoutConstraint, NSString, UIImageView, _UIDocumentPickerContainerItem, _UIDocumentPickerURLContainerModel;
+@class NSLayoutConstraint, NSString, UIImageView, _UIDocumentPickerContainerItem;
 
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerContainerCell : _UIDocumentPickerCell
 {
     _UIDocumentPickerContainerItem *_item;
     NSString *_containerDisplayName;
-    _UIDocumentPickerURLContainerModel *_model;
     UIImageView *_containerIconView;
     id _observerToken;
     NSLayoutConstraint *_containerIconWidthConstraint;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) NSLayoutConstraint *containerIconWidthConstraint; // @synthesize containerIconWidthConstraint=_containerIconWidthConstraint;
 @property(retain, nonatomic) id observerToken; // @synthesize observerToken=_observerToken;
 @property(retain, nonatomic) UIImageView *containerIconView; // @synthesize containerIconView=_containerIconView;
-@property(retain, nonatomic) _UIDocumentPickerURLContainerModel *model; // @synthesize model=_model;
 @property(retain, nonatomic) NSString *containerDisplayName; // @synthesize containerDisplayName=_containerDisplayName;
 @property(retain, nonatomic) _UIDocumentPickerContainerItem *item; // @synthesize item=_item;
 - (void)_showPickableDiagnostic;

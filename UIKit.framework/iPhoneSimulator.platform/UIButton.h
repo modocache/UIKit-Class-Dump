@@ -33,6 +33,7 @@
         unsigned int buttonType:8;
         unsigned int shouldHandleScrollerMouseEvent:1;
         unsigned int titleFrozen:1;
+        unsigned int resendTraitToImageViews:2;
     } _buttonFlags;
     _UIButtonMaskAnimationView *_maskAnimationView;
     UIView *_selectionView;
@@ -62,6 +63,9 @@
 + (id)buttonWithType:(long long)arg1;
 @property(nonatomic, setter=_setInternalTitlePaddingInsets:) struct UIEdgeInsets _internalTitlePaddingInsets; // @synthesize _internalTitlePaddingInsets;
 @property(copy, nonatomic, setter=_setContentConstraints:) NSArray *_contentConstraints; // @synthesize _contentConstraints;
+- (void)traitCollectionDidChange:(id)arg1;
+- (_Bool)_hasImageForProperty:(id)arg1;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (id)_letterpressStyleForState:(unsigned long long)arg1;
 - (id)_attributedTitleForState:(unsigned long long)arg1;
 - (id)_shadowColorForState:(unsigned long long)arg1;
@@ -190,7 +194,9 @@
 @property(setter=_setExternalFlatEdge:) unsigned long long _externalFlatEdge;
 - (id)_externalImageColorForState:(unsigned long long)arg1;
 - (id)_externalBorderColorForState:(unsigned long long)arg1;
+- (id)_externalUnfocusedBorderColor;
 - (id)_externalTitleColorForState:(unsigned long long)arg1;
+- (id)_externalFocusedTitleColor;
 - (long long)_externalDrawingStyleForState:(unsigned long long)arg1;
 - (void)_willMoveToWindow:(id)arg1;
 - (void)_setupDrawingStyleForState:(unsigned long long)arg1;
@@ -213,8 +219,9 @@
 - (void)_selectGestureChanged:(id)arg1;
 - (void)_uninstallSelectGestureRecognizer;
 - (void)_installSelectGestureRecognizer;
-- (void)_focusStateDidChange;
-- (_Bool)_isFocusableElement;
+- (_Bool)canBecomeFocused;
+- (void)focusedViewDidChange;
+- (_Bool)_isEffectivelyDisabledExternalRoundedRectButton;
 - (_Bool)_isExternalRoundedRectButtonWithPressednessState;
 - (_Bool)_isExternalRoundedRectButton;
 - (_Bool)_isModernButton;

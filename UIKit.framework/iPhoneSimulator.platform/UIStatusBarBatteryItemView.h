@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)contentsImage;
 - (id)_accessoryImage;
 - (_Bool)_needsAccessoryImage;
-- (double)_batteryYOffsetWithBackground:(id)arg1;
+- (struct CGSize)_batteryOffsetWithBackground:(id)arg1;
 - (_Bool)updateForNewData:(id)arg1 actions:(int)arg2;
 - (void)dealloc;
 

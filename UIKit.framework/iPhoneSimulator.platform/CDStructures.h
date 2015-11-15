@@ -208,7 +208,7 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    _Bool itemIsEnabled[25];
+    _Bool itemIsEnabled[26];
     char timeString[64];
     int gsmSignalStrengthRaw;
     int gsmSignalStrengthBars;
@@ -235,7 +235,7 @@ typedef struct {
     unsigned int locationIconType:1;
     unsigned int quietModeInactive:1;
     unsigned int tetheringConnectionCount;
-} CDStruct_0e61b686;
+} CDStruct_bf99eeea;
 
 typedef struct {
     unsigned int val[8];
@@ -307,13 +307,19 @@ typedef struct {
 } CDStruct_3eb7d77a;
 
 typedef struct {
+    int commonRowHorizontalAlignment;
+    int lastRowHorizontalAlignment;
+    int rowVerticalAlignment;
+} CDStruct_2f5e8405;
+
+typedef struct {
     long long userInterfaceIdiom;
     double displayScale;
     long long touchLevel;
-    long long interactionModel;
+    unsigned long long interactionModel;
     long long horizontalSizeClass;
     long long verticalSizeClass;
-} CDStruct_cf4bd6d1;
+} CDStruct_9a5fdf0b;
 
 typedef struct {
     long long width;
@@ -330,7 +336,7 @@ typedef struct {
 } CDStruct_0ba2c6ed;
 
 typedef struct {
-    _Bool overrideItemIsEnabled[25];
+    _Bool overrideItemIsEnabled[26];
     unsigned int overrideTimeString:1;
     unsigned int overrideGsmSignalStrengthRaw:1;
     unsigned int overrideGsmSignalStrengthBars:1;
@@ -352,8 +358,8 @@ typedef struct {
     unsigned int overrideBluetoothConnected:1;
     unsigned int overrideDisplayRawGSMSignal:1;
     unsigned int overrideDisplayRawWifiSignal:1;
-    CDStruct_0e61b686 values;
-} CDStruct_9dad2be2;
+    CDStruct_bf99eeea values;
+} CDStruct_bbcaef27;
 
 typedef struct {
     CDStruct_73524d89 _field1[4];

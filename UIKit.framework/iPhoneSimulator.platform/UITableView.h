@@ -10,7 +10,7 @@
 #import "UIGestureRecognizerDelegatePrivate.h"
 #import "UIScrollViewDelegate.h"
 
-@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIColor, UIGobblerGestureRecognizer, UIImage, UILongPressGestureRecognizer, UIRefreshControl, UISwipeGestureRecognizer, UITableViewCell, UITableViewCountView, UITableViewIndex, UITableViewIndexOverlayIndicatorView, UITableViewIndexOverlaySelectionView, UITableViewRowData, UITableViewWrapperView, UITouch, UIView, UIVisualEffect, _UITableViewDeleteAnimationSupport, _UITableViewReorderingSupport, _UITableViewUpdateSupport;
+@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UIColor, UIGobblerGestureRecognizer, UIImage, UILongPressGestureRecognizer, UIRefreshControl, UISwipeGestureRecognizer, UITableViewCell, UITableViewCountView, UITableViewIndex, UITableViewIndexOverlayIndicatorView, UITableViewIndexOverlaySelectionView, UITableViewRowData, UITableViewWrapperView, UITouch, UIView, UIVisualEffect, UIWindow, _UITableViewDeleteAnimationSupport, _UITableViewReorderingSupport, _UITableViewUpdateSupport;
 
 @interface UITableView : UIScrollView <UIGestureRecognizerDelegatePrivate, UIScrollViewDelegate, NSCoding>
 {
@@ -107,6 +107,8 @@
     _UITableViewUpdateSupport *_currentUpdate;
     struct CGPoint _postLayoutContentOffset;
     struct _NSRange _preReloadVisibleRowRange;
+    UIWindow *_lastWindow;
+    int _focusedViewType;
     struct {
         unsigned int dataSourceNumberOfRowsInSection:1;
         unsigned int dataSourceCellForRow:1;
@@ -188,6 +190,12 @@
         unsigned int delegateShouldDrawTopSeparatorForSection:1;
         unsigned int delegateWillBeginSwiping:1;
         unsigned int delegateDidEndSwiping:1;
+        unsigned int delegateCanFocusRow_deprecated:1;
+        unsigned int delegateCanFocusRow:1;
+        unsigned int delegateDidFocusRow:1;
+        unsigned int delegateDidUnfocusRow:1;
+        unsigned int delegateShouldChangeFocusedItem:1;
+        unsigned int delegateIndexPathForPreferredFocusedItem:1;
         unsigned int style:1;
         unsigned int separatorStyle:3;
         unsigned int wasEditing:1;
@@ -264,7 +272,10 @@
         unsigned int usingCustomLayoutMargins:1;
         unsigned int settingDefaultLayoutMargins:1;
         unsigned int deallocating:1;
+        unsigned int updateFocusAfterItemAnimations:1;
+        unsigned int remembersPreviouslyFocusedItem:1;
     } _tableFlags;
+    NSIndexPath *_focusedCellIndexPath;
 }
 
 + (id)_alternateUISwitchableSelectorPairs;
@@ -274,6 +285,7 @@
 + (id)_externalTableSeparatorColor;
 + (id)_alternateExternalTableBackgroundColor;
 + (id)_externalTableBackgroundColor;
+@property(copy, nonatomic, getter=_focusedCellIndexPath, setter=_setFocusedCellIndexPath:) NSIndexPath *focusedCellIndexPath; // @synthesize focusedCellIndexPath=_focusedCellIndexPath;
 @property(nonatomic) long long sectionIndexMinimumDisplayRowCount; // @synthesize sectionIndexMinimumDisplayRowCount=_sectionIndexMinimumDisplayRowCount;
 @property(nonatomic) double estimatedSectionFooterHeight; // @synthesize estimatedSectionFooterHeight=_estimatedSectionFooterHeight;
 @property(nonatomic) double estimatedSectionHeaderHeight; // @synthesize estimatedSectionHeaderHeight=_estimatedSectionHeaderHeight;
@@ -451,6 +463,18 @@
 - (id)_refreshControl;
 - (double)_rubberBandOffsetForOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4 outside:(_Bool *)arg5;
 - (double)_offsetForRubberBandOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4;
+- (_Bool)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
+- (_Bool)_focusedCellContainedInRowsAtIndexPaths:(id)arg1;
+- (_Bool)_focusedCellContainedInSections:(id)arg1;
+- (id)preferredFocusedItem;
+- (void)_focusedViewWillChange:(id)arg1;
+- (void)_cellDidBecomeUnfocused:(id)arg1;
+- (void)_cellDidBecomeFocused:(id)arg1;
+- (_Bool)_cell:(id)arg1 shouldChangeFocusedItem:(id)arg2;
+- (_Bool)_canFocusCell:(id)arg1;
+- (_Bool)canBecomeFocused;
+- (_Bool)_remembersPreviouslyFocusedItem;
+- (void)_setRemembersPreviouslyFocusedItem:(_Bool)arg1;
 - (_Bool)_shouldSetIndexBackgroundColorToTableBackgroundColor;
 - (double)_timeBeforeIndexOverlayFadesAway;
 - (double)_timeToIgnoreWheelEventsOnIndexOverlayIndicator;
@@ -459,9 +483,9 @@
 - (void)_transitionIndexOverlaySelectionViewToVisible:(_Bool)arg1;
 - (void)_configureIndexOverlaySelectionViewIfNecessary;
 - (_Bool)_shouldHaveIndexOverlaySelectionView;
-- (void)_restartIndexOverlayTimer;
 - (void)_stopIgnoringWheelEventsOnIndexOverlayIndicator:(id)arg1;
 - (void)_startIndexOverlayIndicatorIgnoreTimer;
+- (void)_prolongIndexOverlayTimer;
 - (void)_stopIndexOverlayTimer;
 - (void)_startIndexOverlayTimer;
 - (void)_hideIndexOverlay;
@@ -481,6 +505,7 @@
 - (void)_shiftSectionIndexTitleIndexByAmount:(long long)arg1;
 - (void)_moveSectionIndexTitleIndexToIndex:(long long)arg1;
 - (id)_updateIndexOverlayToShowTitleAtIndex:(long long)arg1;
+- (void)_updateFocusedItemToIndexPath:(id)arg1;
 - (void)_unhighlightAllRowsAndHighlightGlobalRow:(long long)arg1;
 - (_Bool)_highlightFirstVisibleRowIfAppropriate;
 - (void)_moveWithEvent:(id)arg1;
@@ -498,8 +523,10 @@
 - (void)_updatePinnedTableHeader;
 - (void)_configureCellForDisplay:(id)arg1 forIndexPath:(id)arg2;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
+- (struct UIEdgeInsets)_tableContentInset;
 - (struct UIEdgeInsets)_sectionContentInset;
 - (void)_setSectionContentInset:(struct UIEdgeInsets)arg1;
+- (void)_rebuildGeometry;
 - (_Bool)_adjustsRowHeightsForSectionLocation;
 - (void)_setAdjustsRowHeightsForSectionLocation:(_Bool)arg1;
 @property(nonatomic) _Bool allowsMultipleSelectionDuringEditing;
@@ -773,6 +800,7 @@
 - (void)_updateTableHeadersAndFootersNow:(_Bool)arg1;
 - (void)_updateVisibleCellsImmediatelyIfNecessary;
 - (void)_setNeedsVisibleCellsUpdate:(_Bool)arg1 withFrames:(_Bool)arg2;
+- (void)_updateFocusedCellIndexPathIfNecessaryWithLastFocusedRect:(struct CGRect)arg1;
 - (void)_endCellAnimationsWithContext:(id)arg1;
 - (void)_setupCellAnimations;
 - (void)_updateIndex;
@@ -822,6 +850,7 @@
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (id)_scriptingInfo;
 - (_Bool)isElementAccessibilityExposedToInterfaceBuilder;
+- (void)_getResponderRectsForXAxisMinRect:(struct CGRect *)arg1 yMinRect:(struct CGRect *)arg2 xMaxRect:(struct CGRect *)arg3 yMaxRect:(struct CGRect *)arg4;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

@@ -16,6 +16,7 @@
 - (_Bool)shouldRemovePresentersView;
 - (_Bool)_shouldRespectDefinesPresentationContext;
 - (_Bool)shouldPresentInFullscreen;
+- (long long)presentationStyle;
 
 @end
 

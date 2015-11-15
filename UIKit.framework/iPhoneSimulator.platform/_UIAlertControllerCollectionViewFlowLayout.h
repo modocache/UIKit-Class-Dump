@@ -6,22 +6,31 @@
 
 #import <UIKit/UICollectionViewFlowLayout.h>
 
+@class NSArray, UIAlertControllerVisualStyle;
+
 __attribute__((visibility("hidden")))
 @interface _UIAlertControllerCollectionViewFlowLayout : UICollectionViewFlowLayout
 {
-    _Bool _hideSeparators;
     double _alignedDescriptiveLabelTextWidth;
+    _Bool _hideSeparators;
+    UIAlertControllerVisualStyle *_visualStyle;
     _Bool _shouldRoundFirstCell;
+    NSArray *_actionDelimiterIndices;
 }
 
 + (Class)layoutAttributesClass;
+@property(retain, nonatomic) NSArray *actionDelimiterIndices; // @synthesize actionDelimiterIndices=_actionDelimiterIndices;
 @property _Bool shouldRoundFirstCell; // @synthesize shouldRoundFirstCell=_shouldRoundFirstCell;
-@property double alignedDescriptiveLabelTextWidth;
 @property _Bool hideSeparators;
+@property double alignedDescriptiveLabelTextWidth;
+@property(nonatomic) UIAlertControllerVisualStyle *visualStyle;
 - (id)_topDecorationViewLayoutAttributesAtIndexPath:(id)arg1;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (_Bool)_collectionViewIsLayingOutHorizontallyWithCellHeight:(double)arg1;
-- (double)_decorationDimension;
+- (double)_decorationDimensionAtIndexPath:(id)arg1;
+- (_Bool)_indexPathIsSectionDelimiter:(id)arg1;
+- (double)_delimiterShiftForDecorationViewAtIndexPath:(id)arg1;
+- (double)_delimiterShiftForCellAtIndexPath:(id)arg1;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)init;
 
