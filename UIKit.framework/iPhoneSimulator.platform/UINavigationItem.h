@@ -41,9 +41,11 @@
     NSMutableDictionary *_backgroundImages;
     double __titleViewWidthForAnimations;
     double __idealCustomTitleWidth;
+    UINavigationBar *__owningNavigationBar;
 }
 
 + (id)defaultFont;
+@property(nonatomic, getter=_owningNavigationBar, setter=_setOwningNavigationBar:) UINavigationBar *_owningNavigationBar; // @synthesize _owningNavigationBar=__owningNavigationBar;
 @property(nonatomic, setter=_setIdealCustomTitleWidth:) double _idealCustomTitleWidth; // @synthesize _idealCustomTitleWidth=__idealCustomTitleWidth;
 @property(nonatomic) double _titleViewWidthForAnimations; // @synthesize _titleViewWidthForAnimations=__titleViewWidthForAnimations;
 @property(nonatomic, setter=_setRightFlexibleSpaceCount:) unsigned long long _rightFlexibleSpaceCount; // @synthesize _rightFlexibleSpaceCount;
@@ -112,6 +114,7 @@
 - (void)_setLeftBarButtonItem:(id)arg1;
 - (id)_leftBarButtonItem;
 - (void)setObject:(id)arg1 forLeftRightKeyPath:(id)arg2 animated:(_Bool)arg3;
+- (void)_updateBarItemOwnersTo:(id)arg1;
 - (void)set_customRightViews:(id)arg1;
 - (void)set_customLeftViews:(id)arg1;
 - (void)set_leftBarButtonItems:(id)arg1;
@@ -120,6 +123,9 @@
 - (void)set_customRightView:(id)arg1;
 - (void)set_rightBarButtonItem:(id)arg1;
 - (void)set_leftBarButtonItem:(id)arg1;
+- (id)_buttonForBackButtonIndicator;
+- (_Bool)_wantsBackButtonIndicator;
+- (_Bool)_leftItemsWantBackButton;
 - (void)setHidesBackButton:(_Bool)arg1 animated:(_Bool)arg2;
 @property(nonatomic) _Bool hidesBackButton;
 - (void)updateNavigationBarButtonsAnimated:(_Bool)arg1;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)_isSystemWindow;
 + (struct CGRect)constrainFrameToScreen:(struct CGRect)arg1;
 - (int)textEffectsVisibilityLevel;
 - (void)handleStatusBarChangeFromHeight:(double)arg1 toHeight:(double)arg2;

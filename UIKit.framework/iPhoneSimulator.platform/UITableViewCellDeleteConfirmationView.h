@@ -6,27 +6,33 @@
 
 #import <UIKit/UIView.h>
 
-@class UITableViewCellDeleteConfirmationButton;
+@class NSArray, _UITableViewCellActionButton;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellDeleteConfirmationView : UIView
 {
     double _visibleWidth;
+    struct CGSize _contentSize;
+    double _visibleHeightRatio;
     double _cornerRadius;
     int _sectionLocation;
-    UITableViewCellDeleteConfirmationButton *_deleteView;
-    UITableViewCellDeleteConfirmationButton *_accessoryView;
+    _UITableViewCellActionButton *_deleteView;
+    _UITableViewCellActionButton *_accessoryView;
+    NSArray *_actionButtons;
 }
 
 @property(nonatomic) int sectionLocation; // @synthesize sectionLocation=_sectionLocation;
 @property(nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property(readonly, nonatomic) UITableViewCellDeleteConfirmationButton *accessoryView; // @synthesize accessoryView=_accessoryView;
-@property(readonly, nonatomic) UITableViewCellDeleteConfirmationButton *deleteView; // @synthesize deleteView=_deleteView;
+@property(readonly, nonatomic) _UITableViewCellActionButton *accessoryView; // @synthesize accessoryView=_accessoryView;
+@property(readonly, nonatomic) _UITableViewCellActionButton *deleteView; // @synthesize deleteView=_deleteView;
+@property(nonatomic) double visibleHeightRatio; // @synthesize visibleHeightRatio=_visibleHeightRatio;
+@property(readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property(nonatomic) double visibleWidth; // @synthesize visibleWidth=_visibleWidth;
+- (void)updateBounds;
 - (void)updateMaskView:(_Bool)arg1;
 - (void)didMoveToWindow;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 deleteView:(id)arg2 accessoryView:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 actionButtons:(id)arg2 contentSize:(struct CGSize)arg3;
 
 @end
 

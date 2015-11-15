@@ -12,7 +12,7 @@
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 
-@class CALayer, NSMutableArray, UIColor, UIImageView, _UIPickerViewTestParameters;
+@class CALayer, NSMutableArray, NSString, UIColor, UIImageView, _UIPickerViewTestParameters;
 
 @interface UIPickerView : UIView <UIPickerTableViewContainerDelegate, UITableViewDelegate, UIPickerViewScrollTesting, NSCoding, UITableViewDataSource>
 {
@@ -158,6 +158,12 @@
 - (struct CGSize)defaultSize;
 - (void)setBackgroundColor:(id)arg1;
 - (_Bool)isAccessibilityElementByDefault;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

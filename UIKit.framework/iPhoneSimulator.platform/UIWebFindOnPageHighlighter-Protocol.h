@@ -12,7 +12,7 @@
 @property(readonly, nonatomic) unsigned long long highlightedMatchIndex;
 @property(readonly, nonatomic) unsigned long long numberOfMatches;
 @property(nonatomic) id <UIWebFindOnPageHighlighterDelegate> delegate;
-@property(readonly, nonatomic) NSString *searchText;
+@property(readonly, copy, nonatomic) NSString *searchText;
 - (void)highlightPreviousMatch;
 - (void)highlightNextMatch;
 - (void)setSelectionRect:(struct CGRect)arg1 textRects:(NSArray *)arg2 contentViews:(NSArray *)arg3 wobble:(_Bool)arg4;

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)_isSystemWindow;
 - (_Bool)_canBecomeKeyWindow;
 - (void)_setFirstResponder:(id)arg1;
 - (_Bool)_isSettingFirstResponder;

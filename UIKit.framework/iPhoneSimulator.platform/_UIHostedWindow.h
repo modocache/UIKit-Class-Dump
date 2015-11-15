@@ -15,8 +15,13 @@
 
 @property(nonatomic, setter=_setHostTintAdjustmentMode:) long long _hostTintAdjustmentMode; // @synthesize _hostTintAdjustmentMode;
 - (_Bool)_presentActionSheet:(id)arg1 inView:(id)arg2 fromYCoordinate:(double)arg3;
+- (void)_configureContextOptions:(id)arg1;
 - (long long)_defaultTintAdjustmentMode;
+- (_Bool)_isOffsetByScreenJail;
+- (_Bool)_isRotatedByScreenJail;
 - (_Bool)_isClippedByScreenJail;
+- (_Bool)_isScaledByScreenJail;
+- (_Bool)_isConstrainedByScreenJail;
 - (_Bool)_needsShakesWhenInactive;
 - (void)_updateTransformLayerForClassicPresentation;
 - (void)_updateAppTintView;

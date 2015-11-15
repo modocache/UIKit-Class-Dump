@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     long long _defaultRenderingMode;
     _Bool _masksTemplateImages;
     unsigned long long _templateImageRenderingEffects;
+    UIImage *_displayedImage;
+    UIImage *_displayedHighlightedImage;
 }
 
 - (void)animationDidStop:(id)arg1 finished:(_Bool)arg2;

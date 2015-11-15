@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollToOffsetFromTop:(double)arg1 withAnimation:(_Bool)arg2;
 - (void)scrollToTopWithAnimation:(_Bool)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 collectionViewLayout:(id)arg2;
 
 @end
 

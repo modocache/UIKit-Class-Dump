@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (_Bool)_isActiveKeyplaneSwitchKey:(id)arg1;
 - (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
 - (id)shiftedWhiteControlKeyTraits;
 - (id)shiftedControlKeyTraits;

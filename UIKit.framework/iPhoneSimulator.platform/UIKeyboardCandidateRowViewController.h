@@ -10,7 +10,7 @@
 #import "UICollectionViewDelegate.h"
 #import "UIKeyboardCandidateList.h"
 
-@class NSArray, TIKeyboardCandidateResultSet, UIKBCandidateCollectionView;
+@class NSArray, NSString, TIKeyboardCandidateResultSet, UIKBCandidateCollectionView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateRowViewController : UIViewController <UIKeyboardCandidateList, UICollectionViewDelegate, UICollectionViewDataSource>
@@ -58,13 +58,19 @@ __attribute__((visibility("hidden")))
 - (void)showNextPage;
 - (void)showPreviousCandidate;
 - (void)showNextCandidate;
-- (void)showCandidate:(id)arg1;
+- (_Bool)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned long long)arg1;
 - (_Bool)isExtendedList;
 - (_Bool)isHiddenCandidatesList;
 - (void)loadView;
 - (double)suggestedHeight;
 - (id)initWithCellClass:(Class)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

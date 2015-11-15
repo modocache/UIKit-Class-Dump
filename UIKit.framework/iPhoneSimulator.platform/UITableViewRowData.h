@@ -31,11 +31,13 @@ __attribute__((visibility("hidden")))
     NSIndexPath *_reorderedIndexPath;
     NSIndexPath *_gapIndexPath;
     double _reorderedRowHeight;
+    _Bool _estimatesRowHeights;
 }
 
 @property(nonatomic) double tableBottomPadding; // @synthesize tableBottomPadding=_tableBottomPadding;
 @property(nonatomic) double tableTopPadding; // @synthesize tableTopPadding=_tableTopPadding;
 @property(nonatomic) double minimumRowHeight; // @synthesize minimumRowHeight=_minimumRowHeight;
+@property(nonatomic) _Bool estimatesRowHeights; // @synthesize estimatesRowHeights=_estimatesRowHeights;
 @property(readonly, nonatomic) double reorderedRowHeight; // @synthesize reorderedRowHeight=_reorderedRowHeight;
 @property(readonly, nonatomic) NSIndexPath *reorderGapIndexPath; // @synthesize reorderGapIndexPath=_gapIndexPath;
 - (long long)sectionForSectionRowData:(id)arg1;
@@ -65,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double tableSidePadding;
 - (int)sectionLocationForReorderedRow:(long long)arg1 inSection:(long long)arg2;
 - (int)sectionLocationForRow:(long long)arg1 inSection:(long long)arg2;
+- (void)setHeight:(double)arg1 forRowAtIndexPath:(id)arg2;
 - (double)heightForRow:(long long)arg1 inSection:(long long)arg2 canGuess:(_Bool)arg3 adjustForReorderedRow:(_Bool)arg4;
 - (double)heightForRow:(long long)arg1 inSection:(long long)arg2 canGuess:(_Bool)arg3;
 - (double)heightForFooterInSection:(long long)arg1 canGuess:(_Bool)arg2;
@@ -94,16 +97,16 @@ __attribute__((visibility("hidden")))
 - (void)invalidateAllSections;
 - (void)_updateTopAndBottomPadding;
 - (void)ensureAllSectionsAreValid;
-- (void)dealloc;
 - (void)tableFooterHeightDidChangeToHeight:(double)arg1;
 - (void)tableHeaderHeightDidChangeToHeight:(double)arg1;
 - (void)adjustSectionOffsetsBeginningAtIndex:(long long)arg1 count:(long long)arg2 delta:(double)arg3 rowDelta:(long long)arg4;
 - (void)tableViewWidthDidChangeToWidth:(double)arg1;
-- (id)initWithTableView:(id)arg1;
 - (long long)_sectionRowForGlobalRow:(long long)arg1 inSection:(long long *)arg2;
 - (void)_ensureSectionOffsetIsValidForSection:(long long)arg1;
 - (void)_updateSectionRowDataArrayForNumSections:(long long)arg1;
 - (void)_updateNumSections;
+- (void)dealloc;
+- (id)initWithTableView:(id)arg1;
 
 @end
 

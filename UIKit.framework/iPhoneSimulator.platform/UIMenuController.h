@@ -8,7 +8,7 @@
 
 #import "UICalloutBarDelegate.h"
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface UIMenuController : NSObject <UICalloutBarDelegate>
 {
@@ -32,6 +32,12 @@
 - (_Bool)_updateAnimated:(_Bool)arg1 checkVisible:(_Bool)arg2;
 - (void)calloutBar:(id)arg1 didFinishAnimation:(id)arg2;
 - (void)calloutBar:(id)arg1 willStartAnimation:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -8,6 +8,8 @@
 
 #import "UIWebSelectionBlock.h"
 
+@class NSString;
+
 @interface DOMNode (UIWebSelectionAdditions) <UIWebSelectionBlock>
 - (id)lastDescendantOfAboutTheSameWidthOrHeight;
 - (id)firstDescendantOfAboutTheSameWidthOrHeight;
@@ -33,5 +35,11 @@
 - (id)asElement;
 - (_Bool)strictlyContainsNode:(id)arg1;
 - (_Bool)containsNode:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

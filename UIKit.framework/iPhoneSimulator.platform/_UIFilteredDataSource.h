@@ -8,6 +8,8 @@
 
 #import "UITableViewDataSource.h"
 
+@class NSString;
+
 @interface _UIFilteredDataSource : NSObject <UITableViewDataSource>
 {
     _Bool _limitingWithSections;
@@ -25,6 +27,12 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (long long)_filteredNumberOfItemsGivenSection:(long long)arg1 numberOfItems:(long long)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

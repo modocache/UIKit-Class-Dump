@@ -12,10 +12,12 @@
 #import "UITextInputControllerDelegate.h"
 #import "UITextInputTraits_Private.h"
 #import "UITextLinkInteraction.h"
+#import "_UILayoutBaselineUpdating.h"
+#import "_UIMultilineTextContentSizing.h"
 
-@class NSAttributedString, NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UITextContainerView, _UITextViewRestorableScrollPosition;
+@class NSAttributedString, NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIFont, UIImage, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextViewRestorableScrollPosition;
 
-@interface UITextView : UIScrollView <UITextLinkInteraction, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, UITextInput>
+@interface UITextView : UIScrollView <UITextLinkInteraction, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UITextInput>
 {
     id _private;
     NSTextStorage *_textStorage;
@@ -39,6 +41,7 @@
         unsigned int inSecondConstraintsPass:1;
         unsigned int interactiveSelectionDisabled:1;
         unsigned int selectable:1;
+        unsigned int shouldPresentSheetsInAWindowLayeredAboveTheKeyboard:1;
     } _tvFlags;
     id _linkInteractionItem;
     _UITextViewRestorableScrollPosition *_scrollTarget;
@@ -46,6 +49,12 @@
     unsigned long long _dataDetectorTypes;
     double _preferredMaxLayoutWidth;
     UIView *_inputAccessoryView;
+    _UISiriStreamingManager *_streamingManager;
+    _UICharacterStreamingManager *_characterStreamingManager;
+    long long _siriAnimationStyle;
+    NSDictionary *_siriParameters;
+    double _firstBaselineOffsetFromTop;
+    double _lastBaselineOffsetFromBottom;
     _Bool _clearsOnInsertion;
     UIView *_inputView;
 }
@@ -53,7 +62,7 @@
 + (id)_bestInterpretationForDictationResult:(id)arg1;
 + (_Bool)_isCompatibilityTextView;
 + (id)_sharedHighlightView;
-@property(readonly, nonatomic) NSTextStorage *textStorage; // @synthesize textStorage=_textStorage;
+@property(readonly, retain, nonatomic) NSTextStorage *textStorage; // @synthesize textStorage=_textStorage;
 @property(readonly, nonatomic) NSLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
 @property(readonly, nonatomic) NSTextContainer *textContainer; // @synthesize textContainer=_textContainer;
 @property(retain) UIView *inputView; // @synthesize inputView=_inputView;
@@ -79,6 +88,7 @@
 - (_Bool)keyboardInputShouldDelete:(id)arg1;
 - (_Bool)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(_Bool)arg3;
 - (_Bool)keyboardInput:(id)arg1 shouldReplaceTextInRange:(struct _NSRange)arg2 replacementText:(id)arg3;
+- (void)_transliterateChinese:(id)arg1;
 - (void)_promptForReplace:(id)arg1;
 - (void)replace:(id)arg1;
 - (void)decreaseSize:(id)arg1;
@@ -171,11 +181,21 @@
 - (id)textInRange:(id)arg1;
 - (id)selectedText;
 - (void)scrollSelectionToVisible:(_Bool)arg1;
-- (void)_ensureSelectionVisible;
 - (void)scrollRangeToVisible:(struct _NSRange)arg1;
 - (void)_scrollRangeToVisible:(struct _NSRange)arg1 animated:(_Bool)arg2;
 - (id)_restorableScrollPosition;
 - (void)_restoreScrollPosition:(id)arg1 animated:(_Bool)arg2;
+- (struct CGPoint)_closeQuoteAnchor;
+- (struct CGPoint)_openQuoteAnchor;
+- (struct CGPoint)_lastGlyphBaselineRightPointWithLayoutManager:(id)arg1;
+- (struct CGPoint)_firstGlyphBaselineLeftPointWithLayoutManager:(id)arg1;
+- (void)_streamingManagerDidCommitFinalResults;
+- (void)_didFinishSpeechRecognition;
+- (void)_didRecognizeSpeechStrings:(id)arg1;
+- (void)_didRecognizeSpeechTokens:(id)arg1;
+- (id)extractWordArrayFromTokensArray:(id)arg1;
+- (void)_enableSiriAnimationDictationStyleWithCharacterInsertionRate:(double)arg1 minimumDurationBetweenHypotheses:(double)arg2;
+- (void)_enableSiriAnimationDictationStyle;
 - (void)_setScrollTarget:(id)arg1;
 - (struct _NSRange)_visibleRangeWithLayout:(_Bool)arg1;
 - (struct CGPoint)_contentOffsetForScrollToVisible:(struct _NSRange)arg1;
@@ -185,10 +205,14 @@
 - (void)updateSelection;
 - (void)endSelectionChange;
 - (void)beginSelectionChange;
+- (void)_deleteBackwardAndNotify:(_Bool)arg1;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
 - (_Bool)hasText;
-@property(nonatomic, getter=_isInteractiveTextSelectionDisabled, setter=_setInteractiveTextSelectionDisabled:) _Bool interactiveTextSelectionDisabled;
+- (void)setShouldPresentSheetsInAWindowLayeredAboveTheKeyboard:(_Bool)arg1;
+- (_Bool)shouldPresentSheetsInAWindowLayeredAboveTheKeyboard;
+- (_Bool)_isInteractiveTextSelectionDisabled;
+- (void)_setInteractiveTextSelectionDisabled:(_Bool)arg1;
 - (void)setScrollEnabled:(_Bool)arg1;
 - (void)setUsesTiledViews:(_Bool)arg1;
 - (_Bool)usesTiledViews;
@@ -200,24 +224,33 @@
 - (_Bool)canBecomeFirstResponder;
 - (_Bool)_shouldScrollEnclosingScrollView;
 - (void)_scrollSelectionToVisibleInContainingScrollView;
+- (void)_updateBaselineInformationDependentOnBounds;
 - (void)updateConstraints;
 - (void)_setInSecondConstraintsPass:(_Bool)arg1;
-- (void)_prepareForSecondIntrinsicContentSizeCalculationWithEngine:(id)arg1;
+- (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
 - (void)_prepareForFirstIntrinsicContentSizeCalculation;
-- (void)nsis_valueOfVariable:(id)arg1 didChangeInEngine:(id)arg2;
+- (void)invalidateIntrinsicContentSize;
+- (_Bool)_wantsBaselineUpdatingFollowingConstraintsPass;
 - (_Bool)_needsDoubleUpdateConstraintsPass;
 - (double)_currentPreferredMaxLayoutWidth;
+- (id)_layoutDebuggingTitle;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (void)_performLayoutCalculation:(CDUnknownBlockType)arg1 inSize:(struct CGSize)arg2;
+- (void)_baselineOffsetDidChange;
+- (double)_baselineOffsetFromBottom;
+- (double)_firstBaselineOffsetFromTop;
 - (double)_preferredMaxLayoutWidth;
 - (void)_setPreferredMaxLayoutWidth:(double)arg1;
+- (void)_resetUsesExplicitPreferredMaxLayoutWidth;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)_updateContentSize;
 - (void)layoutSubviews;
 - (void)_resyncContainerFrameForNonAutolayout;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(_Bool)arg2;
+- (void)_keyboardDidShow:(id)arg1;
 - (void)_observedTextViewDidChange:(id)arg1;
 - (unsigned long long)_totalNumberOfTextViewsInLayoutManager;
 - (void)_textStorageDidProcessEditing:(id)arg1;
@@ -260,20 +293,26 @@
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
+@property(copy, nonatomic) NSString *autocorrectionContext;
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
 @property(nonatomic) _Bool contentsIsSingleValue;
+@property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(nonatomic) id <UITextViewDelegate> delegate;
+@property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) _Bool displaySecureTextUsingPlainText;
 @property(nonatomic) int emptyContentReturnKeyType;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
 @property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent;
+@property(readonly) unsigned long long hash;
 @property(retain, nonatomic) UIColor *insertionPointColor;
 @property(nonatomic) unsigned long long insertionPointWidth;
 @property(nonatomic) _Bool isSingleLineDocument;
 @property(nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property(nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property(nonatomic) _Bool learnsCorrections;
+@property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @dynamic secureTextEntry;
@@ -282,6 +321,7 @@
 @property(retain, nonatomic) UIColor *selectionHighlightColor;
 @property(nonatomic) int shortcutConversionType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
+@property(readonly) Class superclass;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(nonatomic) int textLoupeVisibility;
 @property(nonatomic) int textSelectionBehavior;

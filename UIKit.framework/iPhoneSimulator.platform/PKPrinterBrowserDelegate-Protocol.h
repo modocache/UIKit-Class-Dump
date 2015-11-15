@@ -4,9 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2013 by Steve Nygard.
 //
 
+#import "NSObject.h"
+
 @class PKPrinter;
 
-@protocol PKPrinterBrowserDelegate
+@protocol PKPrinterBrowserDelegate <NSObject>
 - (void)removePrinter:(PKPrinter *)arg1 moreGoing:(_Bool)arg2;
 - (void)addPrinter:(PKPrinter *)arg1 moreComing:(_Bool)arg2;
 @end

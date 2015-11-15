@@ -115,5 +115,11 @@
 - (_Bool)_hasPageRects;
 @property(readonly, nonatomic) unsigned long long totalPages;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

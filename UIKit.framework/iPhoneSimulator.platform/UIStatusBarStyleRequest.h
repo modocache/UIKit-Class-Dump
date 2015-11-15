@@ -13,15 +13,15 @@
 
 @interface UIStatusBarStyleRequest : NSObject <NSMutableCopying, NSCopying>
 {
-    _Bool _legacy;
     long long _style;
+    _Bool _legacy;
     long long _legibilityStyle;
     UIColor *_foregroundColor;
     NSNumber *_overrideHeight;
 }
 
-@property(readonly, nonatomic) NSNumber *overrideHeight; // @synthesize overrideHeight=_overrideHeight;
-@property(readonly, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
+@property(readonly, retain, nonatomic) NSNumber *overrideHeight; // @synthesize overrideHeight=_overrideHeight;
+@property(readonly, retain, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(readonly, nonatomic) long long legibilityStyle; // @synthesize legibilityStyle=_legibilityStyle;
 @property(readonly, nonatomic, getter=isLegacy) _Bool legacy; // @synthesize legacy=_legacy;
 @property(readonly, nonatomic) long long style; // @synthesize style=_style;

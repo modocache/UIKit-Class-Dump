@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long tapCount; // @synthesize tapCount;
 @property(nonatomic) long long phase; // @synthesize phase;
 @property(nonatomic) double timestamp; // @synthesize timestamp;
+- (void)_setLocationInWindow:(struct CGPoint)arg1 resetPrevious:(_Bool)arg2;
 - (struct CGPoint)getLocationInWindow;
 - (struct CGPoint)previousLocationInView:(id)arg1;
 - (struct CGPoint)locationInView:(id)arg1;

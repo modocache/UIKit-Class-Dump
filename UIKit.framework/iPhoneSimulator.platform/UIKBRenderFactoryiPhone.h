@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
 - (_Bool)_popupStyleForKey:(id)arg1;
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (double)dualStringBottomAdditionalOffsetForDisplayContents:(id)arg1;
+- (_Bool)isTallPopup;
+- (double)popupFontSize;
+- (struct CGPoint)popupSymbolTextOffset;
 - (struct CGPoint)variantSymbolTextOffset;
 - (struct UIEdgeInsets)variantSymbolFrameInsets;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;
@@ -49,8 +52,28 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)moreABCKeyOffset;
 - (struct CGPoint)more123KeyOffset;
 - (struct CGPoint)dictationKeyOffset;
+- (struct CGPoint)realEmojiKeyOffset;
 - (struct CGPoint)internationalKeyOffset;
+- (struct CGPoint)zhuyinFirstToneKeyOffset;
+- (struct CGPoint)dismissKeyOffset;
+- (struct CGPoint)undoKeyOffset;
+- (struct CGPoint)boldKeyOffset;
+- (struct CGPoint)pasteKeyOffset;
+- (struct CGPoint)copyKeyOffset;
+- (struct CGPoint)cutKeyOffset;
+- (struct CGPoint)rightArrowKeyOffset;
+- (struct CGPoint)leftArrowKeyOffset;
+- (struct CGPoint)returnKeyOffset;
+- (struct CGPoint)stringKeyOffset;
 - (double)zhuyinFirstToneKeyFontSize;
+- (double)moreABCKeyFontSize;
+- (double)moreKeyFontSize;
+- (double)assistKeyFontSize;
+- (double)returnKeyFontSize;
+- (double)hintNoneKeyFontSize;
+- (double)shiftKeyFontSize;
+- (double)deleteKeyFontSize;
+- (double)stringKeyFontSize;
 
 @end
 

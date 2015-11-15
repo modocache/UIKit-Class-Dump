@@ -8,45 +8,46 @@
 
 #import "_UIScreenBasedObject.h"
 
-@class UIScreen;
+@class NSDictionary, NSString, UIScreen;
 
 @interface UITextEffectsWindow : UIAutoRotatingWindow <_UIScreenBasedObject>
 {
-    unsigned int _activeEffectsCount;
     _Bool _inDealloc;
-    _Bool _nonServiceHosted;
+    unsigned long long _activeEffectsCount;
+    unsigned long long _hostedUseCount;
     double _defaultWindowLevel;
     struct CGPoint _hostedWindowOffset;
-    int _bgCount;
+    NSDictionary *_perScreenOptions;
     unsigned long long _activeRemoteViewCount;
     unsigned long long _windowLevelCount;
     double _windowLevelStack[5];
 }
 
++ (_Bool)_isSystemWindow;
 + (void)lowerTextEffectsWindowsForHideNotificationCenter;
 + (void)raiseTextEffectsWindowsForShowNotificationCenter;
-+ (void)_releaseSharedInstances;
-+ (id)sharedTextEffectsWindowAboveStatusBarForScreen:(id)arg1;
++ (void)releaseSharedInstances;
 + (id)sharedTextEffectsWindowAboveStatusBar;
 + (id)sharedTextEffectsWindowForScreen:(id)arg1;
-+ (id)sharedTextEffectsWindow:(_Bool)arg1;
 + (id)sharedTextEffectsWindow;
-+ (id)_sharedTextEffectsWindowforScreen:(id)arg1 aboveStatusBar:(_Bool)arg2 matchesStatusBarOrientationOnAccess:(_Bool)arg3;
-+ (id)preferredTextEffectsWindowAboveStatusBar;
-+ (id)preferredTextEffectsWindow;
++ (id)_sharedTextEffectsWindowforScreen:(id)arg1 aboveStatusBar:(_Bool)arg2 allowHosted:(_Bool)arg3 matchesStatusBarOrientationOnAccess:(_Bool)arg4;
 @property(nonatomic) struct CGPoint hostedWindowOffset; // @synthesize hostedWindowOffset=_hostedWindowOffset;
 @property(nonatomic) double defaultWindowLevel; // @synthesize defaultWindowLevel=_defaultWindowLevel;
-@property(nonatomic) _Bool nonServiceHosted; // @synthesize nonServiceHosted=_nonServiceHosted;
+- (void)_handleStatusBarOrientationChange:(id)arg1;
+- (_Bool)_shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;
+- (_Bool)_shouldParticipateInVirtualResizing;
 - (_Bool)_isTextEffectsWindow;
 - (_Bool)_shouldTintStatusBar;
 - (_Bool)_canAffectStatusBarAppearance;
 - (_Bool)isInternalWindow;
-- (id)aboveStatusBar;
-- (void)_applicationDidFinishLaunching:(id)arg1;
-- (_Bool)_usesWindowServerHitTesting;
+- (struct CGRect)_sceneBounds;
+- (struct CGRect)_sceneReferenceBounds;
+- (_Bool)_shouldResizeWithScene;
+- (id)nonHostedWindow;
+- (id)aboveStatusBarWindow;
 - (long long)interfaceOrientation;
-- (void)matchDeviceOrientation;
+- (void)_matchDeviceOrientation;
 - (void)updateSubviewOrdering;
 - (void)resetTransform;
 - (void)updateForOrientation:(long long)arg1;
@@ -72,17 +73,25 @@
 @property(readonly, nonatomic) struct CGRect hostedFrame;
 - (void)_updateTransformLayerForClassicPresentation;
 - (_Bool)_disableViewScaling;
-- (void)setTransform:(struct CGAffineTransform)arg1;
-- (void)setKeepContextInBackground:(_Bool)arg1;
-- (_Bool)_isWindowServerHostingManaged;
+- (void)_configureContextOptions:(id)arg1;
 - (void)_restoreWindowLevel;
 - (void)_setWindowLevel:(double)arg1;
 @property(readonly) unsigned int contextID;
+@property(nonatomic) _Bool useHostedInstance;
+- (void)applicationWindowRotated:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+@property(readonly) NSDictionary *_options;
 @property(readonly) UIScreen *_intendedScreen;
 - (_Bool)_matchingOptions:(id)arg1;
 - (id)_initWithScreen:(id)arg1 options:(id)arg2;
+- (id)_basicInitWithScreen:(id)arg1 options:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

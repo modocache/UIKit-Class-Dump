@@ -6,26 +6,29 @@
 
 #import "NSObject.h"
 
-@class UIKeyboard, UIResponder, UIView;
+@class UIInputViewController, UIKeyboard, UIResponder, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewSet : NSObject
 {
     UIView *_inputView;
     UIView *_inputAccessoryView;
-    _Bool _isKeyboard;
-    _Bool _supportsSplit;
     _Bool _isSplit;
     double _splitHeightDelta;
     UIResponder *_restorableResponder;
+    _Bool _restoreUsingBecomeFirstResponder;
+    UIInputViewController *_inputViewController;
+    UIInputViewController *_accessoryViewController;
 }
 
 + (id)emptyInputSet;
++ (id)inputSetWithPlaceholderAndAccessoryView:(id)arg1;
 + (id)inputSetWithKeyboardAndAccessoryView:(id)arg1;
 + (id)inputSetWithInputView:(id)arg1 accessoryView:(id)arg2;
 @property(nonatomic) UIResponder *restorableResponder; // @synthesize restorableResponder=_restorableResponder;
 @property(nonatomic) double splitHeightDelta; // @synthesize splitHeightDelta=_splitHeightDelta;
-@property(readonly, nonatomic) _Bool supportsSplit; // @synthesize supportsSplit=_supportsSplit;
+@property(retain, nonatomic) UIInputViewController *accessoryViewController; // @synthesize accessoryViewController=_accessoryViewController;
+@property(retain, nonatomic) UIInputViewController *inputViewController; // @synthesize inputViewController=_inputViewController;
 @property(retain, nonatomic) UIView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
 @property(retain, nonatomic) UIView *inputView; // @synthesize inputView=_inputView;
 - (void)_setSplitProgress:(double)arg1;
@@ -34,13 +37,17 @@ __attribute__((visibility("hidden")))
 - (_Bool)_accessorySuppressesShadow;
 - (id)_splittableInputAccessoryView;
 - (id)_themableInputAccessoryView;
+- (_Bool)setAccessoryViewVisible:(_Bool)arg1 delay:(double)arg2;
 - (void)refreshPresentation;
 - (struct CGRect)_rightInputViewSetFrame;
 - (struct CGRect)_leftInputViewSetFrame;
 @property(readonly, nonatomic) struct CGRect inputAccessoryViewBounds;
 @property(readonly, nonatomic) struct CGRect inputViewBounds;
-- (_Bool)_inputViewIsSplit;
+@property(readonly, nonatomic) _Bool _inputViewIsSplit;
 @property(readonly, nonatomic) _Bool isSplit; // @synthesize isSplit=_isSplit;
+@property(readonly, nonatomic) _Bool supportsSplit;
+@property(readonly, nonatomic) _Bool isInputAccessoryViewPlaceholder;
+@property(readonly, nonatomic) _Bool isInputViewPlaceholder;
 @property(readonly, nonatomic) _Bool inputViewKeyboardCanSplit;
 - (_Bool)_inputViewSetSupportsSplit;
 - (_Bool)_inputAccessoryViewSupportsSplit;
@@ -57,11 +64,15 @@ __attribute__((visibility("hidden")))
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)containsView:(id)arg1;
 @property(readonly, nonatomic, getter=isEmpty) _Bool empty;
+@property(nonatomic) _Bool restoreUsingBecomeFirstResponder;
+@property(readonly, nonatomic) UIView *splitExemptSubview;
 @property(readonly, nonatomic) UIView *layeringView;
 - (void)_setRenderConfig:(id)arg1;
+- (id)inputSetWithInputAccessoryViewOnly;
 - (void)dealloc;
 - (id)initWithInputView:(id)arg1 accessoryView:(id)arg2 isKeyboard:(_Bool)arg3;
 @property(readonly, nonatomic) UIKeyboard *keyboard;
+- (_Bool)_isKeyboard;
 - (_Bool)canAnimateToInputViewSet:(id)arg1;
 
 @end

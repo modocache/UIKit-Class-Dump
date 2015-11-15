@@ -8,22 +8,27 @@
 
 #import "PKPrinterBrowserDelegate.h"
 
-@class NSArray, NSMutableArray, PKPrinter, PKPrinterBrowser, UIPrintPanelViewController, UIPrinterSearchingView;
+@class NSArray, NSMutableArray, NSString, PKPrinter, PKPrinterBrowser, UIPrinterSearchingView;
 
 __attribute__((visibility("hidden")))
 @interface UIPrinterBrowserViewController : UITableViewController <PKPrinterBrowserDelegate>
 {
-    UIPrintPanelViewController *_printPanelViewController;
+    id <UIPrinterBrowserOwner> _ownerPanelViewController;
     PKPrinterBrowser *_printerBrowser;
     NSMutableArray *_preferredPrinters;
     NSMutableArray *_otherPrinters;
+    NSMutableArray *_filteredOutPrinters;
     NSArray *_lastUsedPrinters;
     PKPrinter *_lockedPrinter;
     _Bool _loaded;
     UIPrinterSearchingView *_searchingView;
     _Bool _clearCurrentPrinter;
+    _Bool _shouldFilterPrinters;
+    double _maximumPopoverHeight;
 }
 
+@property double maximumPopoverHeight; // @synthesize maximumPopoverHeight=_maximumPopoverHeight;
+- (void)showCancelButton;
 - (void)removePrinter:(id)arg1 moreGoing:(_Bool)arg2;
 - (void)addPrinter:(id)arg1 moreComing:(_Bool)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -45,7 +50,13 @@ __attribute__((visibility("hidden")))
 - (void)adjustPopoverSize;
 - (void)selectPrinter:(id)arg1;
 - (void)dealloc;
-- (id)initWithPrintPanelViewController:(id)arg1;
+- (id)initWithOwnerViewController:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

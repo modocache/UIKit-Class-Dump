@@ -85,6 +85,7 @@
 - (double)_chevronHeightWithMaxOffset;
 - (double)_chevronWidthWithPaddingCompression:(double)arg1;
 - (double)_chevronWidthWithPadding;
+- (struct CGSize)_labelSizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)_updateHighlight;
 - (id)_highlightColor;

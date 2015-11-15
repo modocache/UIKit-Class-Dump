@@ -8,6 +8,8 @@
 
 #import "UIKeyboardCandidateViewInline.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateView_iPhone_Floating : UIKeyboardCandidateView_iPhone <UIKeyboardCandidateViewInline>
 {
@@ -23,6 +25,12 @@ __attribute__((visibility("hidden")))
 - (void)setCandidateViewExtended:(_Bool)arg1;
 - (unsigned long long)_numberOfColumns:(_Bool)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIKeyboardScheduledTask : NSObject
 {
     CDUnknownBlockType _task;
+    double _timeInterval;
     UIKeyboardTaskQueue *_taskQueue;
     NSTimer *_timer;
     _UIActionWhenIdle *_deferredAction;
@@ -22,13 +23,14 @@ __attribute__((visibility("hidden")))
 @property(retain, nonatomic) _UIActionWhenIdle *deferredAction; // @synthesize deferredAction=_deferredAction;
 @property(retain, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 @property(readonly, nonatomic) UIKeyboardTaskQueue *taskQueue; // @synthesize taskQueue=_taskQueue;
+@property(readonly, nonatomic) double timeInterval; // @synthesize timeInterval=_timeInterval;
 @property(readonly, nonatomic) CDUnknownBlockType task; // @synthesize task=_task;
+- (void)resetTimer;
 - (void)invalidate;
 - (_Bool)isValid;
 - (void)handleDeferredTimerFiredEvent;
 - (void)timerFired:(id)arg1;
 @property(readonly, nonatomic) _Bool repeats;
-@property(readonly, nonatomic) double timeInterval;
 - (id)initWithTaskQueue:(id)arg1 timeInterval:(double)arg2 repeats:(_Bool)arg3 task:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 

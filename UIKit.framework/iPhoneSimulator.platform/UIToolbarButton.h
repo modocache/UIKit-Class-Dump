@@ -8,7 +8,6 @@
 
 @class UIColor, UILabel, UIToolbarButtonBadge, UIView, _UIPressedIndicatorView;
 
-__attribute__((visibility("hidden")))
 @interface UIToolbarButton : UIControl
 {
     struct CGRect _hitRect;
@@ -32,10 +31,12 @@ __attribute__((visibility("hidden")))
     id _appearanceStorage;
     _Bool _isInTopBar;
     Class _appearanceGuideClass;
+    struct UIEdgeInsets __additionalSelectionInsets;
 }
 
 + (id)_defaultLabelColor;
 + (id)_defaultLabelFont;
+@property(nonatomic, setter=_setAdditionalSelectionInsets:) struct UIEdgeInsets _additionalSelectionInsets; // @synthesize _additionalSelectionInsets=__additionalSelectionInsets;
 @property(nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
 @property(nonatomic, getter=isAnimatedTrashButton) _Bool animatedTrashButton; // @synthesize animatedTrashButton=_isAnimatedTrashButton;
 - (void)_applyBarButtonAppearanceStorage:(id)arg1 withTaggedSelectors:(id)arg2;
@@ -120,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_showsAccessibilityBackgroundWhenEnabled;
 - (void)_setWantsBlendModeForAccessibilityBackgrounds:(_Bool)arg1;
 - (void)_setWantsLetterpressContent;
+- (_Bool)gestureRecognizerShouldBegin:(id)arg1;
 - (void)dealloc;
 - (id)initWithImage:(id)arg1 pressedImage:(id)arg2 label:(id)arg3 labelHeight:(float)arg4 withBarStyle:(long long)arg5 withStyle:(long long)arg6 withInsets:(struct UIEdgeInsets)arg7 possibleTitles:(id)arg8 possibleSystemItems:(id)arg9 withToolbarTintColor:(id)arg10 bezel:(_Bool)arg11 imageInsets:(struct UIEdgeInsets)arg12 glowInsets:(struct UIEdgeInsets)arg13 landscape:(_Bool)arg14;
 - (id)_newButton;

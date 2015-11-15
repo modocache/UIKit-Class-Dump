@@ -11,6 +11,7 @@
 @protocol _EditScriptData <NSObject>
 + (id <_EditScriptData>)EditScriptDataWithArray:(NSArray *)arg1;
 + (id <_EditScriptData>)EditScriptDataWithString:(NSString *)arg1 chunkSize:(long long)arg2;
+- (long long)indexOfFirstDifferenceWithOtherData:(id <_EditScriptData>)arg1 shouldReverseIterate:(_Bool)arg2;
 - (long long)characterIndexForItem:(long long)arg1;
 - (long long)lengthOfItem:(long long)arg1;
 - (NSString *)stringValue;

@@ -8,7 +8,7 @@
 
 #import "_UIBarPositioningInternal.h"
 
-@class NSMutableDictionary, UIColor, UIImage;
+@class NSMutableDictionary, NSString, UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface UISearchBarBackground : _UIBarBackgroundImageView <_UIBarPositioningInternal>
@@ -47,6 +47,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (long long)_barPosition;
 - (void)_setBarPosition:(long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

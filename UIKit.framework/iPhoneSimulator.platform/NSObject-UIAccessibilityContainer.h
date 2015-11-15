@@ -6,7 +6,10 @@
 
 #import "NSObject.h"
 
+@class NSArray;
+
 @interface NSObject (UIAccessibilityContainer)
+@property(retain, nonatomic) NSArray *accessibilityElements;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;

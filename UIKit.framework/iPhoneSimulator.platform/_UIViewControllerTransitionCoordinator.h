@@ -8,7 +8,7 @@
 
 #import "UIViewControllerTransitionCoordinator.h"
 
-@class NSMutableArray, _UIViewControllerTransitionContext;
+@class NSMutableArray, NSString, _UIViewControllerTransitionContext;
 
 __attribute__((visibility("hidden")))
 @interface _UIViewControllerTransitionCoordinator : NSObject <UIViewControllerTransitionCoordinator>
@@ -33,7 +33,11 @@ __attribute__((visibility("hidden")))
 - (id)_alongsideCompletions:(_Bool)arg1;
 - (id)_alongsideAnimations:(_Bool)arg1;
 - (id)_interactiveChangeHandlers:(_Bool)arg1;
+- (struct CGAffineTransform)targetTransform;
+- (struct CGAffineTransform)affineTransform;
+- (_Bool)isRotating;
 - (id)containerView;
+- (id)viewForKey:(id)arg1;
 - (id)viewControllerForKey:(id)arg1;
 - (double)transitionDuration;
 - (long long)completionCurve;
@@ -47,6 +51,12 @@ __attribute__((visibility("hidden")))
 - (_Bool)isAnimated;
 - (void)dealloc;
 - (id)initWithMainContext:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -15,8 +15,8 @@
 + (id)_defaultPaperForOutputType:(long long)arg1;
 + (id)_defaultPaperListForOutputType:(long long)arg1;
 + (id)_defaultPKPaperForOuptutType:(long long)arg1;
-+ (id)_paperListForPrinter:(id)arg1 withDuplexMode:(long long)arg2;
 + (id)_readyPaperListForPrinter:(id)arg1 withDuplexMode:(long long)arg2 forContentType:(long long)arg3 contentSize:(struct CGSize)arg4;
++ (id)bestPaperForPageSize:(struct CGSize)arg1 andContentType:(long long)arg2 withPapersFromArray:(id)arg3;
 + (id)bestPaperForPageSize:(struct CGSize)arg1 withPapersFromArray:(id)arg2;
 - (int)_paperOrientation;
 - (void)_setPaperOrientation:(int)arg1;

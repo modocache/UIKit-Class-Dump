@@ -10,18 +10,20 @@
 
 @interface UIPrintInteractionController : NSObject
 {
+    _Bool _hidesNumberOfCopies;
+    CDUnknownBlockType _completionHandler;
+    unsigned long long _backgroundTaskIdentifier;
+    id _printState;
+    _Bool _showsPageRange;
+    _Bool _showsPaperSelectionForLoadedPapers;
     UIPrintInfo *_printInfo;
     id <UIPrintInteractionControllerDelegate> _delegate;
-    _Bool _showsPageRange;
-    _Bool _hidesNumberOfCopies;
+    UIPrintPaper *_printPaper;
     UIPrintPageRenderer *_printPageRenderer;
     UIPrintFormatter *_printFormatter;
     id _printingItem;
     NSArray *_printingItems;
-    UIPrintPaper *_printPaper;
-    CDUnknownBlockType _completionHandler;
-    unsigned long long _backgroundTaskIdentifier;
-    id _printState;
+    id <UIPrintInteractionControllerDelegate> _printActivityDelegate;
 }
 
 + (id)sharedPrintController;
@@ -29,11 +31,13 @@
 + (_Bool)canPrintURL:(id)arg1;
 + (id)printableUTIs;
 + (_Bool)isPrintingAvailable;
+@property(nonatomic) id <UIPrintInteractionControllerDelegate> printActivityDelegate; // @synthesize printActivityDelegate=_printActivityDelegate;
 @property(copy, nonatomic) NSArray *printingItems; // @synthesize printingItems=_printingItems;
 @property(copy, nonatomic) id printingItem; // @synthesize printingItem=_printingItem;
 @property(retain, nonatomic) UIPrintFormatter *printFormatter; // @synthesize printFormatter=_printFormatter;
 @property(retain, nonatomic) UIPrintPageRenderer *printPageRenderer; // @synthesize printPageRenderer=_printPageRenderer;
 @property(readonly, nonatomic) UIPrintPaper *printPaper; // @synthesize printPaper=_printPaper;
+@property(nonatomic) _Bool showsPaperSelectionForLoadedPapers; // @synthesize showsPaperSelectionForLoadedPapers=_showsPaperSelectionForLoadedPapers;
 @property(nonatomic) _Bool showsPageRange; // @synthesize showsPageRange=_showsPageRange;
 @property(nonatomic) id <UIPrintInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property(retain, nonatomic) UIPrintInfo *printInfo; // @synthesize printInfo=_printInfo;
@@ -65,6 +69,7 @@
 - (id)_currentPrintInfo;
 - (void)_cleanPrintState;
 - (void)dismissAnimated:(_Bool)arg1;
+- (_Bool)printToPrinter:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (_Bool)presentFromBarButtonItem:(id)arg1 animated:(_Bool)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (_Bool)presentFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(_Bool)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (_Bool)presentAnimated:(_Bool)arg1 completionHandler:(CDUnknownBlockType)arg2;

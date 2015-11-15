@@ -6,40 +6,35 @@
 
 #import "NSObject.h"
 
-@class NSMutableArray;
+#import "NSCopying.h"
 
 __attribute__((visibility("hidden")))
-@interface UIInputViewAnimationStyle : NSObject
+@interface UIInputViewAnimationStyle : NSObject <NSCopying>
 {
     _Bool animated;
     double duration;
-    int outDirection;
     unsigned long long extraOptions;
-    _Bool persistUntilComplete;
-    _Bool ignoreNewAnimations;
-    NSMutableArray *extraViews;
-    _Bool placeholderKeyboard;
+    _Bool interactivelyCancelled;
     _Bool force;
 }
 
-+ (id)animationStyleAnimated:(_Bool)arg1 duration:(double)arg2 outDirection:(int)arg3;
++ (id)animationStyleAnimated:(_Bool)arg1 duration:(double)arg2;
 + (id)animationStyleDefault;
 + (id)animationStyleImmediate;
-@property(nonatomic) _Bool placeholderKeyboard; // @synthesize placeholderKeyboard;
-@property(retain, nonatomic) NSMutableArray *extraViews; // @synthesize extraViews;
-@property(nonatomic) _Bool ignoreNewAnimations; // @synthesize ignoreNewAnimations;
-@property(nonatomic) _Bool persistUntilComplete; // @synthesize persistUntilComplete;
+@property(nonatomic) _Bool interactivelyCancelled; // @synthesize interactivelyCancelled;
 @property(nonatomic) unsigned long long extraOptions; // @synthesize extraOptions;
 @property(nonatomic) _Bool force; // @synthesize force;
-@property(nonatomic) int outDirection; // @synthesize outDirection;
 @property(nonatomic) double duration; // @synthesize duration;
 @property(nonatomic) _Bool animated; // @synthesize animated;
+@property(readonly, nonatomic) _Bool canDismissWithScrollView;
+- (id)endPlacementForInputViewSet:(id)arg1;
+- (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2;
+- (id)controllerForStartPlacement:(id)arg1 endPlacement:(id)arg2;
 - (void)launchAnimation:(CDUnknownBlockType)arg1 afterStarted:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3 forHost:(id)arg4 fromCurrentPosition:(_Bool)arg5;
-@property(readonly, nonatomic) _Bool useCustomTransition;
 @property(readonly, nonatomic) _Bool isAnimationCompleted;
 - (id)description;
 - (_Bool)isEqual:(id)arg1;
-- (void)dealloc;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

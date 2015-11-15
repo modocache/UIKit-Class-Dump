@@ -18,8 +18,14 @@
     _Bool _cornersHidden;
 }
 
++ (_Bool)_isSystemWindow;
 + (struct CGRect)statusBarWindowFrame;
++ (struct CGRect)_defaultStatusBarSceneBounds;
++ (struct CGRect)_defaultStatusBarSceneBoundsForOrientation:(long long)arg1;
++ (struct CGRect)_defaultStatusBarSceneReferenceBounds;
 + (_Bool)isIncludedInClassicJail;
+- (struct CGRect)_sceneReferenceBounds;
+- (struct CGRect)_sceneBounds;
 - (_Bool)_canActAsKeyWindowForScreen:(id)arg1;
 - (_Bool)_shouldZoom;
 - (void)_updateTransformLayerForClassicPresentation;
@@ -35,6 +41,7 @@
 - (void)setStatusBar:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGRect)statusBarWindowFrame;
 
 @end
 

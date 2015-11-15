@@ -31,7 +31,9 @@
 - (void)scaleIfNeeded:(double)arg1 onlyYAxis:(_Bool)arg2;
 - (struct CGRect)_scaleRect:(struct CGRect)arg1 inYAxis:(_Bool)arg2;
 - (void)scaleWidth:(double)arg1;
-- (void)addRectFrom:(id)arg1 widthFraction:(double)arg2 adjustOriginFactor:(double)arg3;
+- (void)addRectFrom:(id)arg1 mergeActionFactors:(id)arg2;
+- (void)addRectFrom:(id)arg1 widthFraction:(double)arg2 heightFraction:(double)arg3 adjustOriginXFactor:(double)arg4 adjustOriginYFactor:(double)arg5 absoluteOriginFactors:(_Bool)arg6;
+- (void)addRectFrom:(id)arg1 widthFraction:(double)arg2 heightFraction:(double)arg3 adjustOriginXFactor:(double)arg4 adjustOriginYFactor:(double)arg5;
 - (void)addRectFrom:(id)arg1;
 - (id)description;
 - (_Bool)shouldUseGeometry;

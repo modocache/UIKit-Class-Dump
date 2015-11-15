@@ -17,14 +17,18 @@ __attribute__((visibility("hidden")))
     _Bool _usesInnerShadow;
     _Bool _shadowViewsInstalled;
     UIView *_shadowView;
+    _Bool _forwardMoveToWindowCallbacks;
 }
 
+@property(nonatomic) _Bool forwardMoveToWindowCallbacks; // @synthesize forwardMoveToWindowCallbacks=_forwardMoveToWindowCallbacks;
 @property(nonatomic) _Bool usesInnerShadow; // @synthesize usesInnerShadow=_usesInnerShadow;
 @property(nonatomic) _Bool usesRoundedCorners; // @synthesize usesRoundedCorners=_usesRoundedCorners;
 - (void)dealloc;
 - (void)addSubview:(id)arg1;
 - (void)_tearDownShadowViews;
 - (void)_installShadowViews;
+- (void)didMoveToWindow;
+- (void)willMoveToWindow:(id)arg1;
 - (void)layoutSubviews;
 @property(nonatomic) id delegate;
 - (void)setBounds:(struct CGRect)arg1;

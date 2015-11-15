@@ -13,14 +13,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property(retain, nonatomic) NSNumber *overrideHeight; // @dynamic overrideHeight;
+@property(retain, nonatomic) UIColor *foregroundColor; // @dynamic foregroundColor;
+@property(nonatomic) long long legibilityStyle; // @dynamic legibilityStyle;
+@property(nonatomic, getter=isLegacy) _Bool legacy; // @dynamic legacy;
+@property(nonatomic) long long style; // @dynamic style;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-
-// Remaining properties
-@property(retain, nonatomic) UIColor *foregroundColor;
-@property(nonatomic, getter=isLegacy) _Bool legacy;
-@property(nonatomic) long long legibilityStyle;
-@property(retain, nonatomic) NSNumber *overrideHeight;
-@property(nonatomic) long long style;
 
 @end
 

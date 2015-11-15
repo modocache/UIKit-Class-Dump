@@ -27,7 +27,6 @@
     _Bool _usesContentView;
     _Bool _usesDarkeningTintView;
     _Bool _appliesTintAndBlurSettings;
-    UIColor *_combinedTintColor;
     _UIBackdropView *_backdrop;
     long long _style;
     long long _graphicsQuality;
@@ -57,6 +56,7 @@
     double _filterMaskAlpha;
     UIImage *_filterMaskImage;
     UIColor *_legibleColor;
+    UIColor *_combinedTintColor;
     double _scale;
     double _statisticsInterval;
     unsigned long long _version;
@@ -82,6 +82,7 @@
 @property(nonatomic) unsigned long long version; // @synthesize version=_version;
 @property(nonatomic) double statisticsInterval; // @synthesize statisticsInterval=_statisticsInterval;
 @property(nonatomic) double scale; // @synthesize scale=_scale;
+@property(retain, nonatomic) UIColor *combinedTintColor; // @synthesize combinedTintColor=_combinedTintColor;
 @property(retain, nonatomic) UIColor *legibleColor; // @synthesize legibleColor=_legibleColor;
 @property(retain, nonatomic) UIImage *filterMaskImage; // @synthesize filterMaskImage=_filterMaskImage;
 @property(nonatomic) double filterMaskAlpha; // @synthesize filterMaskAlpha=_filterMaskAlpha;
@@ -121,7 +122,6 @@
 @property(nonatomic) long long style; // @synthesize style=_style;
 @property(nonatomic) _UIBackdropView *backdrop; // @synthesize backdrop=_backdrop;
 - (id)description;
-@property(retain, nonatomic) UIColor *combinedTintColor; // @synthesize combinedTintColor=_combinedTintColor;
 - (void)computeOutputSettingsUsingModel:(id)arg1;
 @property(nonatomic) _Bool blursWithHardEdges; // @dynamic blursWithHardEdges;
 - (void)scheduleSettingsDidChangeIfNeeded;

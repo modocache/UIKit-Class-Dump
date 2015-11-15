@@ -46,7 +46,10 @@
     NSString *__backdropGroupName;
 }
 
++ (_Bool)_shouldSendLegacyMethodsFromViewWillTransitionToSize;
++ (_Bool)_shouldForwardViewWillTransitionToSize;
 + (Class)_moreNavigationControllerClass;
++ (_Bool)_directlySetsContentOverlayInsetsForChildren;
 + (_Bool)doesOverrideSupportedInterfaceOrientations;
 + (_Bool)doesOverridePreferredInterfaceOrientationForPresentation;
 @property(retain, nonatomic, getter=_backdropGroupName, setter=_setBackdropGroupName:) NSString *_backdropGroupName; // @synthesize _backdropGroupName=__backdropGroupName;
@@ -61,6 +64,7 @@
 - (void)willAnimateSecondHalfOfRotationFromInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)didAnimateFirstHalfOfRotationToInterfaceOrientation:(long long)arg1;
 - (void)willAnimateFirstHalfOfRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)_getRotationContentSettings:(CDStruct_010f855d *)arg1;
@@ -90,6 +94,7 @@
 - (struct CGRect)_frameForWrapperViewForViewController:(id)arg1;
 - (id)transitionCoordinator;
 - (struct CGRect)_frameForViewController:(id)arg1;
+- (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(_Bool *)arg2;
 - (void)_updateLayoutForStatusBarAndInterfaceOrientation;
 - (id)_transitionView;
 - (void)transitionFromViewController:(id)arg1 toViewController:(id)arg2;
@@ -125,6 +130,7 @@
 - (void)_setSelectedViewController:(id)arg1;
 @property(nonatomic) UIViewController *selectedViewController;
 @property(nonatomic) unsigned long long selectedIndex;
+- (id)_viewControllerForSelectAtIndex:(unsigned long long)arg1;
 - (_Bool)_allowSelectionWithinMoreList;
 - (id)_selectedViewControllerInTabBar;
 - (void)setViewControllers:(id)arg1 animated:(_Bool)arg2;
@@ -137,11 +143,13 @@
 - (void)_performSelectGesture:(id)arg1;
 - (void)_performBackGesture:(id)arg1;
 - (_Bool)_gestureRecognizerShouldBegin:(id)arg1;
+- (void)_updateLayoutForTraitCollection:(id)arg1;
 - (void)_willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (_Bool)_reallyWantsFullScreenLayout;
 - (void)updateTabBarItemForViewController:(id)arg1;
 - (void)_setSelectedTabBarItem:(id)arg1;
 - (void)purgeMemoryForReason:(int)arg1;
+- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;
 - (void)viewDidAppear:(_Bool)arg1;
@@ -169,6 +177,13 @@
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (_Bool)_ignoreUnselectedTabsForStateRestoration;
 - (id)_allContainedViewControllers;
+- (id)_additionalViewControllersToCheckForUserActivity;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

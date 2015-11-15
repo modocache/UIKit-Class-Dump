@@ -9,6 +9,7 @@
 @class NSString, UIBezierPath;
 
 @interface NSObject (UIAccessibility)
+@property(nonatomic) long long accessibilityNavigationStyle;
 @property(nonatomic) _Bool shouldGroupAccessibilityChildren; // @dynamic shouldGroupAccessibilityChildren;
 - (void)setAccessibilityIdentifier:(id)arg1;
 @property(retain, nonatomic) NSString *accessibilityLanguage; // @dynamic accessibilityLanguage;
@@ -29,6 +30,7 @@
 - (id)storedAccessibilityTraits;
 - (id)storedAccessibilityViewIsModal;
 - (id)storedAccessibilityElementsHidden;
+- (id)storedAccessibilityNavigationStyle;
 - (id)storedShouldGroupAccessibilityChildren;
 - (id)accessibilityIdentifier;
 - (id)accessibilityContainer;

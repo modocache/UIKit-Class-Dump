@@ -45,13 +45,13 @@
 - (void)beginGeneratingDeviceOrientationNotifications;
 @property(readonly, nonatomic) long long orientation;
 - (void)setOrientation:(long long)arg1 animated:(_Bool)arg2;
-@property(readonly, nonatomic) NSUUID *identifierForVendor;
-@property(readonly, nonatomic) NSString *buildVersion;
-@property(readonly, nonatomic) NSString *systemVersion;
-@property(readonly, nonatomic) NSString *systemName;
-@property(readonly, nonatomic) NSString *localizedModel;
-@property(readonly, nonatomic) NSString *model;
-@property(readonly, nonatomic) NSString *name;
+@property(readonly, retain, nonatomic) NSUUID *identifierForVendor;
+@property(readonly, retain, nonatomic) NSString *buildVersion;
+@property(readonly, retain, nonatomic) NSString *systemVersion;
+@property(readonly, retain, nonatomic) NSString *systemName;
+@property(readonly, retain, nonatomic) NSString *localizedModel;
+@property(readonly, retain, nonatomic) NSString *model;
+@property(readonly, retain, nonatomic) NSString *name;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
 - (void)_setActiveUserInterfaceIdiom:(long long)arg1;
 - (void)_enableDeviceOrientationEvents:(_Bool)arg1;
@@ -63,6 +63,7 @@
 - (void)_setBatteryLevel:(float)arg1;
 - (void)_setBatteryState:(long long)arg1;
 - (void)_setProximityState:(_Bool)arg1;
+- (long long)_predictionGraphicsQuality;
 - (long long)_keyboardGraphicsQuality;
 
 @end

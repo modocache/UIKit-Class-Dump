@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (void)setupLayoutSegments;
 - (double)controlColumnWidthFactor;
-- (double)interkeyGapsCenterXOfKeyplaneFrame:(struct CGRect)arg1;
-- (struct UIEdgeInsets)topEdgeAdjustmentInsets;
 - (struct CGPoint)dictationKeyTextOffset;
 - (struct CGPoint)globeKeyTextOffset;
 - (id)muttitapReverseKeyImageName;

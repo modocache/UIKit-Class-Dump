@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (_Bool)supportsSecureCoding;
+- (_Bool)isEqual:(id)arg1;
 - (id)_resizableImageWithCapMask:(int)arg1;
 - (_Bool)_isTiledWhenStretchedToSize:(struct CGSize)arg1;
 - (void)_setAlwaysStretches:(_Bool)arg1;
@@ -31,8 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithImage:(id)arg1 capInsets:(struct UIEdgeInsets)arg2;
-- (id)_initWithOtherImage:(id)arg1;
-- (void)_configureFromImage:(id)arg1;
+- (void)_configureImage:(id)arg1;
 - (_Bool)_suppressesAccessibilityHairlineThickening;
 
 @end

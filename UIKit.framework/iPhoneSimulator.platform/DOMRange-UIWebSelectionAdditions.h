@@ -8,6 +8,8 @@
 
 #import "UIWebSelectionBlock.h"
 
+@class NSString;
+
 @interface DOMRange (UIWebSelectionAdditions) <UIWebSelectionBlock>
 - (id)enclosingDocument;
 - (id)rangeOfContents;
@@ -26,5 +28,11 @@
 - (struct CGRect)boundingRect;
 - (id)webFrame;
 - (void)unionWithRange:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 @end
 

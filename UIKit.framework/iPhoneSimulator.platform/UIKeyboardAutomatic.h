@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool receivedCandidatesInCurrentInputMode; // @synthesize receivedCandidatesInCurrentInputMode;
 @property(nonatomic) _Bool showsCandidateInline; // @synthesize showsCandidateInline;
 @property(nonatomic) _Bool showsCandidateBar; // @synthesize showsCandidateBar;
-- (void)setOrientation:(long long)arg1;
 - (void)activate;
 - (_Bool)_isAutomaticKeyboard;
 - (void)didSuspend:(id)arg1;

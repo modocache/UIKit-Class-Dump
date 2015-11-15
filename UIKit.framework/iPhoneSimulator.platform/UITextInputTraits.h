@@ -10,7 +10,7 @@
 #import "UITextInputTraits.h"
 #import "UITextInputTraits_Private.h"
 
-@class UIColor, UIImage;
+@class NSString, UIColor, UIImage;
 
 @interface UITextInputTraits : NSObject <UITextInputTraits, UITextInputTraits_Private, NSCopying>
 {
@@ -46,12 +46,18 @@
     _Bool useInterfaceLanguageForLocalization;
     _Bool deferBecomingResponder;
     _Bool enablesReturnKeyOnNonWhiteSpaceContent;
+    NSString *autocorrectionContext;
+    NSString *responseContext;
+    _Bool disablePrediction;
 }
 
 + (_Bool)keyboardTypeRequiresASCIICapable:(long long)arg1;
 + (id)traitsByAdoptingTraits:(id)arg1;
 + (id)defaultTextInputTraits;
 + (long long)accessibleAppearanceForAppearance:(long long)arg1;
+@property(nonatomic) _Bool disablePrediction; // @synthesize disablePrediction;
+@property(copy, nonatomic) NSString *responseContext; // @synthesize responseContext;
+@property(copy, nonatomic) NSString *autocorrectionContext; // @synthesize autocorrectionContext;
 @property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent; // @synthesize enablesReturnKeyOnNonWhiteSpaceContent;
 @property(nonatomic) _Bool deferBecomingResponder; // @synthesize deferBecomingResponder;
 @property(nonatomic) _Bool useInterfaceLanguageForLocalization; // @synthesize useInterfaceLanguageForLocalization;
@@ -84,7 +90,7 @@
 @property(nonatomic) long long autocapitalizationType; // @synthesize autocapitalizationType;
 - (_Bool)isEqual:(id)arg1;
 - (_Bool)publicTraitsMatchTraits:(id)arg1;
-- (id)description;
+@property(readonly, copy) NSString *description;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)takeTraitsFrom:(id)arg1;
 - (void)setToDefaultValues;
@@ -95,6 +101,11 @@
 - (id)dictionaryRepresentation;
 - (void)setToSecureValues;
 - (void)_setColorsToMatchTintColor:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -17,7 +17,9 @@
 - (void)_didRemoveSubview:(id)arg1;
 - (void)updateForOrientation:(long long)arg1;
 - (void)dealloc;
+- (id)_initWithFrame:(struct CGRect)arg1 attached:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)commonInit;
 
 @end
 

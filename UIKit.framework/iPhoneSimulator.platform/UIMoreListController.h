@@ -9,7 +9,7 @@
 #import "UITableViewDataSource.h"
 #import "UITableViewDelegate.h"
 
-@class NSArray, UIBarButtonItem, UIMoreListCellLayoutManager, UITableView;
+@class NSArray, NSString, UIBarButtonItem, UIMoreListCellLayoutManager, UITableView;
 
 @interface UIMoreListController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
@@ -45,6 +45,12 @@
 - (id)table;
 - (void)dealloc;
 - (id)init;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

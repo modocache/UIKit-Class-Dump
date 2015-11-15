@@ -12,10 +12,13 @@
 
 @interface DOMNode (UITextInput_Internal) <UITextInput_Internal>
 - (id)_selectableText;
+- (_Bool)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(id)arg2 checkAutocorrection:(_Bool)arg3;
 - (void)_phraseBoundaryGesture:(id)arg1;
 - (id)_newPhraseBoundaryGestureRecognizer;
 - (void)_unmarkText;
 - (void)_setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (_Bool)_hasMarkedText;
+- (_Bool)_usesAsynchronousProtocol;
 - (void)_setGestureRecognizers;
 - (long long)_selectionAffinity;
 - (void)_setSelectedTextRange:(id)arg1 withAffinityDownstream:(_Bool)arg2;

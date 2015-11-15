@@ -6,7 +6,7 @@
 
 #import <UIKit/UIWebTiledView.h>
 
-#import "UIActionSheetDelegate.h"
+#import "DDDetectionControllerInteractionDelegate.h"
 #import "UIAutoscrollContainer.h"
 #import "UIGestureRecognizerDelegate.h"
 #import "UIKeyInput.h"
@@ -16,15 +16,14 @@
 #import "UITextInputPrivate.h"
 #import "UITextInputTokenizer.h"
 #import "UIWebFileUploadPanelDelegate.h"
-#import "_UIRotatingActionSheetDelegate.h"
+#import "_UIRotatingAlertControllerDelegate.h"
 #import "_UIWebDoubleTapDelegate.h"
 
-@class CALayer, DOMElement, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSTimer, UIAutoscroll, UIColor, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer, UITextChecker, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebRotatingSheet, UIWebSelectionAssistant, WebHistoryItem, WebThreadSafeUndoManager, WebView, WebViewReachabilityObserver, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
+@class CALayer, DOMElement, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSString, NSTimer, UIAutoscroll, UIColor, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer, UITextChecker, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebSelectionAssistant, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
 
-@interface UIWebDocumentView : UIWebTiledView <UIActionSheetDelegate, _UIRotatingActionSheetDelegate, UITextAutoscrolling, UIAutoscrollContainer, UIGestureRecognizerDelegate, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UIModalViewDelegate, UITextInputTokenizer, _UIWebDoubleTapDelegate, UIWebFileUploadPanelDelegate>
+@interface UIWebDocumentView : UIWebTiledView <DDDetectionControllerInteractionDelegate, _UIRotatingAlertControllerDelegate, UITextAutoscrolling, UIAutoscrollContainer, UIGestureRecognizerDelegate, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UIModalViewDelegate, UITextInputTokenizer, _UIWebDoubleTapDelegate, UIWebFileUploadPanelDelegate>
 {
     WebView *_webView;
-    WebViewReachabilityObserver *_reachabilityObserver;
     id m_parentTextView;
     id _delegate;
     id _textSuggestionDelegate;
@@ -63,8 +62,7 @@
         struct CGPoint lastPanTranslation;
         DOMNode *element;
         id delegate;
-        UIWebRotatingSheet *interactionSheet;
-        NSArray *elementActions;
+        UIWebRotatingAlertController *interactionSheet;
         _Bool allowsImageSheet;
         _Bool allowsDataDetectorsSheet;
         _Bool allowsLinkSheet;
@@ -125,7 +123,6 @@
     unsigned int _previousScrollWasScrollToTop:1;
     unsigned int _pageIsLoadedFromPageCache:1;
     unsigned int _shouldSendWillShowInteractionHighlight:1;
-    unsigned int _willPanInsteadOfZoom:1;
     WebThreadSafeUndoManager *_undoManager;
     UIWebSelectionAssistant *_webSelectionAssistant;
     UITextInteractionAssistant *_textSelectionAssistant;
@@ -136,6 +133,7 @@
     DOMElement *_dictationResultPlaceholder;
     id _dictationResultPlaceholderRemovalObserver;
     DOMRange *_rangeToRestoreAfterDictation;
+    UIWebPlaybackTargetPicker *_playbackTargetPicker;
     struct _UIWebViewportConfiguration _defaultViewportConfigurations[5];
     _UITextServiceSession *_definitionSession;
     _UITextServiceSession *_learnSession;
@@ -242,6 +240,7 @@
 - (struct CGRect)visibleContentFrame;
 - (struct CGRect)visibleFrame;
 - (_Bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (id)textStylingAtPosition:(id)arg1 inDirection:(long long)arg2;
 - (_Bool)inPopover;
 - (_Bool)isCaretInEmptyParagraph;
 - (id)webSelectionAssistant;
@@ -399,6 +398,8 @@
 - (void)_webthread_webView:(id)arg1 attachRootLayer:(id)arg2;
 - (void)revealedSelectionByScrollingWebFrame:(id)arg1;
 - (_Bool)isUnperturbedDictationResultMarker:(id)arg1;
+- (int)deviceOrientation;
+- (void)showPlaybackTargetPicker:(_Bool)arg1 fromRect:(struct CGRect)arg2;
 - (long long)getPasteboardChangeCount;
 - (id)readDataFromPasteboard:(id)arg1 withIndex:(long long)arg2;
 - (id)supportedPasteboardTypesForCurrentSelection;
@@ -458,7 +459,7 @@
 - (void)setAutoresizes:(_Bool)arg1;
 - (struct CGRect)documentBounds;
 - (void)_WAKViewSizeDidChange:(id)arg1;
-- (void)webView:(id)arg1 didReceiveDocTypeForFrame:(id)arg2;
+- (void)webViewDidReceiveMobileDocType:(id)arg1;
 - (void)webView:(id)arg1 didCommitLoadForFrame:(id)arg2;
 - (void)webView:(id)arg1 didChangeLocationWithinPageForFrame:(id)arg2;
 - (void)webView:(id)arg1 didFailLoadWithError:(id)arg2 forFrame:(id)arg3;
@@ -522,12 +523,9 @@
 - (void)stopLoading:(id)arg1;
 - (void)didMoveToSuperview;
 - (void)willMoveToSuperview:(id)arg1;
-- (void)_reachabilityManagerNotifiedIsReachable:(_Bool)arg1;
 - (_Bool)hasDrawnTiles;
 - (_Bool)didFirstVisuallyNonEmptyLayout;
 - (void)dealloc;
-- (void)setTypingAttributes:(id)arg1;
-- (id)typingAttributes;
 - (void)_setTextColor:(id)arg1;
 - (void)_setFont:(id)arg1;
 - (void)_dismissViewControllerAnimated:(_Bool)arg1 completion:(CDUnknownBlockType)arg2;
@@ -537,7 +535,6 @@
 - (void)_inspectorDidStopSearchingForNode:(id)arg1;
 - (void)_inspectorDidStartSearchingForNode:(id)arg1;
 - (void)_resetShowingTextStyle:(id)arg1;
-- (void)enableReachability;
 - (id)initWithWebView:(id)arg1 frame:(struct CGRect)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initSimpleHTMLDocumentWithStyle:(id)arg1 frame:(struct CGRect)arg2 preferences:(id)arg3 groupName:(id)arg4;
@@ -559,8 +556,7 @@
 - (_Bool)supportsTwoFingerScrollingAtTouchLocation:(struct CGPoint)arg1 andLocation:(struct CGPoint)arg2;
 - (void)sendScrollWheelEvents;
 - (void)_cleanupSheet;
-- (void)actionSheet:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)actionSheet:(id)arg1 clickedButtonAtIndex:(long long)arg2;
+- (void)_didDismissElementSheet;
 - (id)_targetURL;
 - (void)cancelInteractionWithImmediateDisplay:(_Bool)arg1;
 - (void)deferInteraction;
@@ -605,6 +601,7 @@
 - (struct CGRect)initialPresentationRectInHostViewForSheet:(id)arg1;
 - (id)hostViewForSheet:(id)arg1;
 - (struct CGRect)_presentationRectForSheetGivenPoint:(struct CGPoint)arg1 inHostView:(id)arg2;
+- (void)action:(id)arg1 didDismissAlertController:(id)arg2;
 - (void)_showDataDetectorsSheet;
 - (void)actionDidFinish;
 - (void)_showLinkSheet;
@@ -678,20 +675,26 @@
 @property(nonatomic) _Bool acceptsFloatingKeyboard;
 @property(nonatomic) _Bool acceptsSplitKeyboard;
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
+@property(copy, nonatomic) NSString *autocorrectionContext;
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
 @property(nonatomic) _Bool contentsIsSingleValue; // @dynamic contentsIsSingleValue;
+@property(readonly, copy) NSString *debugDescription;
 @property(nonatomic) _Bool deferBecomingResponder;
+@property(readonly, copy) NSString *description;
+@property(nonatomic) _Bool disablePrediction;
 @property(nonatomic) _Bool displaySecureTextUsingPlainText;
 @property(nonatomic) int emptyContentReturnKeyType;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
 @property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent;
 @property(nonatomic) _Bool forceEnableDictation;
+@property(readonly) unsigned long long hash;
 @property(retain, nonatomic) UIColor *insertionPointColor; // @dynamic insertionPointColor;
 @property(nonatomic) unsigned long long insertionPointWidth; // @dynamic insertionPointWidth;
 @property(nonatomic) _Bool isSingleLineDocument; // @dynamic isSingleLineDocument;
 @property(nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property(nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property(nonatomic) _Bool learnsCorrections;
+@property(copy, nonatomic) NSString *responseContext;
 @property(nonatomic) _Bool returnKeyGoesToNextResponder;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic, getter=isSecureTextEntry) _Bool secureTextEntry; // @dynamic secureTextEntry;
@@ -700,6 +703,7 @@
 @property(retain, nonatomic) UIColor *selectionHighlightColor; // @dynamic selectionHighlightColor;
 @property(nonatomic) int shortcutConversionType; // @dynamic shortcutConversionType;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
+@property(readonly) Class superclass;
 @property(nonatomic) _Bool suppressReturnKeyStyling;
 @property(readonly, nonatomic) UIView *textInputView;
 @property(nonatomic) int textLoupeVisibility; // @dynamic textLoupeVisibility;

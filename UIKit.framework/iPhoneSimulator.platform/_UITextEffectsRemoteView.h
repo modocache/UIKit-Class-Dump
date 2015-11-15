@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     _UIRemoteViewController *_remoteViewController;
 }
 
++ (_Bool)_requiresWindowTouches;
 @property(nonatomic) _UIRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 - (int)textEffectsVisibilityLevel;
 

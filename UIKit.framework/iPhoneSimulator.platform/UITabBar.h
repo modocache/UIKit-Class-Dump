@@ -181,5 +181,11 @@
 - (double)_autolayoutSpacingAtEdge:(int)arg1 inContainer:(id)arg2;
 - (_Bool)_hasCustomAutolayoutNeighborSpacing;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

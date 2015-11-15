@@ -7,12 +7,15 @@
 #import "NSObject.h"
 #import "UITextInputTraits.h"
 
-@class UIColor, UIImage;
+@class NSString, UIColor, UIImage;
 
 @protocol UITextInputTraits_Private <NSObject, UITextInputTraits>
 - (void)takeTraitsFrom:(id <UITextInputTraits>)arg1;
 
 @optional
+@property(nonatomic) _Bool disablePrediction;
+@property(copy, nonatomic) NSString *responseContext;
+@property(copy, nonatomic) NSString *autocorrectionContext;
 @property(nonatomic) _Bool enablesReturnKeyOnNonWhiteSpaceContent;
 @property(nonatomic) _Bool deferBecomingResponder;
 @property(nonatomic) _Bool useInterfaceLanguageForLocalization;

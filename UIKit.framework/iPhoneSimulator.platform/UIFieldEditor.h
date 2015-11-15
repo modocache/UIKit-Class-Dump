@@ -14,7 +14,7 @@
 #import "UITextInput.h"
 #import "UITextInputControllerDelegate.h"
 
-@class NSDictionary, NSTextContainer, NSTimer, UIAutoscroll, UITextField, UITextInputController, UITextPosition, UITextRange, UIView, _UICascadingTextStorage, _UIFieldEditorContentView, _UIFieldEditorLayoutManager;
+@class NSDictionary, NSString, NSTextContainer, NSTimer, UIAutoscroll, UITextField, UITextInputController, UITextPosition, UITextRange, UIView, _UICascadingTextStorage, _UIFieldEditorContentView, _UIFieldEditorLayoutManager;
 
 @interface UIFieldEditor : UIScrollView <UITextInputControllerDelegate, NSLayoutManagerDelegate, NSUITextViewCommonMethods, UIAutoscrollContainer, UITextInput, UITextAutoscrolling, UIKeyboardInput>
 {
@@ -126,8 +126,7 @@
 - (_Bool)drawsAsAtom;
 - (void)scrollSelectionToVisible:(_Bool)arg1;
 - (void)_scrollRangeToVisible:(struct _NSRange)arg1 animated:(_Bool)arg2;
-- (_Bool)notificationsDisabled;
-- (void)setNotificationsDisabled:(_Bool)arg1;
+- (void)_performWhileSuppressingDelegateNotifications:(CDUnknownBlockType)arg1;
 - (_Bool)hasMarkedText;
 - (unsigned long long)characterOffsetAtPoint:(struct CGPoint)arg1;
 - (void)revealSelection;
@@ -164,6 +163,7 @@
 - (id)textColorForCaretSelection;
 - (id)textInputTraits;
 - (id)_textSelectingContainer;
+- (struct CGRect)_responderExternalTouchRectForWindow:(id)arg1;
 - (_Bool)isFirstResponder;
 - (id)_responderForBecomeFirstResponder;
 - (void)selectAll;
@@ -188,12 +188,16 @@
 // Remaining properties
 @property(nonatomic) long long autocapitalizationType; // @dynamic autocapitalizationType;
 @property(nonatomic) long long autocorrectionType; // @dynamic autocorrectionType;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
 @property(nonatomic) _Bool enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
+@property(readonly) unsigned long long hash;
 @property(nonatomic) long long keyboardAppearance; // @dynamic keyboardAppearance;
 @property(nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property(nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property(nonatomic) long long selectionAffinity;
 @property(nonatomic) long long spellCheckingType; // @dynamic spellCheckingType;
+@property(readonly) Class superclass;
 
 @end
 

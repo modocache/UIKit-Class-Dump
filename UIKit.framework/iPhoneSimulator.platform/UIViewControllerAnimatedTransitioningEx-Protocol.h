@@ -6,7 +6,7 @@
 
 #import "UIViewControllerAnimatedTransitioning.h"
 
-@class UIPercentDrivenInteractiveTransition;
+@class UIPercentDrivenInteractiveTransition, UIWindow;
 
 @protocol UIViewControllerAnimatedTransitioningEx <UIViewControllerAnimatedTransitioning>
 - (void)setOperation:(long long)arg1;
@@ -15,5 +15,8 @@
 - (_Bool)interactionAborted;
 - (void)setInteractionController:(UIPercentDrivenInteractiveTransition *)arg1;
 - (UIPercentDrivenInteractiveTransition *)interactionController;
+
+@optional
+- (UIWindow *)window;
 @end
 

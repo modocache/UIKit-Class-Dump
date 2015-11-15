@@ -8,7 +8,7 @@
 
 #import "UIPopoverControllerDelegate.h"
 
-@class UIPopoverController, UIViewController;
+@class NSString, UIPopoverController, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface _UITextServiceSession : NSObject <UIPopoverControllerDelegate>
@@ -21,17 +21,25 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _dismissedHandler;
 }
 
++ (id)textServiceSessionForType:(long long)arg1;
 + (id)showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 + (_Bool)canShowTextServices;
 @property(copy, nonatomic) CDUnknownBlockType dismissedHandler; // @synthesize dismissedHandler=_dismissedHandler;
 - (void)_endSession;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)dismissTextServiceAnimated:(_Bool)arg1;
+- (long long)type;
 - (_Bool)isDisplaying;
 - (void)dealloc;
 - (void)sessionDidDismiss;
 - (id)init;
 - (id)initWithType:(long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

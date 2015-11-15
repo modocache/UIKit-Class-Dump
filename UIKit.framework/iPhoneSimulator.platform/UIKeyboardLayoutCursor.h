@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UIKBTree *_indirectKeyboard;
     UIView *_selectionView;
     long long _selectedKeyIndex;
+    _Bool _useGridSelection;
     _Bool _suppressOperations;
 }
 
@@ -24,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)_handleWheelChangedWithEvent:(id)arg1;
 - (void)_wheelChangedWithEvent:(id)arg1;
 - (_Bool)_handlePhysicalKeyDownWithEvent:(id)arg1;
-- (void)physicalKeyDownWithEvent:(id)arg1;
+- (void)_handleKeyUIEvent:(id)arg1;
 - (_Bool)_handleRemoteControlReceivedWithEvent:(id)arg1;
 - (void)remoteControlReceivedWithEvent:(id)arg1;
 - (_Bool)_handlePhysicalButtonEvent:(id)arg1;
@@ -35,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (_Bool)handleLinearDirectionalInput:(int)arg1;
 - (void)takeKeyAction:(id)arg1;
 - (_Bool)canHandleEvent:(id)arg1;
-- (void)setSelectionPoint:(struct CGPoint)arg1;
+- (long long)keyIndexAtPoint:(struct CGPoint)arg1;
 - (void)setHighlightedVariantIndex:(long long)arg1 key:(id)arg2;
 - (void)setSelectedKeyIndex:(long long)arg1;
 - (void)deactivateCurrentKey;
@@ -46,10 +47,12 @@ __attribute__((visibility("hidden")))
 - (long long)cursorLocation;
 - (int)enabledStateForKey:(id)arg1;
 - (int)activeStateForKey:(id)arg1;
+- (void)updateStatesForGridSelection;
 - (_Bool)shouldRetestKey:(id)arg1 withKeyplane:(id)arg2;
 - (_Bool)shouldPreventInputManagerHitTestingForKey:(id)arg1;
 - (void)setKeyplaneName:(id)arg1;
 - (void)flushKeyCache:(id)arg1;
+- (id)cacheTokenForKeyplane:(id)arg1;
 - (void)setKeyboardAppearance:(long long)arg1;
 - (void)setKeyboardName:(id)arg1 appearance:(long long)arg2;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;

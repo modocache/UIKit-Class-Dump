@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     double _baselineOffset;
 }
 
+- (void)doesNotRecognizeSelector:(SEL)arg1;
 - (_Bool)isOpaque;
 - (id)_alignmentDebuggingOverlayCreateIfNecessary:(_Bool)arg1;
 - (void)drawRect:(struct CGRect)arg1;

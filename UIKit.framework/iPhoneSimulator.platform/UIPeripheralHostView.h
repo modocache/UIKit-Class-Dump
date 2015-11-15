@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) UIKeyboardCornerView *cornerViewLeft; // @synthesize cornerViewLeft=_cornerViewLeft;
 - (void)removeFromSuperview;
 - (int)_clipCornersOfView:(id)arg1;
-- (void)resizeForKeyplaneSize:(struct CGSize)arg1;
+- (void)_resizeForKeyplaneSize:(struct CGSize)arg1 splitWidthsChanged:(_Bool)arg2;
 - (void)layoutSubviews;
 - (_Bool)explicitLayout;
 - (void)endExplicitLayout;

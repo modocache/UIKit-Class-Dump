@@ -23,6 +23,7 @@
 - (void)prepareWithActivityItems:(id)arg1;
 - (_Bool)canPerformWithActivityItems:(id)arg1;
 - (id)activityTitle;
+- (id)_activitySettingsImage;
 - (id)_activityImage;
 - (id)activityType;
 - (void)dealloc;

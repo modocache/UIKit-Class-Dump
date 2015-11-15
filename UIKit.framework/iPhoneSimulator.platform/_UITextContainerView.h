@@ -8,7 +8,7 @@
 
 #import "NSUITextViewCommonMethods.h"
 
-@class NSDictionary, NSLayoutManager, NSTextContainer, NSTextStorage;
+@class NSDictionary, NSLayoutManager, NSString, NSTextContainer, NSTextStorage;
 
 __attribute__((visibility("hidden")))
 @interface _UITextContainerView : UIView <NSUITextViewCommonMethods>
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) NSTextContainer *textContainer; // @synthesize textContainer=_textContainer;
 @property(nonatomic) _Bool usesTiledViews;
 - (struct CGRect)visibleRect;
-- (id)description;
+@property(readonly, copy) NSString *description;
 @property(nonatomic) struct _NSRange markedRange;
 @property(nonatomic) long long layoutOrientation;
 - (struct _NSRange)_extendedGlyphRangeForRange:(struct _NSRange)arg1 maxGlyphIndex:(unsigned long long)arg2 drawingToScreen:(_Bool)arg3;
@@ -63,6 +63,11 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

@@ -7,12 +7,12 @@
 #import "NSObject.h"
 
 #import "UIGestureRecognizerDelegate.h"
-#import "UIKeyboardSplitTransitionDelegate.h"
+#import "UIKeyboardKeyplaneTransitionDelegate.h"
 #import "UIScrollViewIntersectionDelegate.h"
 
-@class CADisplayLink, NSMutableArray, NSMutableDictionary, NSMutableSet, UIInputViewPostPinningReloadState, UIInputViewSet, UIInputViewTransition, UIKeyboardAutomatic, UIKeyboardRotationState, UIPanGestureRecognizer, UIPeripheralHostState, UIPeripheralHostView, UIResponder, UIScrollView, UITextEffectsWindow, UIView;
+@class CADisplayLink, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIInputViewPostPinningReloadState, UIInputViewSet, UIInputViewTransition, UIKeyboardAutomatic, UIKeyboardRotationState, UIPanGestureRecognizer, UIPeripheralHostState, UIPeripheralHostView, UIResponder, UIScrollView, UITextEffectsWindow, UIView;
 
-@interface UIPeripheralHost : NSObject <UIScrollViewIntersectionDelegate, UIKeyboardSplitTransitionDelegate, UIGestureRecognizerDelegate>
+@interface UIPeripheralHost : NSObject <UIScrollViewIntersectionDelegate, UIKeyboardKeyplaneTransitionDelegate, UIGestureRecognizerDelegate>
 {
     UIPeripheralHostView *_hostView;
     UIKeyboardAutomatic *_automaticKeyboard;
@@ -79,13 +79,13 @@
     int _clippingKeyboardMode;
     struct CGRect _clippingKeyboardAdjustmentStart;
     struct CGRect _clippingKeyboardAdjustmentEnd;
+    double _ambiguousControlCenterActivationMargin;
     NSMutableDictionary *_preservedAccessoryViewNextResponderSets;
     UIResponder *_responderWithoutAutomaticAppearanceEnabled;
     UITextEffectsWindow *_containerWindow;
     _Bool _springBoardLockStateIsLocked;
+    int _hostedAnimationToggleCount;
     UIInputViewSet *_transientInputViewSet;
-    id <_UIPeripheralHostCustomTransition> _customTransitionInfo;
-    double _ambiguousControlCenterActivationMargin;
 }
 
 + (void)_releaseSharedInstance;
@@ -96,9 +96,6 @@
 + (double)gridViewRubberBandValueForValue:(double)arg1 target:(double)arg2 timeInterval:(double)arg3 velocity:(double *)arg4;
 + (struct CGRect)visiblePeripheralFrame;
 + (Class)hostViewClass;
-@property(nonatomic) double ambiguousControlCenterActivationMargin; // @synthesize ambiguousControlCenterActivationMargin=_ambiguousControlCenterActivationMargin;
-@property(retain, nonatomic) id <_UIPeripheralHostCustomTransition> customTransitionInfo; // @synthesize customTransitionInfo=_customTransitionInfo;
-@property(nonatomic) int currentState; // @synthesize currentState=_automaticKeyboardState;
 @property(retain, nonatomic) UIInputViewPostPinningReloadState *postPinningReloadState; // @synthesize postPinningReloadState=_postPinningReloadState;
 @property(retain, nonatomic) UIResponder *selfHostingTrigger; // @synthesize selfHostingTrigger=_selfHostingTrigger;
 @property(nonatomic) UIInputViewSet *_transientInputViews; // @synthesize _transientInputViews=_transientInputViewSet;
@@ -109,7 +106,7 @@
 @property(retain, nonatomic) UIKeyboardRotationState *rotationState; // @synthesize rotationState=_rotationState;
 @property(nonatomic) _Bool automaticAppearanceEnabled; // @synthesize automaticAppearanceEnabled=_automaticAppearanceEnabled;
 - (void)transitionDidFinish:(_Bool)arg1;
-- (void)updateProgress:(double)arg1 mergedHeight:(double)arg2 splitHeight:(double)arg3;
+- (void)updateProgress:(double)arg1 startHeight:(double)arg2 endHeight:(double)arg3;
 - (void)setAccessoryViewVisible:(_Bool)arg1 delay:(double)arg2;
 - (id)nextAnimationStyle:(_Bool)arg1;
 - (id)nextAnimationStyle;
@@ -149,13 +146,12 @@
 - (_Bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (_Bool)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)translateDetected:(id)arg1;
-- (void)handleTranslateDetectedFinished:(id)arg1;
 - (void)disableInterfaceAutorotation:(_Bool)arg1;
 - (void)_updateBounceAnimation:(id)arg1;
 - (void)invalidateDisplayLink;
 - (void)bounceAnimationDidFinish;
-- (void)finishSplitTransition:(CDUnknownBlockType)arg1;
-- (void)prepareForSplitTransition;
+- (void)finishTransitionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)prepareForTransition;
 - (void)showInputViewsIfNeeded;
 - (void)fadeInputViewsIfNeeded;
 - (void)fadeInInputViews:(_Bool)arg1;
@@ -178,9 +174,11 @@
 - (void)manualKeyboardWillBeOrderedIn:(id)arg1;
 - (_Bool)isOffScreen;
 - (_Bool)isOnScreen;
+@property(nonatomic) int currentState; // @synthesize currentState=_automaticKeyboardState;
 - (void)setKeyboardOnScreenNotifyKey:(_Bool)arg1;
 - (id)retain;
 - (void)createHostViewIfNeeded;
+- (void)updateRenderConfigForCurrentResponder;
 - (void)initializeTranslateGestureRecognizer;
 - (struct CGSize)sizeOfInputViewForInputViewSet:(id)arg1 withInterfaceOrientation:(long long)arg2;
 - (void)textEffectsWindowDidRotate:(id)arg1;
@@ -193,6 +191,11 @@
 - (id)init;
 - (void)setListeningToSpringBoardKeyboardNotifications:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool automaticAppearanceReallyEnabled;
+- (void)setInputViewsHidden:(_Bool)arg1;
+- (void)updateToPlacement:(id)arg1 withNormalAnimationsAndNotifications:(_Bool)arg2;
+- (struct CGRect)transitioningFrame;
+- (id)contentView;
+- (id)transitioningView;
 - (void)syncToExistingAnimations;
 - (void)postDidHideNotificationForGeometry:(struct UIPeripheralAnimationGeometry)arg1;
 - (void)postWillHideNotificationForGeometry:(struct UIPeripheralAnimationGeometry)arg1 duration:(double)arg2;
@@ -206,8 +209,8 @@
 - (void)setPeripheralToolbarFrameForHostWidth:(double)arg1;
 - (_Bool)isHostingActiveImpl;
 - (_Bool)hasCustomInputView;
-- (void)scrollView:(id)arg1 didFinishPanAtWindowPoint:(struct CGPoint)arg2;
-- (void)scrollView:(id)arg1 didPanAtWindowPoint:(struct CGPoint)arg2;
+- (void)scrollView:(id)arg1 didFinishPanGesture:(id)arg2;
+- (void)scrollView:(id)arg1 didPanWithGesture:(id)arg2;
 - (void)animateKeyboardOutWithDuration:(double)arg1 delta:(double)arg2;
 - (void)updateScrollViewContentInsetBottom:(double)arg1;
 - (void)finishScrollViewTransition;
@@ -221,6 +224,7 @@
 - (void)extendKeyboardBackdropHeight:(double)arg1 withDuration:(double)arg2;
 - (_Bool)isSplitting;
 - (_Bool)isTranslating;
+- (_Bool)isRotating;
 - (void)_endDisablingAnimations;
 - (void)_beginDisablingAnimations;
 - (void)_resignFirstResponderIfHostingOnBehalfOfResponder:(id)arg1;
@@ -230,6 +234,8 @@
 - (void)_clearPreservedInputViewsWithId:(id)arg1 clearKeyboard:(_Bool)arg2;
 - (_Bool)_restoreInputViewsWithId:(id)arg1 animated:(_Bool)arg2;
 - (void)_preserveInputViewsWithId:(id)arg1 animated:(_Bool)arg2;
+- (void)_preserveInputViewsWithId:(id)arg1;
+- (void)_preserveInputViewsWithId:(id)arg1 animated:(_Bool)arg2 reset:(_Bool)arg3;
 @property(readonly, nonatomic) _Bool keyClicksEnabled;
 - (_Bool)_isSuppressedByManualKeyboard;
 - (id)_inputViewsForResponder:(id)arg1 withAutomaticKeyboard:(_Bool)arg2;
@@ -251,10 +257,6 @@
 - (void)adjustHostViewForTransitionCompletion:(id)arg1;
 - (void)adjustHostViewForTransitionEndFrame:(id)arg1;
 - (void)adjustHostViewForTransitionStartFrame:(id)arg1;
-- (void)removeExtraViewsForTransition:(id)arg1;
-- (void)finishExtraViewsForTransition:(id)arg1;
-- (void)addExtraViewsForTransition:(id)arg1;
-- (void)updateExtraViewsForStart:(_Bool)arg1 onTransition:(id)arg2;
 - (void)endClippingForTransition:(id)arg1;
 - (id)containerForClippingMode:(int)arg1 onTransition:(id)arg2;
 - (struct CGRect)calculateSnapshotRectForTransition:(id)arg1 forStart:(_Bool)arg2;
@@ -267,13 +269,12 @@
 - (_Bool)maximizeWithAnimation:(_Bool)arg1;
 - (_Bool)maximize;
 - (_Bool)minimize;
+- (void)performMultipleOperations:(CDUnknownBlockType)arg1 withAnimationStyle:(id)arg2;
 - (void)postDidShowNotificationForGeometry:(struct UIPeripheralAnimationGeometry)arg1;
 - (void)postWillShowNotificationForGeometry:(struct UIPeripheralAnimationGeometry)arg1 duration:(double)arg2;
 - (_Bool)shouldUseHideNotificationForGeometry:(struct UIPeripheralAnimationGeometry)arg1;
 - (void)resetNextAutomaticOrderInDirectionAndDuration;
 - (void)setNextAutomaticOrderInDirection:(int)arg1 duration:(double)arg2;
-- (void)customTransitionWillStartWithSettings:(id)arg1;
-- (void)addExtraAnimatedView:(id)arg1 withAlignment:(int)arg2 animation:(CDUnknownBlockType)arg3 onSnapshotView:(_Bool)arg4;
 - (void)prepareToAnimateClippedKeyboardWithOffsets:(struct CGRect)arg1 orderingIn:(_Bool)arg2 onSnapshot:(_Bool)arg3;
 - (void)popAnimationStyle;
 - (void)pushAnimationStyle:(id)arg1;
@@ -284,7 +285,7 @@
 - (double)getVerticalOverlapForView:(id)arg1 usingKeyboardInfo:(id)arg2;
 - (struct CGPoint)offHostPointForPoint:(struct CGPoint)arg1;
 - (_Bool)_isCoordinatingWithSystemGestures;
-- (void)updateAmbiguousControlCenterActivationMargin;
+@property(nonatomic) double ambiguousControlCenterActivationMargin;
 - (struct CGRect)_inputViewRectToAvoid;
 - (int)_clipCornersOfView:(id)arg1;
 - (void)moveToPersistentOffset;
@@ -308,6 +309,8 @@
 - (void)_stopPinningInputViewsOnBehalfOfResponder:(id)arg1;
 - (void)_beginPinningInputViewsOnBehalfOfResponder:(id)arg1;
 - (void)_clearPinningResponders;
+- (void)_setHosted:(_Bool)arg1;
+- (void)forceReloadInputViews;
 - (void)_reloadInputViewsForResponder:(id)arg1;
 - (void)setTextEffectsWindowLevelForInputView:(id)arg1 responder:(id)arg2;
 - (void)_updateContainerWindowLevel;
@@ -316,8 +319,16 @@
 - (_Bool)pinningPreventsInputViews:(id)arg1;
 - (id)containerTextEffectsWindowAboveStatusBar;
 - (id)containerTextEffectsWindow;
+- (id)transformedContainerView;
+- (id)containerRootController;
 - (id)containerWindow;
 - (id)_screenForFirstResponder:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

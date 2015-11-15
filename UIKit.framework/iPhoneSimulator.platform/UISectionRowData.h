@@ -8,7 +8,7 @@
 
 #import "NSCopying.h"
 
-@class UITableViewRowData;
+@class NSMutableIndexSet, UITableViewRowData;
 
 __attribute__((visibility("hidden")))
 @interface UISectionRowData : NSObject <NSCopying>
@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _numRows;
     unsigned long long _arrayLength;
     float *_rowHeights;
+    NSMutableIndexSet *_forcedNegativeRows;
     double *_rowOffsets;
+    _Bool _estimatesRowHeights;
     double _sectionHeight;
     long long _headerAlignment;
     long long _footerAlignment;
@@ -48,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (double)heightForFooterInSection:(long long)arg1 canGuess:(_Bool)arg2;
 - (double)heightForHeaderInSection:(long long)arg1 canGuess:(_Bool)arg2;
 - (double)heightForRow:(long long)arg1 inSection:(long long)arg2 canGuess:(_Bool)arg3;
-- (void)updateSectionHeightWithDelta:(double)arg1 updateFooterOffset:(_Bool)arg2;
+- (void)updateSectionHeightWithDelta:(double)arg1 section:(long long)arg2 updateFooterOffset:(_Bool)arg3;
 - (void)setHeight:(double)arg1 forRow:(long long)arg2;
 - (void)addOffset:(double)arg1 fromRow:(long long)arg2;
 - (double)_headerOrFooterSizeForTable:(id)arg1 title:(id)arg2 detailText:(id)arg3 isHeader:(_Bool)arg4 stripPaddingForAbuttingView:(_Bool)arg5 isTopHeader:(_Bool)arg6;

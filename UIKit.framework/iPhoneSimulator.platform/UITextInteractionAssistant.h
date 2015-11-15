@@ -8,7 +8,7 @@
 
 #import "UIGestureRecognizerDelegate.h"
 
-@class NSHashTable, NSMutableArray, NSMutableSet, UIFieldEditor, UIGestureRecognizer, UILongPressGestureRecognizer, UIResponder<UITextInput>, UITapGestureRecognizer, UITextChecker, UITextSelectionView, UIView;
+@class NSHashTable, NSMutableArray, NSMutableSet, NSString, UIFieldEditor, UIGestureRecognizer, UILongPressGestureRecognizer, UIResponder<UITextInput>, UITapGestureRecognizer, UITextChecker, UITextSelectionView, UIView;
 
 @interface UITextInteractionAssistant : NSObject <UIGestureRecognizerDelegate>
 {
@@ -32,6 +32,7 @@
     NSHashTable *_gestureRecognizerViews;
 }
 
+@property(readonly, nonatomic, getter=isExperimentalUIEnabled) _Bool experimentalUIEnabled;
 - (id)textSelectionView;
 - (void)clearGestureRecognizers;
 - (id)initWithResponder:(id)arg1;
@@ -42,8 +43,9 @@
 - (void)scheduleReplacementsForRange:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)scheduleDictationReplacementsForAlternatives:(id)arg1 range:(id)arg2;
 - (id)rangeForTextReplacement:(id)arg1;
-- (_Bool)isChineseInputEnabled;
+- (void)scheduleChineseTransliteration;
 - (void)scheduleReplacementsWithOptions:(unsigned long long)arg1;
+- (void)scheduleReplacements;
 - (void)cancelInteractionWithLink;
 - (_Bool)tapOnLinkWithGesture:(id)arg1;
 - (_Bool)isInteractingWithLink;
@@ -145,6 +147,7 @@
 @property(retain, nonatomic) UITapGestureRecognizer *singleTapGesture; // @dynamic singleTapGesture;
 @property(readonly, nonatomic) UIResponder<UITextInput> *textDocument;
 - (id)_selectionView;
+- (_Bool)requiresImmediateUpdate;
 @property(readonly, nonatomic) UITextSelectionView *selectionView;
 - (void)deactivateSelection;
 - (void)activateSelection;
@@ -154,6 +157,12 @@
 - (id)_asText;
 - (void)dealloc;
 - (id)initWithView:(id)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

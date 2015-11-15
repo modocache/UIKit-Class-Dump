@@ -42,5 +42,11 @@ __attribute__((visibility("hidden")))
 - (_Bool)_hasInsets;
 - (id)initWithFrame:(struct CGRect)arg1 style:(int)arg2;
 
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
+
 @end
 

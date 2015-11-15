@@ -27,13 +27,13 @@
 }
 
 @property(copy, nonatomic) NSString *URLString; // @synthesize URLString=_URLString;
-@property(readonly, nonatomic) NSString *pageTitle; // @synthesize pageTitle=_pageTitle;
+@property(readonly, copy, nonatomic) NSString *pageTitle; // @synthesize pageTitle=_pageTitle;
 @property(readonly, nonatomic) float estimatedProgress; // @synthesize estimatedProgress=_estimatedProgress;
 @property(readonly, nonatomic, getter=isLoading) _Bool loading; // @synthesize loading=_loading;
 @property(readonly, nonatomic) _Bool canGoForward; // @synthesize canGoForward=_canGoForward;
 @property(readonly, nonatomic) _Bool canGoBack; // @synthesize canGoBack=_canGoBack;
-@property(readonly, nonatomic) UIBarButtonItem *forwardBarButtonItem; // @synthesize forwardBarButtonItem=_forwardBarButtonItem;
-@property(readonly, nonatomic) UIBarButtonItem *backBarButtonItem; // @synthesize backBarButtonItem=_backBarButtonItem;
+@property(readonly, retain, nonatomic) UIBarButtonItem *forwardBarButtonItem; // @synthesize forwardBarButtonItem=_forwardBarButtonItem;
+@property(readonly, retain, nonatomic) UIBarButtonItem *backBarButtonItem; // @synthesize backBarButtonItem=_backBarButtonItem;
 @property(nonatomic) id <_UIWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void)viewDidDisappear:(_Bool)arg1;
 - (void)viewWillDisappear:(_Bool)arg1;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIAlertView *_alert;
     UIPrintingProgressViewController *_viewController;
     _Bool _donePrinting;
+    _Bool _forceDisplayAsAlert;
 }
 
 - (double)nextPrintDelay;
@@ -32,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)showProgress:(id)arg1 immediately:(_Bool)arg2;
 - (_Bool)progressVisible;
 - (void)dealloc;
-- (id)initWithPrinterName:(id)arg1 cancelHandler:(CDUnknownBlockType)arg2;
+- (id)initWithPrinterName:(id)arg1 forceDisplayAsAlert:(_Bool)arg2 cancelHandler:(CDUnknownBlockType)arg3;
 
 @end
 

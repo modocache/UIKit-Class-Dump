@@ -6,7 +6,7 @@
 
 #import "NSObject.h"
 
-@class CUICatalog, NSString, _UICache;
+@class CUICatalog, CUIMutableCatalog, NSBundle, NSMapTable, NSString, UITraitCollection, _UICache;
 
 __attribute__((visibility("hidden")))
 @interface _UIAssetManager : NSObject
@@ -17,21 +17,42 @@ __attribute__((visibility("hidden")))
     long long _preferredIdiom;
     double _preferredScale;
     unsigned long long _preferredIdiomSubtype;
+    NSBundle *_bundle;
+    NSMapTable *_assetMap;
+    CUIMutableCatalog *_runtimeCatalog;
+    long long onceToken_runtimeCatalog;
+    UITraitCollection *_preferredTraitCollection;
+    _Bool _managingUIKitAssets;
     _UIAssetManager *_nextAssetManager;
 }
 
++ (id)sharedRuntimeAssetMap;
++ (id)sharedRuntimeCatalog;
++ (long long)_userInterfaceIdiomForDeviceClass:(unsigned long long)arg1;
++ (void)_convertTraitCollection:(id)arg1 toCUIScale:(double *)arg2 CUIIdiom:(long long *)arg3 UIKitIdiom:(long long *)arg4 subtype:(long long *)arg5;
++ (id)createAssetNamed:(id)arg1 fromBundle:(id)arg2;
 + (id)assetManagerForBundle:(id)arg1;
+@property(readonly, nonatomic, getter=_managingUIKitAssets) _Bool managingUIKitAssets; // @synthesize managingUIKitAssets=_managingUIKitAssets;
+@property(retain, nonatomic) UITraitCollection *preferredTraitCollection; // @synthesize preferredTraitCollection=_preferredTraitCollection;
 @property(nonatomic) double preferredScale; // @synthesize preferredScale=_preferredScale;
 @property(retain, nonatomic) _UIAssetManager *nextAssetManager; // @synthesize nextAssetManager=_nextAssetManager;
+@property(readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 - (id)description;
+- (void)_clearCachedResources:(id)arg1;
+@property(readonly, nonatomic) CUIMutableCatalog *runtimeCatalog;
+- (void)_insertAssetIntoMap:(id)arg1 forName:(id)arg2;
+- (id)_assetFromMapForName:(id)arg1;
+- (void)_removeAssetFromMap:(id)arg1;
 - (void)disableCacheFlushing;
 @property(readonly, nonatomic) NSString *carFileName;
 - (id)_catalog;
+- (id)dataNamed:(id)arg1;
+- (id)imageNamed:(id)arg1 withTrait:(id)arg2;
 - (id)imageNamed:(id)arg1;
 - (id)imageNamed:(id)arg1 idiom:(long long)arg2;
 - (id)imageNamed:(id)arg1 idiom:(long long)arg2 subtype:(unsigned long long)arg3;
 - (id)imageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(unsigned long long)arg4;
-- (id)imageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(unsigned long long)arg4 cachingOptions:(unsigned long long)arg5;
+- (id)imageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(unsigned long long)arg4 cachingOptions:(unsigned long long)arg5 sizeClassPair:(CDStruct_d58201db)arg6 attachCatalogImage:(_Bool)arg7;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 inBundle:(id)arg2 idiom:(long long)arg3;
 

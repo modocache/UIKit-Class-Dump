@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderConfig:(id)arg3 keycapsFontName:(id)arg4;
 - (void)setupLayoutSegments;
-- (id)shiftedControlKeyTraits;
-- (id)shiftDeleteGlyphTraits;
 - (double)_row4ControlSegmentWidth;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2;
@@ -45,10 +43,7 @@ __attribute__((visibility("hidden")))
 - (double)dualStringKeyFontSizeAdjustment;
 - (double)stringKeyFontSize;
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
-- (id)backgroundTraitsForKeyplane:(id)arg1;
-- (id)controlKeyForegroundColorName;
-- (id)controlKeyBackgroundColorName;
-- (id)defaultKeyBackgroundColorName;
+- (id)displayContentsForKey:(id)arg1;
 - (double)skinnyKeyThreshold;
 - (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;

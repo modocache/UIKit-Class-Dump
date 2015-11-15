@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _Bool _needsPaddingForIndexScrubber;
     _Bool _groupShowsAlternativeText;
     _Bool _secondaryCandidateAppearance;
+    _Bool _emphasizedAppearance;
     int _candidatesVisualStyle;
     NSIndexPath *_candidateIndexPath;
     CDStruct_961fb75c _visualStyling;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _rowSize;
 }
 
+@property(nonatomic) _Bool emphasizedAppearance; // @synthesize emphasizedAppearance=_emphasizedAppearance;
 @property(nonatomic) _Bool secondaryCandidateAppearance; // @synthesize secondaryCandidateAppearance=_secondaryCandidateAppearance;
 @property(nonatomic) _Bool groupShowsAlternativeText; // @synthesize groupShowsAlternativeText=_groupShowsAlternativeText;
 @property(nonatomic) _Bool needsPaddingForIndexScrubber; // @synthesize needsPaddingForIndexScrubber=_needsPaddingForIndexScrubber;

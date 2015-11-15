@@ -71,7 +71,7 @@
 - (void)_setVisibleViewControllerNotificationState:(int)arg1;
 - (void)_setPreviousViewControllerNotificationState:(int)arg1;
 - (void)_notifyViewController:(id)arg1 ofState:(int)arg2 previousState:(int)arg3 animated:(_Bool)arg4;
-@property(readonly, nonatomic) UIViewController *visibleViewController;
+@property(readonly, retain, nonatomic) UIViewController *visibleViewController;
 - (_Bool)_hasNextViewController;
 - (_Bool)_hasVisibleViewController;
 - (_Bool)_hasPreviousViewController;

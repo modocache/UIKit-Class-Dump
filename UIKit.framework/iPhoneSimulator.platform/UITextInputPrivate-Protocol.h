@@ -19,7 +19,6 @@
 - (UITextInputTraits *)textInputTraits;
 
 @optional
-+ (void)_preheatDictationIfNecessary;
 @property(nonatomic) long long selectionGranularity;
 - (void)_insertAttributedTextWithoutClosingTyping:(NSAttributedString *)arg1;
 - (UIFont *)fontForCaretSelection;
@@ -29,13 +28,11 @@
 - (double)_delayUntilRepeatInsertText:(NSString *)arg1;
 - (_Bool)isAutoFillMode;
 - (void)acceptedAutoFillWord:(NSString *)arg1;
-- (NSString *)_dictationLanguage;
-- (void)_stopDictation;
-- (void)_startDictation;
-- (void)dictationRecordingDidBegin;
 - (UITextRange *)rangeWithTextAlternatives:(id *)arg1 atPosition:(UITextPosition *)arg2;
 - (NSArray *)metadataDictionariesForDictationResults;
 - (void)insertDictationResult:(NSArray *)arg1 withCorrectionIdentifier:(id)arg2;
+- (void)streamingDictationDidEnd;
+- (void)streamingDictationDidBegin;
 - (UIView *)automaticallySelectedOverlay;
 - (void)setBottomBufferHeight:(double)arg1;
 - (void)handleKeyWebEvent:(WebEvent *)arg1;

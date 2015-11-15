@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (double)titleVerticalAdjustmentForBarMetrics:(long long)arg1;
 - (void)setTitleVerticalAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
 @property(readonly, nonatomic) UIImage *cardBackgroundImage;
+@property(readonly, nonatomic) UIImage *condensedBackgroundImage;
 @property(readonly, nonatomic) UIImage *miniPromptBackgroundImage;
 @property(readonly, nonatomic) UIImage *promptBackgroundImage;
 @property(readonly, nonatomic) UIImage *miniBackgroundImage;

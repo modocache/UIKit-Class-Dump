@@ -19,6 +19,7 @@
 - (_Bool)_isNTSCOrPAL;
 @property(readonly, nonatomic) double pixelAspectRatio;
 @property(readonly, nonatomic) struct CGSize size;
+- (struct CGSize)_sizeWithLevel:(unsigned long long)arg1;
 - (id)initWithDisplayMode:(id)arg1 mainScreen:(_Bool)arg2;
 
 @end

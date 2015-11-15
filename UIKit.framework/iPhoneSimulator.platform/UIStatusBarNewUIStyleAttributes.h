@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     UIColor *_backgroundColor;
     UIColor *_foregroundColor;
+    _Bool _hasBusyBackground;
 }
 
 - (id)newForegroundStyleWithHeight:(double)arg1;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithRequest:(id)arg1;
 - (id)initWithRequest:(id)arg1 backgroundColor:(id)arg2 foregroundColor:(id)arg3;
+- (id)initWithRequest:(id)arg1 backgroundColor:(id)arg2 foregroundColor:(id)arg3 hasBusyBackground:(_Bool)arg4;
 
 @end
 

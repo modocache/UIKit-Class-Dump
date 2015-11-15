@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     NSString *_yearFormat;
     NSString *_monthFormat;
     NSString *_dayFormat;
-    _Bool _isUsingJapaneseCalendar;
 }
 
 + (unsigned long long)extractableCalendarUnits;

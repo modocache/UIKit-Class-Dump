@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
     _Bool _complete;
     int _verticalAlignement;
     int _horizontalAlignement;
+    double _availableSpace;
     _Bool _fixedItemSize;
 }
 
+@property(nonatomic) double availableSpace; // @synthesize availableSpace=_availableSpace;
 @property(nonatomic) _Bool fixedItemSize; // @synthesize fixedItemSize=_fixedItemSize;
 @property(nonatomic) _Bool complete; // @synthesize complete=_complete;
 @property(readonly, nonatomic) NSMutableArray *items; // @synthesize items=_items;
@@ -30,12 +32,15 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) struct CGRect rowFrame; // @synthesize rowFrame=_rowFrame;
 @property(nonatomic) struct CGSize rowSize; // @synthesize rowSize=_rowSize;
 @property(nonatomic) _UIFlowLayoutSection *section; // @synthesize section=_section;
+- (long long)indexOfNearestItemAtPoint:(struct CGPoint)arg1;
 - (id)copyFromSection:(id)arg1;
 - (id)snapshot;
-- (void)dealloc;
-- (void)addItem:(id)arg1;
+- (void)removeItemAtIndex:(long long)arg1;
+- (void)insertItem:(id)arg1 atIndex:(long long)arg2;
+- (void)addItem:(id)arg1 atEnd:(_Bool)arg2;
 - (void)layoutRow;
 - (void)invalidate;
+- (void)dealloc;
 - (id)init;
 
 @end

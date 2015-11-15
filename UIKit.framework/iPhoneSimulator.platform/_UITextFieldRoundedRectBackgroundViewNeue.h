@@ -26,6 +26,7 @@
 - (id)_fillColor:(_Bool)arg1;
 - (id)_strokeColor:(_Bool)arg1;
 - (void)updateView;
+- (void)dealloc;
 - (id)_initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2 lineWidth:(double)arg3 updateView:(_Bool)arg4;
 - (id)_initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2 lineWidth:(double)arg3;
 - (id)initWithFrame:(struct CGRect)arg1 active:(_Bool)arg2;

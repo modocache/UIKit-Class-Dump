@@ -17,7 +17,7 @@
     double _lastTouchTime;
     double _velocity;
     double _previousVelocity;
-    struct CGPoint _anchorPoint;
+    struct CGPoint _anchorSceneReferencePoint;
     id _transformAnalyzer;
     UITouch *_touches[2];
     float _preRecognitionWeight;

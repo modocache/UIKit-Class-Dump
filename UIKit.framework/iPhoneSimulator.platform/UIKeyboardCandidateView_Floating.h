@@ -8,6 +8,8 @@
 
 #import "UIKeyboardCandidateViewInline.h"
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateView_Floating : UIKeyboardCandidateView <UIKeyboardCandidateViewInline>
 {
@@ -17,12 +19,19 @@ __attribute__((visibility("hidden")))
 
 + (double)defaultExtendedControlHeight;
 @property struct CGSize presentationSize; // @synthesize presentationSize;
+- (id)_inheritedRenderConfig;
 - (void)candidatesDidChange;
 - (id)activeCandidateList;
 - (void)setCandidateViewExtended:(_Bool)arg1;
 - (unsigned long long)_numberOfColumns:(_Bool)arg1;
 - (void)layoutSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

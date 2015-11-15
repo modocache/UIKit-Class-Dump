@@ -9,9 +9,9 @@
 @class UIWindow;
 
 @protocol _UIViewServiceDeputyRotationDelegate <NSObject>
-- (void)finishRotation;
-- (void)rotateToInterfaceOrientation:(long long)arg1;
-- (void)willRotateToInterfaceOrientation:(long long)arg1;
-- (void)setHostedWindow:(UIWindow *)arg1;
+- (void)finishRotationFromInterfaceOrientation:(long long)arg1;
+- (void)rotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
+- (void)setHostedWindow:(UIWindow *)arg1 disableAutomaticBehaviors:(_Bool)arg2;
 @end
 

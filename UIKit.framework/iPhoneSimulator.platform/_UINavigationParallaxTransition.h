@@ -9,7 +9,7 @@
 #import "UIViewControllerAnimatedTransitioningEx.h"
 #import "_UIBasicAnimationFactory.h"
 
-@class UIView, _UINavigationInteractiveTransitionBase, _UIParallaxDimmingView;
+@class NSString, UIView, _UINavigationInteractiveTransitionBase, _UIParallaxDimmingView;
 
 @interface _UINavigationParallaxTransition : NSObject <_UIBasicAnimationFactory, UIViewControllerAnimatedTransitioningEx>
 {
@@ -41,13 +41,26 @@
 @property(nonatomic) long long operation; // @synthesize operation=_operation;
 - (id)_timingFunctionForAnimation;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (void)completeKeyboard:(id)arg1;
+- (void)animateKeyboard:(id)arg1;
+- (void)prepareToAnimateKeyboard:(id)arg1;
+- (void)resizeShadow:(id)arg1;
+- (id)shadowContainerForKeyboardTransition:(id)arg1;
 - (void)animateTransition:(id)arg1;
+- (double)parallaxOffset;
+- (double)gapBetweenViews;
 - (void)animationEnded:(_Bool)arg1;
 - (double)transitionDuration:(id)arg1;
 - (void)dealloc;
 - (id)resizedFromContainerView;
 - (id)resizedToContainerView;
 - (id)initWithCurrentOperation:(long long)arg1;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

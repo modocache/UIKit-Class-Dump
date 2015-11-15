@@ -129,12 +129,6 @@ struct UIPeripheralAnimationGeometry {
     double targetFrameHeightDelta;
 };
 
-struct UISharedArtworkFileHeader {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3[0];
-};
-
 struct UIStringIDTableBucket {
     id _field1;
     unsigned long long _field2;
@@ -153,6 +147,29 @@ struct _PDFHistoryItem {
     struct CGPoint contentOffset;
 };
 
+struct _UICollectionViewCompositionLayout {
+    Class _field1;
+};
+
+struct _UICollectionViewCompositionLayoutInvalidationContext {
+    Class _field1;
+    id _field2;
+};
+
+struct _UIWebTouchEvent {
+    int type;
+    double timestamp;
+    struct CGPoint locationInScreenCoordinates;
+    struct CGPoint locationInDocumentCoordinates;
+    double scale;
+    double rotation;
+    _Bool inJavaScriptGesture;
+    struct _UIWebTouchPoint *touchPoints;
+    unsigned int touchPointCount;
+};
+
+struct _UIWebTouchPoint;
+
 struct _UIWebViewportConfiguration {
     struct CGSize size;
     float initialScale;
@@ -161,20 +178,7 @@ struct _UIWebViewportConfiguration {
     _Bool allowsUserScaling;
 };
 
-struct _WBUNetworkDataUsage {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-};
-
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    id _field1;
-    id _field2;
-    id _field3;
-} CDStruct_0f015c83;
 
 typedef struct {
     UIWebPDFView *view;
@@ -185,12 +189,6 @@ typedef struct {
     id _field1;
     unsigned long long _field2;
 } CDStruct_856ef1b3;
-
-typedef struct {
-    id _field1;
-    int _field2;
-    int _field3;
-} CDStruct_04eade4e;
 
 typedef struct {
     _Bool animateContentRotation;
@@ -308,6 +306,20 @@ typedef struct {
 } CDStruct_3eb7d77a;
 
 typedef struct {
+    long long userInterfaceIdiom;
+    double displayScale;
+    long long touchLevel;
+    long long interactionModel;
+    long long horizontalSizeClass;
+    long long verticalSizeClass;
+} CDStruct_cf4bd6d1;
+
+typedef struct {
+    long long width;
+    long long height;
+} CDStruct_d58201db;
+
+typedef struct {
     id _field1;
     id _field2;
     id _field3;
@@ -363,6 +375,12 @@ typedef struct {
 } CDStruct_04e8b4cd;
 
 typedef struct {
+    struct _NSRange src;
+    struct _NSRange dst;
+    _Bool isEqual;
+} CDStruct_8a233cb2;
+
+typedef struct {
     id _field1;
     double _field2;
     double _field3;
@@ -386,6 +404,15 @@ typedef struct {
 } CDStruct_fa4dcde7;
 
 // Ambiguous groups
+typedef struct {
+    unsigned int isPresentingModalViewController:1;
+    unsigned int isPresentingActionSheet:1;
+    unsigned int wasIgnoringDimmingViewTouchesBeforeScrolling:1;
+    unsigned int isInTextEffectsWindow:1;
+    unsigned int isEmbeddingInView:1;
+    unsigned int embeddedPresentationBounces:1;
+} CDStruct_4a475a17;
+
 typedef struct {
     float m_x;
     float m_y;

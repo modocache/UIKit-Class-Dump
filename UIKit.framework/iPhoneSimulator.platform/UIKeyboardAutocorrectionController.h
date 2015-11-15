@@ -6,12 +6,12 @@
 
 #import "NSObject.h"
 
-@class TIKeyboardCandidate;
+@class TIAutocorrectionList, TIKeyboardCandidate;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardAutocorrectionController : NSObject
 {
-    TIKeyboardCandidate *_autocorrection;
+    TIAutocorrectionList *_autocorrectionList;
     _Bool _needsAutocorrection;
     _Bool _deferredAutocorrection;
     _Bool _requestedAutocorrection;
@@ -22,8 +22,11 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _Bool needsAutocorrection; // @synthesize needsAutocorrection=_needsAutocorrection;
 - (void)requestAutocorrectionWithExecutionContext:(id)arg1;
 - (_Bool)hasAutocorrection;
+- (void)clearAutocorrection;
 - (void)setNeedsAutocorrection;
-@property(copy, nonatomic) TIKeyboardCandidate *autocorrection;
+@property(retain, nonatomic) TIAutocorrectionList *autocorrectionList;
+@property(readonly, nonatomic) TIKeyboardCandidate *autocorrection;
+- (void)updateSuggestionViews;
 - (void)dealloc;
 
 @end

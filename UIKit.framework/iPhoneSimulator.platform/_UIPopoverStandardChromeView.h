@@ -23,11 +23,13 @@ __attribute__((visibility("hidden")))
     _Bool _arrowVisible;
     _Bool useShortMode;
     _Bool _debugMode;
+    double _dimmingViewTopEdgeInset;
 }
 
 + (struct UIEdgeInsets)contentViewInsets;
 + (double)arrowBase;
 + (double)arrowHeight;
+@property(nonatomic) double dimmingViewTopEdgeInset; // @synthesize dimmingViewTopEdgeInset=_dimmingViewTopEdgeInset;
 @property(nonatomic, getter=isDebugModeEnabled) _Bool debugModeEnabled; // @synthesize debugModeEnabled=_debugMode;
 @property(nonatomic) _Bool useShortMode; // @synthesize useShortMode;
 - (void)setArrowVisible:(_Bool)arg1 animated:(_Bool)arg2;

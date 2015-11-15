@@ -24,7 +24,11 @@
 @property(retain, nonatomic) NSString *accessibilityLabel; // @dynamic accessibilityLabel;
 @property(nonatomic) unsigned long long accessibilityTraits; // @dynamic accessibilityTraits;
 @property(retain, nonatomic) NSString *accessibilityValue; // @dynamic accessibilityValue;
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
 @property(nonatomic) _Bool isAccessibilityElement; // @dynamic isAccessibilityElement;
+@property(readonly) Class superclass;
 
 @end
 

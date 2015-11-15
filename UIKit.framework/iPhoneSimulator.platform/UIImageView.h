@@ -11,8 +11,6 @@
 @interface UIImageView : UIView
 {
     id _storage;
-    UIImage *_decompressingImage;
-    UIImage *_decompressingHighlightedImage;
     struct UIEdgeInsets _cachedEdgeInsetsForEffects;
     _Bool _templateSettingsAreInvalid;
     _Bool _edgeInsetsForEffectsAreValid;
@@ -22,6 +20,13 @@
 @property(nonatomic, setter=_setAnimatesContents:) _Bool _animatesContents; // @synthesize _animatesContents=__animatesContents;
 @property(nonatomic, setter=_setEdgeInsetsForEffectsAreValid:) _Bool _edgeInsetsForEffectsAreValid; // @synthesize _edgeInsetsForEffectsAreValid;
 @property(readonly, nonatomic) _Bool _templateSettingsAreInvalid; // @synthesize _templateSettingsAreInvalid;
+- (void)_updateImageViewForOldImage:(id)arg1 newImage:(id)arg2;
+- (void)_resolveImageForTrait:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (id)_currentHighlightedImage;
+- (id)_currentImage;
+- (id)_decompressingImageForType:(unsigned long long)arg1;
+- (void)_setDecompressingImage:(id)arg1 forType:(unsigned long long)arg2;
 - (_Bool)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)setAnimating:(_Bool)arg1;
 - (struct CGImage *)imageRef;
@@ -56,6 +61,7 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)setTranslatesAutoresizingMaskIntoConstraints:(_Bool)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;

@@ -16,6 +16,8 @@
 + (id)_externalTextColor;
 + (id)_alternateUISwitchableSelectorPairs;
 + (id)layoutManagerForTableViewCellStyle:(long long)arg1;
+- (struct CGSize)intrinsicContentSizeForCell:(id)arg1;
+- (void)getTextLabelRect:(struct CGRect *)arg1 detailTextLabelRect:(struct CGRect *)arg2 forCell:(id)arg3;
 - (struct CGRect)textRectForCell:(id)arg1;
 - (struct CGRect)contentEndingRectForCell:(id)arg1 forDisplayOfDeleteConfirmation:(_Bool)arg2;
 - (struct CGRect)contentStartingRectForCell:(id)arg1 forDisplayOfDeleteConfirmation:(_Bool)arg2;
@@ -45,6 +47,7 @@
 - (struct CGRect)editControlEndingRectForCell:(id)arg1 forNewEditingState:(_Bool)arg2;
 - (struct CGRect)editControlStartingRectForCell:(id)arg1 forNewEditingState:(_Bool)arg2;
 - (_Bool)editControlShouldAppearForCell:(id)arg1;
+- (struct CGRect)contentRectForCell:(id)arg1 forState:(unsigned long long)arg2 rowWidth:(double)arg3;
 - (struct CGRect)contentRectForCell:(id)arg1 forState:(unsigned long long)arg2;
 - (void)cell:(id)arg1 didTransitionToState:(unsigned long long)arg2;
 - (void)cell:(id)arg1 willTransitionToState:(unsigned long long)arg2;
@@ -59,18 +62,23 @@
 - (id)defaultEditableTextFieldForCell:(id)arg1;
 - (id)defaultLabelForCell:(id)arg1;
 - (id)defaultLabelForCell:(id)arg1 ofClass:(Class)arg2;
+- (id)defaultDetailTextLabelFontForCell:(id)arg1;
 - (id)defaultTextLabelFontForCell:(id)arg1;
 - (id)defaultImageViewForCell:(id)arg1;
 - (double)defaultDetailTextLabelFontSizeForCell:(id)arg1;
 - (double)defaultTextLabelFontSizeForCell:(id)arg1;
+- (struct CGRect)_contentRectForCell:(id)arg1 forEditingState:(_Bool)arg2 showingDeleteConfirmation:(_Bool)arg3 rowWidth:(double)arg4;
 - (struct CGRect)_contentRectForCell:(id)arg1 forEditingState:(_Bool)arg2 showingDeleteConfirmation:(_Bool)arg3;
 - (struct CGRect)_editingAccessoryRectForCell:(id)arg1 offscreen:(_Bool)arg2;
 - (struct CGRect)_accessoryRectForCell:(id)arg1 offscreen:(_Bool)arg2;
 - (struct CGRect)_reorderSeparatorRectForCell:(id)arg1 offscreen:(_Bool)arg2;
 - (struct CGRect)_reorderControlRectForCell:(id)arg1 offscreen:(_Bool)arg2;
 - (struct CGRect)_editControlRectForCell:(id)arg1 offscreen:(_Bool)arg2;
+- (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 forIndentedState:(_Bool)arg2 rowWidth:(double)arg3;
 - (struct CGRect)_adjustedBackgroundContentRectForCell:(id)arg1 forIndentedState:(_Bool)arg2;
+- (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1 forIndentedState:(_Bool)arg2 rowWidth:(double)arg3;
 - (struct CGRect)_adjustedBackgroundRectForCell:(id)arg1 forIndentedState:(_Bool)arg2;
+- (struct CGRect)_backgroundRectForCell:(id)arg1 forIndentedState:(_Bool)arg2 rowWidth:(double)arg3;
 - (struct CGRect)_backgroundRectForCell:(id)arg1 forIndentedState:(_Bool)arg2;
 
 @end

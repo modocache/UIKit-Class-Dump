@@ -8,7 +8,7 @@
 
 #import "_UISwitchInternalViewProtocol.h"
 
-@class CALayer, UIColor, UIImage, UIImageView;
+@class CALayer, NSString, UIColor, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface _UISwitchInternalView : UIView <_UISwitchInternalViewProtocol>
@@ -69,6 +69,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)_setOnTintColor:(id)arg1;
 - (void)_setPressed:(_Bool)arg1 on:(_Bool)arg2 animated:(_Bool)arg3 shouldAnimateLabels:(_Bool)arg4 completion:(CDUnknownBlockType)arg5;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

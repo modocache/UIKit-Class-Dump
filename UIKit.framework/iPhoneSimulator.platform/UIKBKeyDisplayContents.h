@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _secondaryIsCustomGlyph;
     _Bool _fillPath;
     _Bool _force1xImages;
+    _Bool _stringKeycapOverImage;
     NSString *_displayString;
     NSString *_displayStringImage;
     NSString *_secondaryDisplayStringImage;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)displayContents;
+@property(nonatomic) _Bool stringKeycapOverImage; // @synthesize stringKeycapOverImage=_stringKeycapOverImage;
 @property(retain, nonatomic) UIKBKeyDisplayContents *fallbackContents; // @synthesize fallbackContents=_fallbackContents;
 @property(nonatomic) _Bool force1xImages; // @synthesize force1xImages=_force1xImages;
 @property(nonatomic) _Bool fillPath; // @synthesize fillPath=_fillPath;

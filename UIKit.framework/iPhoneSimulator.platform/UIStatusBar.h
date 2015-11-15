@@ -68,9 +68,9 @@
 + (long long)defaultStyleForRequestedStyle:(long long)arg1 styleOverrides:(int)arg2;
 + (long long)defaultStatusBarStyleWithTint:(_Bool)arg1;
 + (double)heightForStyle:(long long)arg1 orientation:(long long)arg2;
-+ (struct CGRect)_frameForStyleAttributes:(id)arg1 orientation:(long long)arg2;
-+ (struct CGRect)_frameForStyleAttributes:(id)arg1 orientation:(long long)arg2 inWindowOfSize:(struct CGSize)arg3;
-+ (struct CGRect)_frameForStyle:(long long)arg1 orientation:(long long)arg2 inWindowOfSize:(struct CGSize)arg3;
++ (struct CGRect)_frameInSceneReferenceSpaceForStyleAttributes:(id)arg1 orientation:(long long)arg2;
++ (struct CGRect)_frameInSceneReferenceSpaceForStyleAttributes:(id)arg1 orientation:(long long)arg2 inSceneWithReferenceSize:(struct CGSize)arg3;
++ (struct CGRect)_frameInSceneReferenceSpaceForStyle:(long long)arg1 orientation:(long long)arg2 inSceneWithReferenceSize:(struct CGSize)arg3;
 @property(nonatomic) long long legibilityStyle; // @synthesize legibilityStyle=_legibilityStyle;
 @property(retain, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property(nonatomic) _Bool homeItemsDisabled; // @synthesize homeItemsDisabled=_homeItemsDisabled;
@@ -160,11 +160,14 @@
 - (_Bool)isTranslucent;
 - (_Bool)isDoubleHeight;
 - (long long)currentStyle;
+- (long long)_requestedStyle;
 - (double)_standardHeight;
 - (double)heightForOrientation:(long long)arg1;
 - (struct CGRect)frameForOrientation:(long long)arg1;
 - (double)currentHeight;
 - (struct CGRect)currentFrame;
+- (double)defaultDoubleHeight;
+- (double)defaultHeight;
 - (void)setLocalDataOverrides:(CDStruct_9dad2be2 *)arg1;
 - (void)setShowsOnlyCenterItems:(_Bool)arg1;
 - (void)setBackgroundAlpha:(double)arg1;
@@ -180,6 +183,12 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 showForegroundView:(_Bool)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 showForegroundView:(_Bool)arg2 inProcessStateProvider:(id)arg3;
+
+// Remaining properties
+@property(readonly, copy) NSString *debugDescription;
+@property(readonly, copy) NSString *description;
+@property(readonly) unsigned long long hash;
+@property(readonly) Class superclass;
 
 @end
 

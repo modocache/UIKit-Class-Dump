@@ -41,7 +41,7 @@
 - (void)addItem:(id)arg1;
 @property(readonly, nonatomic) long long mode;
 @property(nonatomic) _Bool active;
-@property(readonly, nonatomic) NSArray *items;
+@property(readonly, copy, nonatomic) NSArray *items;
 - (id)initWithItems:(id)arg1;
 - (id)initWithItems:(id)arg1 mode:(long long)arg2;
 - (id)init;

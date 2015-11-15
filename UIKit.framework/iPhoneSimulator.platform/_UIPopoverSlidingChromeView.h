@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (double)_shadowRadius;
 - (double)_shadowOpacity;
 - (struct UIEdgeInsets)_shadowInsets;
+- (struct UIEdgeInsets)_contentViewInsets;
 
 @end
 

@@ -40,9 +40,11 @@ __attribute__((visibility("hidden")))
 @property(readonly, nonatomic) _UIAppearanceCustomizableClassInfo *_customizableClassInfo; // @synthesize _customizableClassInfo;
 @property(retain, nonatomic, setter=_setResettableInvocations:) NSMutableDictionary *_resettableInvocations; // @synthesize _resettableInvocations;
 - (id)description;
+- (void)_invalidateAppearanceInWindow:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)dealloc;
+- (_Bool)_isValidAppearanceForCustomizableObject:(id)arg1;
 - (id)_appearanceInvocations;
 - (void)updateResettableSelectorsWithInvocation:(id)arg1 removeSelector:(_Bool)arg2;
 - (id)_resettableInvocationsCreateIfNecessary;

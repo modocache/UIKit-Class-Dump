@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) unsigned long long numberOfTouchesRequired; // @synthesize numberOfTouchesRequired=_numberOfTouchesRequired;
 @property(nonatomic) unsigned long long numberOfTapsRequired; // @synthesize numberOfTapsRequired=_numberOfTapsRequired;
 - (struct CGPoint)locationInView:(id)arg1;
-- (struct CGPoint)_locationOnScreen;
+- (struct CGPoint)_locationInSceneReferenceSpace;
 @property(nonatomic) double maximumIntervalBetweenSuccessiveTaps;
 @property(nonatomic) double maximumSingleTapDuration;
 @property(nonatomic) double allowableMovement;

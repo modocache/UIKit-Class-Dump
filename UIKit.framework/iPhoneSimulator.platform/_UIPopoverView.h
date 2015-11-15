@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
     _Bool _showsContentViewHighlight;
     UIActionSheet *_presentedActionSheet;
     UIPopoverController *_popoverController;
+    double __dimmingViewTopEdgeInset;
 }
 
 + (id)popoverViewContainingView:(id)arg1;
+@property(nonatomic, setter=_setDimmingViewTopEdgeInset:) double _dimmingViewTopEdgeInset; // @synthesize _dimmingViewTopEdgeInset=__dimmingViewTopEdgeInset;
 @property(nonatomic) UIPopoverController *popoverController; // @synthesize popoverController=_popoverController;
 @property(retain, nonatomic) UIActionSheet *presentedActionSheet; // @synthesize presentedActionSheet=_presentedActionSheet;
 @property(nonatomic) _Bool showsContentViewHighlight; // @synthesize showsContentViewHighlight=_showsContentViewHighlight;

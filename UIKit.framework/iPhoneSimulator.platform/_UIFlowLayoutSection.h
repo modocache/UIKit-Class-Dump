@@ -6,14 +6,14 @@
 
 #import "NSObject.h"
 
-@class NSDictionary, NSMutableArray, _UIFlowLayoutInfo;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableSet, _UIFlowLayoutInfo;
 
 __attribute__((visibility("hidden")))
 @interface _UIFlowLayoutSection : NSObject
 {
     NSMutableArray *_items;
     NSMutableArray *_rows;
-    struct UIEdgeInsets _sectionMagins;
+    struct UIEdgeInsets _sectionMargins;
     double _verticalInterstice;
     double _horizontalInterstice;
     struct CGRect _headerFrame;
@@ -23,6 +23,10 @@ __attribute__((visibility("hidden")))
     _UIFlowLayoutInfo *_layoutInfo;
     _Bool _isValid;
     struct CGRect _frame;
+    struct CGRect _validRect;
+    struct CGRect _rectToKeepValid;
+    struct _NSRange _validItemRange;
+    NSMutableSet *_invalidatedIndexPaths;
     NSDictionary *_rowAlignmentOptions;
     _Bool _fixedItemSize;
     struct CGSize _itemSize;
@@ -36,14 +40,14 @@ __attribute__((visibility("hidden")))
     _Bool _lastRowIncomplete;
     long long _itemsCount;
     long long _itemsByRowCount;
-    long long _indexOfImcompleteRow;
-    struct UIEdgeInsets _sectionMargins;
+    long long _indexOfIncompleteRow;
 }
 
 @property(nonatomic) struct CGSize itemSize; // @synthesize itemSize=_itemSize;
+@property(readonly, nonatomic) struct _NSRange validItemRange; // @synthesize validItemRange=_validItemRange;
 @property(readonly, nonatomic) long long itemsByRowCount; // @synthesize itemsByRowCount=_itemsByRowCount;
 @property(nonatomic) long long itemsCount; // @synthesize itemsCount=_itemsCount;
-@property(readonly, nonatomic) long long indexOfImcompleteRow; // @synthesize indexOfImcompleteRow=_indexOfImcompleteRow;
+@property(readonly, nonatomic) long long indexOfIncompleteRow; // @synthesize indexOfIncompleteRow=_indexOfIncompleteRow;
 @property(readonly, nonatomic) _Bool lastRowIncomplete; // @synthesize lastRowIncomplete=_lastRowIncomplete;
 @property(readonly, nonatomic) double lastRowActualGap; // @synthesize lastRowActualGap=_lastRowActualGap;
 @property(readonly, nonatomic) double lastRowEndMargin; // @synthesize lastRowEndMargin=_lastRowEndMargin;
@@ -58,21 +62,33 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) _UIFlowLayoutInfo *layoutInfo; // @synthesize layoutInfo=_layoutInfo;
 @property(nonatomic) struct CGRect footerFrame; // @synthesize footerFrame=_footerFrame;
 @property(nonatomic) struct CGRect headerFrame; // @synthesize headerFrame=_headerFrame;
-@property(nonatomic) double footerDimension; // @synthesize footerDimension=_footerDimension;
-@property(nonatomic) double headerDimension; // @synthesize headerDimension=_headerDimension;
+@property(readonly, nonatomic) double footerDimension; // @synthesize footerDimension=_footerDimension;
+@property(readonly, nonatomic) double headerDimension; // @synthesize headerDimension=_headerDimension;
 @property(nonatomic) struct UIEdgeInsets sectionMargins; // @synthesize sectionMargins=_sectionMargins;
 @property(nonatomic) double horizontalInterstice; // @synthesize horizontalInterstice=_horizontalInterstice;
 @property(nonatomic) double verticalInterstice; // @synthesize verticalInterstice=_verticalInterstice;
 @property(readonly, nonatomic) NSMutableArray *rows; // @synthesize rows=_rows;
 @property(readonly, nonatomic) NSMutableArray *items; // @synthesize items=_items;
+- (id)rowsInRect:(struct CGRect)arg1;
+- (void)addInvalidatedIndexPath:(id)arg1;
+- (void)setSize:(struct CGSize)arg1 forItemAtIndexPath:(id)arg2;
 - (id)copyFromLayoutInfo:(id)arg1;
 - (id)snapshot;
-- (id)addRow;
+- (id)addRowAtEnd:(_Bool)arg1;
 - (id)addItem;
-- (void)dealloc;
-- (void)recomputeFromIndex:(long long)arg1;
+- (void)setEstimatedSize:(struct CGSize)arg1 forSection:(long long)arg2;
+- (void)updateEstimatedSizeForSection:(long long)arg1;
+- (void)computeLayoutInRect:(struct CGRect)arg1 forSection:(long long)arg2 invalidating:(_Bool)arg3;
+- (void)setFooterDimension:(double)arg1 forSection:(long long)arg2;
+- (void)setHeaderDimension:(double)arg1 forSection:(long long)arg2;
+- (void)logInvalidSizes;
+- (long long)estimatedIndexOfItemAtPoint:(struct CGPoint)arg1;
 - (void)computeLayout;
+- (void)sizeChangedForItem:(id)arg1 atIndexPath:(id)arg2 inRow:(id)arg3;
 - (void)invalidate;
+- (struct CGRect)frameForItemAtIndexPath:(id)arg1;
+@property(readonly, nonatomic) NSArray *invalidatedIndexPaths;
+- (void)dealloc;
 - (id)init;
 
 @end

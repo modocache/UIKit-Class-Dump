@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSString;
+@class NSString, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateGridCell : UICollectionViewCell
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     _Bool _usesGroupHeaderAppearance;
     _Bool _shouldShowCandidateNumber;
     _Bool _secondaryCandidateAppearance;
+    _Bool _emphasizedAppearance;
     int _candidatesVisualStyle;
     NSString *_text;
     NSString *_alternativeText;
@@ -26,17 +27,24 @@ __attribute__((visibility("hidden")))
     long long _textAlignment;
     double _cellPadding;
     double _minimumWidth;
+    UILabel *_textLabel;
+    UILabel *_alternativeTextLabel;
+    UILabel *_candidateNumberLabel;
     struct CGSize _size;
     struct CGSize _candidateNumberSize;
     struct CGRect _visibleBounds;
 }
 
++ (_Bool)drawsSideBorders;
 + (struct CGColor *)legacy_outlineShadowColorForVisualStyling:(CDStruct_961fb75c)arg1 candidatesVisualStyle:(int)arg2;
 + (struct CGColor *)legacy_outlineColorForVisualStyling:(CDStruct_961fb75c)arg1 candidatesVisualStyle:(int)arg2;
 + (double)widthForCandidate:(id)arg1 candidateNumber:(unsigned long long)arg2 visualStyle:(int)arg3;
 + (struct CGSize)sizeForGroupHeader:(id)arg1 visualStyle:(int)arg2;
 + (double)rightPaddingForIndex;
 + (id)reuseIdentifier;
+@property(retain, nonatomic) UILabel *candidateNumberLabel; // @synthesize candidateNumberLabel=_candidateNumberLabel;
+@property(retain, nonatomic) UILabel *alternativeTextLabel; // @synthesize alternativeTextLabel=_alternativeTextLabel;
+@property(retain, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property(nonatomic) double minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property(nonatomic) double cellPadding; // @synthesize cellPadding=_cellPadding;
 @property(nonatomic) struct CGSize candidateNumberSize; // @synthesize candidateNumberSize=_candidateNumberSize;
@@ -47,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property(nonatomic) double rightPadding; // @synthesize rightPadding=_rightPadding;
 @property(nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property(nonatomic) unsigned long long edges; // @synthesize edges=_edges;
+@property(nonatomic) _Bool emphasizedAppearance; // @synthesize emphasizedAppearance=_emphasizedAppearance;
 @property(nonatomic) _Bool secondaryCandidateAppearance; // @synthesize secondaryCandidateAppearance=_secondaryCandidateAppearance;
 @property(nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
 @property(nonatomic) _Bool shouldShowCandidateNumber; // @synthesize shouldShowCandidateNumber=_shouldShowCandidateNumber;
@@ -58,10 +67,11 @@ __attribute__((visibility("hidden")))
 - (void)setSelected:(_Bool)arg1;
 - (void)setHighlighted:(_Bool)arg1;
 @property(readonly, nonatomic) _Bool canShowCandidateNumber;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)drawTextWithCandidateNumber;
-- (void)drawText;
+- (void)updateGroupHeaderLabelPosition;
+- (void)updateLabelColors;
+- (void)updateLabels;
 - (void)drawBackgroundAndBorders;
+- (void)drawRect:(struct CGRect)arg1;
 - (void)prepareForReuse;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)dealloc;

@@ -6,12 +6,11 @@
 
 #import "NSObject.h"
 
-#import "NSCoding.h"
 #import "NSSecureCoding.h"
 
-@class CIImage, NSArray, _UIDecompressionInfo;
+@class CIImage, NSArray, UIImageAsset, UITraitCollection;
 
-@interface UIImage : NSObject <NSSecureCoding, NSCoding>
+@interface UIImage : NSObject <NSSecureCoding>
 {
     void *_imageRef;
     double _scale;
@@ -21,11 +20,12 @@
         unsigned int cached:1;
         unsigned int hasPattern:1;
         unsigned int isCIImage:1;
-        unsigned int imageSetIdentifer:16;
         unsigned int renderingMode:2;
         unsigned int suppressesAccessibilityHairlineThickening:1;
+        unsigned int hasDecompressionInfo:1;
     } _imageFlags;
-    _UIDecompressionInfo *_decompressionInfo;
+    UITraitCollection *_traitCollection;
+    UIImageAsset *_imageAsset;
     struct UIEdgeInsets _alignmentRectInsets;
 }
 
@@ -42,6 +42,8 @@
 + (id)imageWithData:(id)arg1 scale:(double)arg2;
 + (id)imageWithData:(id)arg1;
 + (id)imageWithContentsOfFile:(id)arg1;
++ (id)imageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
++ (id)_imageNamed:(id)arg1 withTrait:(id)arg2;
 + (id)imageNamed:(id)arg1;
 + (void)initialize;
 + (id)_deviceSpecificImageNamed:(id)arg1 inBundle:(id)arg2;
@@ -51,10 +53,11 @@
 + (id)_defaultBackgroundGradient;
 + (id)_backgroundGradientWithStartColor:(id)arg1 andEndColor:(id)arg2;
 + (id)imageNamed:(id)arg1 inBundle:(id)arg2;
++ (id)_kitImageNamed:(id)arg1 withTrait:(id)arg2;
 + (id)kitImageNamed:(id)arg1;
-+ (id)applicationImageNamed:(id)arg1;
-+ (void)setPreferredSharedImageScale:(double)arg1;
 + (id)imageAtPath:(id)arg1;
++ (long long)_idiomDefinedByPath:(id)arg1;
++ (unsigned long long)_scaleDefinedByPath:(id)arg1;
 + (void)_flushCache:(id)arg1;
 + (void)_flushSharedImageCache;
 + (id)_iconForResourceProxy:(id)arg1 format:(int)arg2;
@@ -67,7 +70,11 @@
 + (id)_tintedImageForSize:(struct CGSize)arg1 withTint:(id)arg2 maskImage:(id)arg3 effectsImage:(id)arg4 style:(int)arg5;
 + (id)_tintedImageForSize:(struct CGSize)arg1 withTint:(id)arg2 effectsImage:(id)arg3 maskImage:(id)arg4 style:(int)arg5;
 + (struct CGSize)_legibilityImageSizeForSize:(struct CGSize)arg1 style:(long long)arg2;
-@property(readonly, nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
+@property(retain, nonatomic) UIImageAsset *imageAsset; // @synthesize imageAsset=_imageAsset;
+@property(copy, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
+- (unsigned long long)hash;
+- (_Bool)isEqual:(id)arg1;
+- (id)_primitiveImageAsset;
 - (id)_automationID;
 - (void)drawAsPatternInRect:(struct CGRect)arg1;
 - (void)drawInRect:(struct CGRect)arg1 blendMode:(int)arg2 alpha:(double)arg3;
@@ -78,6 +85,7 @@
 @property(readonly, nonatomic) NSArray *images;
 - (id)imageWithAlignmentRectInsets:(struct UIEdgeInsets)arg1;
 - (void)_setAlignmentRectInsets:(struct UIEdgeInsets)arg1;
+@property(readonly, nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
 - (void)_setSuppressesAccessibilityHairlineThickening:(_Bool)arg1;
 - (id)_imageWithStylePresets:(id)arg1 withTintColor:(id)arg2;
 - (id)_cachedImageStyledWithPresets:(id)arg1 forTintColor:(id)arg2;
@@ -105,9 +113,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)_encodePropertiesWithCoder:(id)arg1;
 - (void)_encodeDataWithCoder:(id)arg1 imageName:(id)arg2;
-- (_Bool)_canEncodeWithName:(id)arg1;
+- (_Bool)_canEncodeWithName:(id)arg1 coder:(id)arg2;
 - (id)_initWithOtherImage:(id)arg1;
-- (void)_configureFromImage:(id)arg1;
+- (void)_configureImage:(id)arg1;
 - (id)initWithCIImage:(id)arg1 scale:(double)arg2 orientation:(long long)arg3;
 - (id)initWithCIImage:(id)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
@@ -121,6 +129,8 @@
 - (void)_saveDecompressedImage:(struct CGImage *)arg1;
 - (void)_decompressionFallbackImageCreation;
 - (void)_decompressionComplete;
+- (id)_decompressionInfo;
+- (void)_setDecompressionInfo:(id)arg1;
 - (_Bool)_suppressesAccessibilityHairlineThickening;
 - (id)_imageThatSuppressesAccessibilityHairlineThickening;
 - (id)_flatImageWithColor:(id)arg1;
@@ -160,8 +170,6 @@
 - (id)_bezeledImageWithShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 fillRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 drawShadow:(_Bool)arg9;
 - (id)_flatImageWithWhite:(double)arg1 alpha:(double)arg2;
 - (_Bool)_isInvisibleAndGetIsTranslucent:(_Bool *)arg1;
-- (long long)_imageSetIdentifier;
-- (void)_setImageSetIdentifier:(long long)arg1;
 - (_Bool)_isNamed;
 - (void)_setNamed:(_Bool)arg1;
 - (_Bool)_isCached;
