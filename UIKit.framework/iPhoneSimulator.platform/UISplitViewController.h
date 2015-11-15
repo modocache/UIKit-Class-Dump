@@ -188,6 +188,7 @@
 - (id)_childContainingSender:(id)arg1;
 - (void)_setMasterOverrideTraitCollectionActive:(_Bool)arg1;
 @property(copy, nonatomic) NSArray *viewControllers;
+- (_Bool)_isBasicallyHorizontallyCompact;
 - (void)_slideIn:(_Bool)arg1 viewController:(id)arg2 animated:(_Bool)arg3 totalDuration:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (_Bool)_canSlideMaster;
 - (_Bool)_canDisplayHostedMaster;

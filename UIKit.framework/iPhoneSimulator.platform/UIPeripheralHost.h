@@ -299,7 +299,8 @@
 @property(nonatomic) _Bool automaticAppearanceInternalEnabled;
 @property(readonly, nonatomic) NSMutableArray *dropShadowViews;
 @property(readonly, nonatomic) UIView *view;
-- (void)_inputModeChangedWhileContextTracked:(id)arg1;
+- (void)_inputModeChangedWhileContextTracked;
+- (void)_inputModeChanged:(id)arg1;
 - (void)_trackInputModeIfNecessary:(id)arg1;
 - (_Bool)_isTrackingResponder:(id)arg1;
 @property(nonatomic) _Bool ignoresPinning;

@@ -129,7 +129,7 @@
 - (id)_containedAlertController;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (_Bool)_requiresCustomPresentationController;
-- (id)_newActivityGroupViewControllerForItems:(id)arg1 category:(long long)arg2;
+- (id)_newActivityGroupViewControllerForItems:(id)arg1 category:(long long)arg2 userDefaults:(id)arg3;
 - (void)viewDidLoad;
 - (void)_updateActivities:(id)arg1 animated:(_Bool)arg2;
 - (void)_updateActivityItems:(id)arg1 animated:(_Bool)arg2;

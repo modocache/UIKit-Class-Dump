@@ -60,6 +60,7 @@
 - (void)resignedFirstResponder;
 - (struct CGPoint)constrainedPoint:(struct CGPoint)arg1;
 - (void)rangeSelectionMoved:(struct CGPoint)arg1 withTouchPoint:(struct CGPoint)arg2;
+- (void)rangeSelectionCanceled;
 - (void)rangeSelectionEnded:(struct CGPoint)arg1;
 - (void)rangeSelectionStarted:(struct CGPoint)arg1;
 - (void)selectionAnimationDidStop:(id)arg1 finished:(id)arg2;

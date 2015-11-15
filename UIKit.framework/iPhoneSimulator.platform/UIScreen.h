@@ -77,6 +77,7 @@
 + (id)_screenWithDisplayID:(id)arg1;
 + (id)_screenWithDisplayName:(id)arg1;
 + (id)_workspaceCapableScreens;
++ (id)_watchScreen;
 + (id)_carScreen;
 + (id)screens;
 + (void)_enumerateScreensWithBlock:(CDUnknownBlockType)arg1;

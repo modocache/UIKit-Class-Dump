@@ -29,9 +29,13 @@
     struct UIEdgeInsets _alignmentRectInsets;
 }
 
++ (void)_dropResourceReferencesForURL:(id)arg1;
++ (void)_clearAssetCaches;
 + (id)animatedImageWithImages:(id)arg1 duration:(double)arg2;
++ (id)_animatedResizableImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3 capInsets:(struct UIEdgeInsets)arg4 resizingMode:(long long)arg5 duration:(double)arg6;
 + (id)animatedResizableImageNamed:(id)arg1 capInsets:(struct UIEdgeInsets)arg2 resizingMode:(long long)arg3 duration:(double)arg4;
 + (id)animatedResizableImageNamed:(id)arg1 capInsets:(struct UIEdgeInsets)arg2 duration:(double)arg3;
++ (id)_animatedImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3 duration:(double)arg4;
 + (id)animatedImageNamed:(id)arg1 duration:(double)arg2;
 + (struct UIEdgeInsets)_edgeInsetsForStylePresetNames:(id)arg1 scale:(double)arg2;
 + (_Bool)supportsSecureCoding;

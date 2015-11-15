@@ -134,7 +134,7 @@
 + (void)_prepareWindowsForAppResume;
 + (void)_prepareWindowsPassingTestForAppResume:(CDUnknownBlockType)arg1;
 + (void)_prepareWindowsForAppSuspend;
-+ (void)setAllWindowsKeepContextInBackground:(_Bool)arg1;
++ (void)_setAllWindowsKeepContextInBackground:(_Bool)arg1;
 + (Class)layerClass;
 + (void)adjustForAccessibilityIfNeeded:(id)arg1;
 + (void)initialize;

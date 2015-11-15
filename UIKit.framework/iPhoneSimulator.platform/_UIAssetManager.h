@@ -26,18 +26,24 @@ __attribute__((visibility("hidden")))
     _UIAssetManager *_nextAssetManager;
 }
 
++ (double)_watchScreenScale;
++ (void)_dropResourceReferencesForURL:(id)arg1;
 + (id)sharedRuntimeAssetMap;
 + (id)sharedRuntimeCatalog;
 + (long long)_userInterfaceIdiomForDeviceClass:(unsigned long long)arg1;
 + (void)_convertTraitCollection:(id)arg1 toCUIScale:(double *)arg2 CUIIdiom:(long long *)arg3 UIKitIdiom:(long long *)arg4 subtype:(long long *)arg5;
 + (id)createAssetNamed:(id)arg1 fromBundle:(id)arg2;
 + (id)assetManagerForBundle:(id)arg1;
++ (void)_saveAssetManager:(id)arg1 forBundle:(id)arg2 lock:(_Bool)arg3;
++ (id)_assetManagerCache;
 @property(readonly, nonatomic, getter=_managingUIKitAssets) _Bool managingUIKitAssets; // @synthesize managingUIKitAssets=_managingUIKitAssets;
 @property(retain, nonatomic) UITraitCollection *preferredTraitCollection; // @synthesize preferredTraitCollection=_preferredTraitCollection;
 @property(nonatomic) double preferredScale; // @synthesize preferredScale=_preferredScale;
 @property(retain, nonatomic) _UIAssetManager *nextAssetManager; // @synthesize nextAssetManager=_nextAssetManager;
 @property(readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 - (id)description;
+- (void)_disconnectImageAssets;
+- (void)_clearCachedResources;
 - (void)_clearCachedResources:(id)arg1;
 @property(readonly, nonatomic) CUIMutableCatalog *runtimeCatalog;
 - (void)_insertAssetIntoMap:(id)arg1 forName:(id)arg2;
@@ -54,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)imageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(unsigned long long)arg4;
 - (id)imageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(unsigned long long)arg4 cachingOptions:(unsigned long long)arg5 sizeClassPair:(CDStruct_d58201db)arg6 attachCatalogImage:(_Bool)arg7;
 - (void)dealloc;
+- (id)_initWithName:(id)arg1 inBundle:(id)arg2 idiom:(long long)arg3 lock:(_Bool)arg4;
 - (id)initWithName:(id)arg1 inBundle:(id)arg2 idiom:(long long)arg3;
 
 @end

@@ -84,7 +84,7 @@
 - (void)viewDidLoad;
 - (void)dealloc;
 - (id)initWithActivityCategory:(long long)arg1 userDefaults:(id)arg2 userDefaultsIdentifier:(id)arg3;
-- (id)initWithActivityCategory:(long long)arg1;
+- (id)initWithActivityCategory:(long long)arg1 userDefaults:(id)arg2;
 
 // Remaining properties
 @property(readonly, copy) NSString *debugDescription;

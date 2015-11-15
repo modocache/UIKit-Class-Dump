@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)postActivityUserDefaultsNotification;
 - (void)setDefaultsValue:(id)arg1 forKey:(id)arg2 activity:(id)arg3;
 - (id)defaultsValueForKey:(id)arg1 activity:(id)arg2;
+- (id)mergeArray:(id)arg1 withObjectsFromArray:(id)arg2;
 - (void)updateUserOrderForActivitiesInArray:(id)arg1;
 - (id)userOrderedActivitesFromActivitiesInArray:(id)arg1;
 - (void)setActivity:(id)arg1 asHidden:(_Bool)arg2;

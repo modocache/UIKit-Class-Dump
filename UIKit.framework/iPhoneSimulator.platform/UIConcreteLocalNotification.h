@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     _Bool hasAction;
     NSString *alertAction;
     NSString *alertLaunchImage;
+    NSString *alertTitle;
     NSString *soundName;
     long long applicationIconBadgeNumber;
     NSData *userInfoData;
@@ -40,6 +41,8 @@ __attribute__((visibility("hidden")))
     _Bool isTransient;
 }
 
+- (void)setAlertTitle:(id)arg1;
+- (id)alertTitle;
 - (void)setRegionTriggersOnce:(_Bool)arg1;
 - (_Bool)regionTriggersOnce;
 - (void)setRegion:(id)arg1;

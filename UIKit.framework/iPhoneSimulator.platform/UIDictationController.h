@@ -30,9 +30,11 @@ __attribute__((visibility("hidden")))
     _Bool _recievingResults;
     _Bool _streamingAnimationActive;
     double _lastAnimationUpdateTimeStamp;
+    CDUnknownBlockType _finalResultsOperation;
     CADisplayLink *_streamingAnimationDisplayLink;
     _Bool cancelledByWaitingForLocalResults;
-    _Bool _updatingDocument;
+    long long _updatingDocument;
+    _Bool _deferredCancellationRequested;
     _Bool dictationStartedFromGesture;
     _Bool _performingStreamingEditingOperation;
     _Bool _discardNextHypothesis;
@@ -127,8 +129,9 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnection:(id)arg1 didHypothesizePhrases:(id)arg2 languageModel:(id)arg3;
 - (void)setupToInsertResultForNewHypothesis:(id)arg1;
 - (void)_updateFromSelectedTextRange:(id)arg1 withNewHypothesis:(id)arg2;
+- (id)_getBestHypothesisRangeGivenHintRange:(id)arg1 inputDelegate:(id)arg2 hypothesisRange:(struct _NSRange *)arg3 documentTextInRange:(id *)arg4;
 - (id)_hypothesisRangeFromSelectionRange:(id)arg1 inputDelegate:(id)arg2;
-- (id)_rangeByExtendingRange:(id)arg1 by:(long long)arg2 inputDelegate:(id)arg3;
+- (id)_rangeByExtendingRange:(id)arg1 backward:(long long)arg2 forward:(long long)arg3 inputDelegate:(id)arg4;
 - (void)_displayLinkFired:(id)arg1;
 - (void)_startStreamingAnimations;
 - (void)_stopStreamingAnimation;
@@ -142,9 +145,10 @@ __attribute__((visibility("hidden")))
 - (id)dictationPhraseArrayFromDictationResult:(id)arg1;
 - (void)restartDictationForTypeAndTalk;
 - (void)performIgnoringDocumentChanges:(CDUnknownBlockType)arg1;
+- (_Bool)isIgnoringDocumentChanges;
 - (void)stopDictation;
+- (void)cancelDictationForTextStoreChanges;
 - (void)cancelDictation;
-- (void)_finalizeDictationText;
 - (void)startDictationForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)switchToDictationInputMode;
 - (void)_touchPhaseChangedForTouch:(id)arg1;
@@ -173,6 +177,8 @@ __attribute__((visibility("hidden")))
 - (void)errorAnimationDidFinish;
 - (void)setState:(int)arg1;
 - (void)endSessionIfNecessaryForTransitionFromState:(int)arg1 toState:(int)arg2;
+- (void)_runFinalizeOperation;
+- (void)_setFinalResultHandler:(CDUnknownBlockType)arg1;
 - (void)startConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)completeStartConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (void)startConnectionForReason:(long long)arg1;

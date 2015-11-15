@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSOperation *_afterShrinkCompletionInvocation;
 }
 
++ (long long)fallbackPlaceholderLength;
 + (id)activeInstance;
 + (id)sharedInstance;
 + (double)widthForLineHeight:(double)arg1;

@@ -12,6 +12,7 @@
 
 + (void)handleSpecificHardwareKeyboard;
 + (id)sharedPreferencesController;
+- (_Bool)isKeyLockedDown:(int)arg1;
 @property long long handBias;
 - (_Bool)spaceConfirmationEnabled;
 - (double)rivenSizeFactor:(double)arg1;

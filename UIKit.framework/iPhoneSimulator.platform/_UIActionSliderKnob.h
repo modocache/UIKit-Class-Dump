@@ -6,13 +6,18 @@
 
 #import <UIKit/UIView.h>
 
+@class UIColor;
+
 __attribute__((visibility("hidden")))
 @interface _UIActionSliderKnob : UIView
 {
+    UIColor *_knobColor;
 }
 
+@property(retain, nonatomic) UIColor *knobColor; // @synthesize knobColor=_knobColor;
 - (void)drawRect:(struct CGRect)arg1;
 - (_Bool)isOpaque;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

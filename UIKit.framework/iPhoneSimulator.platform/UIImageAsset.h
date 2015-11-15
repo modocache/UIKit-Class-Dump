@@ -18,6 +18,7 @@
     struct {
         unsigned int hasRegisteredImages:1;
         unsigned int supportsBlockGeneration:1;
+        unsigned int disconnectedFromAssetManager:1;
     } _assetFlags;
     NSString *_assetName;
     CDUnknownBlockType _creationBlock;
@@ -28,6 +29,8 @@
 @property(copy, nonatomic) CDUnknownBlockType creationBlock; // @synthesize creationBlock=_creationBlock;
 @property(copy, nonatomic) NSString *assetName; // @synthesize assetName=_assetName;
 @property(readonly, nonatomic) _UIAssetManager *_assetManager; // @synthesize _assetManager;
+- (void)_disconnectFromAssetManager;
+- (_Bool)_containsImagesInPath:(id)arg1;
 - (void)_clearResolvedImageResources;
 - (id)_defaultTraitCollection;
 - (id)_mutableCatalog;

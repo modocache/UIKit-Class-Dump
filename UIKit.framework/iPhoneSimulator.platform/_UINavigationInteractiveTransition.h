@@ -8,7 +8,6 @@
 
 @class UIScreenEdgePanGestureRecognizer;
 
-__attribute__((visibility("hidden")))
 @interface _UINavigationInteractiveTransition : _UINavigationInteractiveTransitionBase
 {
     UIScreenEdgePanGestureRecognizer *_edgePanRecognizer;

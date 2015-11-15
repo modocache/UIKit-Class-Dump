@@ -340,6 +340,7 @@
 - (void)tintColorDidChange;
 @property(readonly, nonatomic) long long _barTranslucence;
 - (id)_effectiveDelegate;
+- (_Bool)_isAlwaysHidden;
 - (void)_palette:(id)arg1 isAttaching:(_Bool)arg2 didComplete:(_Bool)arg3;
 - (id)_backgroundViewForPalette:(id)arg1;
 - (void)_setReversesButtonTextShadowOffsetWhenPressed:(_Bool)arg1;

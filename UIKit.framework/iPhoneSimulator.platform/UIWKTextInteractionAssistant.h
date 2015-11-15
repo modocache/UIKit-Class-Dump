@@ -32,6 +32,7 @@
 - (void)twoFingerRangedSelectGesture:(id)arg1;
 - (void)twoFingerSingleTap:(id)arg1;
 - (void)oneFingerTripleTap:(id)arg1;
+- (void)rangeSelectionCanceled;
 - (void)rangeSelectionMoved:(struct CGPoint)arg1 withTouchPoint:(struct CGPoint)arg2;
 - (void)rangeSelectionEnded:(struct CGPoint)arg1;
 - (void)rangeSelectionStarted:(struct CGPoint)arg1;

@@ -28,6 +28,7 @@
 + (void)raiseTextEffectsWindowsForShowNotificationCenter;
 + (void)releaseSharedInstances;
 + (id)sharedTextEffectsWindowAboveStatusBar;
++ (id)activeTextEffectsWindowForScreen:(id)arg1;
 + (id)sharedTextEffectsWindowForScreen:(id)arg1;
 + (id)sharedTextEffectsWindow;
 + (id)_sharedTextEffectsWindowforScreen:(id)arg1 aboveStatusBar:(_Bool)arg2 allowHosted:(_Bool)arg3 matchesStatusBarOrientationOnAccess:(_Bool)arg4;

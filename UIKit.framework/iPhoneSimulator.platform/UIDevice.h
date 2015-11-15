@@ -23,6 +23,8 @@
 }
 
 + (id)currentDevice;
++ (_Bool)_isWatchCompanion;
++ (_Bool)_isWatch;
 + (long long)currentDeviceOrientationAllowingAmbiguous:(_Bool)arg1;
 + (id)modelSpecificLocalizedStringKeyForKey:(id)arg1;
 - (void)_playSystemSound:(unsigned int)arg1;

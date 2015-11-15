@@ -56,7 +56,7 @@
         unsigned int launchEventReceived:1;
         unsigned int activateEventReceived:1;
         unsigned int systemIsAnimatingApplicationLifecycleEvent:1;
-        unsigned int isResuming:1;
+        unsigned int isActivating:1;
         unsigned int isSuspendedUnderLock:1;
         unsigned int shouldExitAfterSendSuspend:1;
         unsigned int terminating:1;
@@ -85,6 +85,7 @@
         unsigned int delegateSupportsStateRestoration:1;
         unsigned int delegateSupportedInterfaceOrientations:1;
         unsigned int delegateHandleSiriTask:1;
+        unsigned int delegateSupportsWatchKitRequests:1;
         unsigned int userDefaultsSyncDisabled:1;
         unsigned int headsetButtonClickCount:4;
         unsigned int isHeadsetButtonDown:1;
@@ -167,6 +168,7 @@
 + (_Bool)rendersLocally;
 + (_Bool)registerAsSystemApp;
 + (_Bool)isRunningEventPump;
++ (Class)_statusBarWindowClass;
 + (Class)_statusBarClass;
 + (_Bool)shouldBackgroundMainThreadOnSuspendedLaunch;
 + (void)_startStatusBarServerIfNecessary;
@@ -175,6 +177,7 @@
 + (void)_installAfterCACommitHandler;
 + (void)_noteInterfaceOrientationChangingTo:(long long)arg1;
 + (_Bool)shouldMakeUIForDefaultPNG;
++ (long long)runningInStoreDemoModeFProgramNumber;
 + (_Bool)isRunningInStoreDemoMode;
 + (id)sharedApplication;
 + (void)registerObjectForStateRestoration:(id)arg1 restorationIdentifier:(id)arg2;
@@ -211,6 +214,7 @@
 - (void)endBackgroundTask:(unsigned long long)arg1;
 - (unsigned long long)beginBackgroundTaskWithName:(id)arg1 expirationHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)beginBackgroundTaskWithExpirationHandler:(CDUnknownBlockType)arg1;
+- (void)_syncWithBackgroundTaskQueue;
 @property(readonly, nonatomic) double backgroundTimeRemaining;
 @property(readonly, nonatomic) long long applicationState;
 - (_Bool)_executableWasLinkedWithUIKit;
@@ -468,6 +472,7 @@
 - (_Bool)isHandlingURL;
 - (void)_setHandlingURL:(_Bool)arg1 url:(id)arg2;
 - (_Bool)isHandlingOpenShortCut;
+- (void)_applicationHandleWatchKitRequest:(id)arg1;
 - (void)_applicationHandleSiriTask:(id)arg1;
 - (void)_applicationOpenURL:(id)arg1 payload:(id)arg2;
 - (void)applicationOpenURL:(id)arg1;
@@ -520,7 +525,7 @@
 - (void)suspendReturningToLastApp:(_Bool)arg1;
 - (void)suspend;
 - (_Bool)_isLaunchedSuspended;
-- (_Bool)_isResuming;
+- (_Bool)_isActivating;
 - (_Bool)systemIsAnimatingApplicationLifecycleEvent;
 - (void)_setSuspendedUnderLock:(_Bool)arg1;
 - (void)_setSuspendedEventsOnly:(_Bool)arg1;
@@ -608,6 +613,7 @@
 - (_Bool)_alwaysHitTestsForMainScreen;
 - (void)_setAlwaysHitTestsForMainScreen:(_Bool)arg1;
 - (void)_setBackgroundStyle:(long long)arg1;
+- (id)_statusBarControllingWindow;
 - (id)statusBarWindow;
 - (id)statusBar;
 - (void)_createStatusBarWithRequestedStyle:(long long)arg1 orientation:(long long)arg2 hidden:(_Bool)arg3;
@@ -720,7 +726,9 @@
 - (long long)_testOrientation:(id)arg1 options:(id)arg2;
 - (_Bool)_isSupportedOrientation:(long long)arg1;
 - (_Bool)handleTestURL:(id)arg1;
+- (void)failedTest:(id)arg1 withFailure:(id)arg2 withResults:(id)arg3;
 - (void)failedTest:(id)arg1 withResults:(id)arg2;
+- (void)failedTest:(id)arg1 withFailure:(id)arg2;
 - (void)failedTest:(id)arg1;
 - (void)finishedTest:(id)arg1 waitForCommit:(_Bool)arg2 extraResults:(id)arg3 withTeardownBlock:(CDUnknownBlockType)arg4;
 - (void)finishedTest:(id)arg1 waitForCommit:(_Bool)arg2 extraResults:(id)arg3;

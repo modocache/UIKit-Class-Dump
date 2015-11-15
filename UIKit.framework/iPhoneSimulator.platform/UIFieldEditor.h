@@ -34,7 +34,7 @@
     struct UIEdgeInsets _padding;
     _UIFieldEditorContentView *_contentView;
     struct _NSRange _unobscuredSecureRange;
-    NSTimer *_obscureLastCharacterTimer;
+    NSTimer *_obscureAllTextTimer;
     struct CGPoint _textContainerOrigin;
     double _contentWidth;
     _UIFieldEditorContentView *_passcodeStyleCutoutView;
@@ -112,8 +112,8 @@
 - (void)replaceRange:(id)arg1 withText:(id)arg2;
 - (id)textInRange:(id)arg1;
 - (void)deleteBackward;
-- (void)_obscureLastCharacter;
-- (void)_cancelObscureLastCharacterTimer;
+- (void)_obscureAllText;
+- (void)_cancelObscureAllTextTimer;
 - (void)insertText:(id)arg1;
 - (_Bool)hasText;
 - (void)drawTextInRect:(struct CGRect)arg1 forContentView:(id)arg2;

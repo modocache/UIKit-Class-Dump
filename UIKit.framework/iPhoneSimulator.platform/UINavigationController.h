@@ -78,6 +78,7 @@
         unsigned int isNested:1;
         unsigned int searchHidNavigationBar:1;
         unsigned int suppressMixedOrientationPop:1;
+        unsigned int isLayingOutBars:1;
     } _navigationControllerFlags;
     _Bool _interactiveTransition;
     _Bool _hidesBarsWhenKeyboardAppears;
@@ -413,6 +414,8 @@
 - (int)_transitionForOldViewControllers:(id)arg1 newViewControllers:(id)arg2;
 @property(copy, nonatomic) NSArray *viewControllers;
 - (_Bool)_isPresentationContextByDefault;
+- (void)_setNeedsStatusBarAppearanceUpdateWithoutBarLayout;
+- (_Bool)_isLayingOutBarsDuringStatusBarUpdate;
 @property(readonly, nonatomic) UIViewController *previousViewController;
 @property(readonly, retain, nonatomic) UIViewController *visibleViewController;
 - (long long)modalTransitionStyle;

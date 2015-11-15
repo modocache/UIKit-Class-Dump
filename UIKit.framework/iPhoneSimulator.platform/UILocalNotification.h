@@ -34,6 +34,7 @@
 @property(copy, nonatomic) NSString *alertAction; // @dynamic alertAction;
 @property(copy, nonatomic) NSString *alertBody; // @dynamic alertBody;
 @property(copy, nonatomic) NSString *alertLaunchImage; // @dynamic alertLaunchImage;
+@property(copy, nonatomic) NSString *alertTitle; // @dynamic alertTitle;
 @property(nonatomic) _Bool allowSnooze; // @dynamic allowSnooze;
 @property(nonatomic) long long applicationIconBadgeNumber; // @dynamic applicationIconBadgeNumber;
 @property(copy, nonatomic) NSString *category; // @dynamic category;

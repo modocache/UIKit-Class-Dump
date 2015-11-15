@@ -8,7 +8,7 @@
 
 #import "UIGestureRecognizerDelegate.h"
 
-@class NSString, UIBezierPath, UIFont, UIImage, UIImageView, UIPanGestureRecognizer, UIView, _UIBackdropView, _UIGlintyStringView;
+@class NSString, UIBezierPath, UIColor, UIFont, UIImage, UIImageView, UILabel, UIPanGestureRecognizer, UIView, UIView<_UIActionSliderLabel>, _UIActionSliderKnob, _UIBackdropView, _UIVibrantSettings;
 
 @interface _UIActionSlider : UIControl <UIGestureRecognizerDelegate>
 {
@@ -17,9 +17,9 @@
     UIView *_trackBackgroundView;
     _UIBackdropView *_trackBlurView;
     UIView *_trackSolidView;
-    UIView *_knobView;
+    _UIActionSliderKnob *_knobView;
     UIImageView *_knobImageView;
-    _UIGlintyStringView *_trackLabel;
+    UIView<_UIActionSliderLabel> *_trackLabel;
     UIPanGestureRecognizer *_slideGestureRecognizer;
     struct CGPoint _slideGestureInitialPoint;
     double _knobPosition;
@@ -27,15 +27,20 @@
     _Bool _showingTrackLabel;
     _Bool _animating;
     long long _style;
+    long long _textStyle;
+    NSString *_trackText;
+    UIFont *_trackFont;
     double _trackTextBaselineFromBottom;
     id <_UIActionSliderDelegate> _delegate;
     double _knobWidth;
     double _cachedTrackMaskWidth;
+    _UIVibrantSettings *_vibrantSettings;
     struct CGSize _knobImageOffset;
     struct CGSize _trackSize;
     struct UIEdgeInsets _knobInsets;
 }
 
+@property(retain, nonatomic) _UIVibrantSettings *vibrantSettings; // @synthesize vibrantSettings=_vibrantSettings;
 @property(readonly, nonatomic, getter=_knobView) UIView *knobView; // @synthesize knobView=_knobView;
 @property(nonatomic) double cachedTrackMaskWidth; // @synthesize cachedTrackMaskWidth=_cachedTrackMaskWidth;
 @property(nonatomic, getter=isAnimating) _Bool animating; // @synthesize animating=_animating;
@@ -45,9 +50,13 @@
 @property(nonatomic) double knobWidth; // @synthesize knobWidth=_knobWidth;
 @property(nonatomic) double knobPosition; // @synthesize knobPosition=_knobPosition;
 @property(nonatomic) id <_UIActionSliderDelegate> delegate; // @synthesize delegate=_delegate;
+@property(readonly, nonatomic) UIPanGestureRecognizer *slideGestureRecognizer; // @synthesize slideGestureRecognizer=_slideGestureRecognizer;
 @property(nonatomic) double trackTextBaselineFromBottom; // @synthesize trackTextBaselineFromBottom=_trackTextBaselineFromBottom;
 @property(nonatomic) struct CGSize trackSize; // @synthesize trackSize=_trackSize;
+@property(retain, nonatomic) UIFont *trackFont; // @synthesize trackFont=_trackFont;
+@property(copy, nonatomic) NSString *trackText; // @synthesize trackText=_trackText;
 @property(nonatomic) struct CGSize knobImageOffset; // @synthesize knobImageOffset=_knobImageOffset;
+@property(nonatomic) long long textStyle; // @synthesize textStyle=_textStyle;
 @property(nonatomic) long long style; // @synthesize style=_style;
 - (void)_knobPanGesture:(id)arg1;
 - (void)_slideCompleted:(_Bool)arg1;
@@ -59,6 +68,7 @@
 - (id)trackMaskPath;
 - (id)trackMaskImage;
 - (void)layoutSubviews;
+- (void)_makeTrackLabel;
 - (void)didMoveToWindow;
 - (void)didMoveToSuperview;
 - (double)_knobAvailableX;
@@ -77,11 +87,12 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @property(readonly, nonatomic) struct CGRect trackTextRect;
 @property(readonly, nonatomic) struct CGRect knobRect;
-@property(retain, nonatomic) UIFont *trackFont;
-@property(copy, nonatomic) NSString *trackText;
+@property(readonly, retain, nonatomic) UILabel *trackLabel;
+@property(retain, nonatomic) UIColor *knobColor;
 @property(retain, nonatomic) UIImage *knobImage;
 @property(readonly, nonatomic) UIBezierPath *knobMaskPath;
 - (void)dealloc;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 vibrantSettings:(id)arg2;
 
 // Remaining properties
